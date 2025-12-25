@@ -17,6 +17,7 @@ module.exports = [
 			'handle-callback-err': 'off',
 			indent: ['error', 'tab'],
 			'keyword-spacing': 'error',
+			'max-len': ['error', { 'code': 80 }],
 			'max-nested-callbacks': ['error', { max: 4 }],
 			'max-statements-per-line': ['error', { max: 2 }],
 			'no-console': 'off',
@@ -25,7 +26,10 @@ module.exports = [
 			'no-inline-comments': 'error',
 			'no-lonely-if': 'error',
 			'no-multi-spaces': 'error',
-			'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 1, maxBOF: 0 }],
+			'no-multiple-empty-lines': [
+				'error',
+				{ max: 2, maxEOF: 1, maxBOF: 0 }
+			],
 			'no-shadow': ['error', { allow: ['err', 'resolve', 'reject'] }],
 			'no-trailing-spaces': ['error'],
 			'no-var': 'error',
