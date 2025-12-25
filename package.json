@@ -8,6 +8,7 @@
 	},
 	"scripts": {
 		"start": "node --env-file=.env index.js",
-		"deploy-commands": "node --env-file=.env scripts/deploy-commands.js"
+		"deploy-commands": "node --env-file=.env scripts/deploy-commands.js",
+		"shuffle": "node scripts/shuffle-songs.js"
 	}
 }

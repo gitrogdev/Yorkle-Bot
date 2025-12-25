@@ -17,7 +17,7 @@ module.exports = [
 			'handle-callback-err': 'off',
 			indent: ['error', 'tab'],
 			'keyword-spacing': 'error',
-			'max-len': ['error', { 'code': 80 }],
+			'max-len': ['warn', { 'code': 80 }],
 			'max-nested-callbacks': ['error', { max: 4 }],
 			'max-statements-per-line': ['error', { max: 2 }],
 			'no-console': 'off',
