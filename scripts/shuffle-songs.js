@@ -12,6 +12,7 @@ const songsPath = path.join(__dirname, '../songs');
  *
  * If the game-queue.json file does not exist, initializes it with default
  * values.
+ *
  * @returns the JavaScript Object containing the shuffled queue data
  */
 function shuffle() {

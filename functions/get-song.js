@@ -7,6 +7,7 @@ const updateJson = require('../util/update-json.js');
 /**
  * Gets the file name of today's song, and advances the queue if a day has
  * passed.
+ *
  * @returns the file name of today's song
  */
 module.exports = function() {
