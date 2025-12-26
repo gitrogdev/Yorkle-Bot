@@ -4,7 +4,12 @@ const path = require('node:path');
 const aliases = require('../config/aliases.json');
 const getSong = require('./get-song.js');
 const guessLengths = require('../config/guesslengths.json');
+const { finishGame } = require('./game-sessions.js');
 
+const NO_SPOILIES = '\n\n-# Yorkle is a daily guessing game in which everyone '
+	+ 'guesses the same song each day. Please avoid spoilers when discussing '
+	+ 'today\'s answer with other players, who may have finished today\'s '
+	+ 'puzzle yet.';
 const dataPath = path.join(__dirname, '../data/days');
 
 const sessions = {};
@@ -43,6 +48,7 @@ function presentClip(user) {
  * @param {import('discord.js').User} user the user to finish the session for
  */
 function finish(user) {
+	finishGame(user, sessions[user.id]);
 	delete sessions[user.id];
 };
 
@@ -96,9 +102,9 @@ module.exports.makeGuess = function(user, guess) {
 	const guesses = sessionInfo.clip;
 	finish(user);
 
-	return `✅ **CORRECT** ✅\nYou guessed the Yorkle in ${guesses} guess`
-		+ `${guesses == 1 ? '' : 'es'}! Play again tomorrow, or share it with `
-		+ 'your friends with the /share command!';
+	return `✅ **CORRECT** ✅\n\nYou guessed the Yorkle in ${guesses} guess`
+		+ `${guesses == 1 ? '' : 'es'}! Play again tomorrow, or share your `
+		+ 'results with your friends with the /share command!';
 };
 
 /**

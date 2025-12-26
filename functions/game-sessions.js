@@ -24,6 +24,27 @@ if (fs.existsSync(startDatePath)) dateData = JSON.parse(
 );
 
 /**
+ * Writes the results of a finished game to the day's file.
+ *
+ * @param {import('discord.js').User} user the user that finished the game
+ * @param {Object} sessionInfo the session info for the user's game session
+ */
+module.exports.finishGame = function(user, sessionInfo) {
+	const day = Number.parseInt(sessionInfo.day);
+
+	const dataPath = path.join(
+		daysPath,
+		`yorkle-day${day.toString().padStart(4, '0')}.json`
+	);
+	const updateData = day == dateData.day ? dateData : require(dataPath);
+	updateData.players[user.id] = {
+		sequence: sessionInfo.guesses.join('')
+	};
+
+	updateDay(day);
+};
+
+/**
  * Starts the game for a new day.
  *
  * Creates the six clip files for today's song, and creates the game file
@@ -70,19 +91,24 @@ module.exports.newDay = async function() {
 	};
 
 	updateQueueFile();
-	updateDay();
+	updateDay(day);
 };
 
 /**
- * Updates the .json file containing data for today's game.
+ * Updates the .json file containing data for a day's game.
+ *
+ * @param {number} day the number of the day to update
  */
-function updateDay() {
+function updateDay(day) {
+	const dataPath = path.join(
+		daysPath,
+		`yorkle-day${day.toString().padStart(4, '0')}.json`
+	);
+	const updateData = day == dateData.day ? dateData : require(dataPath);
+
 	fs.writeFileSync(
-		path.join(
-			daysPath,
-			`yorkle-day${getDay().toString().padStart(4, '0')}.json`
-		),
-		JSON.stringify(dateData)
+		dataPath,
+		JSON.stringify(updateData)
 	);
 };
 module.exports.updateDay = updateDay;
