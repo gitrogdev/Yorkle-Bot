@@ -37,7 +37,7 @@ module.exports = {
 			return;
 		}
 		const dmed = start(interaction.user);
-		interaction.reply(
+		interaction.editReply(
 			dmed ? 'Started a session of Yorkle. Please see your Direct '
 				+ 'Messages to play.' : 'Unable to start a session of Yorkle '
 				+ 'with you. Please adjust your Privacy Settings to allow '

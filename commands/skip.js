@@ -25,6 +25,6 @@ module.exports = {
 			);
 			return;
 		}
-		interaction.reply(await skip(interaction.user));
+		interaction.editReply(await skip(interaction.user));
 	}
 };
