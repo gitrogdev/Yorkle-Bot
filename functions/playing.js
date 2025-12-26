@@ -143,7 +143,7 @@ module.exports.skip = async function(user) {
  */
 module.exports.start = async function(user) {
 	const songData = await getSong();
-	const day = songData.day.toString().padStart(4, '0');
+	const day = songData.day;
 	try {
 		await user.send(`# Yorkle #${day}`);
 	} catch {
@@ -155,7 +155,7 @@ module.exports.start = async function(user) {
 		answer: songData.song.slice(0, -4),
 		clip: 1,
 		guesses: [],
-		day: day
+		day: day.toString().padStart(4, '0')
 	};
 	presentClip(user);
 	return true;
