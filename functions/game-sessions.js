@@ -45,6 +45,17 @@ module.exports.finishGame = function(user, sessionInfo) {
 };
 
 /**
+ * Checks if a user has already finished today's game.
+ *
+ * @param {import('discord.js').User} user the user to check
+ *
+ * @returns whether the user has already finished today's game
+ */
+module.exports.hasPlayed = function(user) {
+	return user.id in dateData.players;
+};
+
+/**
  * Starts the game for a new day.
  *
  * Creates the six clip files for today's song, and creates the game file

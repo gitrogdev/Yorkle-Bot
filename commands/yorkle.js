@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, InteractionContextType } = require('discord.js');
 
 const { isPlaying, start } = require('../functions/playing.js');
+const { hasPlayed } = require('../functions/game-sessions.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -19,8 +20,15 @@ module.exports = {
 	 * interaction
 	 */
 	async execute(interaction) {
-		const playing = isPlaying(interaction.user);
-		if (playing) {
+		if (hasPlayed(interaction.user)) {
+			interaction.reply(
+				'You have already played today\'s puzzle! Come back tomorrow '
+				+ 'to play again!'
+			);
+			return;
+		};
+
+		if (isPlaying(interaction.user)) {
 			interaction.reply(
 				'You already have an active session of Yorkle!'
 			);
