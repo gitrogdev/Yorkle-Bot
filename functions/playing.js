@@ -32,8 +32,8 @@ function presentClip(user) {
 
 	console.log(`Presenting clip${sessionInfo.clip}.mp3 to ${user.username}`);
 	user.send({
-		content: `**Clip ${sessionInfo.clip}**:\n*Use /guess to guess the song `
-			+ ' or type /skip to try a longer clip before guessing.*',
+		content: `**Clip ${sessionInfo.clip}**:\n*Use \`/guess\` to guess the `
+			+ 'song or type `/skip` to try a longer clip before guessing.*',
 		files: [
 			new AttachmentBuilder(path.join(
 				dataPath,

@@ -118,13 +118,17 @@ module.exports.newDay = async function() {
  * @returns {String} the sharable results message
  */
 module.exports.results = function(user) {
-	if (!module.exports.hasPlayed(user)) return 'Use /yorkle to solve today\'s '
-		+ 'puzzle to share your results!';
+	if (!module.exports.hasPlayed(user)) return 'Use `/yorkle` to solve '
+		+ 'today\'s puzzle to share your results!';
 
 	const sequence = dateData.players[user.id].sequence;
 	let response = `Yorkle #${dateData.day}\n`;
 	for (const char of sequence) response += sequenceEmojis[char];
 	response += sequenceFiller.repeat(guessLengths.length - sequence.length);
+	response += '\n\n#- Yorkle is the ultimate Radiohead guessing game. '
+		+ 'Every day, players are presented with random clips from a song, and '
+		+ 'they to identify them in as few guesses as possible. Use the '
+		+ '`/yorkle` command to start today\'s puzzle.';
 	return response;
 };
 
