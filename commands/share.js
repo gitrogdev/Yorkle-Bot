@@ -16,6 +16,7 @@ module.exports = {
 	 * interaction
 	 */
 	async execute(interaction) {
+		await interaction.deferReply();
 		await interaction.reply(results(interaction.user));
 	}
 };

@@ -20,6 +20,8 @@ module.exports = {
 	 * interaction
 	 */
 	async execute(interaction) {
+		await interaction.deferReply();
+
 		if (hasPlayed(interaction.user)) {
 			interaction.reply(
 				'You have already played today\'s puzzle! Come back tomorrow '

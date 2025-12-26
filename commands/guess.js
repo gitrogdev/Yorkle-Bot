@@ -20,6 +20,8 @@ module.exports = {
 	 * interaction
 	 */
 	async execute(interaction) {
+		await interaction.deferReply();
+
 		const playing = isPlaying(interaction.user);
 		if (!playing) {
 			interaction.reply(
