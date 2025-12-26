@@ -94,7 +94,7 @@ module.exports.makeGuess = function(user, guess) {
 		} else finish(user);
 		return `❌ **INCORRECT** ❌\n"${guess}" was incorrect. ` + (
 			continuing ? 'Try again.' :
-				'You\'re out of guesses. Better luck next time!'
+				`You're out of guesses. Better luck next time!${NO_SPOILIES}`
 		);
 	}
 
@@ -104,7 +104,7 @@ module.exports.makeGuess = function(user, guess) {
 
 	return `✅ **CORRECT** ✅\n\nYou guessed the Yorkle in ${guesses} guess`
 		+ `${guesses == 1 ? '' : 'es'}! Play again tomorrow, or share your `
-		+ 'results with your friends with the /share command!';
+		+ `results with your friends with the /share command!${NO_SPOILIES}`;
 };
 
 /**
