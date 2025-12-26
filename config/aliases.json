@@ -419,5 +419,34 @@
 	],
 	"videotape": [
 		"videotape"
+	],
+	"bloom": [
+		"bloom"
+	],
+	"morningmrmagpie": [
+		"morningmistermagpie",
+		"morningmrmagpie"
+	],
+	"littlebylittle": [
+		"lilbylil",
+		"littlebylittle"
+	],
+	"feral": [
+		"feral"
+	],
+	"lotusflower": [
+		"lotus",
+		"lotusflower"
+	],
+	"codex": [
+		"codex"
+	],
+	"giveupghost": [
+		"giveuptheghost",
+		"giveupghost"
+	],
+	"separator": [
+		"separater",
+		"separator"
 	]
 }
