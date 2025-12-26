@@ -14,6 +14,12 @@ const {
 const daysPath = path.join(__dirname, '../data/days');
 const execFileAsync = promisify(execFile);
 const guessLengths = require('../config/guesslengths.json');
+const sequenceEmojis = {
+	O: '🟩',
+	'-': '🟨',
+	X: '🟥'
+};
+const sequenceFiller = '⬛';
 const songsPath = path.join(__dirname, '../songs');
 
 let dateData;
@@ -41,7 +47,7 @@ module.exports.finishGame = function(user, sessionInfo) {
 		sequence: sessionInfo.guesses.join('')
 	};
 
-	updateDay(day);
+	module.exports.updateDay(day);
 };
 
 /**
@@ -101,7 +107,25 @@ module.exports.newDay = async function() {
 	};
 
 	updateQueueFile();
-	updateDay(day);
+	module.exports.updateDay(day);
+};
+
+/**
+ * Formats the sequence as a sharable results message.
+ *
+ * @param {import('discord.js').User} user the user to get the results for
+ *
+ * @returns {String} the sharable results message
+ */
+module.exports.results = function(user) {
+	if (!module.exports.hasPlayed(user)) return 'Use /yorkle to solve today\'s '
+		+ 'puzzle to share your results!';
+
+	const sequence = dateData.players[user.id].sequence;
+	let response = `Yorkle #${dateData.day}\n`;
+	for (const char of sequence) response += sequenceEmojis[char];
+	response += sequenceFiller.repeat(guessLengths.length - sequence.length);
+	return response;
 };
 
 /**
@@ -109,7 +133,7 @@ module.exports.newDay = async function() {
  *
  * @param {number} day the number of the day to update
  */
-function updateDay(day) {
+module.exports.updateDay = function(day) {
 	const dataPath = path.join(
 		daysPath,
 		`yorkle-day${day.toString().padStart(4, '0')}.json`
@@ -121,4 +145,3 @@ function updateDay(day) {
 		JSON.stringify(updateData)
 	);
 };
-module.exports.updateDay = updateDay;

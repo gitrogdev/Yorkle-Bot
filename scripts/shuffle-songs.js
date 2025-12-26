@@ -21,7 +21,7 @@ const songsPath = path.join(__dirname, '../songs');
  *
  * @returns the JavaScript Object containing the shuffled queue data
  */
-function shuffle() {
+module.exports = function() {
 	const index = getIndex();
 	const unplayed = [];
 	const queue = getQueue();
@@ -54,5 +54,4 @@ function shuffle() {
 	);
 };
 
-module.exports = shuffle;
-if (require.main === module) shuffle();
+if (require.main === module) module.exports();
