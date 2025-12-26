@@ -8,7 +8,7 @@ const { finishGame } = require('./game-sessions.js');
 
 const NO_SPOILIES = '\n\n-# Yorkle is a daily guessing game in which everyone '
 	+ 'guesses the same song each day. Please avoid spoilers when discussing '
-	+ 'today\'s answer with other players, who may have finished today\'s '
+	+ 'today\'s answer with other players, who may not have finished today\'s '
 	+ 'puzzle yet.';
 const dataPath = path.join(__dirname, '../data/days');
 
