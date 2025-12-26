@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, InteractionContextType } = require('discord.js');
 
 const { isPlaying, start } = require('../functions/playing.js');
 
@@ -7,6 +7,10 @@ module.exports = {
 		.setName('yorkle')
 		.setDescription(
 			'Play a game of Yorkle - the ultimate Radiohead guessing game.'
+		)
+		.setContexts(
+			InteractionContextType.Guild,
+			InteractionContextType.BotDM
 		),
 	/**
 	 * Executes the command.
@@ -22,7 +26,12 @@ module.exports = {
 			);
 			return;
 		}
-		start(interaction.user);
-		interaction.reply('Starting a session of Yorkle.');
+		const dmed = start(interaction.user);
+		interaction.reply(
+			dmed ? 'Started a session of Yorkle. Please see your Direct '
+				+ 'Messages to play.' : 'Unable to start a session of Yorkle '
+				+ 'with you. Please adjust your Privacy Settings to allow '
+				+ 'Direct Messages in this server.'
+		);
 	}
 };

@@ -1,12 +1,49 @@
-const sessions = new Set();
+const { AttachmentBuilder } = require('discord.js');
+const path = require('node:path');
+
+const aliases = require('../config/aliases.json');
+const guessLengths = require('../config/guesslengths.json');
+const { getDay, getQueue, getIndex } = require('./queue-model');
+
+const dataPath = path.join(__dirname, '../data/days');
+
+const sessions = {};
+const validAliases = new Set();
+for (const songAliases of Object.values(aliases))
+	for (const alias of songAliases) if (
+		validAliases.has.alias
+	) console.warn(
+		`The alias ${alias} appears multiple times in aliases.json`
+	); else validAliases.add(alias);
+
+/**
+ * Sends a user the audio clip for them to guess.
+ *
+ * @param {import('discord.js').User} user the user to send the attachment to
+ */
+function presentClip(user) {
+	if (!(user.id in sessions)) return;
+	const sessionInfo = sessions[user.id];
+
+	user.send({
+		content: `**Clip ${sessionInfo.clip}**:\n*Use /guess to guess the song `
+			+ ' or type /skip to try a longer clip before guessing.*',
+		files: [
+			new AttachmentBuilder(path.join(
+				dataPath,
+				`day${sessionInfo.day}/clip${sessionInfo.clip}.mp3`
+			))
+		]
+	});
+}
 
 /**
  * Closes out a session of the game for the given user.
  *
  * @param {import('discord.js').User} user the user to finish the session for
  */
-module.exports.finish = function(user) {
-	sessions.delete(user.id);
+function finish(user) {
+	delete sessions[user.id];
 };
 
 /**
@@ -17,14 +54,74 @@ module.exports.finish = function(user) {
  * @returns {boolean} whether the user is currently playing the game
  */
 module.exports.isPlaying = function(user) {
-	return sessions.has(user.id);
+	return user.id in sessions;
+};
+
+/**
+ * Processes a user's guess, and returns a response.
+ *
+ * Cleans the guess for capitalization and punctuation, then checks if it's a
+ * real song. If it is, it checks if it's correct or not. If it's not, it lets
+ * the user guess again without expending a guess.
+ *
+ * @param {import('discord.js').User} user the user making the guess
+ * @param {String} guess the song the user is guessing based on the clip
+ *
+ * @returns a string response to the user based on the result of their guess
+ */
+module.exports.makeGuess = function(user, guess) {
+	if (!(user.id in sessions)) return 'Unable to load session data.';
+	const sessionInfo = sessions[user.id];
+
+	const cleanGuess = guess.toLowerCase().replace(/[\s.,\-()/?!]/g, '');
+	if (!validAliases.has(cleanGuess)) return `Unknown song "${guess}"\nTry `
+		+ 'checking for spelling mistakes, or try another song. Answers are '
+		+ 'not case or punctuation dependent.';
+
+	const correctAnswer = sessionInfo.answer;
+	if (!aliases[correctAnswer].includes(cleanGuess)) {
+		sessionInfo.guesses.push('X');
+		const continuing = sessionInfo.clip < guessLengths.length;
+		if (continuing) {
+			sessionInfo.clip++;
+			presentClip(user);
+		} else finish(user);
+		return `❌ **INCORRECT** ❌\n"${guess}" was incorrect. ` + (
+			continuing ? 'Try again.' :
+				'You\'re out of guesses. Better luck next time!'
+		);
+	}
+
+	sessionInfo.guesses.push('O');
+	const guesses = sessionInfo.clip;
+	finish(user);
+
+	return `✅ **CORRECT** ✅\nYou guessed the Yorkle in ${guesses} guess`
+		+ `${guesses == 1 ? '' : 'es'}! Play again tomorrow, or share it with `
+		+ 'your friends with the /share command!';
 };
 
 /**
  * Opens a session of the game for the given user.
  *
  * @param {import('discord.js').User} user the user to open the session for
+ *
+ * @returns {boolean} whether the game session successfully started
  */
-module.exports.start = function(user) {
-	sessions.add(user.id);
+module.exports.start = async function(user) {
+	const day = getDay().toString().padStart(4, '0');
+	try {
+		await user.send(`# Yorkle #${day}`);
+	} catch {
+		return false;
+	}
+
+	sessions[user.id] = {
+		answer: getQueue()[getIndex()].slice(0, -4),
+		clip: 1,
+		guesses: [],
+		day: day
+	};
+	presentClip(user);
+	return true;
 };

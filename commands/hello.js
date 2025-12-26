@@ -1,9 +1,13 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, InteractionContextType } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('hello')
-		.setDescription('hi thm'),
+		.setDescription('hi thm')
+		.setContexts(
+			InteractionContextType.Guild,
+			InteractionContextType.BotDM
+		),
 	/**
 	 * Executes the command.
 	 *

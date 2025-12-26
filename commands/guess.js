@@ -1,6 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, InteractionContextType } = require('discord.js');
 
-const { isPlaying } = require('../functions/playing.js');
+const { isPlaying, makeGuess } = require('../functions/playing.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -9,6 +9,9 @@ module.exports = {
 		.addStringOption((option) => option.setName('song')
 			.setDescription('The song title to guess.')
 			.setRequired(true)
+		)
+		.setContexts(
+			InteractionContextType.BotDM
 		),
 	/**
 	 * Executes the command.
@@ -24,8 +27,8 @@ module.exports = {
 			);
 			return;
 		}
-		interaction.reply(
-			`You guessed ${interaction.options.getString('song')}.`
-		);
+
+		const guess = interaction.options.getString('song');
+		interaction.reply(makeGuess(interaction.user, guess));
 	}
 };

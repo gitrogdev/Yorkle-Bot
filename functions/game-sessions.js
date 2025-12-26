@@ -54,8 +54,9 @@ module.exports.newDay = async function() {
 			'-ss', timestamp.toString(),
 			'-t', length.toString(),
 			'-i', songPath,
-			'-c:a', 'libvorbis',
-			path.join(clipsPath, `clip${i}.ogg`)
+			'-map_metadata', '-1',
+			'-c:a', 'copy',
+			path.join(clipsPath, `clip${i + 1}.mp3`)
 		]);
 	};
 
