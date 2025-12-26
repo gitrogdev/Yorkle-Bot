@@ -1,9 +1,14 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
+const {
+	getIndex,
+	getQueue,
+	updateQueueFile
+} = require('../functions/queue-model.js');
+
 const shuffleArray = require('../util/shuffle-array.js');
 
-const dataPath = path.join(__dirname, '../data/game-queue.json');
 const songsPath = path.join(__dirname, '../songs');
 
 /**
@@ -16,49 +21,33 @@ const songsPath = path.join(__dirname, '../songs');
  * @returns the JavaScript Object containing the shuffled queue data
  */
 function shuffle() {
-	let queueData;
-
-	if (fs.existsSync(dataPath)) queueData = JSON.parse(
-		fs.readFileSync(dataPath, 'utf-8')
-	); else {
-		queueData = {
-			index: -1,
-			day: 0,
-			lastPlayed: new Date(
-				new Date().setDate(new Date().getDate() - 1)
-			).toISOString().split('T')[0],
-			queue: []
-		};
-		fs.writeFileSync(dataPath, JSON.stringify(queueData));
-	}
-
+	const index = getIndex();
 	const unplayed = [];
-	const originalLength = queueData.queue.length;
+	const queue = getQueue();
+	const originalLength = queue.length;
 
-	while (queueData.queue.length > queueData.index + 1) unplayed.push(
-		queueData.queue.pop()
+	while (queue.length > index + 1) unplayed.push(
+		queue.pop()
 	);
 
 	const songFiles = fs.readdirSync(songsPath).filter(
 		(file) => file.endsWith('.mp3')
 	);
 	for (const song of songFiles) if (
-		!unplayed.includes(song) && !queueData.queue.includes(song)
+		!unplayed.includes(song) && !queue.includes(song)
 	) unplayed.push(song);
 
 	shuffleArray(unplayed);
 
-	while (unplayed.length > 0) queueData.queue.push(unplayed.pop());
-	fs.writeFileSync(dataPath, JSON.stringify(queueData));
+	while (unplayed.length > 0) queue.push(unplayed.pop());
+	updateQueueFile();
 
-	const additions = queueData.queue.length - originalLength;
-	const shuffled = queueData.queue.length - (queueData.index + 1);
+	const additions = queue.length - originalLength;
+	const shuffled = queue.length - (index + 1);
 	console.log(
 		`Successfully added ${additions} song${additions == 1 ? '' : 's'} to `
 		+ `the queue and shuffled ${shuffled} song${shuffled == 1 ? '' : 's'}.`
 	);
-
-	return queueData;
 };
 
 module.exports = shuffle;
