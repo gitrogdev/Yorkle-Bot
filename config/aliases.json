@@ -448,5 +448,51 @@
 	"separator": [
 		"separater",
 		"separator"
+	],
+	"burnwitch": [
+		"burnthewitch",
+		"burnwitch"
+	],
+	"daydreaming": [
+		"daydreaming"
+	],
+	"decksdark": [
+		"decksdark"
+	],
+	"desertislanddisk": [
+		"islanddisk",
+		"desertisland",
+		"desertislanddisk"
+	],
+	"fulstop": [
+		"fullstop",
+		"fulstop"
+	],
+	"glasseyes": [
+		"glasseyes"
+	],
+	"identikit": [
+		"identikit"
+	],
+	"thenumbers": [
+		"numbers",
+		"thenumbers"
+	],
+	"presenttense": [
+		"presenttense"
+	],
+	"tinkertailor": [
+		"ttssrmpmbmt",
+		"tinkertailorsoldiersailorrichmanpoormanbeggarmanthief",
+		"tinkertailorsoldiersailorrichmanpoormanbeggarman",
+		"tinkertailorsoldiersailorrichmanpoormanbeggar",
+		"tinkertailorsoldiersailorrichmanpoorman",
+		"tinkertailorsoldiersailorrichman",
+		"tinkertailorsoldiersailor",
+		"tinkertailorsoldier",
+		"tinkertailor"
+	],
+	"truelovewaits": [
+		"truelovewaits"
 	]
 }
