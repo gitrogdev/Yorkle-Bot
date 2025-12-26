@@ -5,7 +5,7 @@ const { isPlaying, skip } = require('../functions/playing.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('skip')
-		.setDescription('Skip the current clip to guess on a longer one.')
+		.setDescription('Skip the current clip to guess on a longer one')
 		.setContexts(
 			InteractionContextType.BotDM
 		),

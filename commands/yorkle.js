@@ -7,7 +7,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('yorkle')
 		.setDescription(
-			'Play a game of Yorkle - the ultimate Radiohead guessing game.'
+			'Play a game of Yorkle - the ultimate Radiohead guessing game'
 		)
 		.setContexts(
 			InteractionContextType.Guild,

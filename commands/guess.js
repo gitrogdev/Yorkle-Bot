@@ -5,7 +5,7 @@ const { isPlaying, makeGuess } = require('../functions/playing.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('guess')
-		.setDescription('Guess the song from the clip provided.')
+		.setDescription('Guess the song from the clip provided')
 		.addStringOption((option) => option.setName('song')
 			.setDescription('The song title to guess.')
 			.setRequired(true)
