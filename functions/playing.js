@@ -30,7 +30,7 @@ function presentClip(user) {
 	if (!(user.id in sessions)) return;
 	const sessionInfo = sessions[user.id];
 
-	console.log(`Presenting clip${sessionInfo.clip}.mp3 to ${user.globalName}`);
+	console.log(`Presenting clip${sessionInfo.clip}.mp3 to ${user.username}`);
 	user.send({
 		content: `**Clip ${sessionInfo.clip}**:\n*Use /guess to guess the song `
 			+ ' or type /skip to try a longer clip before guessing.*',
@@ -49,7 +49,7 @@ function presentClip(user) {
  * @param {import('discord.js').User} user the user to finish the session for
  */
 function finish(user) {
-	console.log(`${user.globalName} has finished a round of Yorkle.`);
+	console.log(`${user.username} has finished a round of Yorkle.`);
 	finishGame(user, sessions[user.id]);
 	delete sessions[user.id];
 };
@@ -83,7 +83,7 @@ module.exports.makeGuess = function(user, guess) {
 
 	const cleanGuess = guess.toLowerCase().replace(/[\s.,\-()/?!]/g, '');
 	console.log(
-		`${user.globalName} has guessed "${guess}" (cleaned to "${cleanGuess}")`
+		`${user.username} has guessed "${guess}" (cleaned to "${cleanGuess}")`
 	);
 	if (!validAliases.has(cleanGuess)) return `Unknown song "${guess}"\nTry `
 		+ 'checking for spelling mistakes, or try another song. Answers are '
@@ -126,7 +126,7 @@ module.exports.skip = async function(user) {
 	if (sessionInfo.clip >= guessLengths.length)
 		return 'This is my final clip! Make a guess!';
 
-	console.log(`${user.globalName} is skipping clip ${sessionInfo.clip}.`);
+	console.log(`${user.username} is skipping clip ${sessionInfo.clip}.`);
 	sessionInfo.guesses.push('-');
 	sessionInfo.clip++;
 	presentClip(user);
@@ -150,7 +150,7 @@ module.exports.start = async function(user) {
 		return false;
 	}
 
-	console.log(`${user.globalName} has started a round of Yorkle.`);
+	console.log(`${user.username} has started a round of Yorkle.`);
 	sessions[user.id] = {
 		answer: songData.song.slice(0, -4),
 		clip: 1,

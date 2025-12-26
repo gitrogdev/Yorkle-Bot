@@ -58,7 +58,7 @@ module.exports.finishGame = function(user, sessionInfo) {
  * @returns whether the user has already finished today's game
  */
 module.exports.hasPlayed = function(user) {
-	return user.id in dateData.players;
+	return dateData != null && user.id in dateData.players;
 };
 
 /**
