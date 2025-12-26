@@ -29,6 +29,6 @@ module.exports = {
 		}
 
 		const guess = interaction.options.getString('song');
-		interaction.reply(makeGuess(interaction.user, guess));
+		interaction.reply(await makeGuess(interaction.user, guess));
 	}
 };

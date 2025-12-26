@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, InteractionContextType } = require('discord.js');
 
-const { isPlaying } = require('../functions/playing.js');
+const { isPlaying, skip } = require('../functions/playing.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -23,6 +23,6 @@ module.exports = {
 			);
 			return;
 		}
-		interaction.reply('Skipping the current clip.');
+		interaction.reply(await skip(interaction.user));
 	}
 };

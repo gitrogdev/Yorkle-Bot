@@ -2,8 +2,8 @@ const { AttachmentBuilder } = require('discord.js');
 const path = require('node:path');
 
 const aliases = require('../config/aliases.json');
+const getSong = require('./get-song.js');
 const guessLengths = require('../config/guesslengths.json');
-const { getDay, getQueue, getIndex } = require('./queue-model');
 
 const dataPath = path.join(__dirname, '../data/days');
 
@@ -102,6 +102,27 @@ module.exports.makeGuess = function(user, guess) {
 };
 
 /**
+ * Skip the song.
+ *
+ * @param {import('discord.js').User} user the user skipping the song
+ *
+ * @returns a string response to the user based on the result of their skip
+ */
+module.exports.skip = async function(user) {
+	if (!(user.id in sessions)) return 'Unable to load session data.';
+	const sessionInfo = sessions[user.id];
+
+	if (sessionInfo.clip >= guessLengths.length)
+		return 'This is my final clip! Make a guess!';
+
+	sessionInfo.guesses.push('-');
+	sessionInfo.clip++;
+	presentClip(user);
+
+	return 'Skipping the current clip.';
+};
+
+/**
  * Opens a session of the game for the given user.
  *
  * @param {import('discord.js').User} user the user to open the session for
@@ -109,7 +130,8 @@ module.exports.makeGuess = function(user, guess) {
  * @returns {boolean} whether the game session successfully started
  */
 module.exports.start = async function(user) {
-	const day = getDay().toString().padStart(4, '0');
+	const songData = await getSong();
+	const day = songData.day.toString().padStart(4, '0');
 	try {
 		await user.send(`# Yorkle #${day}`);
 	} catch {
@@ -117,7 +139,7 @@ module.exports.start = async function(user) {
 	}
 
 	sessions[user.id] = {
-		answer: getQueue()[getIndex()].slice(0, -4),
+		answer: songData.song.slice(0, -4),
 		clip: 1,
 		guesses: [],
 		day: day
