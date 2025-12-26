@@ -17,6 +17,8 @@
 		"stopwhispering"
 	],
 	"thinkingaboutyou": [
+		"tay",
+		"tau",
 		"thinkinboutu",
 		"thinkinboutyou",
 		"thinkinaboutyou",
@@ -26,6 +28,9 @@
 		"thinkingaboutyou"
 	],
 	"anyonecanplay": [
+		"acpg",
+		"aocpg",
+		"a1cpg",
 		"anyonecanplayguitar",
 		"anyonecanplay"
 	],
@@ -106,5 +111,10 @@
 		"ssfo",
 		"fadeout",
 		"streetspirit"
+	],
+	"talkshowhost": [
+		"tsh",
+		"talkshow",
+		"talkshowhost"
 	]
 }
