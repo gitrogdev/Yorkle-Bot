@@ -379,5 +379,45 @@
 		"awolfatdoor",
 		"wolfatdoor",
 		"wolfatthedoor"
+	],
+	"fifteenstep": [
+		"15step",
+		"fifteenstep"
+	],
+	"bodysnatchers": [
+		"bodysnatchers"
+	],
+	"nude": [
+		"nude"
+	],
+	"weirdfishes": [
+		"arpeggi",
+		"weirdfisharpeggi",
+		"weirdfishesarpeggi",
+		"weirdfish",
+		"weirdfishes"
+	],
+	"allineed": [
+		"allineed"
+	],
+	"faustarp": [
+		"faustarp"
+	],
+	"reckoner": [
+		"reckoner"
+	],
+	"houseofcards": [
+		"houseofcards"
+	],
+	"jigsaw": [
+		"jfip",
+		"jigsawfallingintoplace",
+		"jigsawfallinintoplace",
+		"jigsawfallinginplace",
+		"jigsawfallininplace",
+		"jigsaw"
+	],
+	"videotape": [
+		"videotape"
 	]
 }
