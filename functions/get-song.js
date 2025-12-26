@@ -1,9 +1,9 @@
 const {
 	getDay,
 	getLastPlayed,
-	getQueue,
 	getIndex,
-	updateLastPlayed
+	updateLastPlayed,
+	getSong
 } = require('../functions/queue-model.js');
 const { newDay } = require('./game-sessions.js');
 
@@ -16,7 +16,6 @@ const { newDay } = require('./game-sessions.js');
  * - song: the file name of today's song
  */
 module.exports = async function() {
-	const queue = getQueue();
 	const today = new Date().toISOString().split('T')[0];
 	if (today !== getLastPlayed()) {
 		updateLastPlayed();
@@ -25,6 +24,6 @@ module.exports = async function() {
 
 	return {
 		day: getDay(),
-		song: queue[getIndex()]
+		song: getSong(getIndex())
 	};
 };

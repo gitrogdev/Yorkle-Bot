@@ -3,6 +3,7 @@ const path = require('node:path');
 
 const dataPath = path.join(__dirname, '../data/game-queue.json');
 const shuffleSongs = require('../scripts/shuffle-songs.js');
+const { dehexify } = require('../util/hexstring.js');
 
 let queueData;
 if (fs.existsSync(dataPath)) queueData = JSON.parse(
@@ -53,6 +54,17 @@ module.exports.getLastPlayed = function() {
  */
 module.exports.getQueue = function() {
 	return queueData.queue;
+};
+
+/**
+ * Gets the song at the given index of the queue.
+ *
+ * @param {number} index the index of the queue to get the song at
+ *
+ * @returns {String} the filename of the song at the position in the queue
+ */
+module.exports.getSong = function(index) {
+	return dehexify(queueData.queue[index]);
 };
 
 /**

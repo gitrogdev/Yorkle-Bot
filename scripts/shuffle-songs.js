@@ -8,6 +8,7 @@ const {
 } = require('../functions/queue-model.js');
 
 const shuffleArray = require('../util/shuffle-array.js');
+const { hexify } = require('../util/hexstring.js');
 
 const songsPath = path.join(__dirname, '../songs');
 
@@ -33,9 +34,12 @@ function shuffle() {
 	const songFiles = fs.readdirSync(songsPath).filter(
 		(file) => file.endsWith('.mp3')
 	);
-	for (const song of songFiles) if (
-		!unplayed.includes(song) && !queue.includes(song)
-	) unplayed.push(song);
+	for (let song of songFiles) {
+		song = hexify(song);
+		if (!unplayed.includes(song) && !queue.includes(song)) unplayed.push(
+			song
+		);
+	}
 
 	shuffleArray(unplayed);
 

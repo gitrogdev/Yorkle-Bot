@@ -7,8 +7,8 @@ const {
 	incrementDay,
 	incrementIndex,
 	updateQueueFile,
-	getQueue,
-	getDay
+	getDay,
+	getSong
 } = require('./queue-model');
 
 const daysPath = path.join(__dirname, '../data/days');
@@ -54,9 +54,8 @@ module.exports.newDay = async function() {
 	const day = incrementDay();
 	const index = incrementIndex();
 	const padDay = day.toString().padStart(4, '0');
-	const queue = getQueue();
 
-	const song = queue[index];
+	const song = getSong(index);
 	const songPath = path.join(songsPath, song);
 	const metadata = await parseFile(songPath);
 	const { title, album } = metadata.common;
