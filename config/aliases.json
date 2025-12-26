@@ -116,5 +116,55 @@
 		"tsh",
 		"talkshow",
 		"talkshowhost"
+	],
+	"airbag": [
+		"airbag"
+	],
+	"paranoidandroid": [
+		"paranoiddroid",
+		"thenoiddroid",
+		"paranoidandroid"
+	],
+	"homesickalien": [
+		"shsa",
+		"sha",
+		"subterraneanhomesickalien",
+		"homesickalien"
+	],
+	"exitmusic": [
+		"em4af",
+		"emfaf",
+		"exitmusic4afilm",
+		"exitmusicforafilm",
+		"exitmusic"
+	],
+	"letdown": [
+		"underrated",
+		"letdown"
+	],
+	"karmapolice": [
+		"karmapolice"
+	],
+	"fitterhappier": [
+		"fitterhappier"
+	],
+	"electioneering": [
+		"electioneering"
+	],
+	"climbingwalls": [
+		"cutw",
+		"climbingupthewalls",
+		"climbingthewalls",
+		"climbingwalls"
+	],
+	"nosurprises": [
+		"nosurprises"
+	],
+	"lucky": [
+		"lucky"
+	],
+	"tourist": [
+		"thetourist",
+		"tourist"
 	]
 }
