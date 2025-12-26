@@ -20,7 +20,7 @@ module.exports = {
 
 		const playing = isPlaying(interaction.user);
 		if (!playing) {
-			interaction.reply(
+			interaction.editReply(
 				'You must have an active session of Yorkle to use this command!'
 			);
 			return;

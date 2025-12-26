@@ -23,7 +23,7 @@ module.exports = {
 		await interaction.deferReply();
 
 		if (hasPlayed(interaction.user)) {
-			interaction.reply(
+			interaction.editReply(
 				'You have already played today\'s puzzle! Come back tomorrow '
 				+ 'to play again!'
 			);
@@ -31,7 +31,7 @@ module.exports = {
 		};
 
 		if (isPlaying(interaction.user)) {
-			interaction.reply(
+			interaction.editReply(
 				'You already have an active session of Yorkle!'
 			);
 			return;
