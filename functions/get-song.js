@@ -8,11 +8,16 @@ const updateJson = require('../util/update-json.js');
  * Gets the file name of today's song, and advances the queue if a day has
  * passed.
  *
- * @returns the file name of today's song
+ * @returns {Object} a JSON Object containing
+ * - day: the incremental date of today's song
+ * - song: the file name of today's song
  */
 module.exports = function() {
 	const today = new Date().toISOString().split('T')[0];
-	if (today === queueData.lastPlayed) return queueData.queue[queueData.index];
+	if (today === queueData.lastPlayed) return {
+		day: queueData.day,
+		song: queueData.queue[index]
+	};
 
 	queueData.lastPlayed = today;
 	let index = ++queueData.index;
@@ -24,5 +29,8 @@ module.exports = function() {
 	}
 
 	updateJson(queuePath, queueData);
-	return queueData.queue[index];
+	return {
+		day: ++queueData.day,
+		song: queueData.queue[index]
+	};
 };

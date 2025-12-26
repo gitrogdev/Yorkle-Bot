@@ -23,6 +23,7 @@ function shuffle() {
 	); else {
 		queueData = {
 			index: -1,
+			day: 0,
 			lastPlayed: new Date(
 				new Date().setDate(new Date().getDate() - 1)
 			).toISOString().split('T')[0],
