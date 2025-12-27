@@ -1,5 +1,8 @@
 node_modules/
-*.env
 songs/
 data/
+media/
+
+*.env
+
 test.js
