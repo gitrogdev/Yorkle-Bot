@@ -496,5 +496,63 @@
 	],
 	"truelovewaits": [
 		"truelovewaits"
+	],
+	"harrypatch": [
+		"hpimo",
+		"harrypatchinmemoryof",
+		"henrypatchinmemoryof",
+		"inmemoryof",
+		"henrypatch",
+		"harrypatch"
+	],
+	"twistedwords": [
+		"tamtw",
+		"thesearemytwistedwords",
+		"mytwistedwords",
+		"twistedwords"
+	],
+	"supercollider": [
+		"supercollider"
+	],
+	"butcher": [
+		"thebutcher",
+		"butcher"
+	],
+	"dailymail": [
+		"thedailymail",
+		"dailymail"
+	],
+	"staircase": [
+		"staircase"
+	],
+	"spectre": [
+		"spectre"
+	],
+	"noneofthis": [
+		"iwnot",
+		"iwantnoneofthis",
+		"noneofthis"
+	],
+	"illwind": [
+		"illwind"
+	],
+	"ipromise": [
+		"promise",
+		"ipromise"
+	],
+	"manofwar": [
+		"manowar",
+		"manofwar"
+	],
+	"ifyousay": [
+		"iystw",
+		"saytheword",
+		"ifyousaytheword",
+		"ifyousayword",
+		"ifyousay"
+	],
+	"followme": [
+		"followmearound",
+		"followme"
 	]
 }
