@@ -17,6 +17,6 @@ module.exports = {
 	 */
 	async execute(interaction) {
 		await interaction.deferReply();
-		await interaction.editReply(results(interaction.user));
+		await interaction.editReply(await results(interaction.user));
 	}
 };

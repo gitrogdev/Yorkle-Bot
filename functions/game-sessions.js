@@ -59,11 +59,11 @@ module.exports.finishGame = function(user, sessionInfo) {
  *
  * @returns whether the user has already finished today's game
  */
-module.exports.hasPlayed = function(user) {
+module.exports.hasPlayed = async function(user) {
 	const today = new Date().toISOString().split('T')[0];
 	if (today !== getLastPlayed()) {
 		updateLastPlayed();
-		module.exports.newDay();
+		await module.exports.newDay();
 	};
 
 	return dateData != null && user.id in dateData.players;
@@ -125,8 +125,8 @@ module.exports.newDay = async function() {
  *
  * @returns {String} the sharable results message
  */
-module.exports.results = function(user) {
-	if (!module.exports.hasPlayed(user)) return 'Use `/yorkle` to solve '
+module.exports.results = async function(user) {
+	if (!await module.exports.hasPlayed(user)) return 'Use `/yorkle` to solve '
 		+ 'today\'s puzzle to share your results!';
 
 	const sequence = dateData.players[user.id].sequence;

@@ -22,7 +22,7 @@ module.exports = {
 	async execute(interaction) {
 		await interaction.deferReply();
 
-		if (hasPlayed(interaction.user)) {
+		if (await hasPlayed(interaction.user)) {
 			interaction.editReply(
 				'You have already played today\'s puzzle! Come back tomorrow '
 				+ 'to play again!'
