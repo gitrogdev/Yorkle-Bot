@@ -8,7 +8,9 @@ const {
 	incrementIndex,
 	updateQueueFile,
 	getDay,
-	getSong
+	getSong,
+	updateLastPlayed,
+	getLastPlayed
 } = require('./queue-model');
 
 const daysPath = path.join(__dirname, '../data/days');
@@ -58,6 +60,12 @@ module.exports.finishGame = function(user, sessionInfo) {
  * @returns whether the user has already finished today's game
  */
 module.exports.hasPlayed = function(user) {
+	const today = new Date().toISOString().split('T')[0];
+	if (today !== getLastPlayed()) {
+		updateLastPlayed();
+		module.exports.newDay();
+	};
+
 	return dateData != null && user.id in dateData.players;
 };
 
