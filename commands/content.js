@@ -20,7 +20,8 @@ module.exports = {
 			`Yorkle currently recognizes \`${COUNT}\` songs from Radiohead `
 			+ 'studio albums, B-sides, singles, and other releases.\n\n'
 			+ '-# More content will be added over time, potentially including '
-			+ 'solo work, as well as The Smile and Atoms for Peace.'
+			+ 'solo work, as well as On a Friday, The Smile and Atoms for '
+			+ 'Peace.'
 		);
 	}
 };
