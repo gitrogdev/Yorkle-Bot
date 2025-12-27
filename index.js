@@ -13,6 +13,7 @@ const ERROR_MESSAGE = {
 	content: 'An error occurred while executing this command.',
 	flags: MessageFlags.Ephemeral
 };
+const statuses = require('./config/statuses.json');
 
 const client = new Client({
 	intents: [GatewayIntentBits.Guilds]
@@ -55,8 +56,19 @@ client.on(Events.InteractionCreate, async (interaction) => {
 	}
 });
 
+/**
+ * Sets the bot user's status to a random status from statuses.json.
+ */
+function randomStatus() {
+	client.user.setActivity(
+		statuses[Math.floor(Math.random() * statuses.length)]
+	);
+}
+
 client.once(Events.ClientReady, (readyClient) => {
 	console.log(`Initialized client as @${readyClient.user.tag}.`);
+	setInterval(randomStatus, 300000);
+	randomStatus();
 });
 
 client.login(DISCORD_TOKEN);
