@@ -1,11 +1,9 @@
 const {
 	getDay,
 	getLastPlayed,
-	getIndex,
-	updateLastPlayed,
-	getSong
+	updateLastPlayed
 } = require('../functions/queue-model.js');
-const { newDay } = require('./game-sessions.js');
+const { newDay, getMetadata } = require('./game-sessions.js');
 
 /**
  * Gets the information for today's song, and advances the queue if a day has
@@ -22,8 +20,11 @@ module.exports = async function() {
 		newDay();
 	};
 
+	const metadata = getMetadata();
 	return {
 		day: getDay(),
-		song: getSong(getIndex())
+		song: metadata.filename,
+		title: metadata.title,
+		album: metadata.album
 	};
 };

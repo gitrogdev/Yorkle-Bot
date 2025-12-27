@@ -1,6 +1,7 @@
 const { AttachmentBuilder } = require('discord.js');
 const path = require('node:path');
 
+const albums = require('../config/albums.json');
 const aliases = require('../config/aliases.json');
 const getSong = require('./get-song.js');
 const guessLengths = require('../config/guesslengths.json');
@@ -11,6 +12,7 @@ const NO_SPOILIES = '\n\n-# Yorkle is a daily guessing game in which everyone '
 	+ 'today\'s answer with other players, who may not have finished today\'s '
 	+ 'puzzle yet.';
 const dataPath = path.join(__dirname, '../data/days');
+const mediaPath = path.join(__dirname, '../media');
 
 const sessions = {};
 const validAliases = new Set();
@@ -75,7 +77,9 @@ module.exports.isPlaying = function(user) {
  * @param {import('discord.js').User} user the user making the guess
  * @param {String} guess the song the user is guessing based on the clip
  *
- * @returns a string response to the user based on the result of their guess
+ * @returns {String | Object} a response to the user based on the result of
+ * their guess. The response will either be the message as a string, or an
+ * Object containing reply options
  */
 module.exports.makeGuess = function(user, guess) {
 	if (!(user.id in sessions)) return 'Unable to load session data.';
@@ -90,26 +94,46 @@ module.exports.makeGuess = function(user, guess) {
 		+ 'not case or punctuation dependent.';
 
 	const correctAnswer = sessionInfo.answer;
+	let success = true;
+	let response;
 	if (!aliases[correctAnswer].includes(cleanGuess)) {
 		sessionInfo.guesses.push('X');
-		const continuing = sessionInfo.clip < guessLengths.length;
-		if (continuing) {
+		success = false;
+		response = `❌ **INCORRECT** ❌\n"${guess}" was incorrect. `;
+		if (sessionInfo.clip < guessLengths.length) {
+			response += 'Try again.';
 			sessionInfo.clip++;
 			presentClip(user);
-		} else finish(user);
-		return `❌ **INCORRECT** ❌\n"${guess}" was incorrect. ` + (
-			continuing ? 'Try again.' :
-				`You're out of guesses. Better luck next time!${NO_SPOILIES}`
-		);
+			return response;
+		} else response += 'You\'re out of guesses. Better luck next time!';
 	}
 
-	sessionInfo.guesses.push('O');
+	if (success) sessionInfo.guesses.push('O');
 	const guesses = sessionInfo.clip;
 	finish(user);
 
-	return `✅ **CORRECT** ✅\n\nYou guessed the Yorkle in ${guesses} guess`
-		+ `${guesses == 1 ? '' : 'es'}! Play again tomorrow, or share your `
-		+ `results with your friends with the /share command!${NO_SPOILIES}`;
+	response = {
+		content: (success ? '✅ **CORRECT** ✅\n\nYou guessed the Yorkle in '
+			+ `${guesses} guess${guesses == 1 ? '' : 'es'}! Play again `
+			+ 'tomorrow, or share your results with your friends with the '
+			+ '`/share` command!' : response) + NO_SPOILIES,
+		// TODO: change Radiohead to artist name when non-Radiohead bands added
+		embeds: [{
+			author: {
+				name: 'Radiohead'
+			},
+			title: sessionInfo.title,
+			description: sessionInfo.album,
+			thumbnail: {
+				url: `attachment://${albums[sessionInfo.album]}.jpg`
+			}
+		}],
+		files: [new AttachmentBuilder(path.join(
+			mediaPath, albums[sessionInfo.album] + '.jpg'
+		))]
+	};
+
+	return response;
 };
 
 /**
@@ -153,6 +177,8 @@ module.exports.start = async function(user) {
 	console.log(`${user.username} has started a round of Yorkle.`);
 	sessions[user.id] = {
 		answer: songData.song.slice(0, -4),
+		title: songData.title,
+		album: songData.album,
 		clip: 1,
 		guesses: [],
 		day: day.toString().padStart(4, '0')

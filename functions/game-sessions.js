@@ -53,6 +53,22 @@ module.exports.finishGame = function(user, sessionInfo) {
 };
 
 /**
+ * Gets the current song's metadata
+ *
+ * @returns {Object} an object containing the current songs metadata including:
+ * - filename: the file name of the song
+ * - title: the title of the song
+ * - album: the album the song is on
+ */
+module.exports.getMetadata = function() {
+	return {
+		filename: dateData.song,
+		title: dateData.title,
+		album: dateData.album
+	};
+};
+
+/**
  * Checks if a user has already finished today's game.
  *
  * @param {import('discord.js').User} user the user to check
@@ -83,7 +99,7 @@ module.exports.newDay = async function() {
 	const song = getSong(index);
 	const songPath = path.join(songsPath, song);
 	const metadata = await parseFile(songPath);
-	// const { title, album } = metadata.common;
+	const { title, album } = metadata.common;
 	const duration = metadata.format.duration;
 	const timestamp = Math.floor(
 		Math.random() * (duration - guessLengths.at(-1))
@@ -108,8 +124,8 @@ module.exports.newDay = async function() {
 	dateData = {
 		day: day,
 		song: song,
-		// title: title,
-		// album: album,
+		title: title,
+		album: album,
 		timestamp: timestamp,
 		players: {}
 	};
