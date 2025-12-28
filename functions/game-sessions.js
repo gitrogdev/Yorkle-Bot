@@ -151,7 +151,7 @@ module.exports.results = async function(user) {
 	response += sequenceFiller.repeat(guessLengths.length - sequence.length);
 	response += '\n\n-# Yorkle is the ultimate Radiohead guessing game. '
 		+ 'Every day, players are presented with random clips from a song, and '
-		+ 'they to identify them in as few guesses as possible. Use the '
+		+ 'they have to identify them in as few guesses as possible. Use the '
 		+ '`/yorkle` command to start today\'s puzzle.';
 	return response;
 };
