@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, InteractionContextType } = require('discord.js');
 
-const { isPlaying, start } = require('../functions/playing.js');
-const { hasPlayed } = require('../functions/game-sessions.js');
+const { isPlaying, start } = require('../handlers/round-handler.js');
+const { hasPlayed } = require('../handlers/game-handler.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()

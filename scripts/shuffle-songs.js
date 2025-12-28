@@ -5,7 +5,7 @@ const {
 	getIndex,
 	getQueue,
 	updateQueueFile
-} = require('../functions/queue-model.js');
+} = require('../handlers/queue-handler.js');
 
 const shuffleArray = require('../util/shuffle-array.js');
 const { hexify } = require('../util/hexstring.js');

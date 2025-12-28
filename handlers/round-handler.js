@@ -3,9 +3,9 @@ const path = require('node:path');
 
 const albums = require('../config/albums.json');
 const aliases = require('../config/aliases.json');
-const getSong = require('./get-song.js');
+const getSong = require('../functions/get-song.js');
 const guessLengths = require('../config/guesslengths.json');
-const { finishGame } = require('./game-sessions.js');
+const { finishGame } = require('./game-handler.js');
 
 const NO_SPOILIES = '\n\n-# Yorkle is a daily guessing game in which everyone '
 	+ 'guesses the same song each day. Please avoid spoilers when discussing '

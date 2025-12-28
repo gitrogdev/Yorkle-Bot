@@ -11,7 +11,7 @@ const {
 	getSong,
 	updateLastPlayed,
 	getLastPlayed
-} = require('./queue-model');
+} = require('./queue-handler');
 
 const daysPath = path.join(__dirname, '../data/days');
 const execFileAsync = promisify(execFile);
