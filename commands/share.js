@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, InteractionContextType } = require('discord.js');
 const { results } = require('../handlers/game-handler');
+const { playInGuild } = require('../handlers/guild-handler');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -16,6 +17,11 @@ module.exports = {
 	 * interaction
 	 */
 	async execute(interaction) {
+		if (interaction.guild !== null) playInGuild(
+			interaction.user,
+			interaction.guild.id,
+			interaction.channelId
+		);
 		await interaction.deferReply();
 		await interaction.editReply(await results(interaction.user));
 	}
