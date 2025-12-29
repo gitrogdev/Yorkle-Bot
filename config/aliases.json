@@ -559,5 +559,9 @@
 	"followme": [
 		"followmearound",
 		"followme"
+	],
+	"lift": [
+		"elevator",
+		"lift"
 	]
 }
