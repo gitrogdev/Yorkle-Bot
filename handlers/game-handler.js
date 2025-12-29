@@ -85,6 +85,7 @@ module.exports.hasPlayed = async function(user) {
 	return dateData != null && user.id in dateData.players;
 };
 
+let newDayRunning = false;
 /**
  * Starts the game for a new day.
  *
@@ -92,6 +93,8 @@ module.exports.hasPlayed = async function(user) {
  * containing the day's information.
  */
 module.exports.newDay = async function() {
+	if (newDayRunning) return;
+	newDayRunning = true;
 	const day = incrementDay();
 	const index = incrementIndex();
 	const padDay = day.toString().padStart(4, '0');
@@ -132,6 +135,7 @@ module.exports.newDay = async function() {
 
 	updateQueueFile();
 	module.exports.updateDay(day);
+	newDayRunning = false;
 };
 
 /**
