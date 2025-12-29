@@ -31,6 +31,19 @@ if (fs.existsSync(startDatePath)) dateData = JSON.parse(
 	fs.readFileSync(startDatePath, 'utf-8')
 );
 
+let newDayRunning = false;
+const newDayPromises = [];
+
+/**
+ * Waits until the new day function has completed to continue execution.
+ *
+ * @returns {Promise} a promise that will be resolved when the newDay() function
+ * completes its execution
+ */
+function awaitNewDay() {
+	return new Promise(resolve => newDayPromises.push(resolve));
+};
+
 /**
  * Writes the results of a finished game to the day's file.
  *
@@ -60,7 +73,9 @@ module.exports.finishGame = function(user, sessionInfo) {
  * - title: the title of the song
  * - album: the album the song is on
  */
-module.exports.getMetadata = function() {
+module.exports.getMetadata = async function() {
+	if (newDayRunning) await awaitNewDay();
+
 	return {
 		filename: dateData.song,
 		title: dateData.title,
@@ -85,7 +100,6 @@ module.exports.hasPlayed = async function(user) {
 	return dateData != null && user.id in dateData.players;
 };
 
-let newDayRunning = false;
 /**
  * Starts the game for a new day.
  *
@@ -135,6 +149,7 @@ module.exports.newDay = async function() {
 
 	updateQueueFile();
 	module.exports.updateDay(day);
+	while (newDayPromises.length > 0) newDayPromises.pop()();
 	newDayRunning = false;
 };
 
