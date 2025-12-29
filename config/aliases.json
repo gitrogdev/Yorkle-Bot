@@ -563,5 +563,40 @@
 	"lift": [
 		"elevator",
 		"lift"
+	],
+	"downnewup": [
+		"ditnu",
+		"downisthenewup",
+		"downisnewup",
+		"downnewup"
+	],
+	"goslowly": [
+		"goslowly"
+	],
+	"lastflowers": [
+		"thelastflowers",
+		"lastflowers"
+	],
+	"onladder": [
+		"uotl",
+		"upontheladder",
+		"uptheladder",
+		"ontheladder",
+		"onladder"
+	],
+	"bangersmash": [
+		"thebangersandthemash",
+		"bangersandthemash",
+		"bangers+mash",
+		"bangers&mash",
+		"bangersnmash",
+		"bangersandmash",
+		"bangersmash"
+	],
+	"fourminute": [
+		"4minutewarning",
+		"fourminutewarning",
+		"4minute",
+		"fourminute"
 	]
 }
