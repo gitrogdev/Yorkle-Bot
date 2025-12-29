@@ -69,6 +69,7 @@ client.once(Events.ClientReady, (readyClient) => {
 	console.log(`Initialized client as @${readyClient.user.tag}.`);
 	setInterval(randomStatus, 300000);
 	randomStatus();
+	module.exports = client;
 });
 
 client.login(DISCORD_TOKEN);

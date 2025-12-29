@@ -20,7 +20,7 @@ module.exports = async function() {
 		newDay();
 	};
 
-	const metadata = getMetadata();
+	const metadata = await getMetadata();
 	return {
 		day: getDay(),
 		song: metadata.filename,

@@ -4,9 +4,9 @@ const path = require('node:path');
 const albums = require('../config/albums.json');
 const aliases = require('../config/aliases.json');
 const getSong = require('../functions/get-song.js');
-const guessLengths = require('../config/guesslengths.json');
 const { finishGame } = require('./game-handler.js');
 
+const MAX_GUESSES = require('../config/guesslengths.json').length;
 const NO_SPOILIES = '\n\n-# Yorkle is a daily guessing game in which everyone '
 	+ 'guesses the same song each day. Please avoid spoilers when discussing '
 	+ 'today\'s answer with other players, who may not have finished today\'s '
@@ -100,7 +100,7 @@ module.exports.makeGuess = function(user, guess) {
 		sessionInfo.guesses.push('X');
 		success = false;
 		response = `❌ **INCORRECT** ❌\n"${guess}" was incorrect. `;
-		if (sessionInfo.clip < guessLengths.length) {
+		if (sessionInfo.clip < MAX_GUESSES) {
 			response += 'Try again.';
 			sessionInfo.clip++;
 			presentClip(user);
@@ -147,7 +147,7 @@ module.exports.skip = async function(user) {
 	if (!(user.id in sessions)) return 'Unable to load session data.';
 	const sessionInfo = sessions[user.id];
 
-	if (sessionInfo.clip >= guessLengths.length)
+	if (sessionInfo.clip >= MAX_GUESSES)
 		return 'This is my final clip! Make a guess!';
 
 	console.log(`${user.username} is skipping clip ${sessionInfo.clip}.`);

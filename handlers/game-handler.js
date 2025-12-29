@@ -16,12 +16,13 @@ const {
 const daysPath = path.join(__dirname, '../data/days');
 const execFileAsync = promisify(execFile);
 const guessLengths = require('../config/guesslengths.json');
-const sequenceEmojis = {
+const { recap } = require('./guild-handler');
+const SEQUENCE_EMOJIS = {
 	O: '🟩',
 	'-': '🟨',
 	X: '🟥'
 };
-const sequenceFiller = '⬛';
+const SEQUENCE_FILLER = '⬛';
 const songsPath = path.join(__dirname, '../songs');
 
 let dateData;
@@ -109,6 +110,9 @@ module.exports.hasPlayed = async function(user) {
 module.exports.newDay = async function() {
 	if (newDayRunning) return;
 	newDayRunning = true;
+
+	recap(dateData.players);
+
 	const day = incrementDay();
 	const index = incrementIndex();
 	const padDay = day.toString().padStart(4, '0');
@@ -166,8 +170,8 @@ module.exports.results = async function(user) {
 
 	const sequence = dateData.players[user.id].sequence;
 	let response = `Yorkle #${dateData.day}\n`;
-	for (const char of sequence) response += sequenceEmojis[char];
-	response += sequenceFiller.repeat(guessLengths.length - sequence.length);
+	for (const char of sequence) response += SEQUENCE_EMOJIS[char];
+	response += SEQUENCE_FILLER.repeat(guessLengths.length - sequence.length);
 	response += '\n\n-# Yorkle is the ultimate Radiohead guessing game. '
 		+ 'Every day, players are presented with random clips from a song, and '
 		+ 'they have to identify them in as few guesses as possible. Use the '
