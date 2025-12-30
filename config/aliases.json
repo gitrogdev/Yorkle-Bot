@@ -564,6 +564,9 @@
 		"elevator",
 		"lift"
 	],
+	"mk1": [
+		"mk1"
+	],
 	"downnewup": [
 		"ditnu",
 		"downisthenewup",
@@ -572,6 +575,9 @@
 	],
 	"goslowly": [
 		"goslowly"
+	],
+	"mk2": [
+		"mk2"
 	],
 	"lastflowers": [
 		"thelastflowers",
