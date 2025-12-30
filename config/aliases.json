@@ -675,5 +675,23 @@
 		"howcanyoubesure",
 		"canyoubesure",
 		"howyousure"
+	],
+	"bishopsrobes": [
+		"bishoprobe",
+		"bishopsrobe",
+		"bishoprobes",
+		"bishopsrobes"
+	],
+	"bananaco": [
+		"bananacompany",
+		"bananacorporation",
+		"bananacorp",
+		"bananko",
+		"bananaco"
+	],
+	"molasses": [
+		"thebostonmolassesdiasterof1919",
+		"thegreatbostonmolassesfloodof1919",
+		"molasses"
 	]
 }
