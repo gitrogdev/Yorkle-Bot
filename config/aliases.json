@@ -598,5 +598,23 @@
 		"fourminutewarning",
 		"4minute",
 		"fourminute"
+	],
+	"insidemyhead": [
+		"inmyhead",
+		"insidehead",
+		"insidemyhead"
+	],
+	"mdollarq": [
+		"mdq",
+		"milliondollarquestion",
+		"onemilliondollarquestion",
+		"million$question",
+		"onemillion$question",
+		"1000000dollarquestion",
+		"$1000000question",
+		"mdollarq"
+	],
+	"yesiam": [
+		"yesiam"
 	]
 }
