@@ -693,5 +693,23 @@
 		"thebostonmolassesdiasterof1919",
 		"thegreatbostonmolassesfloodof1919",
 		"molasses"
+	],
+	"amazingsounds": [
+		"theamazingsoundsoforgy",
+		"theamazingsoundoforgy",
+		"amazingsoundsoforgy",
+		"amazingsoundoforgy",
+		"theamazingsounds",
+		"amazingsounds"
+	],
+	"transatlantic": [
+		"transatlanticdrawl",
+		"transatlantic"
+	],
+	"fasttrack": [
+		"fasttrack"
+	],
+	"kinetic": [
+		"kinetic"
 	]
 }
