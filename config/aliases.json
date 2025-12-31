@@ -750,5 +750,16 @@
 	],
 	"melatonin": [
 		"melatonin"
+	],
+	"intheaisle": [
+		"meetingintheaisle",
+		"meetingintheisle",
+		"meetinginaisle",
+		"meetinginisle",
+		"intheisle",
+		"intheaisle"
+	],
+	"lull": [
+		"lull"
 	]
 }
