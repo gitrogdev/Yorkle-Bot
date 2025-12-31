@@ -721,5 +721,34 @@
 	],
 	"fog": [
 		"fog"
+	],
+	"polyethylene": [
+		"pe",
+		"c2h4n",
+		"c₂h₄ₙ",
+		"polythene",
+		"polyethene",
+		"polymethylene",
+		"polyethyleneparts1&2",
+		"polyethyleneparts1and2",
+		"polyethyleneparts1n2",
+		"polyethyleneparts12",
+		"polyethylenepart1&2",
+		"polyethylenepart1and2",
+		"polyethylenepart1n2",
+		"polyethylenepart12",
+		"polyethylenepart1",
+		"polyethylenepart2",
+		"polyethylene"
+	],
+	"pearly": [
+		"pearly"
+	],
+	"reminder": [
+		"areminder",
+		"reminder"
+	],
+	"melatonin": [
+		"melatonin"
 	]
 }
