@@ -89,6 +89,7 @@ module.exports.recap = async function(playerData) {
 		const guildData = guildsData[id];
 		let played = 0;
 		let i = 0;
+		let scoreSum = 0;
 
 		const guildSequences = {};
 		for (let j = 1; j <= MAX_GUESSES; j++) guildSequences[j] = [];
@@ -122,6 +123,7 @@ module.exports.recap = async function(playerData) {
 					guesses === MAX_GUESSES
 					&& sequence.charAt(MAX_GUESSES - 1) !== 'O'
 				) guesses = 'X';
+				scoreSum += guesses === 'X' ? MAX_GUESSES + 1 : guesses;
 				guildSequences[guesses].push(memberId);
 			}
 			i++;
@@ -144,12 +146,17 @@ module.exports.recap = async function(playerData) {
 					formattedResults += ` <@${memberId}>`;
 			}
 
+			const averageScore = Math.round((scoreSum / played) * 100) / 100;
+
 			try {
 				const channel = await client.channels.fetch(guildData.channel);
 				await channel.send(
 					`**Your group is on a ${guildData.streak} day streak!** `
 					+ STREAK_EMOJI.repeat(Math.ceil(guildData.streak / 30))
-					+ ` Here are yesterdays results:${formattedResults}`
+					+ ` Here are yesterday's results:${formattedResults}\n\n`
+					+ `**Server average**: \`${averageScore.toFixed(2)}\`\n`
+					+ `-# Losses are scored as a ${MAX_GUESSES + 1} for the `
+					+ 'purpose of averaging.'
 				);
 			} catch (error) {
 				console.log(
