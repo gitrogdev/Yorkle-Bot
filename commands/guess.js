@@ -31,6 +31,10 @@ module.exports = {
 		}
 
 		const guess = interaction.options.getString('song');
-		interaction.editReply(await makeGuess(interaction.user, guess));
+		await interaction.editReply(
+			await makeGuess(interaction.user, guess)
+		).catch((err) => {
+			console.error(`Failed to respond to /guess interaction: ${err}`);
+		});
 	}
 };

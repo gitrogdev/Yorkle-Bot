@@ -19,6 +19,8 @@ module.exports = {
 		await interaction.reply(
 			'The next Yorkle will be available <t:'
 			+ `${now - (now % 86400) + 86400}:R>`
-		);
+		).catch((err) => {
+			console.error(`Failed to respond to /nextgame interaction: ${err}`);
+		});
 	}
 };

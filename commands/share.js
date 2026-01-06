@@ -17,12 +17,16 @@ module.exports = {
 	 * interaction
 	 */
 	async execute(interaction) {
+		await interaction.deferReply();
 		if (interaction.guild !== null) playInGuild(
 			interaction.user,
 			interaction.guild.id,
 			interaction.channelId
 		);
-		await interaction.deferReply();
-		await interaction.editReply(await results(interaction.user));
+		await interaction.editReply(
+			await results(interaction.user)
+		).catch((err) => {
+			console.error(`Failed to respond to /share interaction: ${err}`);
+		});
 	}
 };

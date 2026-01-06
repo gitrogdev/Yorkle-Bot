@@ -19,6 +19,8 @@ module.exports = {
 			'aaaonnnooohhoonnnnoohhoonnoohho (kidaee kidaee kidaee baba) '
 			+ 'aoohnnoohooonnhhnooaaohoonnhhoohooaoohoonooo(kidaee kidaee '
 			+ 'kidaee baba)'
-		);
+		).catch((err) => {
+			console.error(`Failed to respond to /hello interaction: ${err}`);
+		});
 	}
 };

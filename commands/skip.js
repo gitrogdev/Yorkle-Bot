@@ -25,6 +25,8 @@ module.exports = {
 			);
 			return;
 		}
-		interaction.editReply(await skip(interaction.user));
+		interaction.editReply(await skip(interaction.user)).catch((err) => {
+			console.error(`Failed to respond to /skip interaction: ${err}`);
+		});
 	}
 };

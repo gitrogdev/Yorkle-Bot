@@ -29,6 +29,8 @@ module.exports = {
 			+ '-# More content will be added over time, potentially including '
 			+ 'solo work, as well as On a Friday, The Smile and Atoms for '
 			+ 'Peace.'
-		);
+		).catch((err) => {
+			console.error(`Failed to respond to /content interaction: ${err}`);
+		});
 	}
 };

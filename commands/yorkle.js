@@ -42,6 +42,8 @@ module.exports = {
 				+ 'Messages to play.' : 'Unable to start a session of Yorkle '
 				+ 'with you. Please adjust your Privacy Settings to allow '
 				+ 'Direct Messages in this server.'
-		);
+		).catch((err) => {
+			console.error(`Failed to respond to /yorkle interaction: ${err}`);
+		});
 	}
 };
