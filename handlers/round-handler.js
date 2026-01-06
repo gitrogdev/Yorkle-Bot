@@ -85,7 +85,7 @@ module.exports.makeGuess = function(user, guess) {
 	if (!(user.id in sessions)) return 'Unable to load session data.';
 	const sessionInfo = sessions[user.id];
 
-	const cleanGuess = guess.toLowerCase().replace(/[\s.,\-()/?!]/g, '');
+	const cleanGuess = guess.toLowerCase().replace(/[\s.,\-()'/?!]/g, '');
 	console.log(
 		`${user.username} has guessed "${guess}" (cleaned to "${cleanGuess}")`
 	);
