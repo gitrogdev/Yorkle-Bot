@@ -20,30 +20,35 @@ module.exports = {
 	 * interaction
 	 */
 	async execute(interaction) {
-		await interaction.deferReply();
+		try {
+			await interaction.deferReply();
 
-		if (await hasPlayed(interaction.user)) {
-			interaction.editReply(
-				'You have already played today\'s puzzle! Come back tomorrow '
-				+ 'to play again!'
-			);
-			return;
-		};
+			if (await hasPlayed(interaction.user)) {
+				interaction.editReply(
+					'You have already played today\'s puzzle! Come back '
+					+ 'tomorrow to play again!'
+				);
+				return;
+			};
 
-		if (isPlaying(interaction.user)) {
-			interaction.editReply(
-				'You already have an active session of Yorkle!'
+			if (isPlaying(interaction.user)) {
+				interaction.editReply(
+					'You already have an active session of Yorkle!'
+				);
+				return;
+			}
+			const dmed = await start(interaction.user);
+			await interaction.editReply(
+				dmed ? 'Started a session of Yorkle. Please see your Direct '
+					+ 'Messages to play.' : 'Unable to start a session of '
+					+ 'Yorkle with you. Please adjust your Privacy Settings to '
+					+ 'allow Direct Messages in this server.'
 			);
-			return;
+		} catch (err) {
+			console.error(
+				'/yorkle command failed execution for '
+				+ `${interaction.user.username}: ${err}`
+			);
 		}
-		const dmed = start(interaction.user);
-		interaction.editReply(
-			dmed ? 'Started a session of Yorkle. Please see your Direct '
-				+ 'Messages to play.' : 'Unable to start a session of Yorkle '
-				+ 'with you. Please adjust your Privacy Settings to allow '
-				+ 'Direct Messages in this server.'
-		).catch((err) => {
-			console.error(`Failed to respond to /yorkle interaction: ${err}`);
-		});
 	}
 };
