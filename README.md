@@ -79,3 +79,28 @@ Once the queue is shuffled and commands are deployed, start the bot:
 ```bash
 npm run start
 ```
+
+# User Guide
+This guide can be provided to users of the bot to explain its usage:
+```md
+# What is Yorkle?
+
+**Yorkle** is a Radiohead guessing game. Functioning similarly to games like Wordle, where all players are given the same puzzle each day. Players will be given a clip of a Radiohead song, and must attempt to identify it. On a correct guess, the game ends. On an incorrect guess, players will be given a longer clip of the song, and the opportunity to guess again. After six clips, if the player has not managed to guess the song correctly, the player loses.
+
+**Since all players are playing the same puzzle, please do not discuss the  results of the puzzle without using || spoiler tags. ||**
+-# Spoiler tags can be created by surrounding text with double vertical bars, `||like this||`
+
+# How do I play?
+
+To play Yorkle, ensure your Privacy Settings allow DMs from the Yorkle bot. Then use the `/yorkle` command to start. The bot will then begin DMing you the clips for today's puzzle, to which you can respond with the `/guess` command to guess a song, or with the `/skip` command to skip that clip and get a longer one. Once you've finished, you can share your results in this channel by using the `/share` command back here.
+
+# Commands
+`/yorkle` - Starts a new round of Yorkle.
+`/guess` - Guess the song based on the clip provided. (*Only works in DMs*)
+`/skip` - Skips the current clip. (*Only works in DMs*)
+`/share` - Shares a **spoiler-free** recap of your game.
+`/nextgame` - Returns the timestamp of the next puzzle reset.
+`/contents` - Returns information about the possible contents of the game.
+`/hello` - Returns a brief message from the bot to test uptime.
+`/lyric` - Returns a random lyric from any Radiohead song.
+```
