@@ -1,5 +1,5 @@
 # Yorkle
-**Yorkle** is a Discord bot that hosts a daily music puzzle game functioning similar to games such as *Wordle*. Built for a small Radiohead fan community, the bot presents all players with the same randomly selected audio clip from a Radiohead song each day. Players must identify the song in as few guesses as possible.
+**Yorkle** is a Discord bot that hosts a daily music puzzle game functioning similar to games such as *Wordle*. Built for a small community of Radiohead fans, the bot presents all players with the same randomly selected audio clip from a Radiohead song each day. Players must identify the song in as few guesses as possible.
 
 > **Availability Note:**  
 > While Yorkle is open source, it is not a publicly hosted bot and cannot be directly added to your Discord server. To use Yorkle, you must self-host your own instance.
