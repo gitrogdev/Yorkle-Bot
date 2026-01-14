@@ -58,7 +58,7 @@ Although Yorkle was built for Radiohead, it can easily be adapted for any artist
 
 # Deployment
 Once the bot is properly configured, complete the following steps to deploy and run Yorkle.
-1. Shuffle the Song Queue
+## 1. Shuffle the Song Queue
 All songs must be added to and randomized within the daily puzzle queue:
 ```bash
 npm run shuffle
@@ -66,7 +66,7 @@ npm run shuffle
 If you add any new songs, run this command again to incorporate them into the existing queue and reshuffle any unplayed tracks.
 > This step requires a bot restart.
 
-2. Deploy Commands to Discord
+## 2. Deploy Commands to Discord
 Register the bot's slash commands with Discord:
 ```bash
 npm run deploy-commands
@@ -74,7 +74,7 @@ npm run deploy-commands
 Run this command whenever a command is added or removed. Existing command files may be modified without requiring redeployment.
 > This step requires a bot restart.
 
-3. Start the Bot
+## 3. Start the Bot
 Once the queue is shuffled and commands are deployed, start the bot:
 ```bash
 npm run start
