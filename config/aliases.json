@@ -809,5 +809,50 @@
 		"edwardscarysong",
 		"scarysong",
 		"edscary"
+	],
+	"veryeyes": [
+		"byve",
+		"beforeyourveryeyes",
+		"beforeveryeyes",
+		"b4yourveryeyes",
+		"b4veryeyes",
+		"veryeyes"
+	],
+	"default": [
+		"default"
+	],
+	"ingenue": [
+		"ingenue"
+	],
+	"dropped": [
+		"dropped"
+	],
+	"unless": [
+		"unless"
+	],
+	"stucktogether": [
+		"stucktogetherpieces",
+		"stuck2getherpieces",
+		"stuck2gether",
+		"stucktogether"
+	],
+	"judgejury": [
+		"judgejuryandexecutioner",
+		"judgejury&executioner",
+		"judgejurynexecutioner",
+		"judgeandjuryexecutioner",
+		"judge&juryexecutioner",
+		"judgenjuryexecutioner",
+		"judgejuryexecutioner",
+		"judgeandjury",
+		"judge&jury",
+		"judgenjury",
+		"judgejury"
+	],
+	"reverserunning": [
+		"reverserunning"
+	],
+	"amok": [
+		"amok"
 	]
 }
