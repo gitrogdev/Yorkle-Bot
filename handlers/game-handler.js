@@ -175,7 +175,7 @@ module.exports.results = async function(user) {
 	let response = `Yorkle #${dateData.day}\n`;
 	for (const char of sequence) response += SEQUENCE_EMOJIS[char];
 	response += SEQUENCE_FILLER.repeat(guessLengths.length - sequence.length);
-	response += '\n\n-# Yorkle is the ultimate Radiohead guessing game. '
+	response += '\n\n-# Yorkle is the ultimate Yorkiverse guessing game. '
 		+ 'Every day, players are presented with random clips from a song, and '
 		+ 'they have to identify them in as few guesses as possible. Use the '
 		+ '`/yorkle` command to start today\'s puzzle.';

@@ -17,18 +17,17 @@ module.exports = {
 	 */
 	async execute(interaction) {
 		await interaction.reply(
-			`Yorkle currently recognizes \`${COUNT}\` songs from Radiohead `
-			+ 'studio albums, B-sides, singles, and other releases.\n\n'
-			+ 'Live versions, acoustic versions, remasters, remixes, or any '
-			+ 'other alternative versions of songs outside of the studio '
-			+ 'albums are not included.\n\n'
+			`Yorkle currently recognizes \`${COUNT}\` songs from Radiohead & `
+			+ 'Atoms For Peace studio albums, B-sides, singles, and other '
+			+ 'releases.\n\nLive versions, acoustic versions, remasters, '
+			+ 'remixes, or any other alternative versions of songs outside of '
+			+ 'the studio albums are not included.\n\n'
 			+ '*i.e. Players will not have to distinguish between* **True Love '
 			+ 'Waits** *and* **True Love Waits (Live in Oslo)**, *but they '
 			+ 'will have to distinguish between* **Morning Bell** *and* '
 			+ '**Morning Bell/Amnesiac**.\n\n'
 			+ '-# More content will be added over time, potentially including '
-			+ 'solo work, as well as On a Friday, The Smile and Atoms for '
-			+ 'Peace.'
+			+ 'solo work, as well as On a Friday and The Smile.'
 		).catch((err) => {
 			console.error(`Failed to respond to /content interaction: ${err}`);
 		});
