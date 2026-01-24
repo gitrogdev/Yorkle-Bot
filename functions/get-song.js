@@ -24,6 +24,7 @@ module.exports = async function() {
 	return {
 		day: getDay(),
 		song: metadata.filename,
+		artist: metadata.artist,
 		title: metadata.title,
 		album: metadata.album
 	};

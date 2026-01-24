@@ -72,6 +72,7 @@ module.exports.finishGame = function(user, sessionInfo) {
  * @returns {Object} an object containing the current songs metadata including:
  * - filename: the file name of the song
  * - title: the title of the song
+ * - artist: the artist of the song
  * - album: the album the song is on
  */
 module.exports.getMetadata = async function() {
@@ -80,6 +81,7 @@ module.exports.getMetadata = async function() {
 	return {
 		filename: dateData.song,
 		title: dateData.title,
+		artist: dateData.artist,
 		album: dateData.album
 	};
 };
@@ -120,7 +122,7 @@ module.exports.newDay = async function() {
 	const song = getSong(index);
 	const songPath = path.join(songsPath, song);
 	const metadata = await parseFile(songPath);
-	const { title, album } = metadata.common;
+	const { title, artist, album } = metadata.common;
 	const duration = metadata.format.duration;
 	const timestamp = Math.floor(
 		Math.random() * (duration - guessLengths.at(-1))
@@ -146,6 +148,7 @@ module.exports.newDay = async function() {
 		day: day,
 		song: song,
 		title: title,
+		artist: artist || 'Radiohead',
 		album: album,
 		timestamp: timestamp,
 		players: {}

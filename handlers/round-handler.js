@@ -117,10 +117,9 @@ module.exports.makeGuess = function(user, guess) {
 			+ `${guesses} guess${guesses == 1 ? '' : 'es'}! Play again `
 			+ 'tomorrow, or share your results with your friends with the '
 			+ '`/share` command!' : response) + NO_SPOILIES,
-		// TODO: change Radiohead to artist name when non-Radiohead bands added
 		embeds: [{
 			author: {
-				name: 'Radiohead'
+				name: sessionInfo.artist || 'Radiohead'
 			},
 			title: sessionInfo.title,
 			description: sessionInfo.album,
@@ -178,6 +177,7 @@ module.exports.start = async function(user) {
 	sessions[user.id] = {
 		answer: songData.song.slice(0, -4),
 		title: songData.title,
+		artist: songData.artist,
 		album: songData.album,
 		clip: 1,
 		guesses: [],
