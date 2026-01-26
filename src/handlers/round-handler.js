@@ -3,7 +3,7 @@ const path = require('node:path');
 
 const albums = require('../config/albums.json');
 const aliases = require('../config/aliases.json');
-const getSong = require('../functions/get-song.js');
+const getSong = require('../old/functions/get-song.js');
 const { finishGame } = require('./game-handler.js');
 
 const MAX_GUESSES = require('../config/guesslengths.json').length;

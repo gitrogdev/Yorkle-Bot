@@ -2,8 +2,8 @@ const {
 	getDay,
 	getLastPlayed,
 	updateLastPlayed
-} = require('../handlers/queue-handler.js');
-const { newDay, getMetadata } = require('../handlers/game-handler.js');
+} = require('../old/handlers/queue-handler.js');
+const { newDay, getMetadata } = require('../old/handlers/game-handler.js');
 
 /**
  * Gets the information for today's song, and advances the queue if a day has

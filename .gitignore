@@ -2,6 +2,7 @@ node_modules/
 songs/
 data/
 media/
+src/old/
 
 *.env
 
