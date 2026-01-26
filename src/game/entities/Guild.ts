@@ -1,7 +1,9 @@
-import type GuildJson from '../persistence/dto/GuildJson.js';
+import path from 'node:path';
+
+import type GuildJson from '../../persistence/dto/GuildJson.js';
 
 export default class Guild {
-	public id: string;
+	public readonly id: string;
 	public streak: number;
 	public members: Set<string>;
 	public channelId: string | null;
@@ -40,13 +42,16 @@ export default class Guild {
 	 * Factory method which builds a new representation of a guild's data from
 	 * a stored JSON object.
 	 *
-	 * @param {string} id the Discord guild ID of the guild to represent
+	 * @param {string} filename the filename of the JSON file
 	 * @param {GuildJson} json the JSON data to create the guild from
 	 *
 	 * @returns {Guild} the representation of the guild's data created
 	 */
-	public static fromJson(id: string, json: GuildJson): Guild {
-		return new Guild(id, json.streak, json.members, json.channel);
+	public static fromJson(filename: string, json: GuildJson): Guild {
+		return new Guild(
+			path.parse(filename).name.replace(/^guild-/, ''),
+			json.streak, json.members, json.channel
+		);
 	}
 
 	/**

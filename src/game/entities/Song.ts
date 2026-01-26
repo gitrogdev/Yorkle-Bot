@@ -1,0 +1,35 @@
+import path from 'node:path';
+
+import albums from '../../config/albums.json' with { type: 'json' };
+import aliases from '../../config/aliases.json' with { type: 'json' };
+
+export default class Song {
+	public readonly aliases: string[];
+	public readonly thumbnail: string;
+
+	/**
+	 * Creates a new representation of the data for a song.
+	 *
+	 * @param {string} title the title of the song
+	 * @param {string} artist the artist (or artists) of the song
+	 * @param {string} album the album the song is on
+	 * @param {string} filename the file name of the song
+	 * @param {number} length the length of the song (in seconds)
+	 */
+	constructor(
+		public readonly title : string,
+		public readonly artist : string = 'Radiohead',
+		public readonly album: string,
+		public readonly filename: string,
+		public readonly length: number
+	) {
+		if (!(album in albums)) throw new Error(`Unknown album "${album}"!`);
+		this.thumbnail = albums[album as keyof typeof albums] + '.jpg';
+
+		const key = path.parse(filename).name;
+		if (!(key in aliases)) throw new Error(
+			`Unknown song "${key}"! (${artist} - ${title} (${album}))`
+		);
+		this.aliases = aliases[key as keyof typeof aliases];
+	}
+}
