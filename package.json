@@ -23,10 +23,13 @@
 	"homepage": "https://github.com/gitrogdev/Yorkle-Bot#readme",
 	"devDependencies": {
 		"@types/node": "^25.0.10",
+		"@typescript-eslint/eslint-plugin": "^8.53.1",
+		"@typescript-eslint/parser": "^8.53.1",
 		"eslint": "^9.39.2",
 		"prettier": "^3.8.1",
 		"ts-node": "^10.9.2",
-		"typescript": "^5.9.3"
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.53.1"
 	},
 	"dependencies": {
 		"discord.js": "^14.25.1"

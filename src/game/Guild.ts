@@ -1,19 +1,15 @@
+import type GuildJson from '../persistence/dto/GuildJson.js';
+
 export default class Guild {
 	public id: string;
 	public streak: number;
 	public members: Set<string>;
 	public channelId: string | null;
 
-	/**
-	 * Creates a representation of a new Discord guild.
-	 * 
-	 * @param {string} id the Discord guild ID of the guild to represent
-	 */
 	constructor(id: string);
-
 	/**
 	 * Creates a representation of a Discord guild within the bot.
-	 * 
+	 *
 	 * @param {string} id the Discord guild ID of the guild to represent
 	 * @param {number} streak the number of days in a row users in this guild
 	 * have played the game
@@ -22,7 +18,13 @@ export default class Guild {
 	 * @param {string | null} channelId the channel ID in the guild for the bot
 	 * to send recap messages to
 	 */
-	constructor (
+	constructor(
+		id: string,
+		streak?: number,
+		members?: string[],
+		channelId?: string | null
+	);
+	constructor(
 		id: string,
 		streak: number = 0,
 		members: string[] = [],
@@ -32,5 +34,31 @@ export default class Guild {
 		this.streak = streak;
 		this.members = new Set(members);
 		this.channelId = channelId;
+	}
+
+	/**
+	 * Factory method which builds a new representation of a guild's data from
+	 * a stored JSON object.
+	 *
+	 * @param {string} id the Discord guild ID of the guild to represent
+	 * @param {GuildJson} json the JSON data to create the guild from
+	 *
+	 * @returns {Guild} the representation of the guild's data created
+	 */
+	public static fromJson(id: string, json: GuildJson): Guild {
+		return new Guild(id, json.streak, json.members, json.channel);
+	}
+
+	/**
+	 * Returns a JSON representation of the guild's data.
+	 *
+	 * @returns {GuildJson} the JSON representation of the guild's data.
+	 */
+	toJSON(): GuildJson {
+		return {
+			streak: this.streak,
+			members: [...this.members],
+			channel: this.channelId
+		};
 	}
 }

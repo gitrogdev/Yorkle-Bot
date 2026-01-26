@@ -14,7 +14,7 @@ export default class Bot {
 
 	/**
 	 * Starts the bot client
-	 * 
+	 *
 	 * @param {string} token the Discord bot's secret token
 	 */
 	async start(token: string): Promise<void> {
