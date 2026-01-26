@@ -57,7 +57,7 @@ Must include:
 * Each file must include metadata for artist, title, and album.
 
 ## Customization
-Although Yorkle was built for Radiohead, it can easily be adapted for any artist by replacing the media files and updating the configuration files accordingly.
+Although Yorkle was built for Radiohead and other Thom Yorke projects, it can easily be adapted for any artist by replacing the media files and updating the configuration files accordingly.
 
 # Deployment
 Once the bot is properly configured, complete the following steps to deploy and run Yorkle.
