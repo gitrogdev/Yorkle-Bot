@@ -1,13 +1,27 @@
 import { Client, GatewayIntentBits } from 'discord.js';
 
 export default class Bot {
-	private client: Client;
+	private readonly client: Client;
 
-	constructor(token: string) {
+	/**
+	 * Builds a new client for the Discord bot.
+	 */
+	constructor() {
 		this.client = new Client({
 			intents: [GatewayIntentBits.Guilds]
 		});
+	}
 
-		this.client.login(token);
+	/**
+	 * Starts the bot client
+	 * 
+	 * @param {string} token the Discord bot's secret token
+	 */
+	async start(token: string): Promise<void> {
+		if (!token?.trim()) throw new Error(
+			'DISCORD_TOKEN is missing or empty.'
+		);
+
+		await this.client.login(token);
 	}
 }

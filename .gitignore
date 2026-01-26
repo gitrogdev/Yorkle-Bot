@@ -3,7 +3,7 @@ songs/
 data/
 dist/
 media/
-src/old/
+/old/
 
 *.env
 

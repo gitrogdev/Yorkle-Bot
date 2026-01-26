@@ -1,5 +1,5 @@
 import Bot from './app/Bot.js';
 
-if (process.env.DISCORD_TOKEN == null) throw 'Missing DISCORD_TOKEN from .env';
+const bot = new Bot();
 
-new Bot(process.env.DISCORD_TOKEN!);
+await bot.start(process.env.DISCORD_TOKEN!);
