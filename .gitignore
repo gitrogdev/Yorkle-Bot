@@ -1,6 +1,7 @@
 node_modules/
 songs/
 data/
+dist/
 media/
 src/old/
 
