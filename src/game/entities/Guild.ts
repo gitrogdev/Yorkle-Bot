@@ -36,7 +36,7 @@ export default class Guild {
 		this.members = new Set(members);
 		this.channelId = channelId;
 
-		if (arguments.length === 1) console.log('one arg');
+		if (arguments.length === 1) GuildList.add(this);
 	}
 
 	/**

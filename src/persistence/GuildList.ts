@@ -37,6 +37,18 @@ export default class GuildList {
 	}
 
 	/**
+	 * Adds a new guild to the GuildList.
+	 *
+	 * @param {Guild} guild the guild to add to the GuildList
+	 */
+	public static add(guild: Guild) {
+		if (guild.id in GuildList.guilds) throw new Error(
+			`Guild with ID ${guild.id} already exists in the GuildList!`
+		);
+		GuildList.guilds[guild.id] = guild;
+	}
+
+	/**
 	 * Gets a Guild from the GuildList by ID.
 	 *
 	 * @param {string} id the Discord Guild ID of the guild
@@ -45,7 +57,7 @@ export default class GuildList {
 	 */
 	public static get(id: string): Guild {
 		if (!(id in GuildList.guilds)) throw new Error(
-			`No guild foun in GuildListd with ID ${id}!`
+			`No guild found in GuildList with ID ${id}!`
 		);
 
 		return GuildList.guilds[id];
