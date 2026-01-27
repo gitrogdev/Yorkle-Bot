@@ -23,7 +23,7 @@ export default class AliasRegistry {
 				if (cleanAlias !== alias) console.warn(
 					`The alias "${alias}" is not clean in in aliases.json!`
 				);
-				if (cleanAlias in aliases) throw new Error(
+				if (cleanAlias in AliasRegistry.aliases) throw new Error(
 					`Multiple instances of the alias "${cleanAlias}" appear in `
 					+ 'aliases.json!'
 				); else AliasRegistry.aliases[cleanAlias] = SongLibrary.getSong(

@@ -7,6 +7,9 @@ const bot = new Bot();
 
 await bot.start(process.env.DISCORD_TOKEN!);
 
-AliasRegistry.loadAliases();
-GuildList.loadGuilds();
-SongLibrary.loadSongs();
+(async () => {
+	await SongLibrary.loadSongs();
+	await GuildList.loadGuilds();
+
+	AliasRegistry.loadAliases();
+})();
