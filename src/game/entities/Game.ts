@@ -1,6 +1,8 @@
+import AliasRegistry from '../../persistence/AliasRegistry.js';
 import type GameJson from '../../persistence/dto/GameJson.js';
 import type GameResults from '../../persistence/dto/GameResults.js';
 import SongLibrary from '../../persistence/SongLibrary.js';
+import cleanTitle from '../../util/clean-song.js';
 import type Song from './Song.js';
 
 export default class Game {
@@ -36,5 +38,28 @@ export default class Game {
 			json.timestamp,
 			json.players
 		);
+	}
+
+	/**
+	 * Makes a guess for the game's song, checking if the song title is valid
+	 * (if it is a known song title) and correct (if it is the correct song for
+	 * this iteration of the game).
+	 *
+	 * @param {string} guess the song title the player guessed
+	 *
+	 * @returns {boolean | null} whether the song title is correct, or `null` if
+	 * the song title is not reecognized
+	 */
+	public guess(guess: string): boolean | null {
+		const cleanGuess = cleanTitle(guess);
+		if (!AliasRegistry.isValid(cleanGuess)) {
+			console.warn(
+				`"${guess}" is not a recognized song title! `
+				+ `(Cleaned to "${cleanGuess}")`
+			);
+			return null;
+		}
+
+		return this.song.isAlias(cleanGuess);
 	}
 }

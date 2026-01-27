@@ -4,7 +4,7 @@ import albums from '../../config/albums.json' with { type: 'json' };
 import aliases from '../../config/aliases.json' with { type: 'json' };
 
 export default class Song {
-	public readonly aliases: Set<string>;
+	private readonly aliases: Set<string>;
 	public readonly thumbnail: string;
 
 	/**
@@ -31,5 +31,16 @@ export default class Song {
 			`Unknown song "${key}"! (${artist} - ${title} (${album}))`
 		);
 		this.aliases = new Set(aliases[key as keyof typeof aliases]);
+	}
+
+	/**
+	 * Checks if a guess is an alias of this song.
+	 *
+	 * @param {string} guess the guess to check this song's aliases for
+	 *
+	 * @returns {boolean} whether the guess is an alias of this song
+	 */
+	public isAlias(guess: string): boolean {
+		return this.aliases.has(guess);
 	}
 }
