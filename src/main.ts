@@ -9,7 +9,7 @@ await bot.start(process.env.DISCORD_TOKEN!);
 
 (async () => {
 	await SongLibrary.loadSongs();
-	await GuildList.loadGuilds();
 
+	GuildList.loadGuilds();
 	AliasRegistry.loadAliases();
 })();

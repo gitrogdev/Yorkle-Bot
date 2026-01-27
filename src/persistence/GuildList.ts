@@ -13,7 +13,7 @@ export default class GuildList {
 	/**
 	 * Loads all guilds from the /data/guilds directory as Guild objects.
 	 */
-	public static async loadGuilds() {
+	public static loadGuilds() {
 		if (GuildList.guilds != null) throw new Error(
 			'GuildList already loaded!'
 		);
@@ -34,6 +34,33 @@ export default class GuildList {
 			const json = JSON.parse(contents);
 			GuildList.guilds[id] = Guild.fromJson(id, json);
 		}
+	}
+
+	/**
+	 * Save a guild's data to file
+	 *
+	 * @param {string} id the ID of the guild to save
+	 */
+	public static saveGuild(id: string) {
+		if (!(id in GuildList.guilds)) throw new Error(
+			`No guild found in GuildList with ID ${id}!`
+		);
+
+		fs.writeFileSync(
+			path.join(
+				path.join(
+					path.dirname(fileURLToPath(import.meta.url)),
+					GuildList.GUILDS_PATH
+				), `guild-${id}.json`
+			), JSON.stringify(GuildList.guilds[id].toJson())
+		);
+	}
+
+	/**
+	 * Save all guilds' data to file.
+	 */
+	public static saveGuilds() {
+		for (const id of Object.keys(GuildList.guilds)) GuildList.saveGuild(id);
 	}
 
 	/**
