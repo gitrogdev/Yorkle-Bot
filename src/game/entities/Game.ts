@@ -3,6 +3,7 @@ import type GameJson from '../../persistence/dto/GameJson.js';
 import type GameResults from '../../persistence/dto/GameResults.js';
 import SongLibrary from '../../persistence/SongLibrary.js';
 import cleanTitle from '../../util/clean-song.js';
+import { dehexify, hexify } from '../../util/hex-string.js';
 import type Song from './Song.js';
 
 export default class Game {
@@ -34,10 +35,24 @@ export default class Game {
 	public static fromJson(json: GameJson): Game {
 		return new Game(
 			json.day,
-			SongLibrary.getSong(json.song),
+			SongLibrary.getSong(dehexify(json.song)),
 			json.timestamp,
 			json.players
 		);
+	}
+
+	/**
+	 * Returns a JSON representation of the game's data.
+	 *
+	 * @returns {GuildJson} the JSON representation of the game's data.
+	 */
+	public toJson(): GameJson {
+		return {
+			day: this.day,
+			song: hexify(this.song.filename),
+			timestamp: this.timestamp,
+			players: this.results
+		};
 	}
 
 	/**
