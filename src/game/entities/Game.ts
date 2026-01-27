@@ -62,10 +62,10 @@ export default class Game {
 	 *
 	 * @param {string} guess the song title the player guessed
 	 *
-	 * @returns {boolean | null} whether the song title is correct, or `null` if
+	 * @returns {Song | null} the Song the player guessed, or `null` if
 	 * the song title is not reecognized
 	 */
-	public guess(guess: string): boolean | null {
+	public guess(guess: string): Song | null {
 		const cleanGuess = cleanTitle(guess);
 		if (!AliasRegistry.isValid(cleanGuess)) {
 			console.warn(
@@ -75,6 +75,6 @@ export default class Game {
 			return null;
 		}
 
-		return this.song.isAlias(cleanGuess);
+		return AliasRegistry.getSongByAlias(cleanGuess);
 	}
 }
