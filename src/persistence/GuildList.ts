@@ -35,4 +35,19 @@ export default class GuildList {
 			GuildList.guilds[id] = Guild.fromJson(id, json);
 		}
 	}
+
+	/**
+	 * Gets a Guild from the GuildList by ID.
+	 *
+	 * @param {string} id the Discord Guild ID of the guild
+	 *
+	 * @returns {Guild} the Guild Object represented by the provided ID
+	 */
+	public static get(id: string): Guild {
+		if (!(id in GuildList.guilds)) throw new Error(
+			`No guild foun in GuildListd with ID ${id}!`
+		);
+
+		return GuildList.guilds[id];
+	}
 }

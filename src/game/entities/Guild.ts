@@ -1,4 +1,5 @@
 import type GuildJson from '../../persistence/dto/GuildJson.js';
+import GuildList from '../../persistence/GuildList.js';
 
 export default class Guild {
 	public readonly id: string;
@@ -52,11 +53,22 @@ export default class Guild {
 	}
 
 	/**
+	 * Gets a guild from the GuildList by ID.
+	 *
+	 * @param {string} id the Discord Guild ID of the guild
+	 *
+	 * @returns {Guild} the Guild Object represented by the provided ID
+	 */
+	public static getById(id: string): Guild {
+		return GuildList.get(id);
+	}
+
+	/**
 	 * Returns a JSON representation of the guild's data.
 	 *
 	 * @returns {GuildJson} the JSON representation of the guild's data.
 	 */
-	toJSON(): GuildJson {
+	public toJson(): GuildJson {
 		return {
 			streak: this.streak,
 			members: [...this.members],
