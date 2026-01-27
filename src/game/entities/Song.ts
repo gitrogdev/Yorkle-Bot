@@ -4,7 +4,7 @@ import albums from '../../config/albums.json' with { type: 'json' };
 import aliases from '../../config/aliases.json' with { type: 'json' };
 
 export default class Song {
-	public readonly aliases: string[];
+	public readonly aliases: Set<string>;
 	public readonly thumbnail: string;
 
 	/**
@@ -30,6 +30,6 @@ export default class Song {
 		if (!(key in aliases)) throw new Error(
 			`Unknown song "${key}"! (${artist} - ${title} (${album}))`
 		);
-		this.aliases = aliases[key as keyof typeof aliases];
+		this.aliases = new Set(aliases[key as keyof typeof aliases]);
 	}
 }
