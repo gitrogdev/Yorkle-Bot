@@ -33,6 +33,21 @@ export default class AliasRegistry {
 	}
 
 	/**
+	 * Gets the Song Object associated with a given alias.
+	 *
+	 * @param {string} alias the cleaned song title alias
+	 *
+	 * @returns {Song} the song associated with the alias
+	 */
+	public static getSongByAlias(alias: string): Song {
+		if (!AliasRegistry.isValid(alias)) throw new Error(
+			`Unable to find song with the alias "${alias}"`
+		);
+
+		return AliasRegistry.aliases[alias];
+	}
+
+	/**
 	 * Check if a guess for the song is a recognized song.
 	 *
 	 * @param {string} guess an cleaned song title to check the validity of
