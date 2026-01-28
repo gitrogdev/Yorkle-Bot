@@ -26,6 +26,7 @@ export default class GuildList {
 		const guildFiles = fs.readdirSync(guildsPath).filter(
 			(file) => file.endsWith('.json')
 		);
+		let loaded = 0;
 		for (const file of guildFiles) {
 			const contents = fs.readFileSync(
 				path.join(guildsPath, file), 'utf8'
@@ -33,7 +34,12 @@ export default class GuildList {
 			const id = path.parse(file).name.replace(/^guild-/, '')
 			const json = JSON.parse(contents);
 			GuildList.guilds[id] = Guild.fromJson(id, json);
+			loaded++;
 		}
+		console.log(
+			`Successfully loaded ${loaded} guild${loaded === 1 ? '' : 's'} `
+			+ 'from local files.'
+		);
 	}
 
 	/**
@@ -54,6 +60,7 @@ export default class GuildList {
 				), `guild-${id}.json`
 			), JSON.stringify(GuildList.guilds[id].toJson())
 		);
+		console.log(`Successfully saved guild with ID ${id} to file.`);
 	}
 
 	/**
@@ -73,6 +80,9 @@ export default class GuildList {
 			`Guild with ID ${guild.id} already exists in the GuildList!`
 		);
 		GuildList.guilds[guild.id] = guild;
+		console.log(
+			`Successfully added guild with ID ${guild.id} to GuildList.`
+		);
 	}
 
 	/**

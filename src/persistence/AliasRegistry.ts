@@ -17,6 +17,7 @@ export default class AliasRegistry {
 		);
 		AliasRegistry.aliases = {};
 
+		let loaded = 0;
 		for (const [ songTitle, songAliases ] of Object.entries(aliases))
 			for (const alias of songAliases) {
 				const cleanAlias = cleanTitle(alias);
@@ -26,10 +27,17 @@ export default class AliasRegistry {
 				if (cleanAlias in AliasRegistry.aliases) throw new Error(
 					`Multiple instances of the alias "${cleanAlias}" appear in `
 					+ 'aliases.json!'
-				); else AliasRegistry.aliases[cleanAlias] = SongLibrary.getSong(
-					songTitle
-				);
+				); else {
+					AliasRegistry.aliases[cleanAlias] = SongLibrary.getSong(
+						songTitle
+					);
+					loaded++
+				}
 			}
+		console.log(
+			`Succesfully loaded ${loaded} alias${loaded === 1 ? '' : 'es'} `
+			+ 'from config.'
+		)
 	}
 
 	/**

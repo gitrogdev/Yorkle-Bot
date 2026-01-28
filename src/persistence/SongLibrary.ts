@@ -27,6 +27,7 @@ export default class SongLibrary {
 		const songFiles = fs.readdirSync(songsPath).filter(
 			(file) => file.endsWith('.mp3')
 		);
+		let loaded = 0;
 		for (const song of songFiles) {
 			const metadata = await parseFile(
 				path.join(songsPath, song)
@@ -40,7 +41,12 @@ export default class SongLibrary {
 				song,
 				duration!
 			);
+			loaded++;
 		}
+		console.log(
+			`Successfully loaded ${loaded} song${loaded === 1 ? '' : 's'} from `
+			+ 'local files.'
+		)
 	}
 
 	/**

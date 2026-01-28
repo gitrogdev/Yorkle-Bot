@@ -1,7 +1,8 @@
 import { Client, GatewayIntentBits } from 'discord.js';
+import Bot from '../presentation/discord/Bot.js';
 
-export default class Bot {
-	private readonly client: Client;
+export default class DiscordClient {
+	private client: Client;
 
 	/**
 	 * Builds a new client for the Discord bot.
@@ -23,5 +24,6 @@ export default class Bot {
 		);
 
 		await this.client.login(token);
+		new Bot(this.client).register();
 	}
 }
