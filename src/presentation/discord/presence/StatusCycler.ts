@@ -3,7 +3,8 @@ import type { ClientUser } from 'discord.js';
 export default class StatusCycler {
 	private timer: NodeJS.Timeout | null = null;
 	private user: ClientUser | null = null;
-	private statuses: string[];
+	private statusArray: string[];
+	private statusSet: Set<string>;
 
 	/**
 	 * Creates a new cycler to loop through different Discord status presences
@@ -17,13 +18,16 @@ export default class StatusCycler {
 		statuses: string[],
 		private interval: number
 	) {
-		this.statuses = [];
-		for (const status of statuses) if (this.statuses.includes(status))
+		this.statusSet = new Set<string>();
+
+		for (const status of statuses) if (this.statusSet.has(status))
 			console.warn(
 				`The status "${status}" appears multiple times in the statuses `
 				+ 'provided to the StatusCycler!'
 			);
-		else this.statuses.push(status);
+		else this.statusSet.add(status);
+
+		this.statusArray = Array.from(this.statusSet);
 	};
 
 	/**
@@ -35,9 +39,9 @@ export default class StatusCycler {
 			'Attempted to set random status before StatusCycler was started!'
 		);
 
-		this.user.setActivity(
-			this.statuses[Math.floor(Math.random() * this.statuses.length)]
-		);
+		this.user.setActivity(this.statusArray[
+			Math.floor(Math.random() * this.statusArray.length)
+		]);
 	}
 
 	/**
@@ -46,7 +50,8 @@ export default class StatusCycler {
 	 * @param {boolean} autoSet whether to immediately set the first status
 	 */
 	private cycle(autoSet: boolean): void {
-		this.timer = setInterval(this.setRandomStatus, this.interval);
+		if (this.timer) clearInterval(this.timer);
+		this.timer = setInterval(() => this.setRandomStatus(), this.interval);
 		if (autoSet) this.setRandomStatus();
 	}
 
@@ -54,18 +59,20 @@ export default class StatusCycler {
 	 * Adds a new status to the cycle.
 	 *
 	 * @param {string} status the status to add to the cycle
-	 * @param {boolean} set whether to automatically set the status
+	 * @param {boolean} autoSet whether to automatically set the status
 	 */
-	public add(status: string, set?: boolean) {
-		if (status in this.statuses) {
+	public add(status: string, autoSet: boolean = false) {
+		if (this.statusSet.has(status)) {
 			console.warn(
 				`The status "${status}" already exists in the StatusCycler!`
 			);
 			return;
 		}
 
-		this.statuses.push(status);
-		if (set) this.set(status);
+		this.statusSet.add(status);
+		this.statusArray.push(status);
+
+		if (autoSet) this.set(status);
 	}
 
 	/**
@@ -89,7 +96,7 @@ export default class StatusCycler {
 	public start(user: ClientUser): void {
 		this.user = user;
 
-		if (this.statuses.length === 0) {
+		if (this.statusArray.length === 0) {
 			console.warn(
 				'Attempted to start a StatusCycler with no loaded statuses!'
 			);
