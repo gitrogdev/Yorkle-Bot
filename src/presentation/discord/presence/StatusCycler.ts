@@ -3,6 +3,7 @@ import type { ClientUser } from 'discord.js';
 export default class StatusCycler {
 	private timer: NodeJS.Timeout | null = null;
 	private user: ClientUser | null = null;
+	private statuses: string[];
 
 	/**
 	 * Creates a new cycler to loop through different Discord status presences
@@ -13,9 +14,17 @@ export default class StatusCycler {
 	 * each rotation of the status
 	 */
 	constructor(
-		private statuses: string[],
+		statuses: string[],
 		private interval: number
-	) {};
+	) {
+		this.statuses = [];
+		for (const status of statuses) if (this.statuses.includes(status))
+			console.warn(
+				`The status "${status}" appears multiple times in the statuses `
+				+ 'provided to the StatusCycler!'
+			);
+		else this.statuses.push(status);
+	};
 
 	/**
 	 * Picks a random status from `this.statuses` and updates the bot user's
@@ -48,6 +57,13 @@ export default class StatusCycler {
 	 * @param {boolean} set whether to automatically set the status
 	 */
 	public add(status: string, set?: boolean) {
+		if (status in this.statuses) {
+			console.warn(
+				`The status "${status}" already exists in the StatusCycler!`
+			);
+			return;
+		}
+
 		this.statuses.push(status);
 		if (set) this.set(status);
 	}
