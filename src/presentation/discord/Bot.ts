@@ -4,6 +4,9 @@ import CommandRegistrar from './commands/CommandRegistrar.js';
 import CommandRouter from './commands/CommandRouter.js';
 import InteractionCreateEvent from './events/InteractionCreateEvent.js';
 import ClientReadyEvent from './events/ClientReadyEvent.js';
+import StatusCycler from './presence/StatusCycler.js';
+
+import statuses from '../../config/statuses.json' with { type: 'json' };
 
 export default class Bot {
 	/**
@@ -21,8 +24,9 @@ export default class Bot {
 	public register(): void {
 		const commandRegistrar = new CommandRegistrar();
 		const commandRouter = new CommandRouter(commandRegistrar.register());
+		const statusCycler = new StatusCycler(statuses, 300_000);
 
 		new InteractionCreateEvent(commandRouter).register(this.client);
-		new ClientReadyEvent().register(this.client);
+		new ClientReadyEvent(statusCycler).register(this.client);
 	}
 }
