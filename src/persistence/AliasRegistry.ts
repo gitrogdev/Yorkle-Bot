@@ -12,7 +12,7 @@ export default class AliasRegistry {
 	 * Loads all the aliases from /config/aliases.json.
 	 */
 	public static loadAliases() {
-		if (AliasRegistry.aliases != null) throw new Error(
+		if (AliasRegistry.aliases) throw new Error(
 			'AliasRegistry already loaded!'
 		);
 		AliasRegistry.aliases = {};

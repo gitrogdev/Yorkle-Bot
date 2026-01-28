@@ -17,7 +17,7 @@ export default class SongQueue {
 	private static played: Song[];
 
 	public static loadQueue() {
-		if (SongQueue.queue !== null) throw new Error(
+		if (SongQueue.queue) throw new Error(
 			'SongQueue already loaded!'
 		);
 		SongQueue.queue = [];

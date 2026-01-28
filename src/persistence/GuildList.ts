@@ -14,7 +14,7 @@ export default class GuildList {
 	 * Loads all guilds from the /data/guilds directory as Guild objects.
 	 */
 	public static loadGuilds() {
-		if (GuildList.guilds != null) throw new Error(
+		if (GuildList.guilds) throw new Error(
 			'GuildList already loaded!'
 		);
 		GuildList.guilds = {};
