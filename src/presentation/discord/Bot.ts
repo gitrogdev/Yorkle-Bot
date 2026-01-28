@@ -1,6 +1,9 @@
-import { Events, type Client } from 'discord.js';
+import { type Client } from 'discord.js';
+
 import CommandRegistrar from './commands/CommandRegistrar.js';
 import CommandRouter from './commands/CommandRouter.js';
+import InteractionCreateEvent from './events/InteractionCreateEvent.js';
+import ClientReadyEvent from './events/ClientReadyEvent.js';
 
 export default class Bot {
 	/**
@@ -19,6 +22,7 @@ export default class Bot {
 		const commandRegistrar = new CommandRegistrar();
 		const commandRouter = new CommandRouter(commandRegistrar.register());
 
-		this.client.on(Events.InteractionCreate, (i) => commandRouter.route(i));
+		new InteractionCreateEvent(commandRouter).register(this.client);
+		new ClientReadyEvent().register(this.client);
 	}
 }
