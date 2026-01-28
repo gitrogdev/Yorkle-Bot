@@ -9,7 +9,7 @@ export default class AliasRegistry {
 	};
 
 	/**
-	 * Loads all the aliases from /config/aliases.json as a set.
+	 * Loads all the aliases from /config/aliases.json.
 	 */
 	public static loadAliases() {
 		if (AliasRegistry.aliases != null) throw new Error(
