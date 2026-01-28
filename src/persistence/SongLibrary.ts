@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import Song from '../game/entities/Song.js';
+import shuffleArray from '../util/shuffle-array.js';
 
 export default class SongLibrary {
 	private static readonly SONGS_PATH: string = '../../songs/';
@@ -15,7 +16,7 @@ export default class SongLibrary {
 	 * Loads all songs from the /songs directory as Song objects.
 	 */
 	public static async loadSongs() {
-		if (SongLibrary.songs != null) throw new Error(
+		if (SongLibrary.songs !== null) throw new Error(
 			'SongLibrary already loaded!'
 		);
 		SongLibrary.songs = {};
@@ -62,5 +63,16 @@ export default class SongLibrary {
 			`No song loaded with filename "${filename}"!`
 		);
 		return SongLibrary.songs[filename];
+	}
+
+	/**
+	 * Returns a shuffled array of all the songs in the song library.
+	 *
+	 * @returns {Song[]} a shuffled array of all the songs in the song library.
+	 */
+	public static shuffle(): Song[] {
+		const songs = Object.values(SongLibrary.songs);
+		shuffleArray(songs);
+		return songs;
 	}
 }
