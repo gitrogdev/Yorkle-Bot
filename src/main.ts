@@ -2,7 +2,7 @@ import DiscordClient from './app/DiscordClient.js';
 import AliasRegistry from './persistence/AliasRegistry.js';
 import GuildList from './persistence/GuildList.js';
 import SongLibrary from './persistence/SongLibrary.js';
-import SongQueue from './persistence/SongQueue.js';
+import SongQueue from './game/services/SongQueue.js';
 
 (async () => {
 	await SongLibrary.loadSongs();
