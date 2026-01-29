@@ -7,8 +7,11 @@ import ClientReadyEvent from './events/ClientReadyEvent.js';
 import StatusCycler from './presence/StatusCycler.js';
 
 import statuses from '../../config/statuses.json' with { type: 'json' };
+import Yorkle from '../../game/Yorkle.js';
 
 export default class Bot {
+	private game: Yorkle = new Yorkle();
+
 	/**
 	 * Builds a new representation of the Discord bot.
 	 *
