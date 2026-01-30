@@ -17,6 +17,9 @@ export default class AliasRegistry {
 		this.ready = this.init();
 	}
 
+	/**
+	 * Initialize the alias registry asynchronously.
+	 */
 	private async init() {
 		await this.lib.ready;
 

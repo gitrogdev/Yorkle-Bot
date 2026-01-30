@@ -7,7 +7,7 @@ import type QueueData from '../dto/QueueData.js';
 export default class SongQueueStore {
 	private static readonly QUEUE_PATH = path.join(
 		path.dirname(fileURLToPath(import.meta.url)),
-		'../../data/game-queue.json'
+		'../../../data/game-queue.json'
 	);
 
 	/**
