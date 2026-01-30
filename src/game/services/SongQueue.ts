@@ -5,6 +5,7 @@ import type SongQueueStore from
 	'../../persistence/datastores/SongQueueStore.js';
 import type QueueData from '../../persistence/dto/QueueData.js';
 import getDate from '../../util/get-date.js';
+import shuffleArray from '../../util/shuffle-array.js';
 
 export default class SongQueue {
 	private queue: Song[] = [];
@@ -44,7 +45,28 @@ export default class SongQueue {
 		this.lastPlayed = data.lastPlayed;
 
 		const inQueue = this.queue.length;
-		console.log(
+		const played = this.played.length;
+		const librarySize = this.lib.getSize();
+
+		if (inQueue + played < librarySize) {
+			const newSongs = this.lib.getNewSongs(data.queue.map(
+				song => dehexify(song)
+			));
+			for (const song of newSongs) this.queue.push(song);
+			shuffleArray(this.queue);
+			console.log(
+				`Successfully added ${newSongs.length} new `
+				+ `song${newSongs.length === 1 ? '' : 's'} to the queue and `
+				+ 'shuffled all unplayed songs.'
+			);
+		} else if (inQueue + played > librarySize) {
+			const diff = (inQueue + played) - librarySize;
+			throw new Error(
+				`Failed to load ${diff} song${diff === 1 ? '' : 's'} from song `
+				+ `library. (${inQueue + played} in queue, ${librarySize} in `
+				+ 'song library.'
+			);
+		} else console.log(
 			`Successfully loaded ${inQueue} song${inQueue === 1 ? '' : 's'} `
 			+ `into the queue (${this.played.length} already played)`
 		);

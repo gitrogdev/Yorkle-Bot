@@ -7,6 +7,7 @@ export default class SongLibrary {
 		'title' | 'album' | 'duration'
 	)[] = ['title', 'album', 'duration'];
 
+	private size: number = 0;
 	private songs: Record<string, Song> = {};
 
 	public readonly ready: Promise<void>;
@@ -26,7 +27,6 @@ export default class SongLibrary {
 	private async init() {
 		const songs = await this.store.load();
 
-		let loaded = 0;
 		for (const metadata of songs) {
 			for (const field of SongLibrary.REQUIRED_FIELDS)
 				if (!(metadata[field])) {
@@ -43,14 +43,32 @@ export default class SongLibrary {
 				metadata.song,
 				metadata.duration!
 			);
-			loaded++;
+			this.size++;
 		}
 
 		console.log(
-			`Successfully loaded ${loaded} song${loaded === 1 ? '' : 's'} from `
-			+ 'local files.'
+			`Successfully loaded ${this.size} song${this.size === 1 ? '' : 's'}`
+			+ ' from local files.'
 		);
 	}
+
+	public getNewSongs(filenames: string[]): Song[] {
+		const libFilenames = Object.keys(this.songs);
+		const missing = libFilenames.filter(
+			song => !new Set(filenames).has(song)
+		);
+
+		const newSongs = [];
+		for (const song of missing) newSongs.push(this.songs[song]);
+		return newSongs;
+	}
+
+	/**
+	 * Gets the number of songs in the song library.
+	 *
+	 * @returns {number} the number of songs in the song library
+	 */
+	public getSize(): number { return this.size; }
 
 	/**
 	 * Gets a Song Object by filename.
