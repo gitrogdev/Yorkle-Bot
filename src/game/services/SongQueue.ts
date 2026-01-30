@@ -94,7 +94,7 @@ export default class SongQueue {
 		const hexifiedQueue: string[] = [];
 
 		function hexifyQueue(queue: Song[]) {
-			queue.forEach(song => hexifiedQueue.push(hexify(song.title)));
+			queue.forEach(song => hexifiedQueue.push(hexify(song.filename)));
 		}
 
 		hexifyQueue(this.played);
