@@ -1,6 +1,6 @@
 import type Song from '../entities/Song.js';
 import SongLibrary from './SongLibrary.js';
-import { dehexify } from '../../util/hex-string.js';
+import { dehexify, hexify } from '../../util/hex-string.js';
 import type SongQueueStore from
 	'../../persistence/datastores/SongQueueStore.js';
 import type QueueData from '../../persistence/dto/QueueData.js';
@@ -59,6 +59,7 @@ export default class SongQueue {
 				+ `song${newSongs.length === 1 ? '' : 's'} to the queue and `
 				+ 'shuffled all unplayed songs.'
 			);
+			this.save();
 		} else if (inQueue + played > librarySize) {
 			const diff = (inQueue + played) - librarySize;
 			throw new Error(
@@ -84,5 +85,26 @@ export default class SongQueue {
 			lastPlayed: getDate(-1),
 			queue: []
 		};
+	}
+
+	/**
+	 * Packages the queue data and saves it to file.
+	 */
+	private save() {
+		const hexifiedQueue: string[] = [];
+
+		function hexifyQueue(queue: Song[]) {
+			queue.forEach(song => hexifiedQueue.push(hexify(song.title)));
+		}
+
+		hexifyQueue(this.played);
+		hexifyQueue(this.queue);
+
+		this.store.save({
+			index: this.index,
+			day: this.day,
+			lastPlayed: this.lastPlayed,
+			queue: hexifiedQueue
+		});
 	}
 }

@@ -21,6 +21,16 @@ export default class SongQueueStore {
 
 		return JSON.parse(
 			fs.readFileSync(SongQueueStore.QUEUE_PATH, 'utf-8')
-		);;
+		);
+	}
+
+	/**
+	 * Writes formatted queue data to file.
+	 *
+	 * @param {QueueData} data the queue data to write to the queue file
+	 */
+	public save(data: QueueData) {
+		fs.writeFileSync(SongQueueStore.QUEUE_PATH, JSON.stringify(data));
+		console.log('Successfully saved song queue to file.');
 	}
 }
