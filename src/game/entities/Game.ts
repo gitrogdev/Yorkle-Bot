@@ -1,9 +1,8 @@
-import AliasRegistry from '../../persistence/AliasRegistry.js';
+import AliasRegistry from '../services/AliasRegistry.js';
 import type GameJson from '../../persistence/dto/GameJson.js';
 import type GameResults from '../../persistence/dto/GameResults.js';
-import SongLibrary from '../../persistence/SongLibrary.js';
 import cleanTitle from '../../util/clean-song.js';
-import { dehexify, hexify } from '../../util/hex-string.js';
+import { hexify } from '../../util/hex-string.js';
 import type Song from './Song.js';
 
 export default class Game {
@@ -16,30 +15,16 @@ export default class Game {
 	 * clip of the song
 	 * @param {GameResults} results the results of this day of the
 	 * game
+	 * @param {AliasRegistry} aliases the alias registry containing the songs
+	 * used by the game and their aliases
 	 */
-	private constructor(
+	constructor(
 		private day: number,
 		private song: Song,
 		private timestamp: number,
-		private results: GameResults
+		private results: GameResults,
+		private aliases: AliasRegistry
 	) {}
-
-	/**
-	 * Factory method to construct a new representation of a daily iteration of
-	 * the game from a JSON file.
-	 *
-	 * @param {GameJson} json the JSON Object to turn into the Game Object
-	 *
-	 * @returns {Game} the Game Object constructed from the JSON data
-	 */
-	public static fromJson(json: GameJson): Game {
-		return new Game(
-			json.day,
-			SongLibrary.getSong(dehexify(json.song)),
-			json.timestamp,
-			json.players
-		);
-	}
 
 	/**
 	 * Returns a JSON representation of the game's data.
@@ -67,7 +52,7 @@ export default class Game {
 	 */
 	public guess(guess: string): Song | null {
 		const cleanGuess = cleanTitle(guess);
-		if (!AliasRegistry.isValid(cleanGuess)) {
+		if (!this.aliases.isValid(cleanGuess)) {
 			console.warn(
 				`"${guess}" is not a recognized song title! `
 				+ `(Cleaned to "${cleanGuess}")`
@@ -75,6 +60,6 @@ export default class Game {
 			return null;
 		}
 
-		return AliasRegistry.getSongByAlias(cleanGuess);
+		return this.aliases.getSongByAlias(cleanGuess);
 	}
 }

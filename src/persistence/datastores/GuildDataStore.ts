@@ -7,7 +7,7 @@ import type Guild from '../../game/entities/Guild.js';
 export default class GuildDataStore {
 	private static readonly GUILDS_PATH = path.join(
 		path.dirname(fileURLToPath(import.meta.url)),
-		'../../data/guilds/'
+		'../../../data/guilds/'
 	);
 
 	/**
