@@ -3,9 +3,7 @@ import type GuildDataStore from
 import Guild from '../entities/Guild.js';
 
 export default class GuildList {
-	private guilds: {
-		[id: string]: Guild
-	} = {};
+	private guilds: Record<string, Guild> = {};
 
 	/**
 	 * Creates a new guild list using the data from a provided data store.
