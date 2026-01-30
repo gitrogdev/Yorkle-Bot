@@ -1,5 +1,5 @@
+import type GuildInfo from '../../persistence/dto/GuildInfo.js';
 import type GuildJson from '../../persistence/dto/GuildJson.js';
-import GuildList from '../../persistence/GuildList.js';
 
 export default class Guild {
 	public readonly id: string;
@@ -35,32 +35,23 @@ export default class Guild {
 		this.streak = streak;
 		this.members = new Set(members);
 		this.channelId = channelId;
-
-		if (arguments.length === 1) GuildList.add(this);
 	}
 
 	/**
 	 * Factory method which builds a new representation of a guild's data from
 	 * a stored JSON object.
 	 *
-	 * @param {string} id the Discord Guild ID for the guild
-	 * @param {GuildJson} json the JSON data to create the guild from
+	 * @param {GuildInfo} info the stored information for the guild
 	 *
 	 * @returns {Guild} the representation of the guild's data created
 	 */
-	public static fromJson(id: string, json: GuildJson): Guild {
-		return new Guild(id, json.streak, json.members, json.channel);
-	}
-
-	/**
-	 * Gets a guild from the GuildList by ID.
-	 *
-	 * @param {string} id the Discord Guild ID of the guild
-	 *
-	 * @returns {Guild} the Guild Object represented by the provided ID
-	 */
-	public static getById(id: string): Guild {
-		return GuildList.get(id);
+	public static fromJson(info: GuildInfo): Guild {
+		return new Guild(
+			info.id,
+			info.data.streak,
+			info.data.members,
+			info.data.channel
+		);
 	}
 
 	/**
