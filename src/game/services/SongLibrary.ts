@@ -52,6 +52,14 @@ export default class SongLibrary {
 		);
 	}
 
+	/**
+	 * Returns an array of songs not present in an array of song filenames.
+	 *
+	 * @param {string[]} filenames the filenames of the songs to compare to the
+	 * song library
+	 *
+	 * @returns {Song[]} the songs not present in the given array
+	 */
 	public getNewSongs(filenames: string[]): Song[] {
 		const libFilenames = Object.keys(this.songs);
 		const missing = libFilenames.filter(
