@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import type SongMetadata from '../dto/SongMetadata.js';
 
 export default class SongDataStore {
-	private static readonly SONGS_PATH: string = path.join(
+	public static readonly SONGS_PATH: string = path.join(
 		path.dirname(fileURLToPath(import.meta.url)),
 		'../../../songs/'
 	);

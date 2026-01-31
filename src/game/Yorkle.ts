@@ -1,7 +1,9 @@
+import clipLengths from '../config/guesslengths.json' with { type: 'json' };
 import GuildDataStore from '../persistence/datastores/GuildDataStore.js';
 import SongDataStore from '../persistence/datastores/SongDataStore.js';
 import SongQueueStore from '../persistence/datastores/SongQueueStore.js';
 import AliasRegistry from './services/AliasRegistry.js';
+import ClipGenerator from './services/ClipGenerator.js';
 import GuildList from './services/GuildList.js';
 import SongLibrary from './services/SongLibrary.js';
 import SongQueue from './services/SongQueue.js';
@@ -11,7 +13,8 @@ export default class Yorkle {
 	private readonly songs: SongLibrary = new SongLibrary(new SongDataStore());
 	private readonly queue: SongQueue = new SongQueue(
 		new SongQueueStore(),
-		this.songs
+		this.songs,
+		new ClipGenerator(clipLengths)
 	);
 	private readonly aliases: AliasRegistry = new AliasRegistry(this.songs);
 

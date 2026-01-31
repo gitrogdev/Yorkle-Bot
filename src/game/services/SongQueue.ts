@@ -6,6 +6,7 @@ import type SongQueueStore from
 import type QueueData from '../../persistence/dto/QueueData.js';
 import getDate from '../../util/get-date.js';
 import shuffleArray from '../../util/shuffle-array.js';
+import type ClipGenerator from './ClipGenerator.js';
 
 export default class SongQueue {
 	private queue: Song[] = [];
@@ -23,8 +24,14 @@ export default class SongQueue {
 	 *
 	 * @param {SongQueueStore} store the data store to load the queue data from
 	 * @param {SongLibrary} lib the song library to load the songs from
+	 * @param {ClipGenerator} generator the clip generator to generate the clips
+	 * with
 	 */
-	constructor(private store: SongQueueStore, private lib: SongLibrary) {
+	constructor(
+		private store: SongQueueStore,
+		private lib: SongLibrary,
+		private generator: ClipGenerator
+	) {
 		this.ready = this.init();
 	}
 
@@ -72,6 +79,8 @@ export default class SongQueue {
 			`Successfully loaded ${inQueue} song${inQueue === 1 ? '' : 's'} `
 			+ `into the queue (${this.played.length} already played)`
 		);
+
+		this.advance();
 	}
 
 	/**
@@ -94,7 +103,7 @@ export default class SongQueue {
 	 * @returns {Promise<void>} a Promise that resolves when the advance has
 	 * finished to prevent simultaneous calls
 	 */
-	private async advance() {
+	private async advance(): Promise<void> {
 		if (this.advanceDebounce) return this.advanceDebounce;
 
 		this.advanceDebounce = (async () => {
@@ -116,6 +125,10 @@ export default class SongQueue {
 					+ 'songs.'
 				);
 			}
+
+			this.generator.generate(this.queue[0], this.day);
+
+			console.log('Successfully advanced the queue.');
 			this.save();
 		})().finally(() => this.advanceDebounce = null);
 
