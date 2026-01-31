@@ -3,6 +3,7 @@ import { dehexify } from '../../util/hex-string.js';
 import type AliasRegistry from '../services/AliasRegistry.js';
 import type SongLibrary from '../services/SongLibrary.js';
 import Game from './Game.js';
+import type Song from './Song.js';
 
 export default class GameFactory {
 	/**
@@ -13,6 +14,18 @@ export default class GameFactory {
 	 * for guesses
 	 */
 	constructor(private songs: SongLibrary, private aliases: AliasRegistry) {}
+
+	/**
+	 * Creates a new game for a given song and day.
+	 *
+	 * @param {number} day the number of the day of the game's iteration
+	 * @param {Song} song the song to pick the clip from for this day
+	 *
+	 * @returns {Game} the game created
+	 */
+	public createGame(day: number, song: Song): Game {
+		return new Game(day, song, {}, this.aliases);
+	}
 
 	/**
 	 * Factory method to construct a new representation of a daily iteration of

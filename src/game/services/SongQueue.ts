@@ -7,6 +7,9 @@ import type QueueData from '../../persistence/dto/QueueData.js';
 import getDate from '../../util/get-date.js';
 import shuffleArray from '../../util/shuffle-array.js';
 import type ClipGenerator from './ClipGenerator.js';
+import type Game from '../entities/Game.js';
+import type GameFactory from '../entities/GameFactory.js';
+import type GameDataStore from '../../persistence/datastores/GameDataStore.js';
 
 export default class SongQueue {
 	private queue: Song[] = [];
@@ -15,6 +18,7 @@ export default class SongQueue {
 	private day!: number;
 	private index!: number;
 	private lastPlayed!: string;
+	private game!: Game;
 
 	public readonly ready: Promise<void>;
 	private advanceDebounce: Promise<void> | null = null;
@@ -22,15 +26,20 @@ export default class SongQueue {
 	/**
 	 * Creates a new song queue using the data from a provided data store.
 	 *
-	 * @param {SongQueueStore} store the data store to load the queue data from
+	 * @param {SongQueueStore} queueStore the data store to load the queue data
+	 * from
+	 * @param {GameDataStore} gameStore the data store to load the game data
+	 * from
 	 * @param {SongLibrary} lib the song library to load the songs from
 	 * @param {ClipGenerator} generator the clip generator to generate the clips
 	 * with
 	 */
 	constructor(
-		private store: SongQueueStore,
+		private queueStore: SongQueueStore,
+		private gameStore: GameDataStore,
 		private lib: SongLibrary,
-		private generator: ClipGenerator
+		private generator: ClipGenerator,
+		private gameFactory: GameFactory
 	) {
 		this.ready = this.init();
 	}
@@ -40,7 +49,7 @@ export default class SongQueue {
 	 */
 	private async init() {
 		await this.lib.ready;
-		const data = this.store.load() || SongQueue.defaultData();
+		const data = this.queueStore.load() || SongQueue.defaultData();
 
 		if (data.queue.length > 0) for (
 			let i = 0; i < data.queue.length; i++
@@ -80,7 +89,10 @@ export default class SongQueue {
 			+ `into the queue (${this.played.length} already played)`
 		);
 
-		this.advance();
+		const today = getDate();
+		if (today === this.lastPlayed) this.game = this.gameFactory.fromJson(
+			this.gameStore.load(this.day)
+		); else this.advance();
 	}
 
 	/**
@@ -110,6 +122,8 @@ export default class SongQueue {
 			const today = getDate();
 			if (today === this.lastPlayed) return;
 
+			if (this.game) this.gameStore.save(this.game);
+
 			this.lastPlayed = today;
 			this.day++;
 
@@ -127,6 +141,9 @@ export default class SongQueue {
 			}
 
 			this.generator.generate(this.queue[0], this.day);
+
+			this.game = this.gameFactory.createGame(this.day, this.queue[0]);
+			this.gameStore.save(this.game);
 
 			console.log('Successfully advanced the queue.');
 			this.save();
@@ -148,7 +165,7 @@ export default class SongQueue {
 		hexifyQueue(this.played);
 		hexifyQueue(this.queue);
 
-		this.store.save({
+		this.queueStore.save({
 			index: this.index,
 			day: this.day,
 			lastPlayed: this.lastPlayed,
