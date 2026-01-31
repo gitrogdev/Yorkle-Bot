@@ -16,6 +16,7 @@ export default class SongQueue {
 	private lastPlayed!: string;
 
 	public readonly ready: Promise<void>;
+	private advanceDebounce: Promise<void> | null = null;
 
 	/**
 	 * Creates a new song queue using the data from a provided data store.
@@ -88,6 +89,40 @@ export default class SongQueue {
 	}
 
 	/**
+	 * Advances the queue, and reshuffles it if the end is reached.
+	 *
+	 * @returns {Promise<void>} a Promise that resolves when the advance has
+	 * finished to prevent simultaneous calls
+	 */
+	private async advance() {
+		if (this.advanceDebounce) return this.advanceDebounce;
+
+		this.advanceDebounce = (async () => {
+			const today = getDate();
+			if (today === this.lastPlayed) return;
+
+			this.lastPlayed = today;
+			this.day++;
+
+			if (this.queue.length > 0) {
+				this.played.push(this.queue.shift()!);
+				this.index++;
+			} else {
+				this.queue.push(...this.played);
+				this.played.length = 0;
+				shuffleArray(this.queue);
+				console.log(
+					'Successfully reached end of queue and reshuffled all '
+					+ 'songs.'
+				);
+			}
+			this.save();
+		})().finally(() => this.advanceDebounce = null);
+
+		return this.advanceDebounce;
+	}
+
+	/**
 	 * Packages the queue data and saves it to file.
 	 */
 	private save() {
@@ -106,5 +141,16 @@ export default class SongQueue {
 			lastPlayed: this.lastPlayed,
 			queue: hexifiedQueue
 		});
+	}
+
+	/**
+	 * Gets the song at the front of the queue.
+	 *
+	 * @returns {Promise<Song>} a Promise of the song at the front of the queue
+	 * that resolves once queue advancement has completed
+	 */
+	public async getSong(): Promise<Song> {
+		await this.advance();
+		return this.queue[0];
 	}
 }
