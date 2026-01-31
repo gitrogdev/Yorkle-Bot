@@ -1,7 +1,6 @@
 import AliasRegistry from '../services/AliasRegistry.js';
 import type GameJson from '../../persistence/dto/GameJson.js';
 import type GameResults from '../../persistence/dto/GameResults.js';
-import cleanTitle from '../../util/clean-song.js';
 import { hexify } from '../../util/hex-string.js';
 import type Song from './Song.js';
 
@@ -17,13 +16,14 @@ export default class Game {
 	 * used by the game and their aliases
 	 */
 	constructor(
-		private day: number,
-		private song: Song,
+		public readonly day: number,
+		public readonly song: Song,
 		private results: GameResults,
 		private aliases: AliasRegistry
 	) {
 		if (process.env.DEV_MODE) console.log(
-			`Successfully started game with "${song.artist} - ${song.title}"`
+			`Successfully started game Yorkle #${day} with `
+			+ `"${song.artist} - ${song.title}"`
 		);
 	}
 
@@ -45,21 +45,19 @@ export default class Game {
 	 * (if it is a known song title) and correct (if it is the correct song for
 	 * this iteration of the game).
 	 *
-	 * @param {string} guess the song title the player guessed
+	 * @param {string} guess the cleaned song title the player guessed
 	 *
 	 * @returns {Song | null} the Song the player guessed, or `null` if
-	 * the song title is not reecognized
+	 * the song title is not recognized
 	 */
 	public guess(guess: string): Song | null {
-		const cleanGuess = cleanTitle(guess);
-		if (!this.aliases.isValid(cleanGuess)) {
+		if (!this.aliases.isValid(guess)) {
 			console.warn(
-				`"${guess}" is not a recognized song title! `
-				+ `(Cleaned to "${cleanGuess}")`
+				`Failed to process guess "${guess}": Not a recognized alias!`
 			);
 			return null;
 		}
 
-		return this.aliases.getSongByAlias(cleanGuess);
+		return this.aliases.getSongByAlias(guess);
 	}
 }
