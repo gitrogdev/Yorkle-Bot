@@ -2,12 +2,12 @@ import type {
 	ChatInputCommandInteraction,
 	SlashCommandBuilder
 } from 'discord.js';
-import type Yorkle from '../../../game/Yorkle.js';
+import type GameInteractionHandler from '../services/GameInteractionHandler.js';
 
 export default abstract class Command {
 	public abstract readonly data: SlashCommandBuilder;
 
-	constructor(protected game: Yorkle) {};
+	constructor(protected handler: GameInteractionHandler) {};
 
 	/**
 	 * Executes the command.

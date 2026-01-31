@@ -15,11 +15,11 @@ export default class HelloCommand extends Command {
 		)
 
 	public async execute(interaction: ChatInputCommandInteraction) {
-		await interaction.reply(
+		await interaction.reply(`
 			'aaaonnnooohhoonnnnoohhoonnoohho (kidaee kidaee kidaee baba) '
 			+ 'aoohnnoohooonnhhnooaaohoonnhhoohooaoohoonooo(kidaee kidaee '
 			+ 'kidaee baba)'
-		).catch((err) => {
+		`).catch((err) => {
 			console.error(`Failed to respond to /hello interaction: ${err}`);
 		});
 	}

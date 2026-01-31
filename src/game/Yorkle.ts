@@ -23,7 +23,7 @@ export default class Yorkle {
 		new ClipGenerator(clipLengths),
 		new GameFactory(this.songs, this.aliases, this.gameStore)
 	);
-	private readonly sessions = new SessionManager(clipLengths, this.queue);
+	public readonly sessions = new SessionManager(clipLengths, this.queue);
 
 	public readonly ready = this.init();
 

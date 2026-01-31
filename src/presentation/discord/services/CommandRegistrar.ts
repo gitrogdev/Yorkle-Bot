@@ -2,18 +2,20 @@ import type Command from '../models/Command.js';
 import HelloCommand from '../commands/HelloCommand.js';
 import type CommandRegistry from '../models/CommandRegistry.js';
 import pluralize from '../../../util/pluralize.js';
-import type Yorkle from '../../../game/Yorkle.js';
 import {
 	REST,
 	Routes,
 	type RESTPostAPIChatInputApplicationCommandsJSONBody
 } from 'discord.js';
+import NewGameCommand from '../commands/NewGameCommand.js';
+import type GameInteractionHandler from './GameInteractionHandler.js';
 
 export default class CommandRegistrar {
 	private static readonly COMMAND_TYPES: Array<
-		new (game: Yorkle) => Command
+		new (handler: GameInteractionHandler) => Command
 	> = [
-			HelloCommand
+			HelloCommand,
+			NewGameCommand
 		];
 	private readonly rest: REST;
 
@@ -50,13 +52,16 @@ export default class CommandRegistrar {
 	/**
 	 * Builds the commands for the bot and returns an object containing them.
 	 *
+	 * @param {GameInteractionHandler} handler the handler for connecting
+	 * Discord interactions to the game logic
+	 *
 	 * @returns {CommandRegistry} an object containing the built commands
 	 */
-	public register(game: Yorkle): CommandRegistry {
+	public register(handler: GameInteractionHandler): CommandRegistry {
 		const commands: CommandRegistry = {};
 		const registered = [];
 		for (const commandType of CommandRegistrar.COMMAND_TYPES) {
-			const command = new commandType(game);
+			const command = new commandType(handler);
 			commands[command.data.name] = command;
 			registered.push(command.data.toJSON());
 		}

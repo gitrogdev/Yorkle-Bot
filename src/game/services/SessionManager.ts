@@ -1,4 +1,5 @@
 import Session from '../entities/Session.js';
+import type OpenSessionResponse from '../model/OpenSessionResponse.js';
 import type UserIdentity from '../model/UserIdentity.js';
 import type SongQueue from './SongQueue.js';
 
@@ -33,16 +34,18 @@ export default class SessionManager {
 	 *
 	 * @param {UserIdentity} user the user opening the session
 	 *
-	 * @returns {Promise<Session | null>} a Promise of the Session opened, or
-	 * null if one was already open for this user
+	 * @returns {Promise<OpenSessionResponse>} a Promise of the open session
+	 * response, containing the session if opened
 	 */
-	public async open(user: UserIdentity): Promise<Session | null> {
+	public async open(user: UserIdentity): Promise<OpenSessionResponse> {
 		if (this.sessions.has(user.id)) {
 			console.error(
 				`Failed to open session for ${user.name}: Session already open `
 				+ `with ID ${user.id}!`
 			);
-			return null;
+			return {
+				result: 'COLLISION'
+			};
 		}
 
 		const game = await this.queue.getGame();
@@ -51,7 +54,9 @@ export default class SessionManager {
 				`Failed to open session for ${user.name}: User with `
 				+ `ID ${user.id} has already played Yorkle #${game.day}!`
 			);
-			return null;
+			return {
+				result: 'PLAYED'
+			};
 		}
 
 		const session = new Session(
@@ -61,7 +66,10 @@ export default class SessionManager {
 			this.close
 		);
 		this.sessions.set(user.id, session);
-		return session;
+		return {
+			result: 'OPEN',
+			session: session
+		};
 	}
 
 	/**

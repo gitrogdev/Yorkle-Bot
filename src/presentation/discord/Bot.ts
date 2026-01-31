@@ -8,6 +8,7 @@ import StatusCycler from './presence/StatusCycler.js';
 
 import statuses from '../../config/statuses.json' with { type: 'json' };
 import Yorkle from '../../game/Yorkle.js';
+import GameInteractionHandler from './services/GameInteractionHandler.js';
 
 export default class Bot {
 	private game!: Yorkle;
@@ -36,7 +37,7 @@ export default class Bot {
 		await this.game.ready;
 
 		const commandRouter = new CommandRouter(
-			this.registrar.register(this.game)
+			this.registrar.register(new GameInteractionHandler(this.game))
 		);
 		const statusCycler = new StatusCycler(statuses, 300_000);
 

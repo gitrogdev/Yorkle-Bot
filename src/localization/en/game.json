@@ -1,0 +1,5 @@
+{
+	"game.sessionopened": "Started a session of Yorkle. Please see your Direct Messages to play.",
+	"game.sessioncollision": "You already have an open session of Yorkle.",
+	"game.playedtoday": "You have already played today's puzzle! Come back tomorrow to play again!"
+}
