@@ -34,7 +34,7 @@ export default class GameDataStore {
 	public save(game: Game) {
 		const data = game.toJson();
 		fs.promises.writeFile(
-			path.join(DAYS_PATH, `yorkle-day${padDay(data.day)}`),
+			path.join(DAYS_PATH, `yorkle-day${padDay(data.day)}.json`),
 			JSON.stringify(data),
 			'utf-8'
 		).then(() => console.log(
