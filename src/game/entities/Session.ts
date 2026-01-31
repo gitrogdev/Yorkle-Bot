@@ -1,12 +1,14 @@
 import cleanTitle from '../../util/clean-song.js';
 import type GuessResponse from '../model/GuessResponse.js';
 import { GuessResult } from '../model/GuessResult.js';
+import { SEQUENCE_CHARACTERS } from '../model/SequenceCharacters.js';
 import type UserIdentity from '../model/UserIdentity.js';
 import type Game from './Game.js';
 import type Song from './Song.js';
 
 export default class Session {
 	private guesses: Set<Song> = new Set();
+	private guessSequence: string = '';
 
 	/**
 	 * Creates a new session of the daily game for an individual user.
@@ -40,10 +42,12 @@ export default class Session {
 		const result = guessedSong === this.game.song ? GuessResult.Correct :
 			guessedSong === null ? GuessResult.Invalid :
 				this.guesses.has(guessedSong) ? GuessResult.Repeat :
-					this.guesses.size + 1 > this.maxGuesses ?
+					this.guessSequence.length + 1 > this.maxGuesses ?
 						GuessResult.OutOfGuesses : GuessResult.Incorrect;
 		const over = result === GuessResult.Correct ||
 			result === GuessResult.OutOfGuesses;
+
+		this.guessSequence += SEQUENCE_CHARACTERS[result];
 
 		if (result === GuessResult.Incorrect) this.guesses.add(guessedSong!);
 		else if (over) console.log('placeholder');
