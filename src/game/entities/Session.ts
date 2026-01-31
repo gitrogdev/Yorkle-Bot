@@ -50,15 +50,15 @@ export default class Session {
 
 		this.guessSequence += SEQUENCE_CHARACTERS[result];
 
-		if (result === GuessResult.Incorrect) this.guesses.add(guessedSong!);
-		else if (over) console.log('placeholder');
-
 		console.log(
 			`Successfully processed guess from ${this.user.name}. Guess: `
 			+ `${guess} (cleaned to ${cleanGuess}), Result: ${result},`
 			+ `Sequence: ${this.guessSequence} (${this.guessSequence.length}/`
 			+ `${pluralize('guess', this.maxGuesses, 'es')} remaining)`
 		);
+
+		if (result === GuessResult.Incorrect) this.guesses.add(guessedSong!);
+		else if (over) console.log('placeholder');
 
 		return {
 			day: this.game.day,

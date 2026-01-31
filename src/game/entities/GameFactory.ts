@@ -1,3 +1,4 @@
+import type GameDataStore from '../../persistence/datastores/GameDataStore.js';
 import type GameJson from '../../persistence/dto/GameJson.js';
 import { dehexify } from '../../util/hex-string.js';
 import type AliasRegistry from '../services/AliasRegistry.js';
@@ -12,8 +13,13 @@ export default class GameFactory {
 	 * @param {SongLibrary} songs the song library to use for the games
 	 * @param {AliasRegistry} aliases the registry of aliases to songs to use
 	 * for guesses
+	 * @param {GameDataStore} store the data store to store game data with
 	 */
-	constructor(private songs: SongLibrary, private aliases: AliasRegistry) {}
+	constructor(
+		private songs: SongLibrary,
+		private aliases: AliasRegistry,
+		private store: GameDataStore
+	) {}
 
 	/**
 	 * Creates a new game for a given song and day.
@@ -24,7 +30,7 @@ export default class GameFactory {
 	 * @returns {Game} the game created
 	 */
 	public createGame(day: number, song: Song): Game {
-		return new Game(day, song, {}, this.aliases);
+		return new Game(day, song, {}, this.aliases, this.store);
 	}
 
 	/**
@@ -40,7 +46,8 @@ export default class GameFactory {
 			json.day,
 			this.songs.getSong(dehexify(json.song)),
 			json.players,
-			this.aliases
+			this.aliases,
+			this.store
 		);
 	}
 }

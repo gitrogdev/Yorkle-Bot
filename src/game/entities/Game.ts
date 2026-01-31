@@ -3,6 +3,7 @@ import type GameJson from '../../persistence/dto/GameJson.js';
 import type GameResults from '../../persistence/dto/GameResults.js';
 import { hexify } from '../../util/hex-string.js';
 import type Song from './Song.js';
+import type GameDataStore from '../../persistence/datastores/GameDataStore.js';
 
 export default class Game {
 	/**
@@ -13,13 +14,15 @@ export default class Game {
 	 * @param {GameResults} results the results of this day of the
 	 * game
 	 * @param {AliasRegistry} aliases the alias registry containing the songs
-	 * used by the game and their aliases
+	 * used by the game and their
+	 * @param {GameDataStore} store the data store to store game data with
 	 */
 	constructor(
 		public readonly day: number,
 		public readonly song: Song,
 		private results: GameResults,
-		private aliases: AliasRegistry
+		private aliases: AliasRegistry,
+		private store: GameDataStore
 	) {
 		if (process.env.DEV_MODE) console.log(
 			`Successfully started game Yorkle #${day} with `
@@ -38,6 +41,17 @@ export default class Game {
 			song: hexify(this.song.filename),
 			players: this.results
 		};
+	}
+
+	/**
+	 * Finishes the game for a user and saves the game data to file.
+	 *
+	 * @param {number} id the user ID of the user finishing the game
+	 * @param {string} sequence the sequence string of guesses the user made
+	 */
+	public finish(id: string, sequence: string) {
+		this.results[id] = { sequence: sequence };
+		this.store.save(this);
 	}
 
 	/**

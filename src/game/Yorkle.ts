@@ -14,12 +14,13 @@ export default class Yorkle {
 	private readonly guilds: GuildList = new GuildList(new GuildDataStore());
 	private readonly songs: SongLibrary = new SongLibrary(new SongDataStore());
 	private readonly aliases: AliasRegistry = new AliasRegistry(this.songs);
+	private readonly gameStore: GameDataStore = new GameDataStore();
 	private readonly queue: SongQueue = new SongQueue(
 		new SongQueueStore(),
-		new GameDataStore(),
+		this.gameStore,
 		this.songs,
 		new ClipGenerator(clipLengths),
-		new GameFactory(this.songs, this.aliases)
+		new GameFactory(this.songs, this.aliases, this.gameStore)
 	);
 
 	public readonly ready = this.init();
