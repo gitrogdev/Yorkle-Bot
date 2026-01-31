@@ -57,7 +57,8 @@ export default class SessionManager {
 		const session = new Session(
 			user,
 			game,
-			this.clipLengths.length
+			this.clipLengths.length,
+			this.close
 		);
 		this.sessions.set(user.id, session);
 		return session;

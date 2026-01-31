@@ -24,6 +24,6 @@ export default class DiscordClient {
 		);
 
 		await this.client.login(token);
-		new Bot(this.client).register();
+		await new Bot(this.client).register();
 	}
 }

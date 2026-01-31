@@ -10,7 +10,7 @@ import statuses from '../../config/statuses.json' with { type: 'json' };
 import Yorkle from '../../game/Yorkle.js';
 
 export default class Bot {
-	private game: Yorkle = new Yorkle();
+	private game!: Yorkle;
 
 	/**
 	 * Builds a new representation of the Discord bot.
@@ -24,7 +24,10 @@ export default class Bot {
 	/**
 	 * Binds events and builds all commands for the bot.
 	 */
-	public register(): void {
+	public async register() {
+		this.game = new Yorkle();
+		await this.game.ready;
+
 		const commandRegistrar = new CommandRegistrar();
 		const commandRouter = new CommandRouter(commandRegistrar.register());
 		const statusCycler = new StatusCycler(statuses, 300_000);
