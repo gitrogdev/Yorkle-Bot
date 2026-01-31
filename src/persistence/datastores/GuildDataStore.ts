@@ -1,15 +1,11 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
+import path from 'node:path';
+
 import type GuildInfo from '../dto/GuildInfo.js';
 import type Guild from '../../game/entities/Guild.js';
+import { GUILDS_PATH } from '../../config/paths.js';
 
 export default class GuildDataStore {
-	private static readonly GUILDS_PATH = path.join(
-		path.dirname(fileURLToPath(import.meta.url)),
-		'../../../data/guilds/'
-	);
-
 	/**
 	 * Loads data for the guilds from file.
 	 *
@@ -19,13 +15,13 @@ export default class GuildDataStore {
 	public load(): GuildInfo[] {
 		const guilds = [];
 
-		const guildFiles = fs.readdirSync(GuildDataStore.GUILDS_PATH).filter(
+		const guildFiles = fs.readdirSync(GUILDS_PATH).filter(
 			(file) => file.endsWith('.json')
 		);
 
 		for (const file of guildFiles) {
 			const contents = fs.readFileSync(
-				path.join(GuildDataStore.GUILDS_PATH, file), 'utf8'
+				path.join(GUILDS_PATH, file), 'utf8'
 			);
 			guilds.push({
 				id: path.parse(file).name.replace(/^guild-/, ''),
@@ -43,9 +39,8 @@ export default class GuildDataStore {
 	 */
 	public save(guild: Guild) {
 		fs.writeFileSync(
-			path.join(
-				GuildDataStore.GUILDS_PATH, `guild-${guild.id}.json`
-			), JSON.stringify(guild.toJson())
+			path.join(GUILDS_PATH, `guild-${guild.id}.json`),
+			JSON.stringify(guild.toJson())
 		);
 		console.log(`Successfully saved guild with ID ${guild.id} to file.`);
 	}
