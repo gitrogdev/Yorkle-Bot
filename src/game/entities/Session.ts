@@ -1,4 +1,5 @@
 import cleanTitle from '../../util/clean-song.js';
+import pluralize from '../../util/pluralize.js';
 import type GuessResponse from '../model/GuessResponse.js';
 import { GuessResult } from '../model/GuessResult.js';
 import { SEQUENCE_CHARACTERS } from '../model/SequenceCharacters.js';
@@ -51,6 +52,13 @@ export default class Session {
 
 		if (result === GuessResult.Incorrect) this.guesses.add(guessedSong!);
 		else if (over) console.log('placeholder');
+
+		console.log(
+			`Successfully processed guess from ${this.user.name}. Guess: `
+			+ `${guess} (cleaned to ${cleanGuess}), Result: ${result},`
+			+ `Sequence: ${this.guessSequence} (${this.guessSequence.length}/`
+			+ `${pluralize('guess', this.maxGuesses, 'es')} remaining)`
+		);
 
 		return {
 			day: this.game.day,
