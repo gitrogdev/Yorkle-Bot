@@ -174,13 +174,12 @@ export default class SongQueue {
 	}
 
 	/**
-	 * Gets the song at the front of the queue.
+	 * Gets today's iteration of the Yorkle puzzle.
 	 *
-	 * @returns {Promise<Song>} a Promise of the song at the front of the queue
-	 * that resolves once queue advancement has completed
+	 * @returns {Promise<Game>} a Promise of today's game
 	 */
-	public async getSong(): Promise<Song> {
+	public async getGame(): Promise<Game> {
 		await this.advance();
-		return this.queue[0];
+		return this.game;
 	}
 }
