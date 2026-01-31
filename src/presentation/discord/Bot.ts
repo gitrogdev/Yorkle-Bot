@@ -11,15 +11,22 @@ import Yorkle from '../../game/Yorkle.js';
 
 export default class Bot {
 	private game!: Yorkle;
+	private registrar: CommandRegistrar;
 
 	/**
 	 * Builds a new representation of the Discord bot.
 	 *
 	 * @param {Client} client the client to bind the bot to
+	 * @param {string} token the Discord bot's secret token
+	 * @param {string} appId the application ID of the Discord application
 	 */
 	constructor(
-		private client: Client
-	) {}
+		private client: Client,
+		token: string,
+		appId: string
+	) {
+		this.registrar = new CommandRegistrar(token, appId);
+	}
 
 	/**
 	 * Binds events and builds all commands for the bot.
@@ -28,9 +35,8 @@ export default class Bot {
 		this.game = new Yorkle();
 		await this.game.ready;
 
-		const commandRegistrar = new CommandRegistrar();
 		const commandRouter = new CommandRouter(
-			commandRegistrar.register(this.game)
+			this.registrar.register(this.game)
 		);
 		const statusCycler = new StatusCycler(statuses, 300_000);
 

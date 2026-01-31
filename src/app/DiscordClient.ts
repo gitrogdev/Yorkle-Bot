@@ -18,12 +18,12 @@ export default class DiscordClient {
 	 *
 	 * @param {string} token the Discord bot's secret token
 	 */
-	async start(token: string): Promise<void> {
+	async start(token: string, appId: string): Promise<void> {
 		if (!token?.trim()) throw new Error(
 			'DISCORD_TOKEN is missing or empty.'
 		);
 
 		await this.client.login(token);
-		await new Bot(this.client).register();
+		await new Bot(this.client, token, appId).register();
 	}
 }
