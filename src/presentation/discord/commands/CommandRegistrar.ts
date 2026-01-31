@@ -43,7 +43,7 @@ export default class CommandRegistrar {
 
 		console.log(
 			`Successfully deployed ${pluralize('command', commands.length)} `
-			+ 'to Discord!'
+			+ 'to Discord.'
 		);
 	}
 
