@@ -20,13 +20,21 @@ export default class Session {
 	constructor(
 		private user: UserIdentity,
 		private game: Game,
-		private readonly maxGuesses: number
+		private readonly maxGuesses: number,
+		private close: (user: UserIdentity) => void
 	) {
 		console.log(
-			`Successsfully tarted a new session of Yorkle #${game.day} for `
+			`Successsfully opened a new session of Yorkle #${game.day} for `
 			+ `user ${user.name} with ID ${user.id}.`
 		);
 	}
+
+	/**
+	 * Gets the day number of the game the session is running.
+	 *
+	 * @returns {number} the day number of the game the session is running
+	 */
+	public getDay(): number { return this.game.day; }
 
 	/**
 	 * Takes and cleans a guess, then returns a formatted response to the user.
@@ -57,8 +65,11 @@ export default class Session {
 			+ `${pluralize('guess', this.maxGuesses, 'es')} remaining)`
 		);
 
-		if (result === GuessResult.Incorrect) this.guesses.add(guessedSong!);
-		else if (over) console.log('placeholder');
+		if (over) {
+			this.game.finish(this.user.id, this.guessSequence);
+			this.close(this.user);
+		} else if (result === GuessResult.Incorrect)
+			this.guesses.add(guessedSong!);
 
 		return {
 			day: this.game.day,

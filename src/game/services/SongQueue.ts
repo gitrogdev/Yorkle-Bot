@@ -8,7 +8,7 @@ import getDate from '../../util/get-date.js';
 import shuffleArray from '../../util/shuffle-array.js';
 import type ClipGenerator from './ClipGenerator.js';
 import type Game from '../entities/Game.js';
-import type GameFactory from '../entities/GameFactory.js';
+import type GameFactory from './GameFactory.js';
 import type GameDataStore from '../../persistence/datastores/GameDataStore.js';
 import pluralize from '../../util/pluralize.js';
 
@@ -116,6 +116,7 @@ export default class SongQueue {
 	 * finished to prevent simultaneous calls
 	 */
 	private async advance(): Promise<void> {
+		await this.ready;
 		if (this.advanceDebounce) return this.advanceDebounce;
 
 		this.advanceDebounce = (async () => {
@@ -179,6 +180,7 @@ export default class SongQueue {
 	 * @returns {Promise<Game>} a Promise of today's game
 	 */
 	public async getGame(): Promise<Game> {
+		await this.ready;
 		await this.advance();
 		return this.game;
 	}

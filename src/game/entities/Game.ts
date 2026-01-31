@@ -66,12 +66,23 @@ export default class Game {
 	 */
 	public guess(guess: string): Song | null {
 		if (!this.aliases.isValid(guess)) {
-			console.warn(
+			console.error(
 				`Failed to process guess "${guess}": Not a recognized alias!`
 			);
 			return null;
 		}
 
 		return this.aliases.getSongByAlias(guess);
+	}
+
+	/**
+	 * Checks if a user has already played this iteration of the game.
+	 *
+	 * @param {string} id the user ID to check the game results for
+	 *
+	 * @returns {boolean} whether the user has already played
+	 */
+	public hasPlayed(id: string): boolean {
+		return id in this.results;
 	}
 }

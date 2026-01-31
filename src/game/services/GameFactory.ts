@@ -1,10 +1,10 @@
 import type GameDataStore from '../../persistence/datastores/GameDataStore.js';
 import type GameJson from '../../persistence/dto/GameJson.js';
 import { dehexify } from '../../util/hex-string.js';
-import type AliasRegistry from '../services/AliasRegistry.js';
-import type SongLibrary from '../services/SongLibrary.js';
-import Game from './Game.js';
-import type Song from './Song.js';
+import type AliasRegistry from './AliasRegistry.js';
+import type SongLibrary from './SongLibrary.js';
+import Game from '../entities/Game.js';
+import type Song from '../entities/Song.js';
 
 export default class GameFactory {
 	/**
