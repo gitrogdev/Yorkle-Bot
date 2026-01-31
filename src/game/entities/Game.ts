@@ -21,7 +21,11 @@ export default class Game {
 		private song: Song,
 		private results: GameResults,
 		private aliases: AliasRegistry
-	) {}
+	) {
+		if (process.env.DEV_MODE) console.log(
+			`Successfully started game with "${song.artist} - ${song.title}"`
+		);
+	}
 
 	/**
 	 * Returns a JSON representation of the game's data.
