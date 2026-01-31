@@ -4,7 +4,7 @@ import {
 	type InteractionReplyOptions
 } from 'discord.js';
 
-import type CommandRegistry from './CommandRegistry.js';
+import type CommandRegistry from '../models/CommandRegistry.js';
 
 export default class CommandRouter {
 	private static readonly ERROR_MESSAGE: InteractionReplyOptions = {

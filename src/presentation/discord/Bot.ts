@@ -1,7 +1,7 @@
 import { type Client } from 'discord.js';
 
-import CommandRegistrar from './commands/CommandRegistrar.js';
-import CommandRouter from './commands/CommandRouter.js';
+import CommandRegistrar from './services/CommandRegistrar.js';
+import CommandRouter from './services/CommandRouter.js';
 import InteractionCreateEvent from './events/InteractionCreateEvent.js';
 import ClientReadyEvent from './events/ClientReadyEvent.js';
 import StatusCycler from './presence/StatusCycler.js';

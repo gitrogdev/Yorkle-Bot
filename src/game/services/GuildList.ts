@@ -21,7 +21,7 @@ export default class GuildList {
 		}
 
 		console.log(
-			`Successfully loaded ${pluralize('guild', loaded)} from local`
+			`Successfully loaded ${pluralize('guild', loaded)} from local `
 			+ 'files.'
 		);
 	}

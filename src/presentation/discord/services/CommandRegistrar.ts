@@ -1,6 +1,6 @@
-import type Command from './Command.js';
-import HelloCommand from './HelloCommand.js';
-import type CommandRegistry from './CommandRegistry.js';
+import type Command from '../models/Command.js';
+import HelloCommand from '../commands/HelloCommand.js';
+import type CommandRegistry from '../models/CommandRegistry.js';
 import pluralize from '../../../util/pluralize.js';
 import type Yorkle from '../../../game/Yorkle.js';
 import {

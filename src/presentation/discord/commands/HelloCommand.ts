@@ -3,7 +3,7 @@ import {
 	SlashCommandBuilder,
 	type ChatInputCommandInteraction
 } from 'discord.js';
-import Command from './Command.js';
+import Command from '../models/Command.js';
 
 export default class HelloCommand extends Command {
 	public readonly data: SlashCommandBuilder = new SlashCommandBuilder()

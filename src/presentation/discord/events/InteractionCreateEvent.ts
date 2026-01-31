@@ -1,6 +1,6 @@
 import { Events, type Client } from 'discord.js';
 
-import type CommandRouter from '../commands/CommandRouter.js';
+import type CommandRouter from '../services/CommandRouter.js';
 import DiscordEvent from './DiscordEvent.js';
 
 export default class InteractionCreateEvent extends DiscordEvent {
