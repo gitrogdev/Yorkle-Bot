@@ -5,6 +5,7 @@ import path from 'node:path';
 import { DAYS_PATH } from '../../config/paths.js';
 import padDay from '../../util/pad-day.js';
 import type Game from '../../game/entities/Game.js';
+import { hexify } from '../../util/hex-string.js';
 
 export default class GameDataStore {
 	/**
@@ -20,7 +21,7 @@ export default class GameDataStore {
 		));
 
 		return {
-			day: data.day,
+			day: ('title' in data) ? hexify(data.day) : data.day,
 			song: data.song,
 			players: data.players
 		}
