@@ -2,6 +2,7 @@ import aliases from '../../config/aliases.json' with { type: 'json' };
 import type Song from '../entities/Song.js';
 import cleanTitle from '../../util/clean-song.js';
 import SongLibrary from './SongLibrary.js';
+import pluralize from '../../util/pluralize.js';
 
 export default class AliasRegistry {
 	private aliases: Record<string, Song> = {};
@@ -40,7 +41,7 @@ export default class AliasRegistry {
 			}
 		}
 		console.log(
-			`Successfully loaded ${loaded} alias${loaded === 1 ? '' : 'es'} `
+			`Successfully loaded ${pluralize('alias', loaded, 'es')} `
 			+ 'from config.'
 		);
 	}

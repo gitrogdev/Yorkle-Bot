@@ -6,6 +6,7 @@ import { promisify } from 'node:util';
 import type Song from '../entities/Song.js';
 import { DAYS_PATH, FFMPEG_PATH, SONGS_PATH } from '../../config/paths.js';
 import padDay from '../../util/pad-day.js';
+import pluralize from '../../util/pluralize.js';
 
 export default class ClipGenerator {
 	private static execFileAsync = promisify(execFile);
@@ -46,5 +47,10 @@ export default class ClipGenerator {
 				path.join(clipsPath, `clip${i + 1}.mp3`)
 			]);
 		};
+
+		console.log(
+			'Successfully generated '
+			+ `${pluralize('new clip', this.clipLengths.length)}.`
+		);
 	}
 }

@@ -1,6 +1,7 @@
 import Song from '../entities/Song.js';
 import shuffleArray from '../../util/shuffle-array.js';
 import type SongDataStore from '../../persistence/datastores/SongDataStore.js';
+import pluralize from '../../util/pluralize.js';
 
 export default class SongLibrary {
 	private static readonly REQUIRED_FIELDS: (
@@ -47,8 +48,8 @@ export default class SongLibrary {
 		}
 
 		console.log(
-			`Successfully loaded ${this.size} song${this.size === 1 ? '' : 's'}`
-			+ ' from local files.'
+			`Successfully loaded ${pluralize('song', this.size)} from local `
+			+ 'files.'
 		);
 	}
 

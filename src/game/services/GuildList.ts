@@ -1,5 +1,6 @@
 import type GuildDataStore from
 	'../../persistence/datastores/GuildDataStore.js';
+import pluralize from '../../util/pluralize.js';
 import Guild from '../entities/Guild.js';
 
 export default class GuildList {
@@ -20,8 +21,8 @@ export default class GuildList {
 		}
 
 		console.log(
-			`Successfully loaded ${loaded} guild${loaded === 1 ? '' : 's'} `
-			+ 'from local files.'
+			`Successfully loaded ${pluralize('guild', loaded)} from local`
+			+ 'files.'
 		);
 	}
 

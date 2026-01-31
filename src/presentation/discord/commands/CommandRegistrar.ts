@@ -1,6 +1,7 @@
 import type Command from './Command.js';
 import HelloCommand from './HelloCommand.js';
 import type CommandRegistry from './CommandRegistry.js';
+import pluralize from '../../../util/pluralize.js';
 
 export default class CommandRegistrar {
 	private static readonly commandTypes: Array<new () => Command> = [
@@ -21,8 +22,8 @@ export default class CommandRegistrar {
 			registered++;
 		}
 		console.log(
-			`Successfully registered ${registered} Discord slash `
-			+ `command${registered == 1 ? '' : 's'}.`
+			'Successfully registered '
+			+ `${pluralize('Discord slash command', registered)}.`
 		);
 		return commands;
 	}

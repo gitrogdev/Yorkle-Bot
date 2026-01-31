@@ -10,6 +10,7 @@ import type ClipGenerator from './ClipGenerator.js';
 import type Game from '../entities/Game.js';
 import type GameFactory from '../entities/GameFactory.js';
 import type GameDataStore from '../../persistence/datastores/GameDataStore.js';
+import pluralize from '../../util/pluralize.js';
 
 export default class SongQueue {
 	private queue: Song[] = [];
@@ -72,21 +73,20 @@ export default class SongQueue {
 			for (const song of newSongs) this.queue.push(song);
 			shuffleArray(this.queue);
 			console.log(
-				`Successfully added ${newSongs.length} new `
-				+ `song${newSongs.length === 1 ? '' : 's'} to the queue and `
-				+ 'shuffled all unplayed songs.'
+				`Successfully added ${pluralize('song', newSongs.length)} to `
+				+ 'the queue and shuffled all unplayed songs.'
 			);
 			this.save();
 		} else if (inQueue + played > librarySize) {
 			const diff = (inQueue + played) - librarySize;
 			throw new Error(
-				`Failed to load ${diff} song${diff === 1 ? '' : 's'} from song `
+				`Failed to load ${pluralize('song', diff)} from song `
 				+ `library. (${inQueue + played} in queue, ${librarySize} in `
 				+ 'song library.'
 			);
 		} else console.log(
-			`Successfully loaded ${inQueue} song${inQueue === 1 ? '' : 's'} `
-			+ `into the queue (${this.played.length} already played)`
+			`Successfully loaded ${pluralize('song', inQueue)} into the queue `
+			+ `(${this.played.length} already played)`
 		);
 
 		const today = getDate();
