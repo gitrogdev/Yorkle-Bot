@@ -5,6 +5,7 @@ import { promisify } from 'node:util';
 
 import type Song from '../entities/Song.js';
 import { DAYS_PATH, FFMPEG_PATH, SONGS_PATH } from '../../config/paths.js';
+import padDay from '../../util/pad-day.js';
 
 export default class ClipGenerator {
 	private static execFileAsync = promisify(execFile);
@@ -30,10 +31,7 @@ export default class ClipGenerator {
 			Math.random() * (song.length - this.clipLengths.at(-1)!)
 		);
 
-		const clipsPath = path.join(
-			DAYS_PATH,
-			`day${day.toString().padStart(4, '0')}`
-		);
+		const clipsPath = path.join(DAYS_PATH, `day${padDay(day)}`);
 		await fs.promises.mkdir(clipsPath, { recursive: true });
 
 		for (let i = 0; i < this.clipLengths.length; i++) {
