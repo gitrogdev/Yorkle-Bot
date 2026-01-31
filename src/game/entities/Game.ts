@@ -11,8 +11,6 @@ export default class Game {
 	 *
 	 * @param {number} day the number of the day of the game's iteration
 	 * @param {Song} song the song to pick the clip from for this day
-	 * @param {number} timestamp the timestamp (in seconds) to start the first
-	 * clip of the song
 	 * @param {GameResults} results the results of this day of the
 	 * game
 	 * @param {AliasRegistry} aliases the alias registry containing the songs
@@ -21,7 +19,6 @@ export default class Game {
 	constructor(
 		private day: number,
 		private song: Song,
-		private timestamp: number,
 		private results: GameResults,
 		private aliases: AliasRegistry
 	) {}
@@ -35,7 +32,6 @@ export default class Game {
 		return {
 			day: this.day,
 			song: hexify(this.song.filename),
-			timestamp: this.timestamp,
 			players: this.results
 		};
 	}

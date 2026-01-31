@@ -26,7 +26,6 @@ export default class GameFactory {
 		return new Game(
 			json.day,
 			this.songs.getSong(dehexify(json.song)),
-			json.timestamp,
 			json.players,
 			this.aliases
 		);
