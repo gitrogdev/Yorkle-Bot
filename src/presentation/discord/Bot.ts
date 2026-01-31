@@ -29,7 +29,9 @@ export default class Bot {
 		await this.game.ready;
 
 		const commandRegistrar = new CommandRegistrar();
-		const commandRouter = new CommandRouter(commandRegistrar.register());
+		const commandRouter = new CommandRouter(
+			commandRegistrar.register(this.game)
+		);
 		const statusCycler = new StatusCycler(statuses, 300_000);
 
 		new InteractionCreateEvent(commandRouter).register(this.client);
