@@ -37,6 +37,8 @@ export default class GameDataStore {
 			path.join(DAYS_PATH, `yorkle-day${padDay(data.day)}`),
 			JSON.stringify(data),
 			'utf-8'
-		);
+		).then(() => console.log(
+			`Successfully saved data for game Yorkle #${data.day} to file.`
+		));
 	}
 }

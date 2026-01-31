@@ -38,10 +38,11 @@ export default class GuildDataStore {
 	 * @param {Guild} guild the guild to save to file
 	 */
 	public save(guild: Guild) {
-		fs.writeFileSync(
+		fs.promises.writeFile(
 			path.join(GUILDS_PATH, `guild-${guild.id}.json`),
 			JSON.stringify(guild.toJson())
-		);
-		console.log(`Successfully saved guild with ID ${guild.id} to file.`);
+		).then(() => console.log(
+			`Successfully saved guild with ID ${guild.id} to file.`
+		));
 	}
 }
