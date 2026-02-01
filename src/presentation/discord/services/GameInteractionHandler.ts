@@ -51,6 +51,10 @@ export default class GameInteractionHandler {
 		this.messenger.reply(interaction, this.parser.parse(
 			interaction.locale, guess, response
 		));
+
+		if (response.result === 'INCORRECT') return await this.clips.sendNext(
+			interaction, session
+		);
 	}
 
 	/**
