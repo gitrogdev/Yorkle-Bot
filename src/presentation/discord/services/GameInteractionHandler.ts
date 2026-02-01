@@ -196,5 +196,8 @@ export default class GameInteractionHandler {
 				clip: response.clip
 			}
 		));
+		if (response.result === 'SKIP') await this.sendClip(
+			interaction, session
+		);
 	}
 }
