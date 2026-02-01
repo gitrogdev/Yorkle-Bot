@@ -1,4 +1,5 @@
 {
+	"errors.commandgeneric": "An error occured while attempting to execute this command. Please report this to a developer.",
 	"errors.hasntplayed": "You have not played Yorkle #{day} yet! Use `/yorkle` to solve today's puzzle to share your results!",
 	"errors.invalidguess": "Unknown song \"{guess}\"\nTry checking for spelling mistakes, or try another song. Answers are not case or punctuation dependent.",
 	"errors.lastclip": "Unable to skip clip {clip}, this is my final clip! Make a guess using the `/guess` command!",

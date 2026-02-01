@@ -1,19 +1,16 @@
-import {
-	AttachmentBuilder,
-	type ChatInputCommandInteraction
-} from 'discord.js';
+import { type ChatInputCommandInteraction } from 'discord.js';
 
 import type Yorkle from '../../../game/Yorkle.js';
 import toUserIdentity from '../mappers/to-user-identity.js';
-import { localePluralize, localize } from '../../localization/i18n.js';
-import path from 'node:path';
-import { MEDIA_ROOT } from '../../../config/paths.js';
+import { localize } from '../../localization/i18n.js';
 import { SEQUENCE_EMOJIS } from '../models/SequenceEmojis.js';
 import type Messenger from './Messenger.js';
 import ClipPresenter from './ClipPresenter.js';
+import GuessResponseParser from './GuessResponseParser.js';
 
 export default class GameInteractionHandler {
 	private clips: ClipPresenter;
+	private parser: GuessResponseParser = new GuessResponseParser();
 
 	/**
 	 * Creates a new interface for interactions between bot commands and the
@@ -50,57 +47,8 @@ export default class GameInteractionHandler {
 
 		const response = session.guess(guess);
 
-		if (response.result === 'CORRECT' || response.result === 'NOGUESSES') {
-			if (!response.song) throw new Error(
-				'Failed to present guess response to user '
-				+ `${interaction.user.username}: Guess result was `
-				+ `${response.result}, but no song included in response!`
-			);
-			return await this.messenger.reply(interaction, {
-				content: localize(
-					response.result === 'CORRECT' ? 'game.correctguess' :
-						'game.incorrectguess',
-					interaction.locale,
-					response.result === 'CORRECT' ? {
-						numGuesses: localePluralize(
-							interaction.locale,
-							'plurals.guess',
-							response.guesses
-						)
-					} : { guess: guess }
-				) + (response.result === 'NOGUESSES' ? (
-					' ' + localize('game.loss', interaction.locale) + '\n\n'
-					+ localize('game.nospoilies', interaction.locale)
-				) : ''),
-				embeds: [{
-					author: {
-						name: response.song.artist
-					},
-					title: response.song.title,
-					description: response.song.album,
-					thumbnail: {
-						url: `attachment://${response.song.thumbnail}`
-					}
-				}],
-				files: [new AttachmentBuilder(path.join(
-					MEDIA_ROOT, response.song.thumbnail
-				))]
-			});
-		} else if (response.result === 'INCORRECT')
-			return await this.messenger.reply(
-				interaction,
-				localize(
-					'game.incorrectguess',
-					interaction.locale,
-					{ guess: guess }
-				) + ' ' + localize('game.tryagain', interaction.locale)
-			).finally(
-				async () => await this.clips.sendNext(interaction, session)
-			);
-		else return await this.messenger.reply(interaction, localize(
-			`errors.${response.result.toLowerCase()}guess`,
-			interaction.locale,
-			{ guess: guess }
+		this.messenger.reply(interaction, this.parser.parse(
+			interaction.locale, guess, response
 		));
 	}
 

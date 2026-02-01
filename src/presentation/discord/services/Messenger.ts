@@ -1,23 +1,17 @@
-import type {
-	ChatInputCommandInteraction,
-	InteractionEditReplyOptions,
-	InteractionReplyOptions,
-	MessageCreateOptions,
-	MessagePayload,
-	User
-} from 'discord.js';
+import type { ChatInputCommandInteraction, User } from 'discord.js';
 
-type EditOptions = string | MessagePayload | InteractionEditReplyOptions;
-type MessageOptions = string | MessagePayload | MessageCreateOptions;
-type ReplyOptions = string | MessagePayload | InteractionReplyOptions;
+import type { MessageOptions } from '../models/MessageOptions.js';
+import type { SafeReplyOptions } from '../models/SafeReplyOptions.js';
+import type { EditOptions } from '../models/EditOptions.js';
+import type { ReplyOptions } from '../models/ReplyOptions.js';
 
 export default class Messenger {
 	/**
 	 * Safely send a direct message to a user.
 	 *
 	 * @param {User} user the user to send a direct message to
-	 * @param {MessageOptions} options the options for the payload
-	 * containing the message's contents to send to Discord
+	 * @param {MessageOptions} options the options for the payload containing
+	 * the message's contents to send to Discord
 	 */
 	public async dm(user: User, options: MessageOptions) {
 		try {
@@ -35,12 +29,12 @@ export default class Messenger {
 	 *
 	 * @param {ChatInputCommandInteraction} interaction the interaction to
 	 * reply to
-	 * @param {ReplyPayload | EditPayload} options the options for the payload
-	 * containing the reply's contents to send to Discord
+	 * @param {SafeReplyOptions} options the options for the payload containing
+	 * the reply's contents to send to Discord
 	 */
 	public async reply(
 		interaction: ChatInputCommandInteraction,
-		options: ReplyOptions | EditOptions
+		options: SafeReplyOptions
 	) {
 		try {
 			if (interaction.deferred || interaction.replied)
