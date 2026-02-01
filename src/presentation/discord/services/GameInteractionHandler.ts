@@ -3,14 +3,15 @@ import { type ChatInputCommandInteraction } from 'discord.js';
 import type Yorkle from '../../../game/Yorkle.js';
 import toUserIdentity from '../mappers/to-user-identity.js';
 import { localize } from '../../localization/i18n.js';
-import { SEQUENCE_EMOJIS } from '../models/SequenceEmojis.js';
 import type Messenger from './Messenger.js';
 import ClipPresenter from './ClipPresenter.js';
 import GuessResponseParser from './GuessResponseParser.js';
+import SequencePresenter from './SequencePresenter.js';
 
 export default class GameInteractionHandler {
 	private clips: ClipPresenter;
 	private parser: GuessResponseParser = new GuessResponseParser();
+	private sequencePresenter: SequencePresenter = new SequencePresenter();
 
 	/**
 	 * Creates a new interface for interactions between bot commands and the
@@ -85,24 +86,15 @@ export default class GameInteractionHandler {
 		const game = await this.game.getGame();
 		const response = game.getResult(interaction.user.id);
 
-		if (response.sequence) {
-			const chars = Array.from(response.sequence);
-			const result = Array.from({ length: 6 }, (_, i) => chars[i] ?? '');
-
-			let sequence = '';
-			for (const char of result) sequence += SEQUENCE_EMOJIS[char];
-			return await this.messenger.reply(interaction, localize(
-				'game.results',
-				interaction.locale,
-				{
-					day: response.day,
-					sequence: sequence
-				}
-			));
-		} else return await this.messenger.reply(interaction, localize(
-			'errors.hasntplayed',
+		return await this.messenger.reply(interaction, localize(
+			response.sequence ? 'game.results' : 'errors.hasntplayed',
 			interaction.locale,
-			{ day: response.day }
+			{
+				day: response.day,
+				...(response.sequence ? {
+					sequence: this.sequencePresenter.build(response.sequence)
+				} : {})
+			}
 		));
 	}
 
