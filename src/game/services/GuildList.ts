@@ -57,6 +57,15 @@ export default class GuildList {
 	}
 
 	/**
+	 * Gets an array of all loaded guilds.
+	 *
+	 * @returns {string[]} an array of all loaded guilds.
+	 */
+	public getGuilds(): Guild[] {
+		return Object.values(this.guilds);
+	}
+
+	/**
 	 * Save a guild's data to file.
 	 *
 	 * @param {string} id the ID of the guild to save

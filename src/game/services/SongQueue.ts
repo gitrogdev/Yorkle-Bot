@@ -11,6 +11,7 @@ import type Game from '../entities/Game.js';
 import type GameFactory from './GameFactory.js';
 import type GameDataStore from '../../persistence/datastores/GameDataStore.js';
 import pluralize from '../../util/pluralize.js';
+import type GameResults from '../../persistence/dto/GameResults.js';
 
 export default class SongQueue {
 	private queue: Song[] = [];
@@ -40,7 +41,8 @@ export default class SongQueue {
 		private gameStore: GameDataStore,
 		private lib: SongLibrary,
 		private generator: ClipGenerator,
-		private gameFactory: GameFactory
+		private gameFactory: GameFactory,
+		private broadcastResults: (results: GameResults) => Promise<void>
 	) {
 		this.ready = this.init();
 	}
@@ -123,7 +125,10 @@ export default class SongQueue {
 			const today = getDate();
 			if (today === this.lastPlayed) return;
 
-			if (this.game) this.gameStore.save(this.game);
+			if (this.game) {
+				this.gameStore.save(this.game);
+				this.broadcastResults(this.game.getResults());
+			}
 
 			this.lastPlayed = today;
 			this.day++;

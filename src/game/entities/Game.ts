@@ -71,6 +71,15 @@ export default class Game {
 	}
 
 	/**
+	 * Gets all the results for this game.
+	 *
+	 * @returns {GameResults} all the results for this game
+	 */
+	public getResults(): GameResults {
+		return this.results;
+	}
+
+	/**
 	 * Makes a guess for the game's song, checking if the song title is valid
 	 * (if it is a known song title) and correct (if it is the correct song for
 	 * this iteration of the game).

@@ -10,6 +10,8 @@ import GuildList from './services/GuildList.js';
 import SongLibrary from './services/SongLibrary.js';
 import SongQueue from './services/SongQueue.js';
 import SessionManager from './services/SessionManager.js';
+import type BroadcastPort from './ports/BroadcastPort.js';
+import type GameResults from '../persistence/dto/GameResults.js';
 
 export default class Yorkle {
 	private readonly guilds: GuildList = new GuildList(new GuildDataStore());
@@ -21,7 +23,8 @@ export default class Yorkle {
 		this.gameStore,
 		this.songs,
 		new ClipGenerator(clipLengths),
-		new GameFactory(this.songs, this.aliases, this.gameStore)
+		new GameFactory(this.songs, this.aliases, this.gameStore),
+		this.broadcastResults.bind(this)
 	);
 	public readonly sessions = new SessionManager(clipLengths, this.queue);
 
@@ -29,9 +32,29 @@ export default class Yorkle {
 
 	public getGame = this.queue.getGame.bind(this.queue);
 
+	/**
+	 * Creates a new interface to handle all game logic for Yorkle.
+	 *
+	 * @param {BroadcastPort} broadcaster the port to broadcast messages from
+	 * the game to
+	 */
+	constructor(private readonly broadcaster: BroadcastPort) {}
+
 	private async init() {
 		await this.songs.ready;
 		await this.queue.ready;
 		await this.aliases.ready;
+	}
+
+	/**
+	 * Broadcasts the provided game results to the connected broadcaster.
+	 *
+	 * @param {GameResults} results the results from the previous day's puzzle
+	 */
+	private async broadcastResults(results: GameResults) {
+		return await this.broadcaster.sendDailyResults({
+			results: results,
+			guilds: this.guilds.getGuilds()
+		});
 	}
 }

@@ -10,6 +10,7 @@ import statuses from '../../config/statuses.json' with { type: 'json' };
 import Yorkle from '../../game/Yorkle.js';
 import GameInteractionHandler from './services/GameInteractionHandler.js';
 import Messenger from './services/Messenger.js';
+import DiscordBroadcaster from './services/DiscordBroadcaster.js';
 
 export default class Bot {
 	private game!: Yorkle;
@@ -35,7 +36,7 @@ export default class Bot {
 	 * Binds events and builds all commands for the bot.
 	 */
 	public async register() {
-		this.game = new Yorkle();
+		this.game = new Yorkle(new DiscordBroadcaster(this.messenger));
 		await this.game.ready;
 
 		const commandRouter = new CommandRouter(
