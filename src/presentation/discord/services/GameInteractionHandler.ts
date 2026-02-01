@@ -5,11 +5,10 @@ import {
 
 import type Yorkle from '../../../game/Yorkle.js';
 import toUserIdentity from '../mappers/to-user-identity.js';
-import { localize } from '../../../localization/i18n.js';
+import { localePluralize, localize } from '../../../localization/i18n.js';
 import type Session from '../../../game/entities/Session.js';
 import path from 'node:path';
 import { MEDIA_ROOT } from '../../../config/paths.js';
-import pluralize from '../../../util/pluralize.js';
 
 export default class GameInteractionHandler {
 	constructor(private game: Yorkle) {}
@@ -77,7 +76,11 @@ export default class GameInteractionHandler {
 						'game.incorrectguess',
 					interaction.locale,
 					response.result === 'CORRECT' ? {
-						numGuesses: pluralize('guess', response.guesses, 'es')
+						numGuesses: localePluralize(
+							interaction.locale,
+							'plurals.guess',
+							response.guesses
+						)
 					} : { guess: guess }
 				) + (response.result === 'NOGUESSES' ? (
 					' ' + localize('game.loss', interaction.locale) + '\n\n'
