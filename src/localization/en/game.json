@@ -1,5 +1,6 @@
 {
-	"game.sessionopened": "Started a session of Yorkle. Please see your Direct Messages to play.",
+	"game.playedtoday": "You have already played today's puzzle! Come back tomorrow to play again!",
+	"game.presentclip": "**Clip {clip}**:\n*Use* `/guess` *to guess the song or type* `/skip` *to try a longer clip before guessing.*",
 	"game.sessioncollision": "You already have an open session of Yorkle.",
-	"game.playedtoday": "You have already played today's puzzle! Come back tomorrow to play again!"
+	"game.sessionopened": "Started a session of Yorkle. Please see your Direct Messages to play."
 }

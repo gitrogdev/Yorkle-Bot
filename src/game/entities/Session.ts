@@ -1,11 +1,16 @@
+import path from 'node:path';
+
 import cleanTitle from '../../util/clean-song.js';
 import pluralize from '../../util/pluralize.js';
+import type ClipInfo from '../model/ClipInfo.js';
 import type GuessResponse from '../model/GuessResponse.js';
 import { GuessResult } from '../model/GuessResult.js';
 import { SEQUENCE_CHARACTERS } from '../model/SequenceCharacters.js';
 import type UserIdentity from '../model/UserIdentity.js';
 import type Game from './Game.js';
 import type Song from './Song.js';
+import { DAYS_PATH } from '../../config/paths.js';
+import padDay from '../../util/pad-day.js';
 
 export default class Session {
 	private guesses: Set<Song> = new Set();
@@ -27,6 +32,22 @@ export default class Session {
 			`Successsfully opened a new session of Yorkle #${game.day} for `
 			+ `user ${user.name} with ID ${user.id}.`
 		);
+	}
+
+	/**
+	 * Gets the information for the next clip of the song.
+	 *
+	 * @returns {ClipInfo} information about the next clip of the song
+	 */
+	public getClip(): ClipInfo {
+		const clip = this.guessSequence.length + 1;
+		return {
+			clip: clip,
+			path: path.join(
+				DAYS_PATH,
+				`day${padDay(this.getDay())}`, `clip${clip}.mp3`
+			)
+		}
 	}
 
 	/**
