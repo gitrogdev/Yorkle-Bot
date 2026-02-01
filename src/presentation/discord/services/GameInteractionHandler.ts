@@ -10,9 +10,19 @@ import type Session from '../../../game/entities/Session.js';
 import path from 'node:path';
 import { MEDIA_ROOT } from '../../../config/paths.js';
 import { SEQUENCE_EMOJIS } from '../models/SequenceEmojis.js';
+import type Messenger from './Messenger.js';
 
 export default class GameInteractionHandler {
-	constructor(private game: Yorkle) {}
+	/**
+	 * Creates a new interface for interactions between bot commands and the
+	 * Yorkle game.
+	 *
+	 * @param {Yorkle} game the Yorkle game for the Discord client to interact
+	 * with
+	 * @param {Messenger} messenger the messenger interface to send messages to
+	 * Discord
+	 */
+	constructor(private game: Yorkle, private messenger: Messenger) {}
 
 	/**
 	 * Sends the next audio clip to the user.
@@ -26,7 +36,7 @@ export default class GameInteractionHandler {
 		session: Session
 	) {
 		const clip = session.getClip();
-		interaction.user.send({
+		return await this.messenger.dm(interaction.user, {
 			content: localize('game.presentclip', interaction.locale, {
 				clip: clip.clip
 			}),
@@ -34,7 +44,7 @@ export default class GameInteractionHandler {
 		}).then(() => console.log(
 			`Successfully presented clip ${clip.clip} to `
 			+ `${interaction.user.username}.`
-		)).catch();
+		));
 	}
 
 	/**
@@ -49,19 +59,13 @@ export default class GameInteractionHandler {
 			toUserIdentity(interaction.user)
 		);
 
-		if (!guess) {
-			await interaction.editReply(localize(
-				'errors.noguess', interaction.locale
-			)).catch();
-			return;
-		};
+		if (!guess) return await this.messenger.reply(interaction, localize(
+			'errors.noguess', interaction.locale
+		));
 
-		if (!session) {
-			await interaction.editReply(localize(
-				'errors.nosession', interaction.locale
-			)).catch();
-			return;
-		}
+		if (!session) return await this.messenger.reply(interaction, localize(
+			'errors.nosession', interaction.locale
+		));
 
 		const response = session.guess(guess);
 
@@ -71,7 +75,7 @@ export default class GameInteractionHandler {
 				+ `${interaction.user.username}: Guess result was `
 				+ `${response.result}, but no song included in response!`
 			);
-			await interaction.editReply({
+			return await this.messenger.reply(interaction, {
 				content: localize(
 					response.result === 'CORRECT' ? 'game.correctguess' :
 						'game.incorrectguess',
@@ -100,19 +104,21 @@ export default class GameInteractionHandler {
 				files: [new AttachmentBuilder(path.join(
 					MEDIA_ROOT, response.song.thumbnail
 				))]
-			}).catch();
-		} else if (response.result === 'INCORRECT') await interaction.editReply(
-			localize(
-				'game.incorrectguess',
-				interaction.locale,
-				{ guess: guess }
-			) + ' ' + localize('game.tryagain', interaction.locale)
-		).then(() => this.sendClip(interaction, session)).catch();
-		else await interaction.editReply(localize(
+			});
+		} else if (response.result === 'INCORRECT')
+			return await this.messenger.reply(
+				interaction,
+				localize(
+					'game.incorrectguess',
+					interaction.locale,
+					{ guess: guess }
+				) + ' ' + localize('game.tryagain', interaction.locale)
+			).finally(() => this.sendClip(interaction, session));
+		else return await this.messenger.reply(interaction, localize(
 			`errors.${response.result.toLowerCase()}guess`,
 			interaction.locale,
 			{ guess: guess }
-		)).catch();
+		));
 	}
 
 	/**
@@ -126,14 +132,14 @@ export default class GameInteractionHandler {
 			toUserIdentity(interaction.user)
 		);
 
-		await interaction.editReply(localize(
+		await this.messenger.reply(interaction, localize(
 			response.result === 'OPEN' ? 'game.sessionopened' :
 				response.result === 'COLLISION' ? 'errors.sessioncollision' :
 					'errors.playedtoday',
 			interaction.locale
-		)).catch();
+		));
 
-		if (response.result === 'OPEN') this.sendClip(
+		if (response.result === 'OPEN') return await this.sendClip(
 			interaction, response.session!
 		);
 	}
@@ -154,19 +160,19 @@ export default class GameInteractionHandler {
 
 			let sequence = '';
 			for (const char of result) sequence += SEQUENCE_EMOJIS[char];
-			await interaction.editReply(localize(
+			return await this.messenger.reply(interaction, localize(
 				'game.results',
 				interaction.locale,
 				{
 					day: response.day,
 					sequence: sequence
 				}
-			)).catch();
-		} else await interaction.editReply(localize(
+			));
+		} else return await this.messenger.reply(interaction, localize(
 			'errors.hasntplayed',
 			interaction.locale,
 			{ day: response.day }
-		)).catch();
+		));
 	}
 
 	/**
@@ -180,23 +186,20 @@ export default class GameInteractionHandler {
 			toUserIdentity(interaction.user)
 		);
 
-		if (!session) {
-			await interaction.editReply(localize(
-				'errors.nosession', interaction.locale
-			)).catch();
-			return;
-		}
+		if (!session) return await this.messenger.reply(interaction, localize(
+			'errors.nosession', interaction.locale
+		));
 
 		const response = session.skip();
 
-		await interaction.editReply(localize(
+		await this.messenger.reply(interaction, localize(
 			response.result === 'SKIP' ? 'game.skipped' : 'errors.lastclip',
 			interaction.locale,
 			{
 				clip: response.clip
 			}
 		));
-		if (response.result === 'SKIP') await this.sendClip(
+		if (response.result === 'SKIP') return await this.sendClip(
 			interaction, session
 		);
 	}
