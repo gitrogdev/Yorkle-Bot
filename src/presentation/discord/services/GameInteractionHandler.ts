@@ -6,13 +6,15 @@ import {
 import type Yorkle from '../../../game/Yorkle.js';
 import toUserIdentity from '../mappers/to-user-identity.js';
 import { localePluralize, localize } from '../../localization/i18n.js';
-import type Session from '../../../game/entities/Session.js';
 import path from 'node:path';
 import { MEDIA_ROOT } from '../../../config/paths.js';
 import { SEQUENCE_EMOJIS } from '../models/SequenceEmojis.js';
 import type Messenger from './Messenger.js';
+import ClipPresenter from './ClipPresenter.js';
 
 export default class GameInteractionHandler {
+	private clips: ClipPresenter;
+
 	/**
 	 * Creates a new interface for interactions between bot commands and the
 	 * Yorkle game.
@@ -22,29 +24,8 @@ export default class GameInteractionHandler {
 	 * @param {Messenger} messenger the messenger interface to send messages to
 	 * Discord
 	 */
-	constructor(private game: Yorkle, private messenger: Messenger) {}
-
-	/**
-	 * Sends the next audio clip to the user.
-	 *
-	 * @param {ChatInputCommandInteraction} interaction the interaction with the
-	 * user to send the clip to
-	 * @param {Session} session the open session to get the clip from
-	 */
-	private async sendClip(
-		interaction: ChatInputCommandInteraction,
-		session: Session
-	) {
-		const clip = session.getClip();
-		return await this.messenger.dm(interaction.user, {
-			content: localize('game.presentclip', interaction.locale, {
-				clip: clip.clip
-			}),
-			files: [ new AttachmentBuilder(clip.path) ]
-		}).then(() => console.log(
-			`Successfully presented clip ${clip.clip} to `
-			+ `${interaction.user.username}.`
-		));
+	constructor(private game: Yorkle, private messenger: Messenger) {
+		this.clips = new ClipPresenter(this.messenger);
 	}
 
 	/**
@@ -113,7 +94,9 @@ export default class GameInteractionHandler {
 					interaction.locale,
 					{ guess: guess }
 				) + ' ' + localize('game.tryagain', interaction.locale)
-			).finally(() => this.sendClip(interaction, session));
+			).finally(
+				async () => await this.clips.sendNext(interaction, session)
+			);
 		else return await this.messenger.reply(interaction, localize(
 			`errors.${response.result.toLowerCase()}guess`,
 			interaction.locale,
@@ -139,7 +122,7 @@ export default class GameInteractionHandler {
 			interaction.locale
 		));
 
-		if (response.result === 'OPEN') return await this.sendClip(
+		if (response.result === 'OPEN') return await this.clips.sendNext(
 			interaction, response.session!
 		);
 	}
@@ -199,7 +182,7 @@ export default class GameInteractionHandler {
 				clip: response.clip
 			}
 		));
-		if (response.result === 'SKIP') return await this.sendClip(
+		if (response.result === 'SKIP') return await this.clips.sendNext(
 			interaction, session
 		);
 	}
