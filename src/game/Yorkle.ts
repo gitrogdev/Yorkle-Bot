@@ -27,6 +27,8 @@ export default class Yorkle {
 
 	public readonly ready = this.init();
 
+	public getGame = this.queue.getGame.bind(this.queue);
+
 	private async init() {
 		await this.songs.ready;
 		await this.queue.ready;

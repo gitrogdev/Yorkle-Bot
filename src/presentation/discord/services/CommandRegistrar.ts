@@ -12,6 +12,7 @@ import NewGameCommand from '../commands/NewGameCommand.js';
 import type GameInteractionHandler from './GameInteractionHandler.js';
 import GuessCommand from '../commands/GuessCommand.js';
 import SkipCommand from '../commands/SkipCommand.js';
+import ShareCommand from '../commands/ShareCommand.js';
 
 export default class CommandRegistrar {
 	private static readonly COMMAND_TYPES: Array<
@@ -20,7 +21,8 @@ export default class CommandRegistrar {
 			HelloCommand,
 			NewGameCommand,
 			GuessCommand,
-			SkipCommand
+			SkipCommand,
+			ShareCommand
 		];
 	private readonly rest: REST;
 

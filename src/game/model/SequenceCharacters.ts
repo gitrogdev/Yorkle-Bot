@@ -10,3 +10,7 @@ export const SEQUENCE_CHARACTERS: Record<GuessResult | SkipResult, string> = {
 	REPEAT: '',
 	LAST: ''
 } as const;
+
+export type SequenceCharacter = typeof SEQUENCE_CHARACTERS[
+	keyof typeof SEQUENCE_CHARACTERS
+];

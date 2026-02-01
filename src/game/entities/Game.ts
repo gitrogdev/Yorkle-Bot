@@ -4,6 +4,7 @@ import type GameResults from '../../persistence/dto/GameResults.js';
 import { hexify } from '../../util/hex-string.js';
 import type Song from './Song.js';
 import type GameDataStore from '../../persistence/datastores/GameDataStore.js';
+import type ResultsResponse from '../model/ResultsResponse.js';
 
 export default class Game {
 	/**
@@ -52,6 +53,21 @@ export default class Game {
 	public finish(id: string, sequence: string) {
 		this.results[id] = { sequence: sequence };
 		this.store.save(this);
+	}
+
+	/**
+	 * Gets the results of a finished game for a user.
+	 *
+	 * @param {number} id the user ID of the user to get the results for
+	 *
+	 * @returns {ResultsResponse} the results for the user (if they exist)
+	 * including information about the game
+	 */
+	public getResult(id: string): ResultsResponse {
+		return {
+			day: this.day,
+			sequence: this.hasPlayed(id) ? this.results[id].sequence : undefined
+		}
 	}
 
 	/**

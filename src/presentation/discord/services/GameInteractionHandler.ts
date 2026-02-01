@@ -9,6 +9,7 @@ import { localePluralize, localize } from '../../localization/i18n.js';
 import type Session from '../../../game/entities/Session.js';
 import path from 'node:path';
 import { MEDIA_ROOT } from '../../../config/paths.js';
+import { SEQUENCE_EMOJIS } from '../models/SequenceEmojis.js';
 
 export default class GameInteractionHandler {
 	constructor(private game: Yorkle) {}
@@ -135,6 +136,37 @@ export default class GameInteractionHandler {
 		if (response.result === 'OPEN') this.sendClip(
 			interaction, response.session!
 		);
+	}
+
+	/**
+	 * Attempts to share the results for today's game.
+	 *
+	 * @param {ChatInputCommandInteraction} interaction the chat input
+	 * interaction with the user sharing their game results
+	 */
+	public async shareResults(interaction: ChatInputCommandInteraction) {
+		const game = await this.game.getGame();
+		const response = game.getResult(interaction.user.id);
+
+		if (response.sequence) {
+			const chars = Array.from(response.sequence);
+			const result = Array.from({ length: 6 }, (_, i) => chars[i] ?? '');
+
+			let sequence = '';
+			for (const char of result) sequence += SEQUENCE_EMOJIS[char];
+			await interaction.editReply(localize(
+				'game.results',
+				interaction.locale,
+				{
+					day: response.day,
+					sequence: sequence
+				}
+			)).catch();
+		} else await interaction.editReply(localize(
+			'errors.hasntplayed',
+			interaction.locale,
+			{ day: response.day }
+		)).catch();
 	}
 
 	/**
