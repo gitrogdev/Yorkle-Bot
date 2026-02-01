@@ -13,6 +13,8 @@ export const GUILDS_PATH = path.join(DATA_ROOT, 'guilds');
 
 export const LOCALIZATION_PATH = path.join(SRC_ROOT, 'localization');
 
+export const MEDIA_ROOT = process.env.MEDIA_ROOT ?? path.resolve('media');
+
 export const QUEUE_PATH = path.join(DATA_ROOT, 'game-queue.json');
 
 export const SONGS_PATH = process.env.SONGS_PATH ?? path.resolve('songs');

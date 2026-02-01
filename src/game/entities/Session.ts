@@ -72,7 +72,7 @@ export default class Session {
 		const result = guessedSong === this.game.song ? GuessResult.Correct :
 			guessedSong === null ? GuessResult.Invalid :
 				this.guesses.has(guessedSong) ? GuessResult.Repeat :
-					this.guessSequence.length + 1 > this.maxGuesses ?
+					this.guessSequence.length + 1 >= this.maxGuesses ?
 						GuessResult.OutOfGuesses : GuessResult.Incorrect;
 		const over = result === GuessResult.Correct ||
 			result === GuessResult.OutOfGuesses;
@@ -81,7 +81,7 @@ export default class Session {
 
 		console.log(
 			`Successfully processed guess from ${this.user.name}. Guess: `
-			+ `${guess} (cleaned to ${cleanGuess}), Result: ${result},`
+			+ `${guess} (cleaned to ${cleanGuess}), Result: ${result}, `
 			+ `Sequence: ${this.guessSequence} (${this.guessSequence.length}/`
 			+ `${pluralize('guess', this.maxGuesses, 'es')} remaining)`
 		);
@@ -95,6 +95,7 @@ export default class Session {
 		return {
 			day: this.game.day,
 			result: result,
+			guesses: this.guessSequence.length,
 			song: over ? this.game.song : undefined
 		};
 	}

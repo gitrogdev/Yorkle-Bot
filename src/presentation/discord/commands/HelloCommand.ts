@@ -1,18 +1,20 @@
 import {
 	InteractionContextType,
 	SlashCommandBuilder,
-	type ChatInputCommandInteraction
+	type ChatInputCommandInteraction,
+	type RESTPostAPIChatInputApplicationCommandsJSONBody
 } from 'discord.js';
 import Command from '../models/Command.js';
 
 export default class HelloCommand extends Command {
-	public readonly data: SlashCommandBuilder = new SlashCommandBuilder()
-		.setName('hello')
-		.setDescription('hi thm')
-		.setContexts(
-			InteractionContextType.Guild,
-			InteractionContextType.BotDM
-		)
+	public readonly data: RESTPostAPIChatInputApplicationCommandsJSONBody =
+		new SlashCommandBuilder()
+			.setName('hello')
+			.setDescription('hi thm')
+			.setContexts(
+				InteractionContextType.Guild,
+				InteractionContextType.BotDM
+			).toJSON();
 
 	public async execute(interaction: ChatInputCommandInteraction) {
 		await interaction.reply(`

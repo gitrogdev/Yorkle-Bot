@@ -13,7 +13,11 @@ for (const locale of fs.readdirSync(LOCALIZATION_PATH)) {
 		if (!file.endsWith('.json')) continue;
 
 		const filePath = path.join(localeDir, file);
-		dictionaries[locale] = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+		dictionaries[locale] = {
+			...dictionaries[locale],
+			...JSON.parse(fs.readFileSync(filePath, 'utf-8'))
+		};
+		console.log(`Successfully loaded dictionary /${locale}/${file}.`);
 	}
 }
 

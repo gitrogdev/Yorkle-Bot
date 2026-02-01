@@ -1,0 +1,8 @@
+{
+	"errors.invalidguess": "Unknown song \"{guess}\"\nTry checking for spelling mistakes, or try another song. Answers are not case or punctuation dependent.",
+	"errors.noguess": "`/guess` command must include a guessed song! Try the `/skip` command if you're stuck!",
+	"errors.nosession": "You must have an open session of Yorkle to use this command! Use `/yorkle` to start playing!",
+	"errors.playedtoday": "You have already played today's puzzle! Come back tomorrow to play again!",
+	"errors.repeatguess": "You have already guessed \"{guess}\". Try guessing another song.",
+	"errors.sessioncollision": "You already have an open session of Yorkle."
+}

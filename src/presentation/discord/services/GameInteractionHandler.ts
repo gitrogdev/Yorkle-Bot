@@ -7,6 +7,9 @@ import type Yorkle from '../../../game/Yorkle.js';
 import toUserIdentity from '../mappers/to-user-identity.js';
 import { localize } from '../../../localization/i18n.js';
 import type Session from '../../../game/entities/Session.js';
+import path from 'node:path';
+import { MEDIA_ROOT } from '../../../config/paths.js';
+import pluralize from '../../../util/pluralize.js';
 
 export default class GameInteractionHandler {
 	constructor(private game: Yorkle) {}
@@ -35,6 +38,80 @@ export default class GameInteractionHandler {
 	}
 
 	/**
+	 * Makes a guess and presents the response to the user.
+	 *
+	 * @param {ChatInputCommandInteraction} interaction the chat input
+	 * interaction with the user making the guess
+	 */
+	public async makeGuess(interaction: ChatInputCommandInteraction) {
+		const guess = interaction.options.getString('song');
+		const session = this.game.sessions.getSession(
+			toUserIdentity(interaction.user)
+		);
+
+		if (!guess) {
+			await interaction.editReply(localize(
+				'errors.noguess', interaction.locale
+			)).catch();
+			return;
+		};
+
+		if (!session) {
+			await interaction.editReply(localize(
+				'errors.nosession', interaction.locale
+			)).catch();
+			return;
+		}
+
+		const response = session.guess(guess);
+
+		if (response.result === 'CORRECT' || response.result === 'NOGUESSES') {
+			if (!response.song) throw new Error(
+				'Failed to present guess response to user '
+				+ `${interaction.user.username}: Guess result was `
+				+ `${response.result}, but no song included in response!`
+			);
+			await interaction.editReply({
+				content: localize(
+					response.result === 'CORRECT' ? 'game.correctguess' :
+						'game.incorrectguess',
+					interaction.locale,
+					response.result === 'CORRECT' ? {
+						numGuesses: pluralize('guess', response.guesses, 'es')
+					} : { guess: guess }
+				) + (response.result === 'NOGUESSES' ? (
+					' ' + localize('game.loss', interaction.locale) + '\n\n'
+					+ localize('game.nospoilies', interaction.locale)
+				) : ''),
+				embeds: [{
+					author: {
+						name: response.song.artist
+					},
+					title: response.song.title,
+					description: response.song.album,
+					thumbnail: {
+						url: `attachment://${response.song.thumbnail}`
+					}
+				}],
+				files: [new AttachmentBuilder(path.join(
+					MEDIA_ROOT, response.song.thumbnail
+				))]
+			}).catch();
+		} else if (response.result === 'INCORRECT') await interaction.editReply(
+			localize(
+				'game.incorrectguess',
+				interaction.locale,
+				{ guess: guess }
+			) + ' ' + localize('game.tryagain', interaction.locale)
+		).then(() => this.sendClip(interaction, session)).catch();
+		else await interaction.editReply(localize(
+			`errors.${response.result.toLowerCase()}guess`,
+			interaction.locale,
+			{ guess: guess }
+		)).catch();
+	}
+
+	/**
 	 * Attempts to start a new session of the game for a user.
 	 *
 	 * @param {ChatInputCommandInteraction} interaction the chat input
@@ -47,8 +124,9 @@ export default class GameInteractionHandler {
 
 		await interaction.editReply(localize(
 			response.result === 'OPEN' ? 'game.sessionopened' :
-				response.result === 'COLLISION' ? 'game.sessioncollision' :
-					'game.playedtoday', interaction.locale
+				response.result === 'COLLISION' ? 'errors.sessioncollision' :
+					'errors.playedtoday',
+			interaction.locale
 		)).catch();
 
 		if (response.result === 'OPEN') this.sendClip(

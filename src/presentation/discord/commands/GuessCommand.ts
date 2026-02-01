@@ -1,25 +1,26 @@
 import {
+	ChatInputCommandInteraction,
 	InteractionContextType,
 	SlashCommandBuilder,
-	type ChatInputCommandInteraction,
 	type RESTPostAPIChatInputApplicationCommandsJSONBody
 } from 'discord.js';
 import Command from '../models/Command.js';
 
-export default class NewGameCommand extends Command {
+export default class GuessCommand extends Command {
 	public readonly data: RESTPostAPIChatInputApplicationCommandsJSONBody =
 		new SlashCommandBuilder()
-			.setName('yorkle')
-			.setDescription(
-				'Play a game of Yorkle - the ultimate Yorkiverse guessing game'
+			.setName('guess')
+			.setDescription('Guess the song from the clip provided')
+			.addStringOption((option) => option.setName('song')
+				.setDescription('The song title to guess.')
+				.setRequired(true)
 			)
 			.setContexts(
-				InteractionContextType.Guild,
 				InteractionContextType.BotDM
 			).toJSON();
 
 	public async execute(interaction: ChatInputCommandInteraction) {
 		await interaction.deferReply();
-		await this.handler.newGame(interaction);
+		await this.handler.makeGuess(interaction);
 	}
 }

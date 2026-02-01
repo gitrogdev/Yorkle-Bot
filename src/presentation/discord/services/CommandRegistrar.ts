@@ -1,21 +1,24 @@
-import type Command from '../models/Command.js';
-import HelloCommand from '../commands/HelloCommand.js';
-import type CommandRegistry from '../models/CommandRegistry.js';
-import pluralize from '../../../util/pluralize.js';
 import {
 	REST,
 	Routes,
 	type RESTPostAPIChatInputApplicationCommandsJSONBody
 } from 'discord.js';
+
+import type Command from '../models/Command.js';
+import HelloCommand from '../commands/HelloCommand.js';
+import type CommandRegistry from '../models/CommandRegistry.js';
+import pluralize from '../../../util/pluralize.js';
 import NewGameCommand from '../commands/NewGameCommand.js';
 import type GameInteractionHandler from './GameInteractionHandler.js';
+import GuessCommand from '../commands/GuessCommand.js';
 
 export default class CommandRegistrar {
 	private static readonly COMMAND_TYPES: Array<
 		new (handler: GameInteractionHandler) => Command
 	> = [
 			HelloCommand,
-			NewGameCommand
+			NewGameCommand,
+			GuessCommand
 		];
 	private readonly rest: REST;
 
@@ -63,7 +66,7 @@ export default class CommandRegistrar {
 		for (const commandType of CommandRegistrar.COMMAND_TYPES) {
 			const command = new commandType(handler);
 			commands[command.data.name] = command;
-			registered.push(command.data.toJSON());
+			registered.push(command.data);
 		}
 		console.log(
 			'Successfully registered '

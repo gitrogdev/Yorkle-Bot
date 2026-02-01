@@ -63,7 +63,7 @@ export default class SessionManager {
 			user,
 			game,
 			this.clipLengths.length,
-			this.close
+			this.close.bind(this)
 		);
 		this.sessions.set(user.id, session);
 		return {

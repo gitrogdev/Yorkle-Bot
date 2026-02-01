@@ -1,11 +1,12 @@
 import type {
 	ChatInputCommandInteraction,
-	SlashCommandBuilder
+	RESTPostAPIChatInputApplicationCommandsJSONBody
 } from 'discord.js';
 import type GameInteractionHandler from '../services/GameInteractionHandler.js';
 
 export default abstract class Command {
-	public abstract readonly data: SlashCommandBuilder;
+	public abstract readonly data:
+		RESTPostAPIChatInputApplicationCommandsJSONBody;
 
 	constructor(protected handler: GameInteractionHandler) {};
 
