@@ -11,6 +11,8 @@ import type Game from './Game.js';
 import type Song from './Song.js';
 import { DAYS_PATH } from '../../config/paths.js';
 import padDay from '../../util/pad-day.js';
+import { SkipResult } from '../model/SkipResult.js';
+import type SkipResponse from '../model/SkipResponse.js';
 
 export default class Session {
 	private guesses: Set<Song> = new Set();
@@ -29,7 +31,7 @@ export default class Session {
 		private close: (user: UserIdentity) => void
 	) {
 		console.log(
-			`Successsfully opened a new session of Yorkle #${game.day} for `
+			`Successfully opened a new session of Yorkle #${game.day} for `
 			+ `user ${user.name} with ID ${user.id}.`
 		);
 	}
@@ -97,6 +99,27 @@ export default class Session {
 			result: result,
 			guesses: this.guessSequence.length,
 			song: over ? this.game.song : undefined
+		};
+	}
+
+	/**
+	 * Attempts to skip the current clip to receive the next one.
+	 * The last clip in the puzzle can not be skipped.
+	 *
+	 * @returns {SkipResponse} the response to the user based on whether
+	 * skipping the song succeeded
+	 */
+	public skip(): SkipResponse {
+		const result = this.guessSequence.length + 1 >= this.maxGuesses ?
+			SkipResult.Last : SkipResult.Skip;
+
+		this.guessSequence += SEQUENCE_CHARACTERS[result];
+
+		return {
+			result: result,
+			clip: this.guessSequence.length + (
+				result === SkipResult.Last ? 1 : 0
+			)
 		};
 	}
 }

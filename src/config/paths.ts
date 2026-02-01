@@ -11,7 +11,9 @@ export const FFMPEG_PATH =
 
 export const GUILDS_PATH = path.join(DATA_ROOT, 'guilds');
 
-export const LOCALIZATION_PATH = path.join(SRC_ROOT, 'localization');
+export const LOCALIZATION_PATH = path.join(
+	SRC_ROOT, 'presentation', 'localization'
+);
 
 export const MEDIA_ROOT = process.env.MEDIA_ROOT ?? path.resolve('media');
 

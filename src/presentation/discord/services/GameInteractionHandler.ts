@@ -5,7 +5,7 @@ import {
 
 import type Yorkle from '../../../game/Yorkle.js';
 import toUserIdentity from '../mappers/to-user-identity.js';
-import { localePluralize, localize } from '../../../localization/i18n.js';
+import { localePluralize, localize } from '../../localization/i18n.js';
 import type Session from '../../../game/entities/Session.js';
 import path from 'node:path';
 import { MEDIA_ROOT } from '../../../config/paths.js';
@@ -135,5 +135,34 @@ export default class GameInteractionHandler {
 		if (response.result === 'OPEN') this.sendClip(
 			interaction, response.session!
 		);
+	}
+
+	/**
+	 * Attempts to skip the current clip.
+	 *
+	 * @param {ChatInputCommandInteraction} interaction the chat input
+	 * interaction with the user skipping the clip
+	 */
+	public async skipGuess(interaction: ChatInputCommandInteraction) {
+		const session = this.game.sessions.getSession(
+			toUserIdentity(interaction.user)
+		);
+
+		if (!session) {
+			await interaction.editReply(localize(
+				'errors.nosession', interaction.locale
+			)).catch();
+			return;
+		}
+
+		const response = session.skip();
+
+		await interaction.editReply(localize(
+			response.result === 'SKIP' ? 'game.skipped' : 'errors.lastclip',
+			interaction.locale,
+			{
+				clip: response.clip
+			}
+		));
 	}
 }

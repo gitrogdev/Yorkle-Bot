@@ -11,6 +11,7 @@ import pluralize from '../../../util/pluralize.js';
 import NewGameCommand from '../commands/NewGameCommand.js';
 import type GameInteractionHandler from './GameInteractionHandler.js';
 import GuessCommand from '../commands/GuessCommand.js';
+import SkipCommand from '../commands/SkipCommand.js';
 
 export default class CommandRegistrar {
 	private static readonly COMMAND_TYPES: Array<
@@ -18,7 +19,8 @@ export default class CommandRegistrar {
 	> = [
 			HelloCommand,
 			NewGameCommand,
-			GuessCommand
+			GuessCommand,
+			SkipCommand
 		];
 	private readonly rest: REST;
 

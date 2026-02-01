@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import { LOCALIZATION_PATH } from '../config/paths.js';
+import { LOCALIZATION_PATH } from '../../config/paths.js';
 import path from 'node:path';
 import pluralizeEN from './en/pluralize.js';
 

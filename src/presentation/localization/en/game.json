@@ -5,5 +5,6 @@
 	"game.nospoilies": "-# Yorkle is a daily guessing game in which everyone guesses the same song each day. Please avoid spoilers when discussing today's answer with other players, who may not have finished today's puzzle yet.",
 	"game.presentclip": "**Clip {clip}**:\n*Use* `/guess` *to guess the song or type* `/skip` *to try a longer clip before guessing.*",
 	"game.sessionopened": "Started a session of Yorkle. Please see your Direct Messages to play.",
+	"game.skipped": "Skipping clip {clip} and advancing to the next clip.",
 	"game.tryagain": "Try again."
 }

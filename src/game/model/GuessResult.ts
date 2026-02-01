@@ -3,8 +3,7 @@ export const GuessResult = {
 	Incorrect: 'INCORRECT',
 	OutOfGuesses: 'NOGUESSES',
 	Repeat: 'REPEAT',
-	Invalid: 'INVALID',
-	Skip: 'SKIP'
+	Invalid: 'INVALID'
 
 } as const;
 
