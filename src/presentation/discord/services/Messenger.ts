@@ -1,4 +1,4 @@
-import type { ChatInputCommandInteraction, User } from 'discord.js';
+import type { ChatInputCommandInteraction, Client, User } from 'discord.js';
 
 import type { MessageOptions } from '../models/MessageOptions.js';
 import type { SafeReplyOptions } from '../models/SafeReplyOptions.js';
@@ -6,6 +6,13 @@ import type { EditOptions } from '../models/EditOptions.js';
 import type { ReplyOptions } from '../models/ReplyOptions.js';
 
 export default class Messenger {
+	/**
+	 * Builds a new service for safely sending messages.
+	 *
+	 * @param {Client} client the Discord client to use for sending messages
+	 */
+	constructor(private client: Client) {}
+
 	/**
 	 * Safely send a direct message to a user.
 	 *

@@ -5,7 +5,7 @@ import toUserIdentity from '../mappers/to-user-identity.js';
 import { localize } from '../../localization/i18n.js';
 import type Messenger from './Messenger.js';
 import ClipPresenter from './ClipPresenter.js';
-import GuessResponseBuilder from './GuessResponseBuilder.js';
+import GuessResponseBuilder from '../builders/GuessResponseBuilder.js';
 import SequencePresenter from './SequencePresenter.js';
 
 export default class GameInteractionHandler {

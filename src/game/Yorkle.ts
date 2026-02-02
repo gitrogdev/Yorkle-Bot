@@ -54,6 +54,7 @@ export default class Yorkle {
 	private async broadcastResults(results: GameResults) {
 		return await this.broadcaster.sendDailyResults({
 			results: results,
+			max: clipLengths.length,
 			guilds: this.guilds.getGuilds()
 		});
 	}

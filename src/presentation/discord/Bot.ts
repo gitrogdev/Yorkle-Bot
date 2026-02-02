@@ -15,7 +15,7 @@ import DiscordBroadcaster from './services/DiscordBroadcaster.js';
 export default class Bot {
 	private game!: Yorkle;
 	private registrar: CommandRegistrar;
-	private messenger: Messenger = new Messenger();
+	private messenger: Messenger;
 
 	/**
 	 * Builds a new representation of the Discord bot.
@@ -30,13 +30,17 @@ export default class Bot {
 		appId: string
 	) {
 		this.registrar = new CommandRegistrar(token, appId);
+		this.messenger = new Messenger(this.client);
 	}
 
 	/**
 	 * Binds events and builds all commands for the bot.
 	 */
 	public async register() {
-		this.game = new Yorkle(new DiscordBroadcaster(this.messenger));
+		this.game = new Yorkle(new DiscordBroadcaster(
+			this.client,
+			this.messenger
+		));
 		await this.game.ready;
 
 		const commandRouter = new CommandRouter(
