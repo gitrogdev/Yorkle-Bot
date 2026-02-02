@@ -41,7 +41,6 @@ export default class Bot {
 			this.client,
 			this.messenger
 		));
-		await this.game.ready;
 
 		const commandRouter = new CommandRouter(
 			this.registrar.register(new GameInteractionHandler(
@@ -53,5 +52,7 @@ export default class Bot {
 
 		new InteractionCreateEvent(commandRouter).register(this.client);
 		new ClientReadyEvent(statusCycler).register(this.client);
+
+		return await this.game.ready;
 	}
 }
