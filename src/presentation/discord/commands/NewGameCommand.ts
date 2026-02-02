@@ -5,15 +5,17 @@ import {
 	type RESTPostAPIChatInputApplicationCommandsJSONBody
 } from 'discord.js';
 import Command from '../models/Command.js';
+import { getLocalizedOptions, localize } from '../../localization/i18n.js';
 
 export default class NewGameCommand extends Command {
 	public readonly data: RESTPostAPIChatInputApplicationCommandsJSONBody =
 		new SlashCommandBuilder()
-			.setName('yorkle')
-			.setDescription(
-				'Play a game of Yorkle - the ultimate Yorkiverse guessing game'
-			)
-			.setContexts(
+			.setName(localize('commands.newgame'))
+			.setNameLocalizations(getLocalizedOptions('commands.newgame'))
+			.setDescription(localize('commands.newgame.description'))
+			.setDescriptionLocalizations(
+				getLocalizedOptions('commands.newgame.description')
+			).setContexts(
 				InteractionContextType.Guild,
 				InteractionContextType.BotDM
 			).toJSON();
