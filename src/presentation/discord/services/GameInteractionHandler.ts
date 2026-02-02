@@ -81,6 +81,40 @@ export default class GameInteractionHandler {
 	}
 
 	/**
+	 * Attempts to set a guild's channel for sharing game results.
+	 *
+	 * @param {ChatInputCommandInteraction} interaction the chat input
+	 * interaction with the user setting the channel
+	 */
+	public async setChannel(interaction: ChatInputCommandInteraction) {
+		if (!interaction.guild) return await this.messenger.reply(interaction,
+			localize(
+				'errors.commandoutsideguild',
+				interaction.locale
+			)
+		);
+
+		const channel = interaction.options.getChannel('channel')?.id ??
+			interaction.channelId;
+		const guild = this.game.getGuild(interaction.guild.id);
+		if (!guild) return await this.messenger.reply(interaction, localize(
+			'errors.noguild',
+			interaction.locale
+		));
+
+		guild.channelId = channel;
+		this.game.saveGuild(interaction.guild.id);
+
+		return await this.messenger.reply(interaction, localize(
+			'commands.channelbound',
+			interaction.locale,
+			{
+				channel: `<#${channel}>`
+			}
+		));
+	}
+
+	/**
 	 * Attempts to share the results for today's game.
 	 *
 	 * @param {ChatInputCommandInteraction} interaction the chat input

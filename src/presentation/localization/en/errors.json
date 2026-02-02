@@ -1,9 +1,11 @@
 {
 	"errors.commandgeneric": "An error occured while attempting to execute this command. Please report this to a developer.",
+	"errors.commandoutsideguild": "This command must be used in a Discord server!",
 	"errors.hasntplayed": "You have not played Yorkle #{day} yet! Use `/yorkle` to solve today's puzzle to share your results!",
 	"errors.invalidguess": "Unknown song \"{guess}\"\nTry checking for spelling mistakes, or try another song. Answers are not case or punctuation dependent.",
 	"errors.lastclip": "Unable to skip clip {clip}, this is my final clip! Make a guess using the `/guess` command!",
 	"errors.noguess": "`/guess` command must include a guessed song! Try the `/skip` command if you're stuck!",
+	"errors.noguild": "This guild is not yet connected to Yorkle! Play a game of `/yorkle` and share the results to this guild with the `/share` command to connect it!",
 	"errors.nosession": "You must have an open session of Yorkle to use this command! Use `/yorkle` to start playing!",
 	"errors.playedtoday": "You have already played today's puzzle! Come back tomorrow to play again!",
 	"errors.repeatguess": "You have already guessed \"{guess}\". Try guessing another song.",
