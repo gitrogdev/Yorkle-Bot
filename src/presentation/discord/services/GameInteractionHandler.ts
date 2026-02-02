@@ -5,12 +5,12 @@ import toUserIdentity from '../mappers/to-user-identity.js';
 import { localize } from '../../localization/i18n.js';
 import type Messenger from './Messenger.js';
 import ClipPresenter from './ClipPresenter.js';
-import GuessResponseParser from './GuessResponseParser.js';
+import GuessResponseBuilder from './GuessResponseBuilder.js';
 import SequencePresenter from './SequencePresenter.js';
 
 export default class GameInteractionHandler {
 	private clips: ClipPresenter;
-	private parser: GuessResponseParser = new GuessResponseParser();
+	private guessBuilder: GuessResponseBuilder = new GuessResponseBuilder();
 	private sequencePresenter: SequencePresenter = new SequencePresenter();
 
 	/**
@@ -48,7 +48,7 @@ export default class GameInteractionHandler {
 
 		const response = session.guess(guess);
 
-		this.messenger.reply(interaction, this.parser.parse(
+		this.messenger.reply(interaction, this.guessBuilder.build(
 			interaction.locale, guess, response
 		));
 

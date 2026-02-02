@@ -6,9 +6,9 @@ import { localePluralize, localize } from '../../localization/i18n.js';
 import type { SafeReplyOptions } from '../models/SafeReplyOptions.js';
 import { MEDIA_ROOT } from '../../../config/paths.js';
 
-export default class GuessResponseParser {
+export default class GuessResponseBuilder {
 	/**
-	 * Parses the results of a guess and returns it as options to reply to an
+	 * Builds the results of a guess and returns it as options to reply to an
 	 * interaction with.
 	 *
 	 * @param {string} locale the interaction's locale
@@ -18,7 +18,7 @@ export default class GuessResponseParser {
 	 * @returns {SafeReplyOptions} options for a payload to send as a reply to
 	 * the user
 	 */
-	public parse(
+	public build(
 		locale: string,
 		guess: string,
 		response: GuessResponse
