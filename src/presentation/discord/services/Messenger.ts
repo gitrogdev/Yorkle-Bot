@@ -1,4 +1,9 @@
-import type { ChatInputCommandInteraction, Client, User } from 'discord.js';
+import type {
+	ChatInputCommandInteraction,
+	Client,
+	TextBasedChannel,
+	User
+} from 'discord.js';
 
 import type { MessageOptions } from '../models/MessageOptions.js';
 import type { SafeReplyOptions } from '../models/SafeReplyOptions.js';
@@ -49,6 +54,36 @@ export default class Messenger {
 			else return await interaction.reply(options as ReplyOptions);
 		} catch (exception) {
 			console.warn('Failed to reply to interaction: ', exception);
+			return null;
+		}
+	}
+
+	/**
+	 * Safely sends a message to a channel.
+	 *
+	 * @param {string} channelId the ID of the Discord channel to send the
+	 * message to
+	 * @param {MessageOptions} options the options for the payload containing
+	 * the message's contents to send to Discord
+	 */
+	public async send(channelId: string, options: MessageOptions) {
+		try {
+			const channel = await this.client.channels.fetch(
+				channelId
+			) as TextBasedChannel;
+
+			if (!channel) throw new Error('Channel not found!');
+
+			if (!('send' in channel)) throw new Error(
+				'Channel is not text-based!'
+			);
+
+			return await channel.send(options);
+		} catch (exception) {
+			console.warn(
+				`Failed to send message to channel with ID ${channelId}: `,
+				exception
+			);
 			return null;
 		}
 	}

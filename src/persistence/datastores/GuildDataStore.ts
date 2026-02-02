@@ -37,8 +37,8 @@ export default class GuildDataStore {
 	 *
 	 * @param {Guild} guild the guild to save to file
 	 */
-	public save(guild: Guild) {
-		fs.promises.writeFile(
+	public async save(guild: Guild) {
+		return await fs.promises.writeFile(
 			path.join(GUILDS_PATH, `guild-${guild.id}.json`),
 			JSON.stringify(guild.toJson())
 		).then(() => console.log(

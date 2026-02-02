@@ -15,19 +15,18 @@ export default class GameResultsBuilder {
 	constructor(private client: Client) {}
 
 	/**
-	 * Builds a record of game results broadcast options to send daily results
+	 * Builds an array of game results broadcast options to send daily results
 	 * to all participating guilds.
 	 *
 	 * @param {DailyResults} results the daily results for yesterday's game
 	 *
-	 * @returns {Promise<Record<string, ResultsBroadcastOptions>>} a promise of
-	 * a record containing guild IDs as keys and game results broadcast options
-	 * as values
+	 * @returns {Promise<ResultsBroadcastOptions[]>} a promise of
+	 * an array containing game results broadcast options for each guild
 	 */
 	public async build(
 		results: DailyResults
-	): Promise<Record<string, ResultsBroadcastOptions>> {
-		const messages: Record<string, ResultsBroadcastOptions> = {};
+	): Promise<ResultsBroadcastOptions[]> {
+		const messages: ResultsBroadcastOptions[] = [];
 
 		for (const guild of results.guilds) {
 			if (!guild.channelId) {
@@ -104,8 +103,9 @@ export default class GameResultsBuilder {
 					(scoreSum / played) * 100
 				) / 100;
 
-				messages[guild.id] = {
+				messages.push({
 					channel: guild.channelId,
+					locale: discordGuild.preferredLocale,
 					i18nParams: {
 						streak: guild.streak,
 						streakEmojis: RESULTS_EMOJIS.STREAK.repeat(
@@ -115,7 +115,7 @@ export default class GameResultsBuilder {
 						avg: averageScore.toFixed(2),
 						loss: results.max + 1
 					}
-				};
+				});
 			}
 		}
 

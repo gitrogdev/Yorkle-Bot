@@ -47,7 +47,8 @@ export default class GameFactory {
 			this.songs.getSong(dehexify(json.song)),
 			json.players,
 			this.aliases,
-			this.store
+			this.store,
+			json.sentResults
 		);
 	}
 }

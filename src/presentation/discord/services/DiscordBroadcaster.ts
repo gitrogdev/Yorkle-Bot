@@ -4,6 +4,7 @@ import type DailyResults from '../../../game/model/DailyResults.js';
 import type BroadcastPort from '../../../game/ports/BroadcastPort.js';
 import type Messenger from './Messenger.js';
 import GameResultsBuilder from '../builders/GameResultsBuilder.js';
+import { localize } from '../../localization/i18n.js';
 
 export default class DiscordBroadcaster implements BroadcastPort {
 	private resultsBuilder: GameResultsBuilder;
@@ -28,6 +29,13 @@ export default class DiscordBroadcaster implements BroadcastPort {
 	public async sendDailyResults(results: DailyResults) {
 		const broadcastOptions = await this.resultsBuilder.build(results);
 
-		for (const guildId in broadcastOptions) console.log(guildId);
+		for (const options of broadcastOptions) await this.messenger.send(
+			options.channel,
+			localize(
+				'game.recap',
+				options.locale,
+				options.i18nParams
+			)
+		);
 	}
 }

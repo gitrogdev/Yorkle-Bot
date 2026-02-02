@@ -23,7 +23,8 @@ export default class Game {
 		public readonly song: Song,
 		private results: GameResults,
 		private aliases: AliasRegistry,
-		private store: GameDataStore
+		private store: GameDataStore,
+		public sentResults: boolean = false
 	) {
 		if (process.env.DEV_MODE) console.log(
 			`Successfully started game Yorkle #${day} with `
@@ -40,7 +41,8 @@ export default class Game {
 		return {
 			day: this.day,
 			song: hexify(this.song.filename),
-			players: this.results
+			players: this.results,
+			sentResults: this.sentResults
 		};
 	}
 

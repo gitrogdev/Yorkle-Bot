@@ -52,10 +52,12 @@ export default class Yorkle {
 	 * @param {GameResults} results the results from the previous day's puzzle
 	 */
 	private async broadcastResults(results: GameResults) {
-		return await this.broadcaster.sendDailyResults({
+		await this.broadcaster.sendDailyResults({
 			results: results,
 			max: clipLengths.length,
 			guilds: this.guilds.getGuilds()
 		});
+		console.log('Successfully broadcast daily results to Discord.');
+		await this.guilds.saveGuilds();
 	}
 }

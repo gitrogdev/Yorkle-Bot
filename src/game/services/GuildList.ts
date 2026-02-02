@@ -70,18 +70,18 @@ export default class GuildList {
 	 *
 	 * @param {string} id the ID of the guild to save
 	 */
-	public saveGuild(id: string) {
+	public async saveGuild(id: string) {
 		if (!(id in this.guilds)) throw new Error(
 			`No guild found in GuildList with ID ${id}!`
 		);
 
-		this.store.save(this.guilds[id]);
+		return await this.store.save(this.guilds[id]);
 	}
 
 	/**
 	 * Save all guilds' data to file.
 	 */
-	public saveGuilds() {
-		for (const id of Object.keys(this.guilds)) this.saveGuild(id);
+	public async saveGuilds() {
+		for (const id of Object.keys(this.guilds)) await this.saveGuild(id);
 	}
 }
