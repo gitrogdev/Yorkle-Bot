@@ -157,9 +157,11 @@ export default class SongQueue {
 				const yesterday = this.gameFactory.fromJson(
 					this.gameStore.load(this.game.day - 1)
 				);
-				if (!yesterday.sentResults) this.broadcastResults(
-					yesterday.getResults()
-				);
+				if (!yesterday.sentResults) {
+					this.broadcastResults(yesterday.getResults());
+					yesterday.sentResults = true;
+					this.gameStore.save(yesterday);
+				}
 			}
 
 			console.log('Successfully advanced the queue.');
