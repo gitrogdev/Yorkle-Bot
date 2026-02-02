@@ -31,6 +31,7 @@ export default class Yorkle {
 	public readonly ready = this.init();
 
 	public getGame = this.queue.getGame.bind(this.queue);
+	public joinGuild = this.guilds.joinGuild.bind(this.guilds);
 
 	/**
 	 * Creates a new interface to handle all game logic for Yorkle.

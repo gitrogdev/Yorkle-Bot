@@ -66,6 +66,18 @@ export default class GuildList {
 	}
 
 	/**
+	 * Adds a user to a guild, and creates the guild if it does not exist.
+	 *
+	 * @param {string} id the ID of the guild to add the user to
+	 * @param {string} user the ID of the user to add to the guild
+	 */
+	public joinGuild(id: string, user: string) {
+		if (!(id in this.guilds)) this.guilds[id] = new Guild(id);
+		this.guilds[id].members.add(user);
+		this.saveGuild(id);
+	}
+
+	/**
 	 * Save a guild's data to file.
 	 *
 	 * @param {string} id the ID of the guild to save

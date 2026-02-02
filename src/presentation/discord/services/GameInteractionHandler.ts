@@ -90,6 +90,11 @@ export default class GameInteractionHandler {
 		const game = await this.game.getGame();
 		const response = game.getResult(interaction.user.id);
 
+		if (interaction.guild) this.game.joinGuild(
+			interaction.guild.id,
+			interaction.user.id
+		);
+
 		return await this.messenger.reply(interaction, localize(
 			response.sequence ? 'game.results' : 'errors.hasntplayed',
 			interaction.locale,
