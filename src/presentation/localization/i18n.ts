@@ -33,6 +33,22 @@ for (const locale of fs.readdirSync(LOCALIZATION_PATH)) {
 }
 
 /**
+ * Gets a record containing all localized options for a key.
+ *
+ * @param {string} key the translation key
+ *
+ * @returns {Record<string, string>} a record containing locales as keys and the
+ * translations for the provided key as values
+ */
+export function getLocalizedOptions(key: string): Record<string, string> {
+	const options: Record<string, string> = {};
+	for (const locale in dictionaries) if (
+		locale !== 'en' && Object.hasOwn(dictionaries[locale], key)
+	) options[locale] = dictionaries[locale][key];
+	return options;
+}
+
+/**
  * Localize a string to the provided locale.
  *
  * @param {string} key the translation key

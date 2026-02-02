@@ -1,3 +1,6 @@
 {
-	"commands.channelbound": "Successfully bound the Yorkle bot to the {channel} channel."
+	"commands.channelbound": "Successfully bound the Yorkle bot to the {channel} channel.",
+	"commands.guess": "guess",
+	"commands.guess.description": "Guess the song from the clip provided",
+	"commands.guess.song": "The song title to guess."
 }
