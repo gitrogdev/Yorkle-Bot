@@ -5,7 +5,6 @@ import {
 } from 'discord.js';
 
 import type Command from '../models/Command.js';
-import HelloCommand from '../commands/HelloCommand.js';
 import type CommandRegistry from '../models/CommandRegistry.js';
 import pluralize from '../../../util/pluralize.js';
 import NewGameCommand from '../commands/NewGameCommand.js';
@@ -19,7 +18,6 @@ export default class CommandRegistrar {
 	private static readonly COMMAND_TYPES: Array<
 		new (handler: GameInteractionHandler) => Command
 	> = [
-			HelloCommand,
 			NewGameCommand,
 			GuessCommand,
 			SkipCommand,
