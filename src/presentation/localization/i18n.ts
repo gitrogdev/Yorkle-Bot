@@ -3,6 +3,7 @@ import { LOCALIZATION_PATH } from '../../config/paths.js';
 import path from 'node:path';
 import pluralizeEN from './en/pluralize.js';
 import pluralizeHR from './hr/pluralize.js';
+import pluralizeUK from './uk/pluralize.js';
 
 type Pluralizer = (
 	key: string,
@@ -11,7 +12,8 @@ type Pluralizer = (
 
 const pluralizeFunctions: Record<string, Pluralizer> = {
 	en: pluralizeEN as Pluralizer,
-	hr: pluralizeHR as Pluralizer
+	hr: pluralizeHR as Pluralizer,
+	uk: pluralizeUK as Pluralizer
 };
 
 const dictionaries: Record<string, Record<string, string>> = {};

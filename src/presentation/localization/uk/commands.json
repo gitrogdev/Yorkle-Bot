@@ -1,0 +1,22 @@
+{
+	"commands.channelbound": "Бота Yorkle успішно прив’язано до каналу {channel}.",
+	"commands.content": "контент",
+	"commands.content.description": "Показує зведення контенту, відомого Yorkle",
+	"commands.guess": "вгадати",
+	"commands.guess.description": "Вгадайте пісню за наданим уривком",
+	"commands.guess.song": "Назва пісні для вгадування",
+	"commands.newgame": "йоркль",
+	"commands.newgame.description": "Зіграйте в Йоркль — головну гру на вгадування у Йорківсесвіті",
+	"commands.randomlyric": "рядок",
+	"commands.randomlyric.description": "Надсилає випадковий рядок із пісні",
+	"commands.setgamechannel": "встановитиканалгри",
+	"commands.setgamechannel.channel": "Канал, куди бот надсилатиме результати",
+	"commands.setgamechannel.description": "Встановлює канал для публікації результатів ботом",
+	"commands.share": "поділитися",
+	"commands.share.description": "Поділіться своїм результатом за сьогоднішній Йоркль",
+	"commands.skip": "пропустити",
+	"commands.skip.description": "Пропустити поточний уривок, щоб вгадувати за довшим",
+	"commands.whennext": "наступнагра",
+	"commands.whennext.description": "Обчислює час до наступної головоломки",
+	"commands.whennext.response": "Наступний Йоркль буде доступний {timestamp}."
+}
