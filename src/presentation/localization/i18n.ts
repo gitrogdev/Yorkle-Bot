@@ -65,6 +65,9 @@ function localize(
 	params: Record<string, string | number> = {}
 ): string {
 	const lang = locale.split('-')[0];
+	if (!Object.hasOwn(dictionaries, lang)) console.log(
+		`Attempted to localize the unimplemented locale ${locale}! (${lang})`
+	);
 	const dict = (dictionaries[lang] && key in dictionaries[lang])
 		? dictionaries[lang] : dictionaries['en'] ?? {};
 
