@@ -5,6 +5,8 @@
 	"commands.guess": "guess",
 	"commands.guess.description": "Guess the song from the clip provided",
 	"commands.guess.song": "The song title to guess",
+	"commands.judgement": "judgejuryexecutioner",
+	"commands.judgement.description": "Seek judgement from the Judge, Jury, and Executioner.",
 	"commands.newgame": "yorkle",
 	"commands.newgame.description": "Play a game of Yorkle - the ultimate Yorkiverse guessing game",
 	"commands.randomlyric": "lyric",

@@ -16,6 +16,7 @@ import SetGameChannelCommand from '../commands/SetGameChannelCommand.js';
 import WhenNextCommand from '../commands/WhenNextCommand.js';
 import RandomLyricCommand from '../commands/RandomLyricCommand.js';
 import GameContentCommand from '../commands/GameContentCommand.js';
+import JudgementCommand from '../commands/JudgementCommand.js';
 
 export default class CommandRegistrar {
 	private static readonly COMMAND_TYPES: Array<
@@ -28,7 +29,8 @@ export default class CommandRegistrar {
 			SetGameChannelCommand,
 			WhenNextCommand,
 			RandomLyricCommand,
-			GameContentCommand
+			GameContentCommand,
+			JudgementCommand
 		];
 	private readonly rest: REST;
 

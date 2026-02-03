@@ -7,6 +7,7 @@ import type Messenger from './Messenger.js';
 import ClipPresenter from './ClipPresenter.js';
 import GuessResponseBuilder from '../builders/GuessResponseBuilder.js';
 import SequencePresenter from './SequencePresenter.js';
+import { LyricOption } from '../../../game/model/LyricOption.js';
 
 export default class GameInteractionHandler {
 	private clips: ClipPresenter;
@@ -41,11 +42,15 @@ export default class GameInteractionHandler {
 	 *
 	 * @param {ChatInputCommandInteraction} interaction the chat input
 	 * interaction with the user requesting the lyric
+	 * @param {LyricOption} archive the archive to get the lyric from
 +	 */
-	public async randomLyric(interaction: ChatInputCommandInteraction) {
+	public async randomLyric(
+		interaction: ChatInputCommandInteraction,
+		archive: LyricOption
+	) {
 		return await this.messenger.reply(
 			interaction,
-			await this.game.randomLyric()
+			await this.game.randomLyric(archive)
 		);
 	}
 

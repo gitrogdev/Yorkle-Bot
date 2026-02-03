@@ -8,12 +8,17 @@ export default class LyricArchive {
 	private lyrics!: string[];
 	public ready: Promise<void>;
 
-	constructor() { this.ready = this.init(); }
+	/**
+	 * Constructs a new lyric archive.
+	 *
+	 * @param {string} file the name of the file to get the lyrics from
+	 */
+	constructor(private file: string) { this.ready = this.init(); }
 
 	public async init() {
 		const lyrics = new Set<string>();
 		const lines = (await fs.promises.readFile(
-			path.join(MEDIA_ROOT, 'lyrics.txt'),
+			path.join(MEDIA_ROOT, this.file),
 			'utf-8'
 		)).split(/\r?\n/);
 

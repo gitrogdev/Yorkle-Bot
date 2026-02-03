@@ -5,6 +5,8 @@
 	"commands.guess": "pogodi",
 	"commands.guess.description": "Pogodi pjesmu iz isječka koji je pušten",
 	"commands.guess.song": "Naziv pjesme koju pogađaš",
+	"commands.judgement": "sudporotakrvnik",
+	"commands.judgement.description": "Zatraži presudu od Suca, Porote i Krvnika.",
 	"commands.newgame": "yorkle",
 	"commands.newgame.description": "Zaigraj Yorkle — ultimativnu igru pogađanja iz Yorkiversea",
 	"commands.randomlyric": "stih",

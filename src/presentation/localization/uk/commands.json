@@ -5,6 +5,8 @@
 	"commands.guess": "вгадати",
 	"commands.guess.description": "Вгадайте пісню за наданим уривком",
 	"commands.guess.song": "Назва пісні для вгадування",
+	"commands.judgement": "суддяприсяжнікат",
+	"commands.judgement.description": "Отримайте вирок від Судді, Присяжних і Ката.",
 	"commands.newgame": "йоркль",
 	"commands.newgame.description": "Зіграйте в Йоркль — головну гру на вгадування у Йорківсесвіті",
 	"commands.randomlyric": "рядок",

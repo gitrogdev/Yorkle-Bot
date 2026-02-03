@@ -8,14 +8,14 @@ import Command from '../models/Command.js';
 import { getLocalizedOptions, localize } from '../../localization/i18n.js';
 import { LyricOption } from '../../../game/model/LyricOption.js';
 
-export default class RandomLyricCommand extends Command {
+export default class JudgementCommand extends Command {
 	public readonly data: RESTPostAPIChatInputApplicationCommandsJSONBody =
 		new SlashCommandBuilder()
-			.setName(localize('commands.randomlyric'))
-			.setNameLocalizations(getLocalizedOptions('commands.randomlyric'))
-			.setDescription(localize('commands.randomlyric.description'))
+			.setName(localize('commands.judgement'))
+			.setNameLocalizations(getLocalizedOptions('commands.judgement'))
+			.setDescription(localize('commands.judgement.description'))
 			.setDescriptionLocalizations(
-				getLocalizedOptions('commands.randomlyric.description')
+				getLocalizedOptions('commands.judgement.description')
 			).setContexts(
 				InteractionContextType.Guild,
 				InteractionContextType.BotDM
@@ -23,6 +23,6 @@ export default class RandomLyricCommand extends Command {
 
 	public async execute(interaction: ChatInputCommandInteraction) {
 		await interaction.deferReply();
-		await this.handler.randomLyric(interaction, LyricOption.Lyric);
+		await this.handler.randomLyric(interaction, LyricOption.Judgement);
 	}
 }
