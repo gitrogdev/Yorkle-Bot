@@ -971,5 +971,21 @@
 	],
 	"newgeneration": [
 		"newgeneration"
+	],
+	"happysong": [
+		"happysong"
+	],
+	"brilliantlight": [
+		"tobeabrilliantlight",
+		"tobabrilliantlight",
+		"2beabrilliantlight",
+		"2babrilliantlight",
+		"beabrilliantlight",
+		"babrilliantlight",
+		"abrilliantlight",
+		"brilliantlight"
+	],
+	"sinkingship": [
+		"sinkingship"
 	]
 }
