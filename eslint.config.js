@@ -1,10 +1,18 @@
-const js = require('@eslint/js');
+import js from '@eslint/js';
+import tselint from 'typescript-eslint';
 
-module.exports = [
+export default tselint.config(
 	js.configs.recommended,
+	...tselint.configs.recommended,
+
 	{
+		files: ['**/*.ts'],
 		languageOptions: {
-			ecmaVersion: 'latest'
+			parser: tselint.parser,
+			parserOptions: {
+				ecmaVersion: 'latest',
+				sourceType: 'module'
+			}
 		},
 		rules: {
 			'arrow-spacing': ['warn', { before: true, after: true }],
@@ -17,35 +25,29 @@ module.exports = [
 			'handle-callback-err': 'off',
 			indent: ['error', 'tab'],
 			'keyword-spacing': 'error',
-			'max-len': ['warn', { 'code': 80 }],
+			'max-len': ['warn', { code: 80 }],
 			'max-nested-callbacks': ['error', { max: 4 }],
 			'max-statements-per-line': ['error', { max: 2 }],
 			'no-console': 'off',
-			'no-empty-function': 'error',
+			'no-empty-function': 'off',
+			'@typescript-eslint/no-empty-function': 'error',
+			'no-shadow': 'off',
+			'@typescript-eslint/no-shadow': ['error', { allow: ['err', 'resolve', 'reject'] }],
 			'no-floating-decimal': 'error',
 			'no-inline-comments': 'error',
 			'no-lonely-if': 'error',
 			'no-multi-spaces': 'error',
-			'no-multiple-empty-lines': [
-				'error',
-				{ max: 2, maxEOF: 1, maxBOF: 0 }
-			],
-			'no-shadow': ['error', { allow: ['err', 'resolve', 'reject'] }],
+			'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 1, maxBOF: 0 }],
 			'no-trailing-spaces': ['error'],
 			'no-var': 'error',
 			'no-undef': 'off',
 			'object-curly-spacing': ['error', 'always'],
 			'prefer-const': 'error',
 			quotes: ['error', 'single'],
-			semi: ['error', 'always'],
 			'space-before-blocks': 'error',
 			'space-before-function-paren': [
 				'error',
-				{
-					anonymous: 'never',
-					named: 'never',
-					asyncArrow: 'always'
-				}
+				{ anonymous: 'never', named: 'never', asyncArrow: 'always' }
 			],
 			'space-in-parens': 'error',
 			'space-infix-ops': 'error',
@@ -54,4 +56,4 @@ module.exports = [
 			yoda: 'error'
 		}
 	}
-];
+);

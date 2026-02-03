@@ -1,0 +1,13 @@
+{
+	"game.content": "Yorkle trenutno prepoznaje `{songs}` pjesama sa studijskih albuma, B-strana, singlova i drugih izdanja Radioheada te ostalih projekata Thoma Yorkea.\n\nLive verzije, akustične verzije, remasteri, remixevi i druge alternativne verzije pjesama izvan studijskih albuma nisu uključene.\n\n*npr. igrači neće morati razlikovati* **True Love Waits** *i* **True Love Waits (Live in Oslo)**, *ali će morati razlikovati* **Morning Bell** *i* **Morning Bell/Amnesiac.**",
+	"game.correctguess": "✅ **TOČNO** ✅\n\nPogodio/la si Yorkle u {numGuesses}! Vrati se sutra ili podijeli svoje rezultate s prijateljima pomoću `/podijeli` naredbe!",
+	"game.incorrectguess": "❌ **NETOČNO** ❌\n\n\"{guess}\" nije točan odgovor.",
+	"game.loss": "Više sreće drugi put!",
+	"game.nospoilies": "-# Yorkle je dnevna igra pogađanja u kojoj svi igrači pogađaju istu pjesmu. Molimo bez spoilera dok raspravljate o današnjem odgovoru s drugima koji možda još nisu završili današnji zadatak.",
+	"game.presentclip": "**Isječak {clip}**:\n*Upotrijebi* `/pogodi` *za pogađanje pjesme ili* `/preskoči` *za dulji isječak prije pogađanja.*",
+	"game.sessionopened": "Pokrenuta je Yorkle sesija. Provjeri svoje privatne poruke za igranje.",
+	"game.skipped": "Preskačem isječak {clip} i prelazim na sljedeći.",
+	"game.recap": "**Vaša grupa je na nizu od {streak} dana!** {streakEmojis} Evo jučerašnjih rezultata:{results}\n\n**Prosjek servera**: `{avg}`\n-# Porazi se za potrebe prosjeka računaju kao {loss}.",
+	"game.results": "Yorkle #{day}\n{sequence}\n\n-# Yorkle je ultimativna Yorkiverse igra pogađanja. Svaki dan igrači dobivaju nasumične isječke jedne pjesme i moraju je prepoznati u što manje pokušaja. Upotrijebi `/yorkle` za današnji zadatak.",
+	"game.tryagain": "Pokušaj ponovno."
+}

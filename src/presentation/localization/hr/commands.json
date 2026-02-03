@@ -1,0 +1,22 @@
+{
+	"commands.channelbound": "Yorkle bot je uspješno povezan s kanalom {channel}.",
+	"commands.content": "sadržaj",
+	"commands.content.description": "Prikazuje sažetak sadržaja koji Yorkle prepoznaje",
+	"commands.guess": "pogodi",
+	"commands.guess.description": "Pogodi pjesmu iz isječka koji je pušten",
+	"commands.guess.song": "Naziv pjesme koju pogađaš",
+	"commands.newgame": "yorkle",
+	"commands.newgame.description": "Zaigraj Yorkle — ultimativnu igru pogađanja iz Yorkiversea",
+	"commands.randomlyric": "stih",
+	"commands.randomlyric.description": "Odgovara nasumičnim stihom iz pjesme",
+	"commands.setgamechannel": "postavikanal",
+	"commands.setgamechannel.channel": "Kanal u koji će bot slati rezultate",
+	"commands.setgamechannel.description": "Postavlja kanal u koji će bot slati rezultate",
+	"commands.share": "podijeli",
+	"commands.share.description": "Podijeli svoje današnje Yorkle rezultate",
+	"commands.skip": "preskoči",
+	"commands.skip.description": "Preskoči trenutni isječak i pokušaj s duljim",
+	"commands.whennext": "sljedećaigra",
+	"commands.whennext.description": "Prikazuje koliko je vremena preostalo do sljedećeg zadatka",
+	"commands.whennext.response": "Sljedeći Yorkle bit će dostupan {timestamp}."
+}

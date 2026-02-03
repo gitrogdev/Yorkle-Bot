@@ -1,0 +1,909 @@
+{
+	"you": [
+		"u",
+		"you"
+	],
+	"creep": [
+		"imacreep",
+		"crepe",
+		"creep"
+	],
+	"howdoyou": [
+		"howdou",
+		"howdoyou"
+	],
+	"stopwhispering": [
+		"whispering",
+		"stopwhispering"
+	],
+	"thinkingaboutyou": [
+		"tay",
+		"tau",
+		"thinkinboutu",
+		"thinkinboutyou",
+		"thinkinaboutyou",
+		"thinkingboutu",
+		"thinkingboutyou",
+		"thinkingaboutu",
+		"thinkingaboutyou"
+	],
+	"anyonecanplay": [
+		"acpg",
+		"aocpg",
+		"a1cpg",
+		"anyonecanplayguitar",
+		"anyonecanplay"
+	],
+	"ripcord": [
+		"ripcord"
+	],
+	"vegetable": [
+		"veggie",
+		"vegetable"
+	],
+	"proveyourself": [
+		"proveurself",
+		"proveyourself"
+	],
+	"icant": [
+		"icannot",
+		"icant"
+	],
+	"lurgee": [
+		"lurgee"
+	],
+	"blowout": [
+		"blowout"
+	],
+	"popisdead": [
+		"popsdead",
+		"popisdead"
+	],
+	"bends": [
+		"thebends",
+		"bends"
+	],
+	"planettelex": [
+		"telex",
+		"planettelex"
+	],
+	"highdry": [
+		"highanddry",
+		"highndry",
+		"highdry"
+	],
+	"fakeplastic": [
+		"fakeplastictrees",
+		"fpt",
+		"fakeplastic"
+	],
+	"bones": [
+		"bones"
+	],
+	"nicedream": [
+		"nicedream"
+	],
+	"just": [
+		"just"
+	],
+	"ironlung": [
+		"myironlung",
+		"mil",
+		"ironlung"
+	],
+	"bulletproof": [
+		"bulletproofiwishiwas",
+		"bulletproofwishiwas",
+		"iwishiwasbulletproof",
+		"wishiwasbulletproof",
+		"bpiwiw",
+		"bulletproof"
+	],
+	"blackstar": [
+		"bstar",
+		"blackstar"
+	],
+	"sulk": [
+		"sulk"
+	],
+	"streetspirit": [
+		"streetspiritfadeout",
+		"ssfo",
+		"fadeout",
+		"streetspirit"
+	],
+	"talkshowhost": [
+		"tsh",
+		"talkshow",
+		"talkshowhost"
+	],
+	"airbag": [
+		"airbag"
+	],
+	"paranoidandroid": [
+		"paranoiddroid",
+		"thenoiddroid",
+		"paranoidandroid"
+	],
+	"homesickalien": [
+		"shsa",
+		"sha",
+		"subterraneanhomesickalien",
+		"homesickalien"
+	],
+	"exitmusic": [
+		"em4af",
+		"emfaf",
+		"exitmusic4afilm",
+		"exitmusicforafilm",
+		"exitmusic"
+	],
+	"letdown": [
+		"underrated",
+		"letdown"
+	],
+	"karmapolice": [
+		"karmapolice"
+	],
+	"fitterhappier": [
+		"fitterhappier"
+	],
+	"electioneering": [
+		"electioneering"
+	],
+	"climbingwalls": [
+		"cutw",
+		"climbingupthewalls",
+		"climbingthewalls",
+		"climbingwalls"
+	],
+	"nosurprises": [
+		"nosurprises"
+	],
+	"lucky": [
+		"lucky"
+	],
+	"tourist": [
+		"thetourist",
+		"tourist"
+	],
+	"rightplace": [
+		"eiirp",
+		"etiirp",
+		"everythinginitsrightplace",
+		"rightplace"
+	],
+	"kida": [
+		"kida"
+	],
+	"anthem": [
+		"thenationalanthem",
+		"nationalanthem",
+		"natanthem",
+		"anthem"
+	],
+	"howtodisappear": [
+		"htdc",
+		"h2dc",
+		"how2disappearcompletely",
+		"howtodisappearcompletely",
+		"disappearcompletely",
+		"how2disappear",
+		"howtodisappear"
+	],
+	"treefingers": [
+		"treefingers"
+	],
+	"optimistic": [
+		"optimistic"
+	],
+	"limbo": [
+		"inlimbo",
+		"limbo"
+	],
+	"idioteque": [
+		"idioteque"
+	],
+	"morningbell": [
+		"morningbellkida",
+		"morningbell"
+	],
+	"motionpicture": [
+		"mps",
+		"mpst",
+		"motionpicturesoundtrack",
+		"motionpicture"
+	],
+	"untitled": [
+		"untitled"
+	],
+	"packtlikesardines": [
+		"plsiactb",
+		"packt",
+		"packtlikesardinesinacrushdtinbox",
+		"packtlikesardinesinacrushedtinbox",
+		"packedlikesardinesinacrushdtinbox",
+		"packedlikesardinesinacrushedtinbox",
+		"packedlikesardines",
+		"packtlikesardines"
+	],
+	"pyramid": [
+		"pyramidsong",
+		"pyramid"
+	],
+	"pulkpull": [
+		"pprd",
+		"pulkpullrevolvingdoors",
+		"pulkpull"
+	],
+	"youandwhosearmy": [
+		"yawa",
+		"you&whosearmy",
+		"younwhosearmy",
+		"youandwhosearmy"
+	],
+	"mightbewrong": [
+		"imbw",
+		"imightbewrong",
+		"mightbewrong"
+	],
+	"knivesout": [
+		"knifesout",
+		"knivesout"
+	],
+	"morningbellamnesiac": [
+		"mba",
+		"morningbell2",
+		"morningbellamnesia",
+		"morningbellamnesiac"
+	],
+	"dollarscents": [
+		"dollarsncents",
+		"dollars&cents",
+		"dollarsandcents",
+		"dollarscents"
+	],
+	"huntingbears": [
+		"huntingbears"
+	],
+	"spinningplates": [
+		"lsp",
+		"likespinningplates",
+		"spinningplates"
+	],
+	"glasshouse": [
+		"liagh",
+		"lifeinaglasshouse",
+		"glasshouse"
+	],
+	"twotwofive": [
+		"thelukewarm",
+		"lukewarm",
+		"2+2=5",
+		"2plus2is5",
+		"2plus2isfive",
+		"twoplustwoisfive",
+		"twotwofive"
+	],
+	"sitdown": [
+		"sdsu",
+		"snakes&ladders",
+		"snakesnladders",
+		"snakesandladders",
+		"sitdownstandup",
+		"sitdown"
+	],
+	"sailtomoon": [
+		"sttm",
+		"brushthecobwebsoutofthesky",
+		"sailtothemoon",
+		"sailtomoon"
+	],
+	"backdrifts": [
+		"honeymoonisover",
+		"honeymoonsover",
+		"backdrifts"
+	],
+	"gotosleep": [
+		"littlemanbeingerased",
+		"gosleep",
+		"gotosleep"
+	],
+	"whereiend": [
+		"theskyisfallingin",
+		"theskysfallingin",
+		"theskyisfallinin",
+		"theskysfallinin",
+		"skyisfallinin",
+		"skysfallinin",
+		"skyisfallingin",
+		"skysfallingin",
+		"wieayb",
+		"whereiend&ubegin",
+		"whereiendnubegin",
+		"whereiendandubegin",
+		"whereiend&youbegin",
+		"whereiendnyoubegin",
+		"whereiendandyoubegin",
+		"whereiend"
+	],
+	"youngblood": [
+		"yourtimeisup",
+		"yourtimesup",
+		"wsyb",
+		"wesuckyoungblood",
+		"suckyoungblood",
+		"youngblood"
+	],
+	"gloaming": [
+		"softlyopenourmouthsinthecold",
+		"softlyopenourmonthsinthecold",
+		"thegloaming",
+		"gloaming"
+	],
+	"therethere": [
+		"theboneykingofnowhere",
+		"thebonykingofnowhere",
+		"therethere"
+	],
+	"iwill": [
+		"nomansland",
+		"iwill"
+	],
+	"punchup": [
+		"nononononononono",
+		"nox42",
+		"apuaaw",
+		"puaaw",
+		"apaaw",
+		"paaw",
+		"adrunkenpunchupatawedding",
+		"drunkenpunchupatawedding",
+		"apunchupatawedding",
+		"punchupatawedding",
+		"punchup"
+	],
+	"myxomatosis": [
+		"myxamatosis",
+		"myxamotosis",
+		"myxomatosis"
+	],
+	"scatterbrain": [
+		"asdeadasleaves",
+		"asdreadasleaves",
+		"scatterbrain"
+	],
+	"wolfatthedoor": [
+		"itgirlragdoll",
+		"awatd",
+		"watd",
+		"thewolfatthedoor",
+		"thewolfatdoor",
+		"awolfatthedoor",
+		"awolfatdoor",
+		"wolfatdoor",
+		"wolfatthedoor"
+	],
+	"fifteenstep": [
+		"15step",
+		"fifteenstep"
+	],
+	"bodysnatchers": [
+		"bodysnatchers"
+	],
+	"nude": [
+		"nude"
+	],
+	"weirdfishes": [
+		"arpeggi",
+		"weirdfisharpeggi",
+		"weirdfishesarpeggi",
+		"weirdfish",
+		"weirdfishes"
+	],
+	"allineed": [
+		"allineed"
+	],
+	"faustarp": [
+		"faustarp"
+	],
+	"reckoner": [
+		"reckoner"
+	],
+	"houseofcards": [
+		"houseofcards"
+	],
+	"jigsaw": [
+		"jfip",
+		"jigsawfallingintoplace",
+		"jigsawfallinintoplace",
+		"jigsawfallinginplace",
+		"jigsawfallininplace",
+		"jigsaw"
+	],
+	"videotape": [
+		"videotape"
+	],
+	"bloom": [
+		"bloom"
+	],
+	"morningmrmagpie": [
+		"goodmorningmistermagpie",
+		"goodmorningmrmagpie",
+		"morningmistermagpie",
+		"morningmrmagpie"
+	],
+	"littlebylittle": [
+		"lilbylil",
+		"littlebylittle"
+	],
+	"feral": [
+		"feral"
+	],
+	"lotusflower": [
+		"lotus",
+		"lotusflower"
+	],
+	"codex": [
+		"codex"
+	],
+	"giveupghost": [
+		"giveuptheghost",
+		"giveupghost"
+	],
+	"separator": [
+		"separater",
+		"separator"
+	],
+	"burnwitch": [
+		"burnthewitch",
+		"burnwitch"
+	],
+	"daydreaming": [
+		"daydreaming"
+	],
+	"decksdark": [
+		"decksdark"
+	],
+	"desertislanddisk": [
+		"islanddisk",
+		"desertisland",
+		"desertislanddisk"
+	],
+	"fulstop": [
+		"fullstop",
+		"fulstop"
+	],
+	"glasseyes": [
+		"glasseyes"
+	],
+	"identikit": [
+		"identikit"
+	],
+	"thenumbers": [
+		"numbers",
+		"thenumbers"
+	],
+	"presenttense": [
+		"presenttense"
+	],
+	"tinkertailor": [
+		"ttssrmpmbmt",
+		"tinkertailorsoldiersailorrichmanpoormanbeggarmanthief",
+		"tinkertailorsoldiersailorrichmanpoormanbeggarman",
+		"tinkertailorsoldiersailorrichmanpoormanbeggar",
+		"tinkertailorsoldiersailorrichmanpoorman",
+		"tinkertailorsoldiersailorrichman",
+		"tinkertailorsoldiersailor",
+		"tinkertailorsoldier",
+		"tinkertailor"
+	],
+	"truelovewaits": [
+		"truelovewaits"
+	],
+	"harrypatch": [
+		"hpimo",
+		"harrypatchinmemoryof",
+		"henrypatchinmemoryof",
+		"inmemoryof",
+		"henrypatch",
+		"harrypatch"
+	],
+	"twistedwords": [
+		"tamtw",
+		"thesearemytwistedwords",
+		"mytwistedwords",
+		"twistedwords"
+	],
+	"supercollider": [
+		"supercollider"
+	],
+	"butcher": [
+		"thebutcher",
+		"butcher"
+	],
+	"dailymail": [
+		"thedailymail",
+		"dailymail"
+	],
+	"staircase": [
+		"staircase"
+	],
+	"spectre": [
+		"spectre"
+	],
+	"noneofthis": [
+		"iwnot",
+		"iwantnoneofthis",
+		"noneofthis"
+	],
+	"illwind": [
+		"illwind"
+	],
+	"ipromise": [
+		"promise",
+		"ipromise"
+	],
+	"manofwar": [
+		"manowar",
+		"manofwar"
+	],
+	"ifyousay": [
+		"iystw",
+		"saytheword",
+		"ifyousaytheword",
+		"ifyousayword",
+		"ifyousay"
+	],
+	"followme": [
+		"followmearound",
+		"followme"
+	],
+	"lift": [
+		"elevator",
+		"lift"
+	],
+	"mk1": [
+		"mk1"
+	],
+	"downnewup": [
+		"ditnu",
+		"downisthenewup",
+		"downisnewup",
+		"downnewup"
+	],
+	"goslowly": [
+		"goslowly"
+	],
+	"mk2": [
+		"mk2"
+	],
+	"lastflowers": [
+		"thelastflowers",
+		"lastflowers"
+	],
+	"onladder": [
+		"uotl",
+		"upontheladder",
+		"uptheladder",
+		"ontheladder",
+		"onladder"
+	],
+	"bangersmash": [
+		"thebangersandthemash",
+		"bangersandthemash",
+		"bangers+mash",
+		"bangers&mash",
+		"bangersnmash",
+		"bangersandmash",
+		"bangersmash"
+	],
+	"fourminute": [
+		"4minutewarning",
+		"fourminutewarning",
+		"4minute",
+		"fourminute"
+	],
+	"insidemyhead": [
+		"inmyhead",
+		"insidehead",
+		"insidemyhead"
+	],
+	"mdollarq": [
+		"mdq",
+		"milliondollarquestion",
+		"onemilliondollarquestion",
+		"million$question",
+		"onemillion$question",
+		"1000000dollarquestion",
+		"$1000000question",
+		"mdollarq"
+	],
+	"yesiam": [
+		"yesiam"
+	],
+	"wonderboy": [
+		"faithlessthewonderboy",
+		"faithlesswonderboy",
+		"thewonderboy",
+		"wonderboy"
+	],
+	"cokebabies": [
+		"cocainebabies",
+		"cocainebabys",
+		"cokebabys",
+		"cokebabies"
+	],
+	"trickster": [
+		"thetrickster",
+		"trickster"
+	],
+	"lewis": [
+		"lewismistreated",
+		"mistreated",
+		"louismistreated",
+		"louis",
+		"lewis"
+	],
+	"punchdrunk": [
+		"pdlssa",
+		"lovesicksingalong",
+		"punchdrunklovesicksingalong",
+		"punchdrunklovesick",
+		"punchdrunk"
+	],
+	"daylight": [
+		"permanentdaylight",
+		"permanentlight",
+		"daylight"
+	],
+	"lovelozenge": [
+		"lozengeoflove",
+		"lozengeolove",
+		"lozengelove",
+		"lovelozenge"
+	],
+	"maquiladora": [
+		"maquiladora"
+	],
+	"killercars": [
+		"killercars"
+	],
+	"indiarubber": [
+		"indiarubber"
+	],
+	"howyousure": [
+		"howcanyoubesure",
+		"canyoubesure",
+		"howyousure"
+	],
+	"bishopsrobes": [
+		"bishoprobe",
+		"bishopsrobe",
+		"bishoprobes",
+		"bishopsrobes"
+	],
+	"bananaco": [
+		"bananacompany",
+		"bananacorporation",
+		"bananacorp",
+		"bananko",
+		"bananaco"
+	],
+	"molasses": [
+		"thebostonmolassesdiasterof1919",
+		"thegreatbostonmolassesfloodof1919",
+		"molasses"
+	],
+	"amazingsounds": [
+		"theamazingsoundsoforgy",
+		"theamazingsoundoforgy",
+		"amazingsoundsoforgy",
+		"amazingsoundoforgy",
+		"theamazingsounds",
+		"amazingsounds"
+	],
+	"transatlantic": [
+		"transatlanticdrawl",
+		"transatlantic"
+	],
+	"fasttrack": [
+		"fasttrack"
+	],
+	"kinetic": [
+		"kinetic"
+	],
+	"cuttooth": [
+		"cutooth",
+		"cuttooth"
+	],
+	"worrywort": [
+		"worrywort"
+	],
+	"fog": [
+		"fog"
+	],
+	"polyethylene": [
+		"pe",
+		"c2h4n",
+		"c₂h₄ₙ",
+		"polythene",
+		"polyethene",
+		"polymethylene",
+		"polyethyleneparts1&2",
+		"polyethyleneparts1and2",
+		"polyethyleneparts1n2",
+		"polyethyleneparts12",
+		"polyethylenepart1&2",
+		"polyethylenepart1and2",
+		"polyethylenepart1n2",
+		"polyethylenepart12",
+		"polyethylenepart1",
+		"polyethylenepart2",
+		"polyethylene"
+	],
+	"pearly": [
+		"pearly"
+	],
+	"reminder": [
+		"areminder",
+		"reminder"
+	],
+	"melatonin": [
+		"melatonin"
+	],
+	"intheaisle": [
+		"meetingintheaisle",
+		"meetingintheisle",
+		"meetinginaisle",
+		"meetinginisle",
+		"intheisle",
+		"intheaisle"
+	],
+	"lull": [
+		"lull"
+	],
+	"paloalto": [
+		"paloalto"
+	],
+	"mademillions": [
+		"himmm",
+		"howimademymillions",
+		"howimademy1000000s",
+		"mademillions"
+	],
+	"paperbagwriter": [
+		"paperbagwriter"
+	],
+	"bluebirds": [
+		"wherebluebirdsfly",
+		"bluebirds"
+	],
+	"citizeninsane": [
+		"iamcitizeninsane",
+		"imcitizeninsane",
+		"citizeninsane"
+	],
+	"gagorder": [
+		"gaggingorder",
+		"gagginorder",
+		"gagorder"
+	],
+	"wickedchild": [
+		"iamawickedchild",
+		"imawickedchild",
+		"iamwickedchild",
+		"imwickedchild",
+		"wickedchild"
+	],
+	"edscary": [
+		"theorchestraattheball",
+		"theorchestra@theball",
+		"orchestraattheball",
+		"orchestra@theball",
+		"orchestraatball",
+		"orchestra@ball",
+		"edsscarysong",
+		"edscarysong",
+		"edwardsscarysong",
+		"edwardscarysong",
+		"scarysong",
+		"edscary"
+	],
+	"veryeyes": [
+		"byve",
+		"beforeyourveryeyes",
+		"beforeveryeyes",
+		"b4yourveryeyes",
+		"b4veryeyes",
+		"veryeyes"
+	],
+	"default": [
+		"default"
+	],
+	"ingenue": [
+		"ingenue"
+	],
+	"dropped": [
+		"dropped"
+	],
+	"unless": [
+		"unless"
+	],
+	"stucktogether": [
+		"stucktogetherpieces",
+		"stuck2getherpieces",
+		"stuck2gether",
+		"stucktogether"
+	],
+	"judgejury": [
+		"judgejuryandexecutioner",
+		"judgejury&executioner",
+		"judgejurynexecutioner",
+		"judgeandjuryexecutioner",
+		"judge&juryexecutioner",
+		"judgenjuryexecutioner",
+		"judgejuryexecutioner",
+		"judgeandjury",
+		"judge&jury",
+		"judgenjury",
+		"judgejury"
+	],
+	"reverserunning": [
+		"reverserunning"
+	],
+	"amok": [
+		"amok"
+	],
+	"stupidcar": [
+		"stupidcar"
+	],
+	"whateyeballs": [
+		"wtebd",
+		"whattheeyballsdid",
+		"whateyballsdid",
+		"whateyeballs"
+	],
+	"sad": [
+		"sad"
+	],
+	"magicbeanz": [
+		"magicbeans",
+		"magicbeanz"
+	],
+	"eraser": [
+		"theeraser",
+		"eraser"
+	],
+	"analyse": [
+		"analyze",
+		"analyse"
+	],
+	"clock": [
+		"theclock",
+		"clock"
+	],
+	"blackswan": [
+		"blackswan"
+	],
+	"skipdivided": [
+		"skipdivided"
+	],
+	"afp": [
+		"atomsforpeace",
+		"atoms4peace",
+		"afp"
+	],
+	"rainedallnight": [
+		"anditrainedallnight",
+		"itrainedallnight",
+		"rainedallnight"
+	],
+	"harrowdownhill": [
+		"harrowdown",
+		"harrowdownhill"
+	],
+	"cymbalrush": [
+		"cymbalrush"
+	]
+}

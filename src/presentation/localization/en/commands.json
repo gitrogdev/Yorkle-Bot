@@ -1,0 +1,22 @@
+{
+	"commands.channelbound": "Successfully bound the Yorkle bot to the {channel} channel.",
+	"commands.content": "content",
+	"commands.content.description": "Gets a summary of the content known by Yorkle",
+	"commands.guess": "guess",
+	"commands.guess.description": "Guess the song from the clip provided",
+	"commands.guess.song": "The song title to guess",
+	"commands.newgame": "yorkle",
+	"commands.newgame.description": "Play a game of Yorkle - the ultimate Yorkiverse guessing game",
+	"commands.randomlyric": "lyric",
+	"commands.randomlyric.description": "Replies with a random song lyric",
+	"commands.setgamechannel": "setgamechannel",
+	"commands.setgamechannel.channel": "The channel for the bot to share results to",
+	"commands.setgamechannel.description": "Sets the channel for the bot to share results to",
+	"commands.share": "share",
+	"commands.share.description": "Share your results for today's Yorkle",
+	"commands.skip": "skip",
+	"commands.skip.description": "Skip the current clip to guess on a longer one",
+	"commands.whennext": "nextgame",
+	"commands.whennext.description": "Calculates the time remaining until the next puzzle",
+	"commands.whennext.response": "The next Yorkle will be available {timestamp}."
+}

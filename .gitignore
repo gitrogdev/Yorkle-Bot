@@ -1,7 +1,9 @@
 node_modules/
 songs/
 data/
+dist/
 media/
+old/
 
 *.env
 

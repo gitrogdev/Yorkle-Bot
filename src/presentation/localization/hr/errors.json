@@ -1,0 +1,14 @@
+{
+	"errors.commandgeneric": "Došlo je do greške prilikom izvršavanja ove naredbe. Molimo prijavi ovo developeru.",
+	"errors.commandoutsideguild": "Ova naredba se može koristiti samo unutar Discord servera!",
+	"errors.hasntplayed": "Još nisi odigrao/la Yorkle #{day}! Upotrijebi `/yorkle` da riješiš današnji zadatak i podijeliš rezultate!",
+	"errors.invalidguess": "Nepoznata pjesma \"{guess}\"\nProvjeri imaš li tipfeler ili pokušaj s drugom pjesmom. Odgovori ne ovise o velikim slovima ni interpunkciji.",
+	"errors.lastclip": "Ne mogu preskočiti {clip}. isječak: ovo je zadnji isječak! Pogodi pjesmu pomoću `/pogodi` naredbe!",
+	"errors.nocontent": "Nema pronađenog sadržaja.",
+	"errors.noguess": "`/pogodi` mora sadržavati naziv pjesme koju pogađaš! Ako si zapeo/la, pokušaj s `/preskoči`.",
+	"errors.noguild": "Ovaj server još nije povezan s Yorkleom! Odigraj `/yorkle` i podijeli rezultate na ovom serveru pomoću `/podijeli` da ga povežeš!",
+	"errors.nosession": "Moraš imati aktivnu Yorkle sesiju da bi koristio/la ovu naredbu! Pokreni igru s `/yorkle`.",
+	"errors.playedtoday": "Već si odigrao/la današnji zadatak! Vrati se sutra po novu rundu!",
+	"errors.repeatguess": "Već si pokušao/la s \"{guess}\". Probaj pogoditi neku drugu pjesmu.",
+	"errors.sessioncollision": "Već imaš aktivnu Yorkle sesiju."
+}
