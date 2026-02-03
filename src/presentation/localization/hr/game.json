@@ -1,5 +1,5 @@
 {
-	"game.content": "Yorkle trenutno prepoznaje `{songs}` pjesama sa studijskih albuma, B-strana, singlova i drugih izdanja Radioheada te ostalih projekata Thoma Yorkea.\n\nLive verzije, akustične verzije, remasteri, remixevi i druge alternativne verzije pjesama izvan studijskih albuma nisu uključene.\n\n*npr. igrači neće morati razlikovati* **True Love Waits** *i* **True Love Waits (Live in Oslo)**, *ali će morati razlikovati* **Morning Bell** *i* **Morning Bell/Amnesiac.**",
+	"game.contents": "Yorkle trenutno prepoznaje `{songs}` pjesama sa studijskih albuma, B-strana, singlova i drugih izdanja Radioheada te ostalih projekata Thoma Yorkea.\n\nLive verzije, akustične verzije, remasteri, remixevi i druge alternativne verzije pjesama izvan studijskih albuma nisu uključene.\n\n*npr. igrači neće morati razlikovati* **True Love Waits** *i* **True Love Waits (Live in Oslo)**, *ali će morati razlikovati* **Morning Bell** *i* **Morning Bell/Amnesiac.**",
 	"game.correctguess": "✅ **TOČNO** ✅\n\nPogodio/la si Yorkle u {numGuesses}! Vrati se sutra ili podijeli svoje rezultate s prijateljima pomoću `/podijeli` naredbe!",
 	"game.incorrectguess": "❌ **NETOČNO** ❌\n\n\"{guess}\" nije točan odgovor.",
 	"game.loss": "Više sreće drugi put!",
