@@ -21,7 +21,7 @@ export default class GameDataStore {
 		));
 
 		return {
-			day: ('title' in data) ? hexify(data.day) : data.day,
+			day: ('title' in data) ? hexify(data.title) : data.day,
 			song: data.song,
 			players: data.players
 		}
