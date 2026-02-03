@@ -12,12 +12,14 @@ import SongQueue from './services/SongQueue.js';
 import SessionManager from './services/SessionManager.js';
 import type BroadcastPort from './ports/BroadcastPort.js';
 import type GameResults from '../persistence/dto/GameResults.js';
+import LyricArchive from './services/LyricArchive.js';
 
 export default class Yorkle {
 	private readonly guilds: GuildList = new GuildList(new GuildDataStore());
 	private readonly songs: SongLibrary = new SongLibrary(new SongDataStore());
 	private readonly aliases: AliasRegistry = new AliasRegistry(this.songs);
 	private readonly gameStore: GameDataStore = new GameDataStore();
+	private readonly lyrics: LyricArchive = new LyricArchive();
 	private readonly queue: SongQueue = new SongQueue(
 		new SongQueueStore(),
 		this.gameStore,
@@ -34,6 +36,7 @@ export default class Yorkle {
 	public getGuild = this.guilds.get.bind(this.guilds);
 	public joinGuild = this.guilds.joinGuild.bind(this.guilds);
 	public saveGuild = this.guilds.saveGuild.bind(this.guilds);
+	public randomLyric = this.lyrics.randomLyric.bind(this.lyrics);
 
 	/**
 	 * Creates a new interface to handle all game logic for Yorkle.

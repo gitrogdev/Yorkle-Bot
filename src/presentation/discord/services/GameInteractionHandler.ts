@@ -27,6 +27,19 @@ export default class GameInteractionHandler {
 	}
 
 	/**
+	 * Responds with a random song lyric.
+	 *
+	 * @param {ChatInputCommandInteraction} interaction the chat input
+	 * interaction with the user requesting the lyric
++	 */
+	public async randomLyric(interaction: ChatInputCommandInteraction) {
+		return await this.messenger.reply(
+			interaction,
+			await this.game.randomLyric()
+		);
+	}
+
+	/**
 	 * Makes a guess and presents the response to the user.
 	 *
 	 * @param {ChatInputCommandInteraction} interaction the chat input

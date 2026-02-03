@@ -5,6 +5,8 @@
 	"commands.guess.song": "The song title to guess",
 	"commands.newgame": "yorkle",
 	"commands.newgame.description": "Play a game of Yorkle - the ultimate Yorkiverse guessing game",
+	"commands.randomlyric": "lyric",
+	"commands.randomlyric.description": "Replies with a random song lyric",
 	"commands.setgamechannel": "setgamechannel",
 	"commands.setgamechannel.channel": "The channel for the bot to share results to",
 	"commands.setgamechannel.description": "Sets the channel for the bot to share results to",

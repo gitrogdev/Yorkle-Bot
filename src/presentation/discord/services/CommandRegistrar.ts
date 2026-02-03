@@ -14,6 +14,7 @@ import SkipCommand from '../commands/SkipCommand.js';
 import ShareCommand from '../commands/ShareCommand.js';
 import SetGameChannelCommand from '../commands/SetGameChannelCommand.js';
 import WhenNextCommand from '../commands/WhenNextCommand.js';
+import RandomLyricCommand from '../commands/RandomLyricCommand.js';
 
 export default class CommandRegistrar {
 	private static readonly COMMAND_TYPES: Array<
@@ -24,7 +25,8 @@ export default class CommandRegistrar {
 			SkipCommand,
 			ShareCommand,
 			SetGameChannelCommand,
-			WhenNextCommand
+			WhenNextCommand,
+			RandomLyricCommand
 		];
 	private readonly rest: REST;
 
