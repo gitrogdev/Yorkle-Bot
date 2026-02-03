@@ -2,15 +2,16 @@ import fs from 'node:fs';
 import { LOCALIZATION_PATH } from '../../config/paths.js';
 import path from 'node:path';
 import pluralizeEN from './en/pluralize.js';
+import pluralizeHR from './hr/pluralize.js';
 
 type Pluralizer = (
-	word: string,
-	count: number,
-	plural: string
+	key: string,
+	count: number
 ) => string;
 
 const pluralizeFunctions: Record<string, Pluralizer> = {
-	en: pluralizeEN
+	en: pluralizeEN as Pluralizer,
+	hr: pluralizeHR as Pluralizer
 };
 
 const dictionaries: Record<string, Record<string, string>> = {};
@@ -96,8 +97,7 @@ export function localePluralize(
 		(pluralizeFunctions[lang] && key in dictionaries[lang])
 			? pluralizeFunctions[lang] : pluralizeFunctions.en
 	)(
-		localize(key, locale),
-		count,
-		localize(`${key}.plural`, locale)
+		key,
+		count
 	);
 }

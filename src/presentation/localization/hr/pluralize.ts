@@ -1,6 +1,7 @@
 import DICTIONARY from './plurals.json' with { type: 'json' };
 
 type PluralKey = keyof typeof DICTIONARY;
+const GEN_SINGULAR = new Set<number>([2, 3, 4]);
 
 /**
  * Returns a word in the correct plural form, based on the count of the object
@@ -12,13 +13,14 @@ type PluralKey = keyof typeof DICTIONARY;
  * @returns {string} the word in the correctly pluralized form preceded by the
  * count (e.g. 5 guesses)
  */
-export default function pluralizeEN(
+export default function pluralizeHR(
 	key: PluralKey,
 	count: number
 ): string {
-	const word = DICTIONARY[key];
 	return `${count} ${
-		count === 1 ? word : DICTIONARY[key + '.plural' as PluralKey]
-		?? word + 's'
+		count % 10 === 1 && count % 100 !== 11 ? DICTIONARY[key] :
+			GEN_SINGULAR.has(count % 10) && ((count % 10) + 10 !== count % 100)
+				? DICTIONARY[key + '.gensing' as PluralKey] :
+				DICTIONARY[key + '.genplural' as PluralKey]
 	}`;
 }
