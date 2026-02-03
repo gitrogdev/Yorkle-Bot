@@ -28,7 +28,7 @@ export default class Yorkle {
 		new GameFactory(this.songs, this.aliases, this.gameStore),
 		this.broadcastResults.bind(this)
 	);
-	public readonly sessions = new SessionManager(clipLengths, this.queue);
+	private readonly sessions = new SessionManager(clipLengths, this.queue);
 
 	public readonly ready = this.init();
 
@@ -37,6 +37,8 @@ export default class Yorkle {
 	public joinGuild = this.guilds.joinGuild.bind(this.guilds);
 	public saveGuild = this.guilds.saveGuild.bind(this.guilds);
 	public randomLyric = this.lyrics.randomLyric.bind(this.lyrics);
+	public getSession = this.sessions.getSession.bind(this.sessions);
+	public openSession = this.sessions.open.bind(this.sessions);
 
 	/**
 	 * Creates a new interface to handle all game logic for Yorkle.

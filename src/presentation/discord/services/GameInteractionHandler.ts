@@ -47,7 +47,7 @@ export default class GameInteractionHandler {
 	 */
 	public async makeGuess(interaction: ChatInputCommandInteraction) {
 		const guess = interaction.options.getString('song');
-		const session = this.game.sessions.getSession(
+		const session = this.game.getSession(
 			toUserIdentity(interaction.user)
 		);
 
@@ -77,7 +77,7 @@ export default class GameInteractionHandler {
 	 * interaction with the user starting the game
 	 */
 	public async newGame(interaction: ChatInputCommandInteraction) {
-		const response = await this.game.sessions.open(
+		const response = await this.game.openSession(
 			toUserIdentity(interaction.user)
 		);
 
@@ -161,7 +161,7 @@ export default class GameInteractionHandler {
 	 * interaction with the user skipping the clip
 	 */
 	public async skipGuess(interaction: ChatInputCommandInteraction) {
-		const session = this.game.sessions.getSession(
+		const session = this.game.getSession(
 			toUserIdentity(interaction.user)
 		);
 
