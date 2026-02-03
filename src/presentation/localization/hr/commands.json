@@ -11,5 +11,8 @@
 	"commands.share": "podijeli",
 	"commands.share.description": "Podijeli svoje današnje Yorkle rezultate",
 	"commands.skip": "preskoči",
-	"commands.skip.description": "Preskoči trenutni isječak i pokušaj s duljim"
+	"commands.skip.description": "Preskoči trenutni isječak i pokušaj s duljim",
+	"commands.whennext": "sljedećaigra",
+	"commands.whennext.description": "Prikazuje koliko je vremena preostalo do sljedećeg zadatka",
+	"commands.whennext.response": "Sljedeći Yorkle bit će dostupan {timestamp}."
 }

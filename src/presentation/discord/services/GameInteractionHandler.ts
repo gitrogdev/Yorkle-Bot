@@ -169,4 +169,21 @@ export default class GameInteractionHandler {
 			interaction, session
 		);
 	}
+
+	/**
+	 * Responds with the relative time until the game resets.
+	 *
+	 * @param {ChatInputCommandInteraction} interaction the chat input
+	 * interaction with the user requesting the time
+	 */
+	public async whenNext(interaction: ChatInputCommandInteraction) {
+		const now = Math.floor(new Date().getTime() / 1000);
+		return await this.messenger.reply(interaction, localize(
+			'commands.whennext.response',
+			interaction.locale,
+			{
+				timestamp: `<t:${now - (now % 86_400) + 86_400}:R>`
+			}
+		));
+	}
 }

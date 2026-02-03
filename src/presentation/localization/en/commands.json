@@ -11,5 +11,8 @@
 	"commands.share": "share",
 	"commands.share.description": "Share your results for today's Yorkle",
 	"commands.skip": "skip",
-	"commands.skip.description": "Skip the current clip to guess on a longer one"
+	"commands.skip.description": "Skip the current clip to guess on a longer one",
+	"commands.whennext": "nextgame",
+	"commands.whennext.description": "Calculates the time remaining until the next puzzle",
+	"commands.whennext.response": "The next Yorkle will be available {timestamp}."
 }
