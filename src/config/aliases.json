@@ -905,5 +905,71 @@
 	],
 	"cymbalrush": [
 		"cymbalrush"
+	],
+	"climbinghill": [
+		"climbingupabloodygreathill",
+		"climbingabloodygreathill",
+		"climbingupagreathill",
+		"climbingagreathill",
+		"climbingupabloodyhill",
+		"climbingabloodyhill",
+		"climbingupahill",
+		"climbingahill",
+		"climbinghill"
+	],
+	"somebody": [
+		"somebodyelse",
+		"someoneelse",
+		"someone",
+		"somebody"
+	],
+	"mrb": [
+		"jerusalem",
+		"misterb",
+		"misterb29",
+		"misterbtwentynine",
+		"mrb29",
+		"mrbtwentynine",
+		"mrb"
+	],
+	"dancesucka": [
+		"dancesucker",
+		"dancesuckah",
+		"dancesucka"
+	],
+	"upsidedown": [
+		"upsidedown"
+	],
+	"greatestshindig": [
+		"thegreatestshindigoftheworld",
+		"thegreatestshindig",
+		"shindig",
+		"withoutyou",
+		"greatestshindig"
+	],
+	"wthebigf": [
+		"lifewiththebigf",
+		"lifewithabigf",
+		"lifewithbigf",
+		"withthebigf",
+		"withabigf",
+		"withbigf",
+		"wbigf",
+		"wabigf",
+		"wthebigf"
+	],
+	"keepstrong": [
+		"keepstrong"
+	],
+	"burningbush": [
+		"iwanttoknow",
+		"iwannaknow",
+		"burningbush"
+	],
+	"tellmebitch": [
+		"tellmebitch"
+	],
+	"newgeneration": [
+		"newgeneration"
 	]
 }
