@@ -33,12 +33,17 @@ export default class Yorkle {
 	public readonly ready = this.init();
 
 	public getGame = this.queue.getGame.bind(this.queue);
+
 	public getGuild = this.guilds.get.bind(this.guilds);
 	public joinGuild = this.guilds.joinGuild.bind(this.guilds);
 	public saveGuild = this.guilds.saveGuild.bind(this.guilds);
+
 	public randomLyric = this.lyrics.randomLyric.bind(this.lyrics);
+
 	public getSession = this.sessions.getSession.bind(this.sessions);
 	public openSession = this.sessions.open.bind(this.sessions);
+
+	public countSongs = this.songs.getSize.bind(this.songs);
 
 	/**
 	 * Creates a new interface to handle all game logic for Yorkle.

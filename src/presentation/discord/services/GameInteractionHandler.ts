@@ -26,6 +26,16 @@ export default class GameInteractionHandler {
 		this.clips = new ClipPresenter(this.messenger);
 	}
 
+	public async getContent(interaction: ChatInputCommandInteraction) {
+		const songCount = this.game.countSongs();
+
+		return await this.messenger.reply(interaction, localize(
+			'game.contents',
+			interaction.locale,
+			{ songs: songCount }
+		));
+	}
+
 	/**
 	 * Responds with a random song lyric.
 	 *
