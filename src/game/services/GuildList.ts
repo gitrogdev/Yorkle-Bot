@@ -71,10 +71,10 @@ export default class GuildList {
 	 * @param {string} id the ID of the guild to add the user to
 	 * @param {string} user the ID of the user to add to the guild
 	 */
-	public joinGuild(id: string, user: string) {
+	public async joinGuild(id: string, user: string) {
 		if (!(id in this.guilds)) this.guilds[id] = new Guild(id);
 		this.guilds[id].members.add(user);
-		this.saveGuild(id);
+		return await this.saveGuild(id);
 	}
 
 	/**

@@ -78,7 +78,7 @@ export default class SongQueue {
 				`Successfully added ${pluralize('song', newSongs.length)} to `
 				+ 'the queue and shuffled all unplayed songs.'
 			);
-			this.save();
+			await this.save();
 		} else if (inQueue + played > librarySize) {
 			const diff = (inQueue + played) - librarySize;
 			throw new Error(
@@ -129,7 +129,7 @@ export default class SongQueue {
 			if (this.game) {
 				this.broadcastResults(this.game.getResults());
 				this.game.sentResults = true;
-				this.gameStore.save(this.game);
+				await this.gameStore.save(this.game);
 			} startup = true;
 
 			this.lastPlayed = today;
@@ -151,7 +151,7 @@ export default class SongQueue {
 			this.generator.generate(this.queue[0], this.day);
 
 			this.game = this.gameFactory.createGame(this.day, this.queue[0]);
-			this.gameStore.save(this.game);
+			await this.gameStore.save(this.game);
 
 			if (startup && this.game.day > 1) {
 				const yesterday = this.gameFactory.fromJson(
@@ -160,12 +160,12 @@ export default class SongQueue {
 				if (!yesterday.sentResults) {
 					this.broadcastResults(yesterday.getResults());
 					yesterday.sentResults = true;
-					this.gameStore.save(yesterday);
+					await this.gameStore.save(yesterday);
 				}
 			}
 
 			console.log('Successfully advanced the queue.');
-			this.save();
+			await this.save();
 		})().finally(() => this.advanceDebounce = null);
 
 		return this.advanceDebounce;
@@ -174,7 +174,7 @@ export default class SongQueue {
 	/**
 	 * Packages the queue data and saves it to file.
 	 */
-	private save() {
+	private async save() {
 		const hexifiedQueue: string[] = [];
 
 		function hexifyQueue(queue: Song[]) {
@@ -184,7 +184,7 @@ export default class SongQueue {
 		hexifyQueue(this.played);
 		hexifyQueue(this.queue);
 
-		this.queueStore.save({
+		return await this.queueStore.save({
 			index: this.index,
 			day: this.day,
 			lastPlayed: this.lastPlayed,

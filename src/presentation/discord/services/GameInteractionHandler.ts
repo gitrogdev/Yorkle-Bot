@@ -74,7 +74,7 @@ export default class GameInteractionHandler {
 			'errors.nosession', interaction.locale
 		));
 
-		const response = session.guess(guess);
+		const response = await session.guess(guess);
 
 		this.messenger.reply(interaction, this.guessBuilder.build(
 			interaction.locale, guess, response
@@ -131,7 +131,7 @@ export default class GameInteractionHandler {
 		));
 
 		guild.channelId = channel;
-		this.game.saveGuild(interaction.guild.id);
+		await this.game.saveGuild(interaction.guild.id);
 
 		return await this.messenger.reply(interaction, localize(
 			'commands.channelbound',
@@ -152,7 +152,7 @@ export default class GameInteractionHandler {
 		const game = await this.game.getGame();
 		const response = game.getResult(interaction.user.id);
 
-		if (interaction.guild) this.game.joinGuild(
+		if (interaction.guild) await this.game.joinGuild(
 			interaction.guild.id,
 			interaction.user.id
 		);

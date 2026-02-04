@@ -52,9 +52,9 @@ export default class Game {
 	 * @param {number} id the user ID of the user finishing the game
 	 * @param {string} sequence the sequence string of guesses the user made
 	 */
-	public finish(id: string, sequence: string) {
+	public async finish(id: string, sequence: string) {
 		this.results[id] = { sequence: sequence };
-		this.store.save(this);
+		return await this.store.save(this);
 	}
 
 	/**

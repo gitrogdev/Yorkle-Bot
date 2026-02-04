@@ -64,10 +64,10 @@ export default class Session {
 	 *
 	 * @param {string} guess the guess received from the user
 	 *
-	 * @returns {GuessResponse} the response to the user based on the result of
-	 * the guess
+	 * @returns {Promise<GuessResponse>} the response to the user based on the
+	 * result of the guess
 	 */
-	public guess(guess: string): GuessResponse {
+	public async guess(guess: string): Promise<GuessResponse> {
 		const cleanGuess = cleanTitle(guess);
 		const guessedSong = this.game.guess(cleanGuess);
 
@@ -89,7 +89,7 @@ export default class Session {
 		);
 
 		if (over) {
-			this.game.finish(this.user.id, this.guessSequence);
+			await this.game.finish(this.user.id, this.guessSequence);
 			this.close(this.user);
 		} else if (result === GuessResult.Incorrect)
 			this.guesses.add(guessedSong!);

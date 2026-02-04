@@ -23,9 +23,9 @@ export default class SongQueueStore {
 	 *
 	 * @param {QueueData} data the queue data to write to the queue file
 	 */
-	public save(data: QueueData) {
-		fs.promises.writeFile(QUEUE_PATH, JSON.stringify(data)).then((() =>
-			console.log('Successfully saved song queue to file.')
+	public async save(data: QueueData) {
+		await fs.promises.writeFile(QUEUE_PATH, JSON.stringify(data)).then((
+			() => console.log('Successfully saved song queue to file.')
 		));
 	}
 }

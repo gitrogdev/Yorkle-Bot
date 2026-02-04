@@ -32,9 +32,9 @@ export default class GameDataStore {
 	 *
 	 * @param {Game} game the game to save to file
 	 */
-	public save(game: Game) {
+	public async save(game: Game) {
 		const data = game.toJson();
-		fs.promises.writeFile(
+		return await fs.promises.writeFile(
 			path.join(DAYS_PATH, `yorkle-day${padDay(data.day)}.json`),
 			JSON.stringify(data),
 			'utf-8'
