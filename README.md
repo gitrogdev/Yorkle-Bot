@@ -95,6 +95,8 @@ After inviting the bot to your Discord server, a user with the **Manage Roles** 
 > This only needs to be done once per server.
 
 # User Guide
+This guide can be provided to users of the bot to explain its usage:
+```md
 # What is Yorkle?
 
 **Yorkle** is a Thom Yorke guessing game. Functioning similarly to games like Wordle, where all players are given the same puzzle each day. Players will be given a clip of a song from Radiohead or one of Thom Yorke's other projects, and must attempt to identify it. On a correct guess, the game ends. On an incorrect guess, players will be given a longer clip of the song, and the opportunity to guess again. After six clips, if the player has not managed to guess the song correctly, the player loses.
