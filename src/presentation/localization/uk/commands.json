@@ -18,6 +18,9 @@
 	"commands.share.description": "Поділіться своїм результатом за сьогоднішній Йоркль",
 	"commands.skip": "пропустити",
 	"commands.skip.description": "Пропустити поточний уривок, щоб вгадувати за довшим",
+	"commands.version": "версія",
+	"commands.version.description": "Показує версію Йоркля, на якій працює бот",
+	"commands.version.response": "Йоркль v{version}",
 	"commands.whennext": "наступнагра",
 	"commands.whennext.description": "Обчислює час до наступної головоломки",
 	"commands.whennext.response": "Наступний Йоркль буде доступний {timestamp}."

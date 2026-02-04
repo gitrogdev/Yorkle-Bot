@@ -17,6 +17,7 @@ import WhenNextCommand from '../commands/WhenNextCommand.js';
 import RandomLyricCommand from '../commands/RandomLyricCommand.js';
 import GameContentCommand from '../commands/GameContentCommand.js';
 import JudgementCommand from '../commands/JudgementCommand.js';
+import GetVersionCommand from '../commands/GetVersion.js';
 
 export default class CommandRegistrar {
 	private static readonly COMMAND_TYPES: Array<
@@ -30,7 +31,8 @@ export default class CommandRegistrar {
 			WhenNextCommand,
 			RandomLyricCommand,
 			GameContentCommand,
-			JudgementCommand
+			JudgementCommand,
+			GetVersionCommand
 		];
 	private readonly rest: REST;
 

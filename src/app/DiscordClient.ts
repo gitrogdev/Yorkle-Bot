@@ -6,8 +6,10 @@ export default class DiscordClient {
 
 	/**
 	 * Builds a new client for the Discord bot.
+	 *
+	 * @param {string} version the version number for the application
 	 */
-	constructor() {
+	constructor(private version: string) {
 		this.client = new Client({
 			intents: [GatewayIntentBits.Guilds]
 		});
@@ -24,6 +26,6 @@ export default class DiscordClient {
 		);
 
 		await this.client.login(token);
-		await new Bot(this.client, token, appId).register();
+		await new Bot(this.version, this.client, token, appId).register();
 	}
 }

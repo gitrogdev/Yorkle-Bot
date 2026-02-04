@@ -20,11 +20,13 @@ export default class Bot {
 	/**
 	 * Builds a new representation of the Discord bot.
 	 *
+	 * @param {string} version the version number for the application
 	 * @param {Client} client the client to bind the bot to
 	 * @param {string} token the Discord bot's secret token
 	 * @param {string} appId the application ID of the Discord application
 	 */
 	constructor(
+		public readonly version: string,
 		private client: Client,
 		token: string,
 		appId: string
@@ -46,6 +48,7 @@ export default class Bot {
 
 		const commandRouter = new CommandRouter(
 			this.registrar.register(new GameInteractionHandler(
+				this.version,
 				this.game,
 				this.messenger
 			))

@@ -18,6 +18,9 @@
 	"commands.share.description": "Podijeli svoje današnje Yorkle rezultate",
 	"commands.skip": "preskoči",
 	"commands.skip.description": "Preskoči trenutni isječak i pokušaj s duljim",
+	"commands.version": "verzija",
+	"commands.version.description": "Prikazuje verziju Yorklea koju bot trenutno pokreće",
+	"commands.version.response": "Yorkle v{version}",
 	"commands.whennext": "sljedećaigra",
 	"commands.whennext.description": "Prikazuje koliko je vremena preostalo do sljedećeg zadatka",
 	"commands.whennext.response": "Sljedeći Yorkle bit će dostupan {timestamp}."

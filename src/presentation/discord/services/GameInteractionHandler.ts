@@ -18,15 +18,27 @@ export default class GameInteractionHandler {
 	 * Creates a new interface for interactions between bot commands and the
 	 * Yorkle game.
 	 *
+	 * @param {string} version the version number for the application
 	 * @param {Yorkle} game the Yorkle game for the Discord client to interact
 	 * with
 	 * @param {Messenger} messenger the messenger interface to send messages to
 	 * Discord
 	 */
-	constructor(private game: Yorkle, private messenger: Messenger) {
+	constructor(
+		public readonly version: string,
+		private game: Yorkle,
+		private messenger: Messenger
+	) {
 		this.clips = new ClipPresenter(this.messenger);
 	}
 
+	/**
+	 * Responds with a human-readable representation of the contents of the
+	 * game.
+	 *
+	 * @param {ChatInputCommandInteraction} interaction the chat input
+	 * interaction with the user requesting the content
+	 */
 	public async getContent(interaction: ChatInputCommandInteraction) {
 		const songCount = this.game.countSongs();
 
@@ -38,20 +50,17 @@ export default class GameInteractionHandler {
 	}
 
 	/**
-	 * Responds with a random song lyric.
+	 * Responds with the version of Yorkle the bot is currently running on.
 	 *
 	 * @param {ChatInputCommandInteraction} interaction the chat input
-	 * interaction with the user requesting the lyric
-	 * @param {LyricOption} archive the archive to get the lyric from
-+	 */
-	public async randomLyric(
-		interaction: ChatInputCommandInteraction,
-		archive: LyricOption
-	) {
-		return await this.messenger.reply(
-			interaction,
-			await this.game.randomLyric(archive)
-		);
+	 * interaction with the user requesting the version
+	 */
+	public async getVersion(interaction: ChatInputCommandInteraction) {
+		return await this.messenger.reply(interaction, localize(
+			'commands.version.response',
+			interaction.locale,
+			{ version: this.version }
+		));
 	}
 
 	/**
@@ -105,6 +114,23 @@ export default class GameInteractionHandler {
 
 		if (response.result === 'OPEN') return await this.clips.sendNext(
 			interaction, response.session!
+		);
+	}
+
+	/**
+	 * Responds with a random song lyric.
+	 *
+	 * @param {ChatInputCommandInteraction} interaction the chat input
+	 * interaction with the user requesting the lyric
+	 * @param {LyricOption} archive the archive to get the lyric from
++	 */
+	public async randomLyric(
+		interaction: ChatInputCommandInteraction,
+		archive: LyricOption
+	) {
+		return await this.messenger.reply(
+			interaction,
+			await this.game.randomLyric(archive)
 		);
 	}
 
