@@ -1,5 +1,5 @@
 # Yorkle
-**Yorkle** is a Discord bot that hosts a daily music puzzle game functioning similar to games such as *Wordle*. Built for a small community of Radiohead fans, the bot presents all players with the same randomly selected audio clip from a Radiohead song each day. Players must identify the song in as few guesses as possible.
+**Yorkle** is a Discord bot that hosts a daily music puzzle game functioning similar to games such as *Wordle*. Built for a small community of Radiohead fans, the bot presents all players with the same randomly selected audio clip from a song from Radiohead or one of Thom Yorke's other projects each day. Players must identify the song in as few guesses as possible.
 
 > **Availability Note:**  
 > While Yorkle is open source, it is not a publicly hosted bot and cannot be directly added to your Discord server. To use Yorkle, you must self-host your own instance.
@@ -16,6 +16,14 @@ Create a `.env` file in the project root with the following variables:
 ```
 APPLICATION_ID=your_discord_application_id
 DISCORD_TOKEN=your_discord_bot_token
+```
+The following optional variables can also be provided in the `.env`:
+```
+DATA_ROOT=path_to_data_folder
+DEV_MODE=true
+FFMPEG_PATH=path_to_ffmpeg.exe
+MEDIA_ROOT=path_to_media_folder
+SONGS_ROOT=path_to_songs_folder
 ```
 
 ## Configuration Files
@@ -50,7 +58,7 @@ Must include:
 `/media/`
 * Album artwork (.jpg)
 * `lyrics.txt` - used by the `/lyric` command
-> This command is non-essential and can safely be removed by deleting `/commands/lyrics.js`
+* `judgements.txt` - used by the `/judgejuryexecutioner` command
 
 `/songs`
 * All .mp3 files used by the bot
@@ -61,34 +69,35 @@ Although Yorkle was built for Radiohead and other Thom Yorke projects, it can ea
 
 # Deployment
 Once the bot is properly configured, complete the following steps to deploy and run Yorkle.
-## 1. Shuffle the Song Queue
-All songs must be added to and randomized within the daily puzzle queue:
+## 1. Install Dependencies
+In order to run, the Node.js dependencies must be installed:
 ```bash
-npm run shuffle
+npm install
 ```
-If you add any new songs, run this command again to incorporate them into the existing queue and reshuffle any unplayed tracks.
-> This step requires a bot restart.
 
-## 2. Deploy Commands to Discord
-Register the bot's slash commands with Discord:
+## 2. Compile the TypeScript
+Compile the TypeScript into JavaScript:
 ```bash
-npm run deploy-commands
+npm run build
 ```
-Run this command whenever a command is added or removed. Existing command files may be modified without requiring redeployment.
-> This step requires a bot restart.
 
 ## 3. Start the Bot
-Once the queue is shuffled and commands are deployed, start the bot:
+Once the dependencies are installed and the JavaScript is compiled, start the bot:
 ```bash
 npm run start
 ```
 
+## 4. Bind a Bot Channel
+After inviting the bot to your Discord server, a user with the **Manage Roles** permission must run the following command to choose which channel Yorkle will use for daily recaps:
+```
+/setgamechannel <channel>
+```
+> This only needs to be done once per server.
+
 # User Guide
-This guide can be provided to users of the bot to explain its usage:
-```md
 # What is Yorkle?
 
-**Yorkle** is a Radiohead guessing game. Functioning similarly to games like Wordle, where all players are given the same puzzle each day. Players will be given a clip of a Radiohead song, and must attempt to identify it. On a correct guess, the game ends. On an incorrect guess, players will be given a longer clip of the song, and the opportunity to guess again. After six clips, if the player has not managed to guess the song correctly, the player loses.
+**Yorkle** is a Thom Yorke guessing game. Functioning similarly to games like Wordle, where all players are given the same puzzle each day. Players will be given a clip of a song from Radiohead or one of Thom Yorke's other projects, and must attempt to identify it. On a correct guess, the game ends. On an incorrect guess, players will be given a longer clip of the song, and the opportunity to guess again. After six clips, if the player has not managed to guess the song correctly, the player loses.
 
 **Since all players are playing the same puzzle, please do not discuss the  results of the puzzle without using || spoiler tags. ||**
 -# Spoiler tags can be created by surrounding text with double vertical bars, `||like this||`
@@ -104,6 +113,8 @@ To play Yorkle, ensure your Privacy Settings allow DMs from the Yorkle bot. Then
 `/share` - Shares a **spoiler-free** recap of your game.
 `/nextgame` - Returns the timestamp of the next puzzle reset.
 `/contents` - Returns information about the possible contents of the game.
-`/hello` - Returns a brief message from the bot to test uptime.
-`/lyric` - Returns a random lyric from any Radiohead song.
+`/lyric` - Returns a random lyric from a song known by the bot.
+`/judgement` - Seeks 8-ball style judgement from the bot, using song lyrics.
+
+:warning::bangbang:  **IF THE BOT IS OFFLINE, RETURNS AN ERROR, OR OTHERWISE BEHAVES UNEXPECTEDLY, PLEASE REPORT THIS TO <@966923213214990366>**
 ```

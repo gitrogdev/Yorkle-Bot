@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import type SongMetadata from '../dto/SongMetadata.js';
-import { SONGS_PATH } from '../../config/paths.js';
+import { SONGS_ROOT } from '../../config/paths.js';
 
 export default class SongDataStore {
 	/**
@@ -13,14 +13,14 @@ export default class SongDataStore {
 	 * and the IDs
 	 */
 	public async load(): Promise<SongMetadata[]> {
-		const songFiles = fs.readdirSync(SONGS_PATH).filter(
+		const songFiles = fs.readdirSync(SONGS_ROOT).filter(
 			(file) => file.endsWith('.mp3')
 		);
 
 		const songs = [];
 		for (const song of songFiles) {
 			const metadata = await parseFile(
-				path.join(SONGS_PATH, song)
+				path.join(SONGS_ROOT, song)
 			);
 			const { title, artist, album } = metadata.common;
 			const duration = metadata.format.duration;
