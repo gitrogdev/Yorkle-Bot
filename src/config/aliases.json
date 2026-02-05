@@ -996,5 +996,79 @@
 		"philippachicken",
 		"phillippachicken",
 		"phillipachicken"
+	],
+	"same": [
+		"thesame",
+		"same"
+	],
+	"opposite": [
+		"theopposite",
+		"opposite"
+	],
+	"ywnwitva": [
+		"youwillneverworkintelevisionagain",
+		"youwillneverworkintelevision",
+		"youwillneverworkintvagain",
+		"youwillneverworkintv",
+		"youwontworkintelevisionagain",
+		"youwontworkintvagain",
+		"youwontworkintelevision",
+		"youwontworkintv",
+		"ywnwita",
+		"ywnwitva"
+	],
+	"panavision": [
+		"panavision"
+	],
+	"smoke": [
+		"thesmoke",
+		"smoke"
+	],
+	"speechbubbles": [
+		"speechbubble",
+		"speechbubbles"
+	],
+	"thinthing": [
+		"thinthing"
+	],
+	"openfloodgates": [
+		"thefloodgates",
+		"floodgates",
+		"openthefloodgates",
+		"openfloodgates"
+	],
+	"freeknowledge": [
+		"freeintheknowledge",
+		"freeinknowledge",
+		"freeknowledge"
+	],
+	"hairdryer": [
+		"ahairdrier",
+		"hairdrier",
+		"ahairdryer",
+		"hairdryer"
+	],
+	"whiteflag": [
+		"wavingawhiteflag",
+		"wavingwhiteflag",
+		"whiteflag"
+	],
+	"wdkwtb": [
+		"wedontknowwhattomorrowbrings",
+		"wedonotknowwhattomorrowbrings",
+		"wedunnowhattomorrowbrings",
+		"whattomorrowbrings",
+		"wdkwtb"
+	],
+	"skrting": [
+		"sots",
+		"skrtingonthesurface",
+		"skrtinonthesurface",
+		"skirtingonthesurface",
+		"skirtinonthesurface",
+		"skirting",
+		"skirtin",
+		"skrtin",
+		"skrting"
 	]
 }

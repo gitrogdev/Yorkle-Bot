@@ -1,7 +1,17 @@
 
 # Change Log
 All changes to Yorkle since version 2.1.7 will be documented in this file.
+
+## [2.1.8] - 2026-02-05
  
+### Added
+
+- Add A Light For Attracting Attention from The Smile.
+   
+### Changed
+ 
+### Fixed
+  
 ## [2.1.7] - 2026-02-05
  
 ### Added
