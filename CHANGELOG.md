@@ -9,10 +9,6 @@ All changes to Yorkle since version 2.1.7 will be documented in this file.
 - Add A Light For Attracting Attention from The Smile.
 - Add Wall Of Eyes from The Smile.
 - Add Cutouts from The Smile.
-   
-### Changed
- 
-### Fixed
   
 ## [2.1.7] - 2026-02-05
  
