@@ -82,10 +82,11 @@ export default class Session {
 		this.guessSequence += SEQUENCE_CHARACTERS[result];
 
 		console.log(
-			`Successfully processed guess from ${this.user.name}. Guess: `
-			+ `${guess} (cleaned to ${cleanGuess}), Result: ${result}, `
+			`Successfully processed guess from ${this.user.name}.`
+			+ (process.env.DEV_MODE ? (` Guess: ${guess} (cleaned to `
+			+ `${cleanGuess}), Result: ${result}, `
 			+ `Sequence: ${this.guessSequence} (${this.guessSequence.length}/`
-			+ `${pluralize('guess', this.maxGuesses, 'es')} remaining)`
+			+ `${pluralize('guess', this.maxGuesses, 'es')} remaining)`) : '')
 		);
 
 		if (over) {
