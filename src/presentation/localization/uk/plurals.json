@@ -1,5 +1,8 @@
 {
 	"plurals.guess": "спроба",
 	"plurals.guess.nomplural": "спроби",
-	"plurals.guess.genplural": "спроб"
+	"plurals.guess.genplural": "спроб",
+	"plurals.uniquesong": "унікальна пісня",
+	"plurals.uniquesong.nomplural": "унікальні пісні",
+	"plurals.uniquesong.genplural": "унікальних пісень"
 }

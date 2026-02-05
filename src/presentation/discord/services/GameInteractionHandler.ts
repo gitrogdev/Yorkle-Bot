@@ -2,7 +2,7 @@ import { type ChatInputCommandInteraction } from 'discord.js';
 
 import type Yorkle from '../../../game/Yorkle.js';
 import toUserIdentity from '../mappers/to-user-identity.js';
-import { localize } from '../../localization/i18n.js';
+import { localePluralize, localize } from '../../localization/i18n.js';
 import type Messenger from './Messenger.js';
 import ClipPresenter from './ClipPresenter.js';
 import GuessResponseBuilder from '../builders/GuessResponseBuilder.js';
@@ -45,7 +45,13 @@ export default class GameInteractionHandler {
 		return await this.messenger.reply(interaction, localize(
 			'game.contents',
 			interaction.locale,
-			{ songs: songCount }
+			{
+				songs: localePluralize(
+					interaction.locale,
+					'plurals.uniquesong',
+					songCount
+				)
+			}
 		));
 	}
 

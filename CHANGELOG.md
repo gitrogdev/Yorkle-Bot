@@ -8,6 +8,10 @@ All changes to Yorkle since version 2.1.7 will be documented in this file.
 
 - Add additional tracks from KID A MNESIA.
 
+### Changed
+
+- Update the /content command's message to reflect the presence of alternate songs.
+
 ## [2.1.8] - 2026-02-05
  
 ### Added
