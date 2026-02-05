@@ -1070,5 +1070,39 @@
 		"skirtin",
 		"skrtin",
 		"skrting"
+	],
+	"wallofeyes": [
+		"walloeyes",
+		"wallofeyes"
+	],
+	"teleharmonic": [
+		"teleharmonic"
+	],
+	"readroom": [
+		"readtheroom",
+		"readroom"
+	],
+	"underpillows": [
+		"underourpillows",
+		"underpillows"
+	],
+	"friendofafriend": [
+		"foff",
+		"foaf",
+		"friendofriend",
+		"friendoafriend",
+		"friendoffriend",
+		"friendofafriend"
+	],
+	"iquit": [
+		"iquit"
+	],
+	"bendinghectic": [
+		"bendinhectic",
+		"bendinghectic"
+	],
+	"youknowme": [
+		"uknowme",
+		"youknowme"
 	]
 }

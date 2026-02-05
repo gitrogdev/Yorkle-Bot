@@ -7,6 +7,7 @@ All changes to Yorkle since version 2.1.7 will be documented in this file.
 ### Added
 
 - Add A Light For Attracting Attention from The Smile.
+- Add Wall Of Eyes from The Smile.
    
 ### Changed
  
