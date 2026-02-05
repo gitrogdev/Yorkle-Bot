@@ -125,12 +125,13 @@ export default class SongQueue {
 			const today = getDate();
 			if (today === this.lastPlayed) return;
 
-			let startup = false;
+			let startup = true;
 			if (this.game) {
 				this.broadcastResults(this.game.getResults());
 				this.game.sentResults = true;
 				await this.gameStore.save(this.game);
-			} startup = true;
+				startup = false;
+			}
 
 			this.lastPlayed = today;
 			this.day++;
@@ -154,6 +155,7 @@ export default class SongQueue {
 			await this.gameStore.save(this.game);
 
 			if (startup && this.game.day > 1) {
+				console.log('Sending startup message...');
 				const yesterday = this.gameFactory.fromJson(
 					this.gameStore.load(this.game.day - 1)
 				);

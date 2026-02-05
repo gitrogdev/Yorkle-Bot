@@ -1,6 +1,6 @@
 {
 	"name": "yorkle",
-	"version": "2.1.6",
+	"version": "2.1.7",
 	"type": "module",
 	"description": "**Yorkle** is a Discord bot that hosts a daily music puzzle game functioning similar to games such as *Wordle*. Built for a small community of Radiohead fans, the bot presents all players with the same randomly selected audio clip from a Radiohead song each day. Players must identify the song in as few guesses as possible.",
 	"main": "./src/main.ts",
