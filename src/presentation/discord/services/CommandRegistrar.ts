@@ -39,6 +39,8 @@ export default class CommandRegistrar {
 	/**
 	 * Creates a new command registrar.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string} token the Discord bot's secret token
 	 * @param {string} appId the application ID of the Discord application
 	 */
@@ -48,6 +50,8 @@ export default class CommandRegistrar {
 
 	/**
 	 * Deploys the registered commands to Discord.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {RESTPostAPIChatInputApplicationCommandsJSONBody[]} commands an
 	 * array of JSON data for the registered commands to deploy to Discord
@@ -68,6 +72,8 @@ export default class CommandRegistrar {
 
 	/**
 	 * Builds the commands for the bot and returns an object containing them.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {GameInteractionHandler} handler the handler for connecting
 	 * Discord interactions to the game logic

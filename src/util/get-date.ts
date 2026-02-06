@@ -1,6 +1,8 @@
 /**
  * Gets a date relative to today's current date.
  *
+ * @author gitrog
+ *
  * @param {number} mod the number of days to add to today's date (default 0)
  *
  * @returns {string} the relative date in YYYY-MM-DD format

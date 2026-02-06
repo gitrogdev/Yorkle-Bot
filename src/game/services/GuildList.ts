@@ -9,6 +9,8 @@ export default class GuildList {
 	/**
 	 * Creates a new guild list using the data from a provided data store.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {GuildDataStore} store the data store to load the guild data from
 	 */
 	constructor(private store: GuildDataStore) {
@@ -29,6 +31,8 @@ export default class GuildList {
 	/**
 	 * Adds a new guild to the GuildList.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {Guild} guild the guild to add to the GuildList
 	 */
 	public add(guild: Guild) {
@@ -44,6 +48,8 @@ export default class GuildList {
 	/**
 	 * Creates a new guild by ID, and adds it to the list.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string} id the ID of the guild to create
 	 *
 	 * @returns {Guild} the guild created
@@ -56,6 +62,8 @@ export default class GuildList {
 
 	/**
 	 * Gets a Guild from the GuildList by ID.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {string} id the Discord Guild ID of the guild
 	 *
@@ -70,6 +78,8 @@ export default class GuildList {
 	/**
 	 * Gets an array of all loaded guilds.
 	 *
+	 * @author gitrog
+	 *
 	 * @returns {string[]} an array of all loaded guilds.
 	 */
 	public getGuilds(): Guild[] {
@@ -78,6 +88,8 @@ export default class GuildList {
 
 	/**
 	 * Adds a user to a guild, and creates the guild if it does not exist.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {string} id the ID of the guild to add the user to
 	 * @param {string} user the ID of the user to add to the guild
@@ -91,6 +103,8 @@ export default class GuildList {
 	/**
 	 * Save a guild's data to file.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string} id the ID of the guild to save
 	 */
 	public async saveGuild(id: string) {
@@ -103,6 +117,8 @@ export default class GuildList {
 
 	/**
 	 * Save all guilds' data to file.
+	 *
+	 * @author gitrog
 	 */
 	public async saveGuilds() {
 		for (const id of Object.keys(this.guilds)) await this.saveGuild(id);

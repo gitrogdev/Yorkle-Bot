@@ -4,6 +4,8 @@ export default abstract class DiscordEvent {
 	/**
 	 * Registers the event with a Discord client.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {Client} client the Discord client to register the event with
 	 */
 	public abstract register(client: Client): void;

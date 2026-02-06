@@ -11,6 +11,8 @@ export default class GuessResponseBuilder {
 	 * Builds the results of a guess and returns it as options to reply to an
 	 * interaction with.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string} locale the interaction's locale
 	 * @param {string} guess the guess the user made
 	 * @param {GuessResponse} response the response returned by the game

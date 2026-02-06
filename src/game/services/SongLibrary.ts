@@ -16,6 +16,8 @@ export default class SongLibrary {
 	/**
 	 * Loads all the songs from the provided data store as Song objects.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {SongQueueStore} store the data store to load the songs from
 	 */
 	constructor(private store: SongDataStore) {
@@ -24,6 +26,8 @@ export default class SongLibrary {
 
 	/**
 	 * Initialize the song library asynchronously.
+	 *
+	 * @author gitrog
 	 */
 	private async init() {
 		const songs = await this.store.load();
@@ -56,6 +60,8 @@ export default class SongLibrary {
 	/**
 	 * Returns an array of songs not present in an array of song filenames.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string[]} filenames the filenames of the songs to compare to the
 	 * song library
 	 *
@@ -75,12 +81,16 @@ export default class SongLibrary {
 	/**
 	 * Gets the number of songs in the song library.
 	 *
+	 * @author gitrog
+	 *
 	 * @returns {number} the number of songs in the song library
 	 */
 	public getSize(): number { return this.size; }
 
 	/**
 	 * Gets a Song Object by filename.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {string} filename the filename of the song to get
 	 *
@@ -96,6 +106,8 @@ export default class SongLibrary {
 
 	/**
 	 * Returns a shuffled array of all the songs in the song library.
+	 *
+	 * @author gitrog
 	 *
 	 * @returns {Song[]} a shuffled array of all the songs in the song library.
 	 */

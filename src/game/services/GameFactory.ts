@@ -10,6 +10,8 @@ export default class GameFactory {
 	/**
 	 * Creates a new helper class to build games from JSON files.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {SongLibrary} songs the song library to use for the games
 	 * @param {AliasRegistry} aliases the registry of aliases to songs to use
 	 * for guesses
@@ -24,6 +26,8 @@ export default class GameFactory {
 	/**
 	 * Creates a new game for a given song and day.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {number} day the number of the day of the game's iteration
 	 * @param {Song} song the song to pick the clip from for this day
 	 *
@@ -36,6 +40,8 @@ export default class GameFactory {
 	/**
 	 * Factory method to construct a new representation of a daily iteration of
 	 * the game from a JSON file.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {GameJson} json the JSON Object to turn into the Game Object
 	 *

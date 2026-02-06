@@ -55,6 +55,8 @@ export default class Yorkle {
 	/**
 	 * Creates a new interface to handle all game logic for Yorkle.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {BroadcastPort} broadcaster the port to broadcast messages from
 	 * the game to
 	 */
@@ -68,6 +70,8 @@ export default class Yorkle {
 
 	/**
 	 * Broadcasts the provided game results to the connected broadcaster.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {GameResults} results the results from the previous day's puzzle
 	 */
@@ -84,9 +88,11 @@ export default class Yorkle {
 	/**
 	 * Returns a random lyric from the provided archive.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {LyricOption} archive the archive to get the lyric from
 	 *
-	 *  @returns {Promise<string>}
+	 * @returns {Promise<string>}
 	 */
 	public async randomLyric(archive: LyricOption): Promise<string> {
 		return await this.lyrics[archive].randomLyric();

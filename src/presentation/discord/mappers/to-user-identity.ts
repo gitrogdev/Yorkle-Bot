@@ -5,6 +5,8 @@ import type UserIdentity from '../../../game/model/UserIdentity.js';
  * Maps a Discord User object to a UserIdentity interface usable by the game
  * layer.
  *
+ * @author gitrog
+ *
  * @param {User} user the user to map to a user identity
  *
  * @returns {UserIdentity} the mapped user identity for the user

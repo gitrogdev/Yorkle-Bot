@@ -17,6 +17,8 @@ export default class CommandRouter {
 	/**
 	 * Routes an interaction to a command's execution.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {Interaction} interaction the interaction to bind to the command
 	 */
 	public async route(interaction: Interaction): Promise<void> {

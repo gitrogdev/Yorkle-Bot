@@ -20,6 +20,8 @@ export default class Bot {
 	/**
 	 * Builds a new representation of the Discord bot.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string} version the version number for the application
 	 * @param {Client} client the client to bind the bot to
 	 * @param {string} token the Discord bot's secret token
@@ -37,6 +39,8 @@ export default class Bot {
 
 	/**
 	 * Binds events and builds all commands for the bot.
+	 *
+	 * @author gitrog
 	 */
 	public async register() {
 		this.game = new Yorkle(new DiscordBroadcaster(

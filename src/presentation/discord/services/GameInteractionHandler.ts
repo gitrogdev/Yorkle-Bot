@@ -18,6 +18,8 @@ export default class GameInteractionHandler {
 	 * Creates a new interface for interactions between bot commands and the
 	 * Yorkle game.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string} version the version number for the application
 	 * @param {Yorkle} game the Yorkle game for the Discord client to interact
 	 * with
@@ -35,6 +37,8 @@ export default class GameInteractionHandler {
 	/**
 	 * Responds with a human-readable representation of the contents of the
 	 * game.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {ChatInputCommandInteraction} interaction the chat input
 	 * interaction with the user requesting the content
@@ -58,6 +62,8 @@ export default class GameInteractionHandler {
 	/**
 	 * Responds with the version of Yorkle the bot is currently running on.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {ChatInputCommandInteraction} interaction the chat input
 	 * interaction with the user requesting the version
 	 */
@@ -71,6 +77,8 @@ export default class GameInteractionHandler {
 
 	/**
 	 * Makes a guess and presents the response to the user.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {ChatInputCommandInteraction} interaction the chat input
 	 * interaction with the user making the guess
@@ -103,6 +111,8 @@ export default class GameInteractionHandler {
 	/**
 	 * Attempts to start a new session of the game for a user.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {ChatInputCommandInteraction} interaction the chat input
 	 * interaction with the user starting the game
 	 */
@@ -126,6 +136,8 @@ export default class GameInteractionHandler {
 	/**
 	 * Responds with a random song lyric.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {ChatInputCommandInteraction} interaction the chat input
 	 * interaction with the user requesting the lyric
 	 * @param {LyricOption} archive the archive to get the lyric from
@@ -142,6 +154,8 @@ export default class GameInteractionHandler {
 
 	/**
 	 * Attempts to set a guild's channel for sharing game results.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {ChatInputCommandInteraction} interaction the chat input
 	 * interaction with the user setting the channel
@@ -174,6 +188,8 @@ export default class GameInteractionHandler {
 	/**
 	 * Attempts to share the results for today's game.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {ChatInputCommandInteraction} interaction the chat input
 	 * interaction with the user sharing their game results
 	 */
@@ -200,6 +216,8 @@ export default class GameInteractionHandler {
 
 	/**
 	 * Attempts to skip the current clip.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {ChatInputCommandInteraction} interaction the chat input
 	 * interaction with the user skipping the clip
@@ -229,6 +247,8 @@ export default class GameInteractionHandler {
 
 	/**
 	 * Responds with the relative time until the game resets.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {ChatInputCommandInteraction} interaction the chat input
 	 * interaction with the user requesting the time

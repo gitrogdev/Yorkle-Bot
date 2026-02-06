@@ -7,6 +7,8 @@ export default class ClientReadyEvent extends DiscordEvent {
 	/**
 	 * Creates a new ClientReadyEvent.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {StatusCycler} statuses the StatusCycler to use to loop through
 	 * statuses
 	 */
@@ -28,6 +30,8 @@ export default class ClientReadyEvent extends DiscordEvent {
 	/**
 	 * Registers the ClientReady event with a Discord client, or calls the
 	 * onReady() function if the client is already ready.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {Client} client the Discord client to register the event with
 	 */

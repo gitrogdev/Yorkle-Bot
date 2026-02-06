@@ -28,6 +28,8 @@ export default class SongQueue {
 	/**
 	 * Creates a new song queue using the data from a provided data store.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {SongQueueStore} queueStore the data store to load the queue data
 	 * from
 	 * @param {GameDataStore} gameStore the data store to load the game data
@@ -49,6 +51,8 @@ export default class SongQueue {
 
 	/**
 	 * Initialize the song queue asynchronously.
+	 *
+	 * @author gitrog
 	 */
 	private async init() {
 		await this.lib.ready;
@@ -100,6 +104,8 @@ export default class SongQueue {
 	/**
 	 * Gets the default data for a new queue.
 	 *
+	 * @author gitrog
+	 *
 	 * @returns {QueueData} default data values for a new queue
 	 */
 	private static defaultData(): QueueData {
@@ -113,6 +119,8 @@ export default class SongQueue {
 
 	/**
 	 * Advances the queue, and reshuffles it if the end is reached.
+	 *
+	 * @author gitrog
 	 *
 	 * @returns {Promise<void>} a Promise that resolves when the advance has
 	 * finished to prevent simultaneous calls
@@ -175,6 +183,8 @@ export default class SongQueue {
 
 	/**
 	 * Packages the queue data and saves it to file.
+	 *
+	 * @author gitrog
 	 */
 	private async save() {
 		const hexifiedQueue: string[] = [];
@@ -196,6 +206,8 @@ export default class SongQueue {
 
 	/**
 	 * Gets today's iteration of the Yorkle puzzle.
+	 *
+	 * @author gitrog
 	 *
 	 * @returns {Promise<Game>} a Promise of today's game
 	 */

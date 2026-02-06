@@ -9,6 +9,8 @@ export default class SongDataStore {
 	/**
 	 * Loads the metadata for the songs from file.
 	 *
+	 * @author gitrog
+	 *
 	 * @returns {GuildInfo[]} an array of guild info, containing the stored data
 	 * and the IDs
 	 */

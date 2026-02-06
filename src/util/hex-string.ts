@@ -1,6 +1,8 @@
 /**
  * Converts a string into its hexadecimal representation.
  *
+ * @author gitrog
+ *
  * @param {string} str the string to convert into hexadecimal representation
  *
  * @returns {string} the hexadecimal representation of the string

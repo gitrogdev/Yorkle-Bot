@@ -1,6 +1,8 @@
 /**
  * Shuffles all values in a given array.
  *
+ * @author gitrog
+ *
  * @param {T[]} array the reference to the array to shuffle
  */
 export default function shuffleArray<T>(array: T[]) {

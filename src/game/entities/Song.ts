@@ -10,6 +10,8 @@ export default class Song {
 	/**
 	 * Creates a new representation of the data for a song.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string} title the title of the song
 	 * @param {string} artist the artist (or artists) of the song
 	 * @param {string} album the album the song is on
@@ -35,6 +37,8 @@ export default class Song {
 
 	/**
 	 * Checks if a guess is an alias of this song.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {string} guess the guess to check this song's aliases for
 	 *

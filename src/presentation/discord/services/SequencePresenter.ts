@@ -5,6 +5,8 @@ export default class SequencePresenter {
 	 * Builds a sequence for display from an internally formatted sequence
 	 * string.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string} sequence the sequence string for the guess results
 	 *
 	 * @returns {string} a formatted version of the sequence string for display
