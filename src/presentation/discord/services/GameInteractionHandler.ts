@@ -156,11 +156,8 @@ export default class GameInteractionHandler {
 
 		const channel = interaction.options.getChannel('channel')?.id ??
 			interaction.channelId;
-		const guild = this.game.getGuild(interaction.guild.id);
-		if (!guild) return await this.messenger.reply(interaction, localize(
-			'errors.noguild',
-			interaction.locale
-		));
+		const guild = this.game.getGuild(interaction.guild.id)
+			?? this.game.createGuild(interaction.guild.id);
 
 		guild.channelId = channel;
 		await this.game.saveGuild(interaction.guild.id);

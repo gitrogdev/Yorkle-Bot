@@ -42,6 +42,7 @@ export default class Yorkle {
 
 	public getGame = this.queue.getGame.bind(this.queue);
 
+	public createGuild = this.guilds.createGuild.bind(this.guilds);
 	public getGuild = this.guilds.get.bind(this.guilds);
 	public joinGuild = this.guilds.joinGuild.bind(this.guilds);
 	public saveGuild = this.guilds.saveGuild.bind(this.guilds);
