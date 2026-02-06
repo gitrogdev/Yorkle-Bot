@@ -42,16 +42,27 @@ export default class GuildList {
 	}
 
 	/**
+	 * Creates a new guild by ID, and adds it to the list.
+	 *
+	 * @param {string} id the ID of the guild to create
+	 *
+	 * @returns {Guild} the guild created
+	 */
+	public createGuild(id: string): Guild {
+		const guild = new Guild(id);
+		this.add(guild);
+		return guild;
+	}
+
+	/**
 	 * Gets a Guild from the GuildList by ID.
 	 *
 	 * @param {string} id the Discord Guild ID of the guild
 	 *
-	 * @returns {Guild} the Guild Object represented by the provided ID
+	 * @returns {Guild | null} the Guild Object represented by the provided ID
 	 */
-	public get(id: string): Guild {
-		if (!(id in this.guilds)) throw new Error(
-			`No guild found in GuildList with ID ${id}!`
-		);
+	public get(id: string): Guild | null {
+		if (!(id in this.guilds)) return null;
 
 		return this.guilds[id];
 	}
