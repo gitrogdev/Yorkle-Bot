@@ -9,6 +9,8 @@ export default class GuildDataStore {
 	/**
 	 * Loads data for the guilds from file.
 	 *
+	 * @author gitrog
+	 *
 	 * @returns {GuildInfo[]} an array of guild info, containing the stored data
 	 * and the IDs
 	 */
@@ -34,6 +36,8 @@ export default class GuildDataStore {
 
 	/**
 	 * Save an individual guild's data to file.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {Guild} guild the guild to save to file
 	 */

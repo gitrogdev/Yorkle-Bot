@@ -7,6 +7,8 @@ export default class InteractionCreateEvent extends DiscordEvent {
 	/**
 	 * Creates a new InteractionCreateEvent.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {CommandRouter} router the command router to route slash commands
 	 * to
 	 */

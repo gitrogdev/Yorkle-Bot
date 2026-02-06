@@ -38,6 +38,8 @@ for (const locale of fs.readdirSync(LOCALIZATION_PATH)) {
 /**
  * Gets a record containing all localized options for a key.
  *
+ * @author gitrog
+ *
  * @param {string} key the translation key
  *
  * @returns {Record<string, string>} a record containing locales as keys and the
@@ -53,6 +55,8 @@ export function getLocalizedOptions(key: string): Record<string, string> {
 
 /**
  * Localize a string to the provided locale.
+ *
+ * @author gitrog
  *
  * @param {string} key the translation key
  * @param {string} locale the locale to translate into (defaults to en-US)
@@ -83,6 +87,8 @@ export { localize };
 
 /**
  * Returns a word in the correct plural form, based on the count of the object.
+ *
+ * @author gitrog
  *
  * @param {string} locale the locale to apply pluralization rules for (defaults
  * to en-US)

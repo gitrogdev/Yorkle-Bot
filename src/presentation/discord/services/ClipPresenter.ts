@@ -10,12 +10,16 @@ export default class ClipPresenter {
 	/**
 	 * Constructs a new interface to send clips to Discord users.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {Messenger} messenger the messenger to send the clips through
 	 */
 	constructor(private messenger: Messenger) {}
 
 	/**
 	 * Sends the next audio clip to the user.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {ChatInputCommandInteraction} interaction the interaction with the
 	 * user to send the clip to

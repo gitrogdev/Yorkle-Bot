@@ -7,6 +7,8 @@ const GEN_SINGULAR = new Set<number>([2, 3, 4]);
  * Returns a word in the correct plural form, based on the count of the object
  * in Ukrainian.
  *
+ * @author gitrog
+ *
  * @param {PluralKey} key the translation key for the word in singular form
  * @param {string} count the number of times the word is counted
  *

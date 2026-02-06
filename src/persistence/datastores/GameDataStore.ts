@@ -11,6 +11,8 @@ export default class GameDataStore {
 	/**
 	 * Loads the game data for a given day from the file.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {number} day the day to load the game data from
 	 *
 	 * @returns {GameJson} the loaded game data
@@ -29,6 +31,8 @@ export default class GameDataStore {
 
 	/**
 	 * Save a daily iteration of the game's data to file.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {Game} game the game to save to file
 	 */

@@ -13,6 +13,8 @@ export default abstract class Command {
 	/**
 	 * Executes the command.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {ChatInputCommandInteraction} interaction the Discord chat command
 	 * interaction with the command
 	 */

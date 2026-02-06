@@ -12,6 +12,8 @@ export default class AliasRegistry {
 	/**
 	 * Create a new registry of aliases to songs.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {SongLibrary} lib the song library to load the songs from
 	 */
 	constructor(private lib: SongLibrary) {
@@ -20,6 +22,8 @@ export default class AliasRegistry {
 
 	/**
 	 * Initialize the alias registry asynchronously.
+	 *
+	 * @author gitrog
 	 */
 	private async init() {
 		await this.lib.ready;
@@ -49,6 +53,8 @@ export default class AliasRegistry {
 	/**
 	 * Gets the Song Object associated with a given alias.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string} alias the cleaned song title alias
 	 *
 	 * @returns {Song} the song associated with the alias
@@ -63,6 +69,8 @@ export default class AliasRegistry {
 
 	/**
 	 * Check if a guess for the song is a recognized song.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {string} guess an cleaned song title to check the validity of
 	 *

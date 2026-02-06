@@ -14,12 +14,16 @@ export default class Messenger {
 	/**
 	 * Builds a new service for safely sending messages.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {Client} client the Discord client to use for sending messages
 	 */
 	constructor(private client: Client) {}
 
 	/**
 	 * Safely send a direct message to a user.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {User} user the user to send a direct message to
 	 * @param {MessageOptions} options the options for the payload containing
@@ -38,6 +42,8 @@ export default class Messenger {
 
 	/**
 	 * Safely reply to an interaction.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {ChatInputCommandInteraction} interaction the interaction to
 	 * reply to
@@ -60,6 +66,8 @@ export default class Messenger {
 
 	/**
 	 * Safely sends a message to a channel.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {string} channelId the ID of the Discord channel to send the
 	 * message to

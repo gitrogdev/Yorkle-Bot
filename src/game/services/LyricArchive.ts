@@ -11,6 +11,8 @@ export default class LyricArchive {
 	/**
 	 * Constructs a new lyric archive.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string} file the name of the file to get the lyrics from
 	 */
 	constructor(private file: string) { this.ready = this.init(); }
@@ -36,6 +38,8 @@ export default class LyricArchive {
 
 	/**
 	 * Returns a random lyric.
+	 *
+	 * @author gitrog
 	 *
 	 * @returns {Promise<string>} a randomly selected song lyric from all the
 	 * songs known by the bot.

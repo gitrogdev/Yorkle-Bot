@@ -10,6 +10,8 @@ export default class Game {
 	/**
 	 * Creates a new representation for a daily iteration of the game
 	 *
+	 * @author gitrog
+	 *
 	 * @param {number} day the number of the day of the game's iteration
 	 * @param {Song} song the song to pick the clip from for this day
 	 * @param {GameResults} results the results of this day of the
@@ -35,6 +37,8 @@ export default class Game {
 	/**
 	 * Returns a JSON representation of the game's data.
 	 *
+	 * @author gitrog
+	 *
 	 * @returns {GuildJson} the JSON representation of the game's data.
 	 */
 	public toJson(): GameJson {
@@ -49,6 +53,8 @@ export default class Game {
 	/**
 	 * Finishes the game for a user and saves the game data to file.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {number} id the user ID of the user finishing the game
 	 * @param {string} sequence the sequence string of guesses the user made
 	 */
@@ -59,6 +65,8 @@ export default class Game {
 
 	/**
 	 * Gets the results of a finished game for a user.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {number} id the user ID of the user to get the results for
 	 *
@@ -75,6 +83,8 @@ export default class Game {
 	/**
 	 * Gets all the results for this game.
 	 *
+	 * @author gitrog
+	 *
 	 * @returns {GameResults} all the results for this game
 	 */
 	public getResults(): GameResults {
@@ -85,6 +95,8 @@ export default class Game {
 	 * Makes a guess for the game's song, checking if the song title is valid
 	 * (if it is a known song title) and correct (if it is the correct song for
 	 * this iteration of the game).
+	 *
+	 * @author gitrog
 	 *
 	 * @param {string} guess the cleaned song title the player guessed
 	 *
@@ -104,6 +116,8 @@ export default class Game {
 
 	/**
 	 * Checks if a user has already played this iteration of the game.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {string} id the user ID to check the game results for
 	 *

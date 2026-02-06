@@ -21,6 +21,8 @@ export default class Session {
 	/**
 	 * Creates a new session of the daily game for an individual user.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {UserIdentity} user a representation of the user's information
 	 * @param {Game} game the game to launch the session for
 	 */
@@ -39,6 +41,8 @@ export default class Session {
 	/**
 	 * Gets the information for the next clip of the song.
 	 *
+	 * @author gitrog
+	 *
 	 * @returns {ClipInfo} information about the next clip of the song
 	 */
 	public getClip(): ClipInfo {
@@ -55,12 +59,16 @@ export default class Session {
 	/**
 	 * Gets the day number of the game the session is running.
 	 *
+	 * @author gitrog
+	 *
 	 * @returns {number} the day number of the game the session is running
 	 */
 	public getDay(): number { return this.game.day; }
 
 	/**
 	 * Takes and cleans a guess, then returns a formatted response to the user.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {string} guess the guess received from the user
 	 *
@@ -105,7 +113,9 @@ export default class Session {
 
 	/**
 	 * Attempts to skip the current clip to receive the next one.
-	 * The last clip in the puzzle can not be skipped.
+	 * The last clip in the puzzle cannot be skipped.
+	 *
+	 * @author gitrog
 	 *
 	 * @returns {SkipResponse} the response to the user based on whether
 	 * skipping the song succeeded

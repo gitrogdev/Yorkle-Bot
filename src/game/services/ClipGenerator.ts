@@ -14,6 +14,8 @@ export default class ClipGenerator {
 	/**
 	 * Constructs a new clip generator by specifying desired clip lenghths.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {number[]} clipLengths an array of numbers containing the lengths
 	 * in seconds of each clip to be generated
 	 */
@@ -22,6 +24,8 @@ export default class ClipGenerator {
 	/**
 	 * Generates clips from a song based on the generator's specified clip
 	 * lengths.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {Song} song the song to generate the clips from
 	 * @param {number} day the incremental day number for the game

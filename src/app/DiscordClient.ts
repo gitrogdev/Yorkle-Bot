@@ -7,6 +7,8 @@ export default class DiscordClient {
 	/**
 	 * Builds a new client for the Discord bot.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string} version the version number for the application
 	 */
 	constructor(private version: string) {
@@ -16,7 +18,9 @@ export default class DiscordClient {
 	}
 
 	/**
-	 * Starts the bot client
+	 * Starts the bot client.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {string} token the Discord bot's secret token
 	 */

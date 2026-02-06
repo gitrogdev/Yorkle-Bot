@@ -10,6 +10,8 @@ export default class StatusCycler {
 	 * Creates a new cycler to loop through different Discord status presences
 	 * for the bot user.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string[]} statuses an array of all potential statuses for the bot
 	 * @param {number} interval the amount of time (in milliseconds) between
 	 * each rotation of the status
@@ -33,6 +35,8 @@ export default class StatusCycler {
 	/**
 	 * Picks a random status from `this.statuses` and updates the bot user's
 	 * status presence.
+	 *
+	 * @author gitrog
 	 */
 	private setRandomStatus(): void {
 		if (!this.user) throw new Error(
@@ -47,6 +51,8 @@ export default class StatusCycler {
 	/**
 	 * Starts cycling through bot statuses every `this.interval` seconds.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {boolean} autoSet whether to immediately set the first status
 	 */
 	private cycle(autoSet: boolean): void {
@@ -57,6 +63,8 @@ export default class StatusCycler {
 
 	/**
 	 * Adds a new status to the cycle.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {string} status the status to add to the cycle
 	 * @param {boolean} autoSet whether to automatically set the status
@@ -78,6 +86,8 @@ export default class StatusCycler {
 	/**
 	 * Manually set the status for the next `this.interval` seconds.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string} status the status to use
 	 */
 	public set(status: string): void {
@@ -92,6 +102,8 @@ export default class StatusCycler {
 
 	/**
 	 * Starts cycling through bot statuses every `this.interval` seconds.
+	 *
+	 * @author gitrog
 	 */
 	public start(user: ClientUser): void {
 		this.user = user;
@@ -112,6 +124,8 @@ export default class StatusCycler {
 
 	/**
 	 * Stops cycling through bot statuses.
+	 *
+	 * @author gitrog
 	 */
 	public stop(): void {
 		if (this.timer) clearInterval(this.timer);

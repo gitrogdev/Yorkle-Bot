@@ -11,6 +11,8 @@ export default class Guild {
 	/**
 	 * Creates a representation of a Discord guild within the bot.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {string} id the Discord guild ID of the guild to represent
 	 * @param {number} streak the number of days in a row users in this guild
 	 * have played the game
@@ -41,6 +43,8 @@ export default class Guild {
 	 * Factory method which builds a new representation of a guild's data from
 	 * a stored JSON object.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {GuildInfo} info the stored information for the guild
 	 *
 	 * @returns {Guild} the representation of the guild's data created
@@ -56,6 +60,8 @@ export default class Guild {
 
 	/**
 	 * Returns a JSON representation of the guild's data.
+	 *
+	 * @author gitrog
 	 *
 	 * @returns {GuildJson} the JSON representation of the guild's data.
 	 */

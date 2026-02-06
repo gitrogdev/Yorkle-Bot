@@ -12,6 +12,8 @@ export default class DiscordBroadcaster implements BroadcastPort {
 	/**
 	 * Creates a new port to receive messages for broadcast from the game.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {Client} client the Discord client to use for broadcast
 	 * @param {Messenger} messenger the messenger service to use to send
 	 * messages to Discord
@@ -23,6 +25,8 @@ export default class DiscordBroadcaster implements BroadcastPort {
 	/**
 	 * Sends the daily game results to all participating guilds, and increases
 	 * their streaks.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {DailyResults} results the daily game results
 	 */

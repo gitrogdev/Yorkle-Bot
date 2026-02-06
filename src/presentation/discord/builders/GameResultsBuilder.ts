@@ -10,6 +10,8 @@ export default class GameResultsBuilder {
 	 * Creates a new message builder to build messages to send results to
 	 * guilds.
 	 *
+	 * @author gitrog
+	 *
 	 * @param {Client} client the Discord client to use to fetch guild members
 	 */
 	constructor(private client: Client) {}
@@ -17,6 +19,8 @@ export default class GameResultsBuilder {
 	/**
 	 * Builds an array of game results broadcast options to send daily results
 	 * to all participating guilds.
+	 *
+	 * @author gitrog
 	 *
 	 * @param {DailyResults} results the daily results for yesterday's game
 	 *
