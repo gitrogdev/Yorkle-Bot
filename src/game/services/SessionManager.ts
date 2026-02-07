@@ -4,6 +4,7 @@ import type UserIdentity from '../model/UserIdentity.js';
 import type SongQueue from './SongQueue.js';
 
 export default class SessionManager {
+	/** A map of user IDs to the open session associated with them. */
 	private sessions: Map<string, Session> = new Map();
 
 	/**

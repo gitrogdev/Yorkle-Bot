@@ -5,8 +5,10 @@ import SongLibrary from './SongLibrary.js';
 import pluralize from '../../util/pluralize.js';
 
 export default class AliasRegistry {
+	/** A map of aliases to their associated songs. */
 	private aliases: Record<string, Song> = {};
 
+	/** Promise that resolves when object initilization completes. */
 	public ready: Promise<void>;
 
 	/**

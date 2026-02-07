@@ -4,6 +4,7 @@ import pluralize from '../../util/pluralize.js';
 import Guild from '../entities/Guild.js';
 
 export default class GuildList {
+	/** A map of guild IDs to their associated guilds. */
 	private guilds: Record<string, Guild> = {};
 
 	/**

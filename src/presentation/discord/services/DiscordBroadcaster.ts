@@ -7,6 +7,7 @@ import GameResultsBuilder from '../builders/GameResultsBuilder.js';
 import { localize } from '../../localization/i18n.js';
 
 export default class DiscordBroadcaster implements BroadcastPort {
+	/** The builder to use to build game results messages. */
 	private resultsBuilder: GameResultsBuilder;
 
 	/**

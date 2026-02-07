@@ -16,10 +16,19 @@ import LyricArchive from './services/LyricArchive.js';
 import type { LyricOption } from './model/LyricOption.js';
 
 export default class Yorkle {
+	/** The list of all guilds the game is running in. */
 	private readonly guilds: GuildList = new GuildList(new GuildDataStore());
+
+	/** The library of all the songs used by the game. */
 	private readonly songs: SongLibrary = new SongLibrary(new SongDataStore());
+
+	/** The registry of all valid aliases for song guesses. */
 	private readonly aliases: AliasRegistry = new AliasRegistry(this.songs);
+
+	/** The data store used to save and load game data from file. */
 	private readonly gameStore: GameDataStore = new GameDataStore();
+
+	/** The queue containing songs used by the game in shuffled order. */
 	private readonly queue: SongQueue = new SongQueue(
 		new SongQueueStore(),
 		this.gameStore,
@@ -28,16 +37,20 @@ export default class Yorkle {
 		new GameFactory(this.songs, this.aliases, this.gameStore),
 		this.broadcastResults.bind(this)
 	);
+
+	/** Manager used to handle game sessions for players. */
 	private readonly sessions: SessionManager = new SessionManager(
 		clipLengths,
 		this.queue
 	);
 
+	/** Map of lyric file options to their associated archives. */
 	private readonly lyrics: Record<LyricOption, LyricArchive> = {
 		LYRIC: new LyricArchive('lyrics.txt'),
 		JUDGEMENT: new LyricArchive('judgements.txt')
 	}
 
+	/** Promise that resolves when object initilization completes. */
 	public readonly ready = this.init();
 
 	public getGame = this.queue.getGame.bind(this.queue);

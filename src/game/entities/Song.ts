@@ -4,7 +4,13 @@ import albums from '../../config/albums.json' with { type: 'json' };
 import aliases from '../../config/aliases.json' with { type: 'json' };
 
 export default class Song {
+	/** A set of the recognized aliases for guessing the song. */
 	private readonly aliases: Set<string>;
+
+	/**
+	 * The filename of the thumbnail art for the song, including the .jpg
+	 * extension.
+	 */
 	public readonly thumbnail: string;
 
 	/**

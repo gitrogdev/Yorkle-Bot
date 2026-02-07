@@ -1,9 +1,16 @@
 import type { ClientUser } from 'discord.js';
 
 export default class StatusCycler {
+	/** Handle for the active timeout, or null if no timer is running. */
 	private timer: NodeJS.Timeout | null = null;
+
+	/** The Discord client's user to update the status of. */
 	private user: ClientUser | null = null;
+
+	/** The statuses to cycle through. */
 	private statusArray: string[];
+
+	/** A set of the statuses to cycle through, ensuring uniqueness. */
 	private statusSet: Set<string>;
 
 	/**

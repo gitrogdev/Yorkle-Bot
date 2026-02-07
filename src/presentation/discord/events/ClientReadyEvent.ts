@@ -14,6 +14,11 @@ export default class ClientReadyEvent extends DiscordEvent {
 	 */
 	constructor(private statuses: StatusCycler) { super(); };
 
+	/**
+	 * Executes the actions to perform once the Discord client is ready.
+	 *
+	 * @param {Client} readyClient the Discord client that is now ready
+	 */
 	private onReady(readyClient: Client) {
 		if (!readyClient.user) throw new Error(
 			'Failed to initialize client: Discord client is ready but user '

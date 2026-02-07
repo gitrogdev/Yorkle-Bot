@@ -14,15 +14,28 @@ import pluralize from '../../util/pluralize.js';
 import type GameResults from '../../persistence/dto/GameResults.js';
 
 export default class SongQueue {
+	/** The unplayed songs currently in the queue. */
 	private queue: Song[] = [];
+
+	/** The songs that have already been played. */
 	private played: Song[] = [];
 
+	/** The incremental value representing the current iteration of the game. */
 	private day!: number;
+
+	/** The index in the saved queue array of the current song. */
 	private index!: number;
+
+	/** The date the queue was last advanced at, in YYYY-MM-DD format. */
 	private lastPlayed!: string;
+
+	/** The game associated with the current song in the queue. */
 	private game!: Game;
 
+	/** Promise that resolves when object initilization completes. */
 	public readonly ready: Promise<void>;
+
+	/** Debounce promise that resolves when queue advancement completes. */
 	private advanceDebounce: Promise<void> | null = null;
 
 	/**
