@@ -10,8 +10,16 @@ import SequencePresenter from './SequencePresenter.js';
 import { LyricOption } from '../../../game/model/LyricOption.js';
 
 export default class GameInteractionHandler {
+	/** The presenter to use to send clips to a user. */
 	private clips: ClipPresenter;
+
+	/** The builder used to build responses to users' guesses. */
 	private guessBuilder: GuessResponseBuilder = new GuessResponseBuilder();
+
+	/**
+	 * A presenter to convert sequences saved to file to a human-readable
+	 * format.
+	 */
 	private sequencePresenter: SequencePresenter = new SequencePresenter();
 
 	/**

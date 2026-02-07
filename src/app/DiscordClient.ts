@@ -2,6 +2,7 @@ import { Client, GatewayIntentBits } from 'discord.js';
 import Bot from '../presentation/discord/Bot.js';
 
 export default class DiscordClient {
+	/** The client for connecting to the Discord API. */
 	private client: Client;
 
 	/**

@@ -2,31 +2,36 @@ import type GuildInfo from '../../persistence/dto/GuildInfo.js';
 import type GuildJson from '../../persistence/dto/GuildJson.js';
 
 export default class Guild {
+	/** The unique identifier for the guild. */
 	public readonly id: string;
+
+	/**
+	 * The number of consecutive days the puzzle has been completed by at least
+	 * one member of the guild.
+	 */
 	public streak: number;
+
+	/** A set containing the unique identifiers of the members of the guild. */
 	public members: Set<string>;
+
+	/**
+	 * The ID of the channel configured to receive announcements from the bot.
+	 */
 	public channelId: string | null;
 
-	constructor(id: string);
 	/**
 	 * Creates a representation of a Discord guild within the bot.
 	 *
 	 * @author gitrog
 	 *
-	 * @param {string} id the Discord guild ID of the guild to represent
-	 * @param {number} streak the number of days in a row users in this guild
-	 * have played the game
+	 * @param {string} id the unique identifier for the guild
+	 * @param {number} streak the number of consecutive days the puzzle has been
+	 * completed by at least one member of the guild
 	 * @param {string[]} members an array of Discord user IDs who have played
 	 * the game and are members of this guild
 	 * @param {string | null} channelId the channel ID in the guild for the bot
 	 * to send recap messages to
 	 */
-	constructor(
-		id: string,
-		streak?: number,
-		members?: string[],
-		channelId?: string | null
-	);
 	constructor(
 		id: string,
 		streak: number = 0,

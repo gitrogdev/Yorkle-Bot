@@ -4,13 +4,18 @@ import type SongDataStore from '../../persistence/datastores/SongDataStore.js';
 import pluralize from '../../util/pluralize.js';
 
 export default class SongLibrary {
+	/** Required MP3 metadata field names. */
 	private static readonly REQUIRED_FIELDS: (
 		'title' | 'album' | 'duration'
 	)[] = ['title', 'album', 'duration'];
 
+	/** The number of songs loaded. */
 	private size: number = 0;
+
+	/** A map of song filenames to songs. */
 	private songs: Record<string, Song> = {};
 
+	/** Promise that resolves when object initilization completes. */
 	public readonly ready: Promise<void>;
 
 	/**

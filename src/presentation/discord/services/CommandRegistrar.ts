@@ -20,6 +20,7 @@ import JudgementCommand from '../commands/JudgementCommand.js';
 import GetVersionCommand from '../commands/GetVersion.js';
 
 export default class CommandRegistrar {
+	/** An array of the command classes to be registered. */
 	private static readonly COMMAND_TYPES: Array<
 		new (handler: GameInteractionHandler) => Command
 	> = [
@@ -34,6 +35,8 @@ export default class CommandRegistrar {
 			JudgementCommand,
 			GetVersionCommand
 		];
+
+	/** Discord REST client used to perform API requests. */
 	private readonly rest: REST;
 
 	/**

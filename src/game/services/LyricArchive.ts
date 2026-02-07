@@ -5,7 +5,10 @@ import { MEDIA_ROOT } from '../../config/paths.js';
 import pluralize from '../../util/pluralize.js';
 
 export default class LyricArchive {
+	/** An array containing all unique lyrics loaded in the archive. */
 	private lyrics!: string[];
+
+	/** Promise that resolves when object initilization completes. */
 	public ready: Promise<void>;
 
 	/**

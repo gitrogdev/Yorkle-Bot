@@ -9,6 +9,7 @@ import padDay from '../../util/pad-day.js';
 import pluralize from '../../util/pluralize.js';
 
 export default class ClipGenerator {
+	/** Promisified version of the Node.js execFile function. */
 	private static execFileAsync = promisify(execFile);
 
 	/**

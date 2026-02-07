@@ -7,11 +7,21 @@ import {
 import type CommandRegistry from '../models/CommandRegistry.js';
 
 export default class CommandRouter {
+	/** The default error message to send when a command fails to execute. */
 	private static readonly ERROR_MESSAGE: InteractionReplyOptions = {
 		content: 'An error occurred while executing this command.',
 		flags: MessageFlags.Ephemeral
 	};
 
+	/**
+	 * Creates a new object to route Discord slash command interactions to their
+	 * associated command objects.
+	 *
+	 * @author gitrog
+	 *
+	 * @param {CommandRegistry} commands the registry containing the commands to
+	 * route interactions to
+	 */
 	constructor(private readonly commands: CommandRegistry) {}
 
 	/**

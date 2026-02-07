@@ -15,7 +15,14 @@ import { SkipResult } from '../model/SkipResult.js';
 import type SkipResponse from '../model/SkipResponse.js';
 
 export default class Session {
+	/** A set of the recognized songs the player has guessed. */
 	private guesses: Set<Song> = new Set();
+
+	/**
+	 * A sequence of characters representing the player's guesses.
+	 *
+	 * @see {@link SEQUENCE_CHARACTERS}
+	 */
 	private guessSequence: string = '';
 
 	/**
