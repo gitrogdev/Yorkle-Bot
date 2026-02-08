@@ -22,7 +22,7 @@ export default interface GuildJson {
 	members: string[],
 
 	/**
-	 * The ID of the channel configured to receive annoucnements from the bot.
+	 * The ID of the channel configured to receive announcements from the bot.
 	 */
 	channel: string | null
 };
