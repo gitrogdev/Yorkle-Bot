@@ -14,6 +14,11 @@ import type BroadcastPort from './ports/BroadcastPort.js';
 import type GameResults from '../persistence/dto/GameResults.js';
 import LyricArchive from './services/LyricArchive.js';
 import type { LyricOption } from './model/LyricOption.js';
+import type PostgameDiscussionPort from './ports/PostgameDiscussionPort.js';
+import type UserIdentity from './model/UserIdentity.js';
+import type Session from './entities/Session.js';
+import type OpenSessionResponse from './model/OpenSessionResponse.js';
+import type Game from './entities/Game.js';
 
 export default class Yorkle {
 	/** The list of all guilds the game is running in. */
@@ -29,20 +34,10 @@ export default class Yorkle {
 	private readonly gameStore: GameDataStore = new GameDataStore();
 
 	/** The queue containing songs used by the game in shuffled order. */
-	private readonly queue: SongQueue = new SongQueue(
-		new SongQueueStore(),
-		this.gameStore,
-		this.songs,
-		new ClipGenerator(clipLengths),
-		new GameFactory(this.songs, this.aliases, this.gameStore),
-		this.broadcastResults.bind(this)
-	);
+	private readonly queue: SongQueue;
 
 	/** Manager used to handle game sessions for players. */
-	private readonly sessions: SessionManager = new SessionManager(
-		clipLengths,
-		this.queue
-	);
+	private readonly sessions: SessionManager;
 
 	/** Map of lyric file options to their associated archives. */
 	private readonly lyrics: Record<LyricOption, LyricArchive> = {
@@ -53,15 +48,15 @@ export default class Yorkle {
 	/** Promise that resolves when object initilization completes. */
 	public readonly ready = this.init();
 
-	public getGame = this.queue.getGame.bind(this.queue);
+	public getGame: () => Promise<Game>;
 
 	public createGuild = this.guilds.createGuild.bind(this.guilds);
 	public getGuild = this.guilds.get.bind(this.guilds);
 	public joinGuild = this.guilds.joinGuild.bind(this.guilds);
 	public saveGuild = this.guilds.saveGuild.bind(this.guilds);
 
-	public getSession = this.sessions.getSession.bind(this.sessions);
-	public openSession = this.sessions.open.bind(this.sessions);
+	public getSession: (user: UserIdentity) => Session | undefined;
+	public openSession: (user: UserIdentity) => Promise<OpenSessionResponse>;
 
 	public countSongs = this.songs.getSize.bind(this.songs);
 
@@ -72,8 +67,31 @@ export default class Yorkle {
 	 *
 	 * @param {BroadcastPort} broadcaster the port to broadcast messages from
 	 * the game to
+	 * @param {PostgameDiscussionPort} postgameManager the port to use to
+	 * manage postgame discussion threads
 	 */
-	constructor(private readonly broadcaster: BroadcastPort) {}
+	constructor(
+		private readonly broadcaster: BroadcastPort,
+		private readonly postgameManager: PostgameDiscussionPort
+	) {
+		this.queue = new SongQueue(
+			new SongQueueStore(),
+			this.gameStore,
+			this.songs,
+			new ClipGenerator(clipLengths),
+			new GameFactory(this.songs, this.aliases, this.gameStore),
+			this.broadcastResults.bind(this)
+		);
+		this.getGame = this.queue.getGame.bind(this.queue);
+
+		this.sessions = new SessionManager(
+			clipLengths,
+			this.queue,
+			this.postgameManager
+		);
+		this.getSession = this.sessions.getSession.bind(this.sessions);
+		this.openSession = this.sessions.open.bind(this.sessions);
+	}
 
 	private async init() {
 		await this.songs.ready;
