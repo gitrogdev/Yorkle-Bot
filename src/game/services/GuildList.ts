@@ -2,6 +2,7 @@ import type GuildDataStore from
 	'../../persistence/datastores/GuildDataStore.js';
 import pluralize from '../../util/pluralize.js';
 import Guild from '../entities/Guild.js';
+import type PostgameDiscussionPort from '../ports/PostgameDiscussionPort.js';
 
 export default class GuildList {
 	/** A map of guild IDs to their associated guilds. */
@@ -13,8 +14,13 @@ export default class GuildList {
 	 * @author gitrog
 	 *
 	 * @param {GuildDataStore} store the data store to load the guild data from
+	 * @param {PostgameDiscussionPort} postgameManager the port to use to
+	 * manage postgame discussion threads
 	 */
-	constructor(private store: GuildDataStore) {
+	constructor(
+		private store: GuildDataStore,
+		private postgameManager: PostgameDiscussionPort
+	) {
 		const guilds = this.store.load();
 
 		let loaded = 0;
@@ -41,6 +47,7 @@ export default class GuildList {
 			`Guild with ID ${guild.id} already exists in the GuildList!`
 		);
 		this.guilds[guild.id] = guild;
+		this.postgameManager.restorePostgameThreads(guild);
 		console.log(
 			`Successfully added guild with ID ${guild.id} to GuildList.`
 		);

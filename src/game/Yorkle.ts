@@ -19,10 +19,11 @@ import type UserIdentity from './model/UserIdentity.js';
 import type Session from './entities/Session.js';
 import type OpenSessionResponse from './model/OpenSessionResponse.js';
 import type Game from './entities/Game.js';
+import Guild from './entities/Guild.js';
 
 export default class Yorkle {
 	/** The list of all guilds the game is running in. */
-	private readonly guilds: GuildList = new GuildList(new GuildDataStore());
+	private readonly guilds: GuildList;
 
 	/** The library of all the songs used by the game. */
 	private readonly songs: SongLibrary = new SongLibrary(new SongDataStore());
@@ -50,10 +51,10 @@ export default class Yorkle {
 
 	public getGame: () => Promise<Game>;
 
-	public createGuild = this.guilds.createGuild.bind(this.guilds);
-	public getGuild = this.guilds.get.bind(this.guilds);
-	public joinGuild = this.guilds.joinGuild.bind(this.guilds);
-	public saveGuild = this.guilds.saveGuild.bind(this.guilds);
+	public createGuild: (id: string) => Guild;
+	public getGuild: (id: string) => Guild | null;
+	public joinGuild: (id: string, user: string) => Promise<void>;
+	public saveGuild: (id: string) => Promise<void>;
 
 	public getSession: (user: UserIdentity) => Session | undefined;
 	public openSession: (user: UserIdentity) => Promise<OpenSessionResponse>;
@@ -74,13 +75,24 @@ export default class Yorkle {
 		private readonly broadcaster: BroadcastPort,
 		private readonly postgameManager: PostgameDiscussionPort
 	) {
+		this.guilds = new GuildList(
+			new GuildDataStore(),
+			this.postgameManager
+		);
+
+		this.createGuild = this.guilds.createGuild.bind(this.guilds);
+		this.getGuild = this.guilds.get.bind(this.guilds);
+		this.joinGuild = this.guilds.joinGuild.bind(this.guilds);
+		this.saveGuild = this.guilds.saveGuild.bind(this.guilds);
+
 		this.queue = new SongQueue(
 			new SongQueueStore(),
 			this.gameStore,
 			this.songs,
 			new ClipGenerator(clipLengths),
 			new GameFactory(this.songs, this.aliases, this.gameStore),
-			this.broadcastResults.bind(this)
+			this.broadcastResults.bind(this),
+			this.openPostgameThreads.bind(this)
 		);
 		this.getGame = this.queue.getGame.bind(this.queue);
 
@@ -117,13 +129,27 @@ export default class Yorkle {
 	}
 
 	/**
+	 * Opens the post-game discussion threads for a new day of the game.
+	 *
+	 * @author gitrog
+	 *
+	 * @param {number} day the day number of the game's iteration
+	 */
+	public async openPostgameThreads(day: number) {
+		for (
+			const guild of this.guilds.getGuilds()
+		) await this.postgameManager.openPostgameThread(guild, day);
+	}
+
+	/**
 	 * Returns a random lyric from the provided archive.
 	 *
 	 * @author gitrog
 	 *
 	 * @param {LyricOption} archive the archive to get the lyric from
 	 *
-	 * @returns {Promise<string>}
+	 * @returns {Promise<string>} a promise of the random lyric chosen from the
+	 * archive
 	 */
 	public async randomLyric(archive: LyricOption): Promise<string> {
 		return await this.lyrics[archive].randomLyric();
