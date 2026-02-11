@@ -152,6 +152,7 @@ export default class PostgameThreadHandler implements PostgameDiscussionPort {
 			});
 
 			this.cache[day][guild.id] = thread.id;
+			guild.threads[day] = thread.id;
 		} catch (error) {
 			console.warn(
 				`Failed to open thread in channel ${guild.channelId} in guild `

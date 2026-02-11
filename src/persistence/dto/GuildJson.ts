@@ -24,5 +24,8 @@ export default interface GuildJson {
 	/**
 	 * The ID of the channel configured to receive announcements from the bot.
 	 */
-	channel: string | null
+	channel: string | null,
+
+	/** A record of game day numbers to post-game discussion thread IDs. */
+	threads: Record<string, string>
 };

@@ -2,22 +2,8 @@ import type GuildInfo from '../../persistence/dto/GuildInfo.js';
 import type GuildJson from '../../persistence/dto/GuildJson.js';
 
 export default class Guild {
-	/** The unique identifier for the guild. */
-	public readonly id: string;
-
-	/**
-	 * The number of consecutive days the puzzle has been completed by at least
-	 * one member of the guild.
-	 */
-	public streak: number;
-
 	/** A set containing the unique identifiers of the members of the guild. */
-	public members: Set<string>;
-
-	/**
-	 * The ID of the channel configured to receive announcements from the bot.
-	 */
-	public channelId: string | null;
+	public members: Set<string>
 
 	/**
 	 * Creates a representation of a Discord guild within the bot.
@@ -33,10 +19,11 @@ export default class Guild {
 	 * to send recap messages to
 	 */
 	constructor(
-		id: string,
-		streak: number = 0,
+		public readonly id: string,
+		public streak: number = 0,
 		members: string[] = [],
-		channelId: string | null = null
+		public channelId: string | null = null,
+		public threads: Record<string, string> = {}
 	) {
 		this.id = id;
 		this.streak = streak;
@@ -59,7 +46,8 @@ export default class Guild {
 			info.id,
 			info.data.streak,
 			info.data.members,
-			info.data.channel
+			info.data.channel,
+			info.data.threads
 		);
 	}
 
@@ -74,7 +62,8 @@ export default class Guild {
 		return {
 			streak: this.streak,
 			members: [...this.members],
-			channel: this.channelId
+			channel: this.channelId,
+			threads: this.threads
 		};
 	}
 }
