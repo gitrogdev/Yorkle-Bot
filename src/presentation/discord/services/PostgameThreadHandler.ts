@@ -102,6 +102,16 @@ export default class PostgameThreadHandler implements PostgameDiscussionPort {
 		}
 
 		if (!Object.hasOwn(this.cache, day)) this.cache[day] = {};
+		else if (
+			Object.hasOwn(this.cache, day)
+			&& Object.hasOwn(this.cache[day], guild.id)
+		) {
+			console.warn(
+				`Failed to open post-game thread for guild with ID ${guild.id}`
+				+ ': Thread already open!'
+			);
+			return;
+		}
 
 		let discordGuild;
 		try {
@@ -161,7 +171,17 @@ export default class PostgameThreadHandler implements PostgameDiscussionPort {
 		}
 	}
 
-	public async restorePostgameThread(guild: Guild) {
-		throw new Error('Method not implemented.');
+	/**
+	 * Populates the cache with all threads for the guild.
+	 *
+	 * @author gitrog
+	 *
+	 * @param {Guild} guild the guild to get the threads from
+	 */
+	public async restorePostgameThreads(guild: Guild) {
+		for (const [ day, threadId ] of Object.entries(guild.threads)) {
+			this.cache[day] = this.cache[day] ?? {};
+			this.cache[day][guild.id] = threadId;
+		}
 	}
 }

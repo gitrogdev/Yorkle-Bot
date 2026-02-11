@@ -35,12 +35,12 @@ export default interface PostgameDiscussionPort {
 	openPostgameThread(guild: Guild, day: number): Promise<void>;
 
 	/**
-	 * Passes the thread for an already open postgame discussion to the client
-	 * to be stored on the client.
+	 * Passes the threads for the already open postgame discussions to the
+	 * presentation layer to be stored for use by the client.
 	 *
 	 * @author gitrog
 	 *
 	 * @param {Guild} guild the guild to which the discussion thread is in
 	 */
-	restorePostgameThread(guild: Guild): Promise<void>;
+	restorePostgameThreads(guild: Guild): Promise<void>;
 }
