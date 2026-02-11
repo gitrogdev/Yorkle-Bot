@@ -1,3 +1,5 @@
+import type Guild from '../entities/Guild.js';
+
 /**
  * Port interface for opening discussion threads on the client.
  *
@@ -8,17 +10,18 @@
  */
 export default interface OpenDiscussionPort {
 	/**
-	 * Opens a thread for postgame discussion, overwriting it if it already
-	 * exists.
+	 * Opens a thread for postgame discussion for the provided day.
 	 *
 	 * @author gitrog
 	 *
-	 * @param {string} guildId the guild to open the discussion thread in
+	 * @param {Guild} guild the guild to open the discussion thread in
+	 * @param {number} day the number of the day of the game's iteration to
+	 * associate the thread with
 	 *
 	 * @returns {Promise<string>} a promise of the ID of the discussion thread
 	 * created
 	 */
-	openPostgameThread(guildId: string): Promise<string>;
+	openPostgameThread(guild: Guild, day: number): Promise<string>;
 
 	/**
 	 * Passes the thread for an already open postgame discussion to the client
@@ -26,8 +29,7 @@ export default interface OpenDiscussionPort {
 	 *
 	 * @author gitrog
 	 *
-	 * @param {string} guildId the ID of the guild which the thread is in
-	 * @param {string} threadId the ID of the discussion thread
+	 * @param {Guild} guild the guild to which the discussion thread is in
 	 */
-	restorePostgameThread(guildId: string, threadId: string): Promise<void>;
+	restorePostgameThread(guild: Guild): Promise<void>;
 }
