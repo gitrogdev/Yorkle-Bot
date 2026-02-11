@@ -139,6 +139,7 @@ export default class Yorkle {
 		for (
 			const guild of this.guilds.getGuilds()
 		) await this.postgameManager.openPostgameThread(guild, day);
+		return await this.guilds.saveGuilds();
 	}
 
 	/**

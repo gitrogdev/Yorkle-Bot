@@ -25,7 +25,9 @@ export default class GuildList {
 
 		let loaded = 0;
 		for (const guildInfo of guilds) {
-			this.guilds[guildInfo.id] = Guild.fromJson(guildInfo);
+			const guild = Guild.fromJson(guildInfo);
+			this.guilds[guildInfo.id] = guild;
+			this.postgameManager.restorePostgameThreads(guild);
 			loaded++;
 		}
 
@@ -47,7 +49,6 @@ export default class GuildList {
 			`Guild with ID ${guild.id} already exists in the GuildList!`
 		);
 		this.guilds[guild.id] = guild;
-		this.postgameManager.restorePostgameThreads(guild);
 		console.log(
 			`Successfully added guild with ID ${guild.id} to GuildList.`
 		);
