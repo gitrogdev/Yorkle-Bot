@@ -1,0 +1,5 @@
+{
+	"threads.added": "Added {member} to thread.",
+	"threads.postgame.name": "Yorkle #{day}: Post-game Discussion",
+	"threads.postgame.reason": "Discuss the results of today's Yorkle with other players who have completed today's puzzle. Spoiler tags are not required within this thread."
+}

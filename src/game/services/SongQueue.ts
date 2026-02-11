@@ -57,7 +57,8 @@ export default class SongQueue {
 		private lib: SongLibrary,
 		private generator: ClipGenerator,
 		private gameFactory: GameFactory,
-		private broadcastResults: (results: GameResults) => Promise<void>
+		private broadcastResults: (results: GameResults) => Promise<void>,
+		private openPostgameThreads: (day: number) => Promise<void>
 	) {
 		this.ready = this.init();
 	}
@@ -189,6 +190,7 @@ export default class SongQueue {
 
 			console.log('Successfully advanced the queue.');
 			await this.save();
+			this.openPostgameThreads(this.day);
 		})().finally(() => this.advanceDebounce = null);
 
 		return this.advanceDebounce;

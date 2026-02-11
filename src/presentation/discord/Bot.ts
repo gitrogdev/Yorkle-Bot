@@ -11,6 +11,7 @@ import Yorkle from '../../game/Yorkle.js';
 import GameInteractionHandler from './services/GameInteractionHandler.js';
 import Messenger from './services/Messenger.js';
 import DiscordBroadcaster from './services/DiscordBroadcaster.js';
+import PostgameThreadHandler from './services/PostgameThreadHandler.js';
 
 export default class Bot {
 	private game!: Yorkle;
@@ -43,10 +44,10 @@ export default class Bot {
 	 * @author gitrog
 	 */
 	public async register() {
-		this.game = new Yorkle(new DiscordBroadcaster(
-			this.client,
-			this.messenger
-		));
+		this.game = new Yorkle(
+			new DiscordBroadcaster(this.client, this.messenger),
+			new PostgameThreadHandler(this.client, this.messenger)
+		);
 
 		await this.game.ready;
 
