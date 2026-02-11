@@ -12,6 +12,7 @@ import type PostgameDiscussionPort from
 import type Messenger from './Messenger.js';
 import type ThreadCache from '../models/ThreadCache.js';
 import { localize } from '../../localization/i18n.js';
+import pluralize from '../../../util/pluralize.js';
 
 /**
  * Implementation of the post-game discussion port on the client to open and
@@ -76,7 +77,13 @@ export default class PostgameThreadHandler implements PostgameDiscussionPort {
 				{
 					member: `<@${user.id}>`
 				}
-			));
+			)).then(
+				() => console.log(
+					`Successfully added ${user.name} to Yorkle #${day} `
+					+ `post-game discussion thread ${threadId} in guild `
+					+ `${guildId}.`
+				)
+			);
 		}
 	}
 
@@ -163,6 +170,11 @@ export default class PostgameThreadHandler implements PostgameDiscussionPort {
 
 			this.cache[day][guild.id] = thread.id;
 			guild.threads[day] = thread.id;
+
+			console.log(
+				`Successfully opened post-game discussion thread ${thread.id} `
+				+ `in guild ${guild.id} for Yorkle #${day}.`
+			);
 		} catch (error) {
 			console.warn(
 				`Failed to open thread in channel ${guild.channelId} in guild `
@@ -179,9 +191,16 @@ export default class PostgameThreadHandler implements PostgameDiscussionPort {
 	 * @param {Guild} guild the guild to get the threads from
 	 */
 	public async restorePostgameThreads(guild: Guild) {
+		let restored = 0;
 		for (const [ day, threadId ] of Object.entries(guild.threads)) {
 			this.cache[day] = this.cache[day] ?? {};
 			this.cache[day][guild.id] = threadId;
+			restored++;
 		}
+		console.log(
+			'Successfully restored '
+			+ `${pluralize('post-game discussion thread', restored)} for guild `
+			+ `${guild.id}.`
+		)
 	}
 }
