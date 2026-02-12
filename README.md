@@ -55,8 +55,9 @@ Must include:
 * `/data/days/`
 * `/data/guilds/`
 
-`/media/`
+`/media/albumart`
 * Album artwork (.jpg)
+`/media/lyrics`
 * `lyrics.txt` - used by the `/lyric` command
 * `judgements.txt` - used by the `/judgejuryexecutioner` command
 
