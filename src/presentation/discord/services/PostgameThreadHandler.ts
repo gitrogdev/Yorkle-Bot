@@ -68,7 +68,7 @@ export default class PostgameThreadHandler implements PostgameDiscussionPort {
 			}
 
 			try {
-				discordGuild.members.fetch(user.id)
+				await discordGuild.members.fetch(user.id)
 			} catch { continue; }
 
 			this.messenger.send(threadId, localize(
