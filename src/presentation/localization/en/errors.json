@@ -10,5 +10,6 @@
 	"errors.nosession": "You must have an open session of Yorkle to use this command! Use `/yorkle` to start playing!",
 	"errors.playedtoday": "You have already played today's puzzle! Come back tomorrow to play again!",
 	"errors.repeatguess": "You have already guessed \"{guess}\". Try guessing another song.",
-	"errors.sessioncollision": "You already have an open session of Yorkle."
+	"errors.sessioncollision": "You already have an open session of Yorkle.",
+	"errors.setnontextchannel": "This command can only be used in a text-based channel within a server."
 }
