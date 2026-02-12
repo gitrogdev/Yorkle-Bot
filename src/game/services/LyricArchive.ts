@@ -23,7 +23,7 @@ export default class LyricArchive {
 	public async init() {
 		const lyrics = new Set<string>();
 		const lines = (await fs.promises.readFile(
-			path.join(MEDIA_ROOT, this.file),
+			path.join(MEDIA_ROOT, 'lyrics', this.file),
 			'utf-8'
 		)).split(/\r?\n/);
 

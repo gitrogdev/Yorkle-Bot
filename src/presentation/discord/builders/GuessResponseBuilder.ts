@@ -68,7 +68,7 @@ export default class GuessResponseBuilder {
 					}
 				}],
 				files: [new AttachmentBuilder(path.join(
-					MEDIA_ROOT, response.song.thumbnail
+					MEDIA_ROOT, 'coverart', response.song.thumbnail
 				))]
 			};
 		} else if (response.result === GuessResult.Incorrect)
