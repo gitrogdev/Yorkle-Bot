@@ -30,8 +30,7 @@ export default class RandomLyricCommand extends Command {
 	 * @param {ChatInputCommandInteraction} interaction the Discord chat command
 	 * interaction with the command
 	 */
-	public async execute(interaction: ChatInputCommandInteraction) {
-		await interaction.deferReply();
-		await this.handler.randomLyric(interaction, LyricOption.Lyric);
+	public async run(interaction: ChatInputCommandInteraction) {
+		return await this.handler.randomLyric(interaction, LyricOption.Lyric);
 	}
 }

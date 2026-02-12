@@ -29,8 +29,7 @@ export default class NewGameCommand extends Command {
 	 * @param {ChatInputCommandInteraction} interaction the Discord chat command
 	 * interaction with the command
 	 */
-	public async execute(interaction: ChatInputCommandInteraction) {
-		await interaction.deferReply();
-		await this.handler.newGame(interaction);
+	public async run(interaction: ChatInputCommandInteraction) {
+		return await this.handler.newGame(interaction);
 	}
 }
