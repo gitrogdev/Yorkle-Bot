@@ -5,6 +5,7 @@ import type GuessResponse from '../../../game/model/GuessResponse.js';
 import { localePluralize, localize } from '../../localization/i18n.js';
 import type { SafeReplyOptions } from '../models/SafeReplyOptions.js';
 import { MEDIA_ROOT } from '../../../config/paths.js';
+import { GuessResult } from '../../../game/model/GuessResult.js';
 
 export default class GuessResponseBuilder {
 	/**
@@ -26,7 +27,8 @@ export default class GuessResponseBuilder {
 		response: GuessResponse
 	): SafeReplyOptions {
 		if (
-			response.result === 'CORRECT' || response.result === 'NOGUESSES'
+			response.result === GuessResult.Correct
+			|| response.result === GuessResult.OutOfGuesses
 		) {
 			if (!response.song) {
 				console.warn(
@@ -41,17 +43,17 @@ export default class GuessResponseBuilder {
 
 			return {
 				content: localize(
-					response.result === 'CORRECT' ? 'game.correctguess' :
-						'game.incorrectguess',
+					response.result === GuessResult.Correct
+						? 'game.correctguess' : 'game.incorrectguess',
 					locale,
-					response.result === 'CORRECT' ? {
+					response.result === GuessResult.Correct ? {
 						numGuesses: localePluralize(
 							locale,
 							'plurals.guess',
 							response.guesses
 						)
 					} : { guess: guess }
-				) + (response.result === 'NOGUESSES' ? (
+				) + (response.result === GuessResult.OutOfGuesses ? (
 					' ' + localize('game.loss', locale) + '\n\n'
 					+ localize('game.nospoilies', locale)
 				) : ''),
@@ -69,7 +71,7 @@ export default class GuessResponseBuilder {
 					MEDIA_ROOT, response.song.thumbnail
 				))]
 			};
-		} else if (response.result === 'INCORRECT')
+		} else if (response.result === GuessResult.Incorrect)
 			return localize(
 				'game.incorrectguess',
 				locale,

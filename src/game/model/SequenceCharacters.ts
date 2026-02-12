@@ -1,5 +1,5 @@
-import type { GuessResult } from './GuessResult.js';
-import type { SkipResult } from './SkipResult.js';
+import { GuessResult } from './GuessResult.js';
+import { SkipResult } from './SkipResult.js';
 
 /**
  * String literal values representing the possible options for characters to add
@@ -9,34 +9,34 @@ import type { SkipResult } from './SkipResult.js';
  */
 export const SEQUENCE_CHARACTERS: Record<GuessResult | SkipResult, string> = {
 	/** The guess matches the correct answer. */
-	CORRECT: 'O',
+	[GuessResult.Correct]: 'O',
 
 	/** The player skipped the provided clip. */
-	SKIP: '-',
+	[SkipResult.Skip]: '-',
 
 	/** The guess is valid but does not match the correct answer. */
-	INCORRECT: 'X',
+	[GuessResult.Incorrect]: 'X',
 
 	/**
 	 * The guess is valid but incorrect, and the player has reached the maximum
 	 * number of allowed guesses, ending the game session.
 	 * */
-	NOGUESSES: 'X',
+	[GuessResult.OutOfGuesses]: 'X',
 
 	/**
 	 * The guess is not recognized by the game.
 	 */
-	INVALID: '',
+	[GuessResult.Invalid]: '',
 
 	/**
 	 * The guess is valid but has already been submitted.
 	 */
-	REPEAT: '',
+	[GuessResult.Repeat]: '',
 
 	/**
 	 * The player attempted to skip the last clip in the puzzle.
 	 */
-	LAST: ''
+	[SkipResult.Last]: ''
 } as const;
 
 export type SequenceCharacter = typeof SEQUENCE_CHARACTERS[

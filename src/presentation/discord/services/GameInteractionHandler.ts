@@ -11,6 +11,9 @@ import ClipPresenter from './ClipPresenter.js';
 import GuessResponseBuilder from '../builders/GuessResponseBuilder.js';
 import SequencePresenter from './SequencePresenter.js';
 import { LyricOption } from '../../../game/model/LyricOption.js';
+import { GuessResult } from '../../../game/model/GuessResult.js';
+import { SkipResult } from '../../../game/model/SkipResult.js';
+import { OpenSessionResult } from '../../../game/model/OpenSessionResult.js';
 
 export default class GameInteractionHandler {
 	/** The presenter to use to send clips to a user. */
@@ -114,9 +117,8 @@ export default class GameInteractionHandler {
 			interaction.locale, guess, response
 		));
 
-		if (response.result === 'INCORRECT') return await this.clips.sendNext(
-			interaction, session
-		);
+		if (response.result === GuessResult.Incorrect)
+			return await this.clips.sendNext(interaction, session);
 	}
 
 	/**
@@ -133,15 +135,14 @@ export default class GameInteractionHandler {
 		);
 
 		await this.messenger.reply(interaction, localize(
-			response.result === 'OPEN' ? 'game.sessionopened' :
-				response.result === 'COLLISION' ? 'errors.sessioncollision' :
-					'errors.playedtoday',
+			response.result === OpenSessionResult.Open ? 'game.sessionopened' :
+				response.result === OpenSessionResult.Collision
+					? 'errors.sessioncollision' : 'errors.playedtoday',
 			interaction.locale
 		));
 
-		if (response.result === 'OPEN') return await this.clips.sendNext(
-			interaction, response.session!
-		);
+		if (response.result === OpenSessionResult.Open)
+			return await this.clips.sendNext(interaction, response.session!);
 	}
 
 	/**
@@ -257,15 +258,15 @@ export default class GameInteractionHandler {
 		const response = session.skip();
 
 		await this.messenger.reply(interaction, localize(
-			response.result === 'SKIP' ? 'game.skipped' : 'errors.lastclip',
+			response.result === SkipResult.Skip ? 'game.skipped'
+				: 'errors.lastclip',
 			interaction.locale,
 			{
 				clip: response.clip
 			}
 		));
-		if (response.result === 'SKIP') return await this.clips.sendNext(
-			interaction, session
-		);
+		if (response.result === SkipResult.Skip)
+			return await this.clips.sendNext(interaction, session);
 	}
 
 	/**
