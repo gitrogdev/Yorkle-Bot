@@ -1,4 +1,5 @@
 import {
+	ChannelType,
 	InteractionContextType,
 	PermissionFlagsBits,
 	SlashCommandBuilder,
@@ -24,7 +25,7 @@ export default class SetGameChannelCommand extends Command {
 				.setDescription(localize('commands.setgamechannel.channel'))
 				.setDescriptionLocalizations(
 					getLocalizedOptions('commands.setgamechannel.channel')
-				)
+				).addChannelTypes(ChannelType.GuildText)
 			)
 			.setContexts(
 				InteractionContextType.Guild

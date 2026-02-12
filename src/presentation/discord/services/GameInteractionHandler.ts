@@ -1,4 +1,7 @@
-import { type ChatInputCommandInteraction } from 'discord.js';
+import {
+	ChannelType,
+	type ChatInputCommandInteraction
+} from 'discord.js';
 
 import type Yorkle from '../../../game/Yorkle.js';
 import toUserIdentity from '../mappers/to-user-identity.js';
@@ -176,19 +179,31 @@ export default class GameInteractionHandler {
 			)
 		);
 
-		const channel = interaction.options.getChannel('channel')?.id ??
-			interaction.channelId;
+		const channel = interaction.options.getChannel('channel') ??
+			interaction.channel;
+
+		if (
+			(!channel || channel.type !== ChannelType.GuildText)
+		) return await this.messenger.reply(interaction,
+			localize(
+				'errors.setnontextchannel',
+				interaction.locale
+			)
+		);
+
+		const channelId = channel!.id;
+
 		const guild = this.game.getGuild(interaction.guild.id)
 			?? this.game.createGuild(interaction.guild.id);
 
-		guild.channelId = channel;
+		guild.channelId = channelId;
 		await this.game.saveGuild(interaction.guild.id);
 
 		return await this.messenger.reply(interaction, localize(
 			'commands.channelbound',
 			interaction.locale,
 			{
-				channel: `<#${channel}>`
+				channel: `<#${channelId}>`
 			}
 		));
 	}
