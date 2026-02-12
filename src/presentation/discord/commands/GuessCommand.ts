@@ -37,8 +37,7 @@ export default class GuessCommand extends Command {
 	 * @param {ChatInputCommandInteraction} interaction the Discord chat command
 	 * interaction with the command
 	 */
-	public async execute(interaction: ChatInputCommandInteraction) {
-		await interaction.deferReply();
-		await this.handler.makeGuess(interaction);
+	public async run(interaction: ChatInputCommandInteraction) {
+		return await this.handler.makeGuess(interaction);
 	}
 }

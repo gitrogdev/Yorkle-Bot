@@ -9,6 +9,8 @@ export default abstract class Command {
 	public abstract readonly data:
 		RESTPostAPIChatInputApplicationCommandsJSONBody;
 
+	protected deferReply: boolean = true;
+
 	/**
 	 * Creates a new Discord slash command.
 	 *
@@ -19,15 +21,20 @@ export default abstract class Command {
 	 */
 	constructor(protected handler: GameInteractionHandler) {};
 
+	public async execute(interaction: ChatInputCommandInteraction) {
+		if (this.deferReply) interaction.deferReply();
+		return await this.run(interaction);
+	}
+
 	/**
-	 * Executes the command.
+	 * Executes the instructions specific to the command.
 	 *
 	 * @author gitrog
 	 *
 	 * @param {ChatInputCommandInteraction} interaction the Discord chat command
 	 * interaction with the command
 	 */
-	public abstract execute(
+	public abstract run(
 		interaction: ChatInputCommandInteraction
-	): Promise<void>;
+	): Promise<unknown>;
 }
