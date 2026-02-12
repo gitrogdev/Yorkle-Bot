@@ -157,6 +157,7 @@ export default class PostgameThreadHandler implements PostgameDiscussionPort {
 					'threads.postgame.name',
 					discordGuild.preferredLocale,
 					{
+						bot: this.client.user?.username ?? 'Yorkle',
 						day: day
 					}
 				),
