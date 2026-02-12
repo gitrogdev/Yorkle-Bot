@@ -13,7 +13,7 @@ import SessionManager from './services/SessionManager.js';
 import type BroadcastPort from './ports/BroadcastPort.js';
 import type GameResults from '../persistence/dto/GameResults.js';
 import LyricArchive from './services/LyricArchive.js';
-import type { LyricOption } from './model/LyricOption.js';
+import { LyricOption } from './model/LyricOption.js';
 import type PostgameDiscussionPort from './ports/PostgameDiscussionPort.js';
 import type UserIdentity from './model/UserIdentity.js';
 import type Session from './entities/Session.js';
@@ -42,8 +42,8 @@ export default class Yorkle {
 
 	/** Map of lyric file options to their associated archives. */
 	private readonly lyrics: Record<LyricOption, LyricArchive> = {
-		LYRIC: new LyricArchive('lyrics.txt'),
-		JUDGEMENT: new LyricArchive('judgements.txt')
+		[LyricOption.Lyric]: new LyricArchive('lyrics.txt'),
+		[LyricOption.Judgement]: new LyricArchive('judgements.txt')
 	}
 
 	/** Promise that resolves when object initilization completes. */

@@ -1,5 +1,6 @@
 import Session from '../entities/Session.js';
 import type OpenSessionResponse from '../model/OpenSessionResponse.js';
+import { OpenSessionResult } from '../model/OpenSessionResult.js';
 import type UserIdentity from '../model/UserIdentity.js';
 import type PostgameDiscussionPort from '../ports/PostgameDiscussionPort.js';
 import type SongQueue from './SongQueue.js';
@@ -55,7 +56,7 @@ export default class SessionManager {
 				+ `with ID ${user.id}!`
 			);
 			return {
-				result: 'COLLISION'
+				result: OpenSessionResult.Collision
 			};
 		}
 
@@ -66,7 +67,7 @@ export default class SessionManager {
 				+ `ID ${user.id} has already played Yorkle #${game.day}!`
 			);
 			return {
-				result: 'PLAYED'
+				result: OpenSessionResult.Played
 			};
 		}
 
@@ -78,7 +79,7 @@ export default class SessionManager {
 		);
 		this.sessions.set(user.id, session);
 		return {
-			result: 'OPEN',
+			result: OpenSessionResult.Open,
 			session: session
 		};
 	}
