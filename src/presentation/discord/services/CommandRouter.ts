@@ -5,14 +5,9 @@ import {
 } from 'discord.js';
 
 import type CommandRegistry from '../models/CommandRegistry.js';
+import { localize } from '../../localization/i18n.js';
 
 export default class CommandRouter {
-	/** The default error message to send when a command fails to execute. */
-	private static readonly ERROR_MESSAGE: InteractionReplyOptions = {
-		content: 'An error occurred while executing this command.',
-		flags: MessageFlags.Ephemeral
-	};
-
 	/**
 	 * Creates a new object to route Discord slash command interactions to their
 	 * associated command objects.
@@ -44,9 +39,15 @@ export default class CommandRouter {
 			await command.execute(interaction);
 		} catch (error) {
 			console.error(error);
+
+			const errorMessage: InteractionReplyOptions = {
+				content: localize('errors.commandgeneric', interaction.locale),
+				flags: MessageFlags.Ephemeral
+			}
+
 			if (interaction.replied || interaction.deferred)
-				await interaction.followUp(CommandRouter.ERROR_MESSAGE);
-			else await interaction.reply(CommandRouter.ERROR_MESSAGE);
+				await interaction.followUp(errorMessage);
+			else await interaction.reply(errorMessage);
 		}
 	}
 }

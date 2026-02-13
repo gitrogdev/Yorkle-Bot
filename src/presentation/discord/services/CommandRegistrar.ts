@@ -18,6 +18,7 @@ import RandomLyricCommand from '../commands/RandomLyricCommand.js';
 import GameContentCommand from '../commands/GameContentCommand.js';
 import JudgementCommand from '../commands/JudgementCommand.js';
 import GetVersionCommand from '../commands/GetVersion.js';
+import GetSupportCommand from '../commands/GetSupportCommand.js';
 
 export default class CommandRegistrar {
 	/** An array of the command classes to be registered. */
@@ -33,7 +34,8 @@ export default class CommandRegistrar {
 			RandomLyricCommand,
 			GameContentCommand,
 			JudgementCommand,
-			GetVersionCommand
+			GetVersionCommand,
+			GetSupportCommand
 		];
 
 	/** Discord REST client used to perform API requests. */

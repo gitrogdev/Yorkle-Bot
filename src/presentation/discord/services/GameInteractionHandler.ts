@@ -74,6 +74,25 @@ export default class GameInteractionHandler {
 	}
 
 	/**
+	 * Responds with the information for contacting support.
+	 *
+	 * @author gitrog
+	 *
+	 * @param {ChatInputCommandInteraction} interaction the chat input
+	 * interaction with the user requesting support info
+	 */
+	public async getSupportInfo(interaction: ChatInputCommandInteraction) {
+		return await this.messenger.reply(interaction, {
+			content: localize('bot.supportinfo', interaction.locale, {
+				dev: `<@${process.env.DEVELOPER_ID}>`,
+				server:
+					`https://discord.gg/${process.env.DEVELOPER_SERVER_INVITE!}`
+			}),
+			allowedMentions: { users: [] }
+		});
+	}
+
+	/**
 	 * Responds with the version of Yorkle the bot is currently running on.
 	 *
 	 * @author gitrog
