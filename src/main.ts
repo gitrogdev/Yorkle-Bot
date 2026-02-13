@@ -1,7 +1,5 @@
 import DiscordClient from './app/DiscordClient.js';
 import pkg from '../package.json' with { type: 'json' };
+import { env } from './config/env.js';
 
-new DiscordClient(pkg.version).start(
-	process.env.DISCORD_TOKEN!,
-	process.env.APPLICATION_ID!
-);
+new DiscordClient(pkg.version).start(env.DISCORD_TOKEN, env.APPLICATION_ID);
