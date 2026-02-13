@@ -1,5 +1,5 @@
 {
-	"errors.commandgeneric": "An error occured while attempting to execute this command. Please report this to a developer.",
+	"errors.commandgeneric": "An error occurred while running this command. Use `/support` for help or to report this issue.",
 	"errors.commandoutsideguild": "This command must be used in a Discord server!",
 	"errors.hasntplayed": "You have not played Yorkle #{day} yet! Use `/yorkle` to solve today's puzzle to share your results!",
 	"errors.invalidguess": "Unknown song \"{guess}\"\nTry checking for spelling mistakes, or try another song. Answers are not case or punctuation dependent.",

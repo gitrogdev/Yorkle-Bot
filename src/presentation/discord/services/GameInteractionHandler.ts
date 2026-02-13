@@ -14,6 +14,7 @@ import { LyricOption } from '../../../game/model/LyricOption.js';
 import { GuessResult } from '../../../game/model/GuessResult.js';
 import { SkipResult } from '../../../game/model/SkipResult.js';
 import { OpenSessionResult } from '../../../game/model/OpenSessionResult.js';
+import { env } from '../../../config/env.js';
 
 export default class GameInteractionHandler {
 	/** The presenter to use to send clips to a user. */
@@ -71,6 +72,25 @@ export default class GameInteractionHandler {
 				)
 			}
 		));
+	}
+
+	/**
+	 * Responds with the information for contacting support.
+	 *
+	 * @author gitrog
+	 *
+	 * @param {ChatInputCommandInteraction} interaction the chat input
+	 * interaction with the user requesting support info
+	 */
+	public async getSupportInfo(interaction: ChatInputCommandInteraction) {
+		return await this.messenger.reply(interaction, {
+			content: localize('bot.supportinfo', interaction.locale, {
+				dev: `<@${env.DEVELOPER_ID}>`,
+				server:
+					`https://discord.gg/${env.DEVELOPER_SERVER_INVITE!}`
+			}),
+			allowedMentions: { users: [] }
+		});
 	}
 
 	/**

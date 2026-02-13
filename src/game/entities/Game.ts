@@ -5,6 +5,7 @@ import { hexify } from '../../util/hex-string.js';
 import type Song from './Song.js';
 import type GameDataStore from '../../persistence/datastores/GameDataStore.js';
 import type ResultsResponse from '../model/ResultsResponse.js';
+import { env } from '../../config/env.js';
 
 export default class Game {
 	/**
@@ -28,7 +29,7 @@ export default class Game {
 		private store: GameDataStore,
 		public sentResults: boolean = false
 	) {
-		if (process.env.DEV_MODE) console.log(
+		if (env.DEV_MODE) console.log(
 			`Successfully started game Yorkle #${day} with `
 			+ `"${song.artist} - ${song.title}"`
 		);

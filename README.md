@@ -17,10 +17,13 @@ Create a `.env` file in the project root with the following variables:
 APPLICATION_ID=your_discord_application_id
 DISCORD_TOKEN=your_discord_bot_token
 ```
+
 The following optional variables can also be provided in the `.env`:
 ```
 DATA_ROOT=path_to_data_folder
 DEV_MODE=true
+DEVELOPER_ID=your_discord_user_id
+DEVELOPER_SERVER_INVITE=your_discord_server_invite_code
 FFMPEG_PATH=path_to_ffmpeg.exe
 MEDIA_ROOT=path_to_media_folder
 SONGS_ROOT=path_to_songs_folder
