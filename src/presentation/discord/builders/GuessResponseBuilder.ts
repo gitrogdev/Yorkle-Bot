@@ -4,7 +4,7 @@ import path from 'node:path';
 import type GuessResponse from '../../../game/model/GuessResponse.js';
 import { localePluralize, localize } from '../../localization/i18n.js';
 import type { SafeReplyOptions } from '../models/SafeReplyOptions.js';
-import { MEDIA_ROOT } from '../../../config/paths.js';
+import { COVERS_PATH } from '../../../config/paths.js';
 import { GuessResult } from '../../../game/model/GuessResult.js';
 
 export default class GuessResponseBuilder {
@@ -68,7 +68,8 @@ export default class GuessResponseBuilder {
 					}
 				}],
 				files: [new AttachmentBuilder(path.join(
-					MEDIA_ROOT, 'coverart', response.song.thumbnail
+					COVERS_PATH,
+					response.song.thumbnail
 				))]
 			};
 		} else if (response.result === GuessResult.Incorrect)

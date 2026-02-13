@@ -25,6 +25,9 @@ export const LOCALIZATION_PATH = path.join(
 /** Root directory under which all media files are stored. */
 export const MEDIA_ROOT = env.MEDIA_ROOT;
 
+/** Path to the directory where all album cover art .jpg files are stored. */
+export const COVERS_PATH = path.join(MEDIA_ROOT, 'coverart');
+
 /** Path to the directory where all lyrics .txt files are stored. */
 export const LYRICS_PATH = path.join(MEDIA_ROOT, 'lyrics');
 
