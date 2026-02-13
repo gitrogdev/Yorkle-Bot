@@ -13,6 +13,7 @@ import { DAYS_PATH } from '../../config/paths.js';
 import padDay from '../../util/pad-day.js';
 import { SkipResult } from '../model/SkipResult.js';
 import type SkipResponse from '../model/SkipResponse.js';
+import { env } from '../../config/env.js';
 
 export default class Session {
 	/** A set of the recognized songs the player has guessed. */
@@ -98,7 +99,7 @@ export default class Session {
 
 		console.log(
 			`Successfully processed guess from ${this.user.name}.`
-			+ (process.env.DEV_MODE ? (` Guess: ${guess} (cleaned to `
+			+ (env.DEV_MODE ? (` Guess: ${guess} (cleaned to `
 			+ `${cleanGuess}), Result: ${result}, `
 			+ `Sequence: ${this.guessSequence} (${this.guessSequence.length}/`
 			+ `${pluralize('guess', this.maxGuesses, 'es')} remaining)`) : '')
