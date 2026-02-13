@@ -26,7 +26,6 @@ DEVELOPER_ID=your_discord_user_id
 DEVELOPER_SERVER_INVITE=your_discord_server_invite_code
 FFMPEG_PATH=path_to_ffmpeg.exe
 MEDIA_ROOT=path_to_media_folder
-SONGS_ROOT=path_to_songs_folder
 ```
 
 ## Configuration Files
@@ -63,8 +62,7 @@ Must include:
 `/media/lyrics`
 * `lyrics.txt` - used by the `/lyric` command
 * `judgements.txt` - used by the `/judgejuryexecutioner` command
-
-`/songs`
+`media/songs`
 * All .mp3 files used by the bot
 * Each file must include metadata for artist, title, and album.
 
