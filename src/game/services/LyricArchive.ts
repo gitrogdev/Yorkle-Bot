@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { MEDIA_ROOT } from '../../config/paths.js';
+import { LYRICS_PATH } from '../../config/paths.js';
 import pluralize from '../../util/pluralize.js';
 
 export default class LyricArchive {
@@ -23,7 +23,7 @@ export default class LyricArchive {
 	public async init() {
 		const lyrics = new Set<string>();
 		const lines = (await fs.promises.readFile(
-			path.join(MEDIA_ROOT, 'lyrics', this.file),
+			path.join(LYRICS_PATH, this.file),
 			'utf-8'
 		)).split(/\r?\n/);
 

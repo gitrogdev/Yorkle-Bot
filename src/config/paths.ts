@@ -25,6 +25,9 @@ export const LOCALIZATION_PATH = path.join(
 /** Root directory under which all media files are stored. */
 export const MEDIA_ROOT = env.MEDIA_ROOT;
 
+/** Path to the directory where all lyrics .txt files are stored. */
+export const LYRICS_PATH = path.join(MEDIA_ROOT, 'lyrics');
+
 /** Path to the file containing queue data. */
 export const QUEUE_PATH = path.join(DATA_ROOT, 'game-queue.json');
 
