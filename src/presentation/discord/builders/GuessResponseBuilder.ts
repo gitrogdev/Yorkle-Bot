@@ -1,4 +1,4 @@
-import { AttachmentBuilder } from 'discord.js';
+import { AttachmentBuilder, MessageFlags } from 'discord.js';
 import path from 'node:path';
 
 import type GuessResponse from '../../../game/model/GuessResponse.js';
@@ -37,7 +37,7 @@ export default class GuessResponseBuilder {
 				);
 				return {
 					content: localize('errors.commandgeneric', locale),
-					ephemeral: true
+					flags: MessageFlags.Ephemeral
 				}
 			}
 

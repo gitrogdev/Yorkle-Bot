@@ -1,5 +1,4 @@
 {
-	"errors.commandgeneric": "Došlo je do greške prilikom izvršavanja ove naredbe. Molimo prijavi ovo developeru.",
 	"errors.commandoutsideguild": "Ova naredba se može koristiti samo unutar Discord servera!",
 	"errors.hasntplayed": "Još nisi odigrao/la Yorkle #{day}! Upotrijebi `/yorkle` da riješiš današnji zadatak i podijeliš rezultate!",
 	"errors.invalidguess": "Nepoznata pjesma \"{guess}\"\nProvjeri imaš li tipfeler ili pokušaj s drugom pjesmom. Odgovori ne ovise o velikim slovima ni interpunkciji.",
