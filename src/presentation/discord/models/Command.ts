@@ -22,7 +22,7 @@ export default abstract class Command {
 	constructor(protected handler: GameInteractionHandler) {};
 
 	public async execute(interaction: ChatInputCommandInteraction) {
-		if (this.deferReply) interaction.deferReply();
+		if (this.deferReply) await interaction.deferReply();
 		return await this.run(interaction);
 	}
 
