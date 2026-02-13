@@ -4,7 +4,7 @@ import path from 'node:path';
 import { promisify } from 'node:util';
 
 import type Song from '../entities/Song.js';
-import { DAYS_PATH, FFMPEG_PATH, SONGS_ROOT } from '../../config/paths.js';
+import { DAYS_PATH, FFMPEG_PATH, SONGS_PATH } from '../../config/paths.js';
 import padDay from '../../util/pad-day.js';
 import pluralize from '../../util/pluralize.js';
 
@@ -32,7 +32,7 @@ export default class ClipGenerator {
 	 * @param {number} day the incremental day number for the game
 	 */
 	public async generate(song: Song, day: number) {
-		const songPath = path.join(SONGS_ROOT, song.filename);
+		const songPath = path.join(SONGS_PATH, song.filename);
 		const timestamp = Math.floor(
 			Math.random() * (song.length - this.clipLengths.at(-1)!)
 		);

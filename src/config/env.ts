@@ -32,9 +32,6 @@ export type EnvironmentVariables = Readonly<{
 	/** Root directory under which all media files are stored. */
 	MEDIA_ROOT: string,
 
-	/** Root directory under which all song .mp3 files are stored. */
-	SONGS_ROOT: string,
-
 	/**
 	 * Whether to enable more detailed console logging for developers which may
 	 * contain game spoilers.
@@ -128,7 +125,6 @@ function validatePath(varName: string, defaultTo: string): string {
  * 	DATA_ROOT: './data',
  * 	FFMPEG_PATH: 'C:/ffmpeg/bin/ffmpeg.exe',
  * 	MEDIA_ROOT: './media',
- * 	SONGS_ROOT: './songs',
  *
  * 	DEV_MODE: false
  * }
@@ -146,7 +142,6 @@ export const env: EnvironmentVariables = Object.freeze({
 	DATA_ROOT: validatePath('DATA_ROOT', path.resolve('data')),
 	FFMPEG_PATH: validatePath('FFMPEG_PATH', 'C:/ffmpeg/bin/ffmpeg.exe'),
 	MEDIA_ROOT: validatePath('MEDIA_ROOT', path.resolve('media')),
-	SONGS_ROOT: validatePath('SONGS_ROOT', path.resolve('songs')),
 
 	DEV_MODE: validateBoolean('DEV_MODE')
 });
