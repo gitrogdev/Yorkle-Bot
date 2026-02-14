@@ -30,14 +30,27 @@ export default class ClipPresenter {
 		session: Session
 	) {
 		const clip = session.getClip();
-		return await this.messenger.dm(interaction.user, {
+
+		const clipMessage = await this.messenger.dm(interaction.user, {
 			content: localize('game.presentclip', interaction.locale, {
 				clip: clip.clip
 			}),
 			files: [ new AttachmentBuilder(clip.path) ]
-		}).then(() => console.log(
+		});
+
+		if (clipMessage === null) {
+			console.warn(
+				`Failed to present clip ${clip.clip} to `
+				+ `${interaction.user.username}.`
+			);
+			return null
+		};
+
+		console.log(
 			`Successfully presented clip ${clip.clip} to `
 			+ `${interaction.user.username}.`
-		));
+		);
+
+		return clipMessage;
 	}
 }

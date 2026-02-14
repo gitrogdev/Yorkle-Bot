@@ -11,5 +11,6 @@
 	"errors.playedtoday": "You have already played today's puzzle! Come back tomorrow to play again!",
 	"errors.repeatguess": "You have already guessed \"{guess}\". Try guessing another song.",
 	"errors.sessioncollision": "You already have an open session of Yorkle.",
+	"errors.sessionfailed": "Something went wrong while opening your session. Please try again later.",
 	"errors.setnontextchannel": "This command can only be used in a text-based channel within a server."
 }
