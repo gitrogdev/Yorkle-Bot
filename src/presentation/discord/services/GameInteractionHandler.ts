@@ -154,15 +154,23 @@ export default class GameInteractionHandler {
 			toUserIdentity(interaction.user)
 		);
 
-		await this.messenger.reply(interaction, localize(
+		if (response.result === OpenSessionResult.Open)
+			if (await this.clips.sendNext(
+				interaction,
+				response.session!
+			) === null) {
+				response.session!.kill();
+				return await this.messenger.reply(interaction, localize(
+					'errors.sessionfailed',
+					interaction.locale
+				));
+			}
+		return await this.messenger.reply(interaction, localize(
 			response.result === OpenSessionResult.Open ? 'game.sessionopened' :
 				response.result === OpenSessionResult.Collision
 					? 'errors.sessioncollision' : 'errors.playedtoday',
 			interaction.locale
 		));
-
-		if (response.result === OpenSessionResult.Open)
-			return await this.clips.sendNext(interaction, response.session!);
 	}
 
 	/**

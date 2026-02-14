@@ -90,8 +90,9 @@ export default class SessionManager {
 	 * @author gitrog
 	 *
 	 * @param {UserIdentity} user the user to close the session for
+	 * @param {boolean} finished whether the user has completed the session
 	 */
-	public close(user: UserIdentity) {
+	public close(user: UserIdentity, finished: boolean = true) {
 		const session = this.sessions.get(user.id);
 		if (!session) {
 			console.error(
@@ -106,6 +107,8 @@ export default class SessionManager {
 			+ `${user.name}.`
 		);
 
-		this.postgameManager.joinPostgameThreads(user, session.getDay());
+		if (finished) this.postgameManager.joinPostgameThreads(
+			user, session.getDay()
+		);
 	}
 }

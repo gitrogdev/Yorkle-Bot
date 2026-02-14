@@ -1,6 +1,8 @@
 import type {
 	ChatInputCommandInteraction,
 	Client,
+	InteractionResponse,
+	Message,
 	TextBasedChannel,
 	User
 } from 'discord.js';
@@ -28,8 +30,14 @@ export default class Messenger {
 	 * @param {User} user the user to send a direct message to
 	 * @param {MessageOptions} options the options for the payload containing
 	 * the message's contents to send to Discord
+	 *
+	 * @returns {Message | null} a promise of the message sent, or null if the
+	 * message was unable to be sent
 	 */
-	public async dm(user: User, options: MessageOptions) {
+	public async dm(
+		user: User,
+		options: MessageOptions
+	): Promise<Message | null> {
 		try {
 			return await user.send(options);
 		} catch (exception) {
@@ -37,6 +45,7 @@ export default class Messenger {
 				`Failed to send a direct message to ${user.username}: `,
 				exception
 			);
+			return null;
 		}
 	}
 
@@ -49,11 +58,14 @@ export default class Messenger {
 	 * reply to
 	 * @param {SafeReplyOptions} options the options for the payload containing
 	 * the reply's contents to send to Discord
+	 *
+	 * @returns {Message | InteractionResponse | null} a promise of the message
+	 * sent, or null if the message was unable to be sent
 	 */
 	public async reply(
 		interaction: ChatInputCommandInteraction,
 		options: SafeReplyOptions
-	) {
+	): Promise<Message | InteractionResponse | null> {
 		try {
 			if (interaction.deferred || interaction.replied)
 				return await interaction.editReply(options as EditOptions);
@@ -73,8 +85,14 @@ export default class Messenger {
 	 * message to
 	 * @param {MessageOptions} options the options for the payload containing
 	 * the message's contents to send to Discord
+	 *
+	 * @returns {Message | null} a promise of the message sent, or null if the
+	 * message was unable to be sent
 	 */
-	public async send(channelId: string, options: MessageOptions) {
+	public async send(
+		channelId: string,
+		options: MessageOptions
+	): Promise<Message | null> {
 		try {
 			const channel = await this.client.channels.fetch(
 				channelId

@@ -38,7 +38,7 @@ export default class Session {
 		private user: UserIdentity,
 		private game: Game,
 		private readonly maxGuesses: number,
-		private close: (user: UserIdentity) => void
+		private close: (user: UserIdentity, finished?: boolean) => void
 	) {
 		console.log(
 			`Successfully opened a new session of Yorkle #${game.day} for `
@@ -117,6 +117,15 @@ export default class Session {
 			guesses: this.guessSequence.length,
 			song: over ? this.game.song : undefined
 		};
+	}
+
+	/**
+	 * Ends the session without finishing it, allowing it to be reopened.
+	 *
+	 * @author gitrog
+	 */
+	public kill() {
+		this.close(this.user, false);
 	}
 
 	/**
