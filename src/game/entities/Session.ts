@@ -120,6 +120,15 @@ export default class Session {
 	}
 
 	/**
+	 * Ends the session without finishing it, allowing it to be reopened.
+	 *
+	 * @author gitrog
+	 */
+	public kill() {
+		this.close(this.user);
+	}
+
+	/**
 	 * Attempts to skip the current clip to receive the next one.
 	 * The last clip in the puzzle cannot be skipped.
 	 *

@@ -159,7 +159,7 @@ export default class GameInteractionHandler {
 				interaction,
 				response.session!
 			) === null) {
-				response.session.kill();
+				response.session!.kill();
 				return await this.messenger.reply(interaction, localize(
 					'errors.sessionfailed',
 					interaction.locale
