@@ -13,6 +13,8 @@ import type Messenger from './Messenger.js';
 import type ThreadCache from '../models/ThreadCache.js';
 import { localize } from '../../localization/i18n.js';
 import pluralize from '../../../util/pluralize.js';
+import SongEmbedBuilder from '../builders/SongEmbedBuilder.js';
+import type Game from '../../../game/entities/Game.js';
 
 /**
  * Implementation of the post-game discussion port on the client to open and
@@ -22,6 +24,7 @@ import pluralize from '../../../util/pluralize.js';
  */
 export default class PostgameThreadHandler implements PostgameDiscussionPort {
 	private cache: ThreadCache = {};
+	private songEmbedder: SongEmbedBuilder = new SongEmbedBuilder();
 
 	/**
 	 * Creates a new port to handle thread interactions from the game layer.
@@ -94,12 +97,9 @@ export default class PostgameThreadHandler implements PostgameDiscussionPort {
 	 *
 	 * @param {Guild} guild the guild object passed from the game representing
 	 * the Discord guild to create the thread in
-	 * @param {number | string} day the number of the day of the game's
-	 * iteration
+	 * @param {Game} game the game the post-game discussion is regarding
 	 */
-	public async openPostgameThread(guild: Guild, day: number | string) {
-		if (typeof day === 'number') day = day.toString();
-
+	public async openPostgameThread(guild: Guild, game: Game) {
 		if (!guild.channelId) {
 			console.warn(
 				`Failed to open post-game thread for guild with ID ${guild.id}`
@@ -108,10 +108,10 @@ export default class PostgameThreadHandler implements PostgameDiscussionPort {
 			return;
 		}
 
-		if (!Object.hasOwn(this.cache, day)) this.cache[day] = {};
+		if (!Object.hasOwn(this.cache, game.day)) this.cache[game.day] = {};
 		else if (
-			Object.hasOwn(this.cache, day)
-			&& Object.hasOwn(this.cache[day], guild.id)
+			Object.hasOwn(this.cache, game.day)
+			&& Object.hasOwn(this.cache[game.day], guild.id)
 		) {
 			console.warn(
 				`Failed to open post-game thread for guild with ID ${guild.id}`
@@ -158,7 +158,7 @@ export default class PostgameThreadHandler implements PostgameDiscussionPort {
 					discordGuild.preferredLocale,
 					{
 						bot: this.client.user?.username ?? 'Yorkle',
-						day: day
+						day: game.day
 					}
 				),
 				autoArchiveDuration: ThreadAutoArchiveDuration.OneDay,
@@ -169,12 +169,14 @@ export default class PostgameThreadHandler implements PostgameDiscussionPort {
 				)
 			});
 
-			this.cache[day][guild.id] = thread.id;
-			guild.threads[day] = thread.id;
+			thread.send(this.songEmbedder.build(game.song));
+
+			this.cache[game.day][guild.id] = thread.id;
+			guild.threads[game.day] = thread.id;
 
 			console.log(
 				`Successfully opened post-game discussion thread ${thread.id} `
-				+ `in guild ${guild.id} for Yorkle #${day}.`
+				+ `in guild ${guild.id} for Yorkle #${game.day}.`
 			);
 		} catch (error) {
 			console.warn(

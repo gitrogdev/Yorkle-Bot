@@ -1,13 +1,15 @@
-import { AttachmentBuilder, MessageFlags } from 'discord.js';
-import path from 'node:path';
+import { MessageFlags } from 'discord.js';
 
 import type GuessResponse from '../../../game/model/GuessResponse.js';
 import { localePluralize, localize } from '../../localization/i18n.js';
 import type { SafeReplyOptions } from '../models/SafeReplyOptions.js';
-import { COVERS_PATH } from '../../../config/paths.js';
 import { GuessResult } from '../../../game/model/GuessResult.js';
+import SongEmbedBuilder from './SongEmbedBuilder.js';
 
 export default class GuessResponseBuilder {
+	/** Utility class used to build song embeds. */
+	private songEmbedder: SongEmbedBuilder = new SongEmbedBuilder();
+
 	/**
 	 * Builds the results of a guess and returns it as options to reply to an
 	 * interaction with.
@@ -57,20 +59,7 @@ export default class GuessResponseBuilder {
 					' ' + localize('game.loss', locale) + '\n\n'
 					+ localize('game.nospoilies', locale)
 				) : ''),
-				embeds: [{
-					author: {
-						name: response.song.artist
-					},
-					title: response.song.title,
-					description: response.song.album,
-					thumbnail: {
-						url: `attachment://${response.song.thumbnail}`
-					}
-				}],
-				files: [new AttachmentBuilder(path.join(
-					COVERS_PATH,
-					response.song.thumbnail
-				))]
+				...this.songEmbedder.build(response.song)
 			};
 		} else if (response.result === GuessResult.Incorrect)
 			return localize(

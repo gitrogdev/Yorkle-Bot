@@ -129,16 +129,16 @@ export default class Yorkle {
 	}
 
 	/**
-	 * Opens the post-game discussion threads for a new day of the game.
+	 * Opens the post-game discussion threads for today's iteration of the game.
 	 *
 	 * @author gitrog
-	 *
-	 * @param {number} day the day number of the game's iteration
 	 */
-	public async openPostgameThreads(day: number) {
+	public async openPostgameThreads() {
+		const game = await this.queue.getGame();
+
 		for (
 			const guild of this.guilds.getGuilds()
-		) await this.postgameManager.openPostgameThread(guild, day);
+		) await this.postgameManager.openPostgameThread(guild, game);
 		return await this.guilds.saveGuilds();
 	}
 

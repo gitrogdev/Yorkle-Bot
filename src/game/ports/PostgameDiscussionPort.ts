@@ -1,3 +1,4 @@
+import type Game from '../entities/Game.js';
 import type Guild from '../entities/Guild.js';
 import type UserIdentity from '../model/UserIdentity.js';
 
@@ -24,15 +25,15 @@ export default interface PostgameDiscussionPort {
 	joinPostgameThreads(user: UserIdentity, day: number): Promise<void>
 
 	/**
-	 * Opens a thread for postgame discussion for the provided day.
+	 * Opens a thread for postgame discussion for the current iteration of the
+	 * game.
 	 *
 	 * @author gitrog
 	 *
 	 * @param {Guild} guild the guild to open the discussion thread in
-	 * @param {number} day the number of the day of the game's iteration to
-	 * associate the thread with
+	 * @param {number} game the game the post-game discussion is regarding
 	 */
-	openPostgameThread(guild: Guild, day: number): Promise<void>;
+	openPostgameThread(guild: Guild, game: Game): Promise<void>;
 
 	/**
 	 * Passes the threads for the already open postgame discussions to the
