@@ -74,13 +74,18 @@ export default class PostgameThreadHandler implements PostgameDiscussionPort {
 				await discordGuild.members.fetch(user.id)
 			} catch { continue; }
 
-			this.messenger.send(threadId, localize(
-				'threads.added',
-				discordGuild.preferredLocale,
-				{
-					member: `<@${user.id}>`
-				}
-			)).then(
+			const thread = await this.client.channels.fetch(threadId);
+
+			if (!thread?.isThread()) {
+				console.error(
+					`Failed to add ${user.name} to Yorkle #${day} post-game `
+					+ `discussion thread in ${discordGuild.name}: No thread `
+					+ `found with ID ${threadId}!`
+				);
+				continue;
+			}
+
+			await thread.members.add(user.id).then(
 				() => console.log(
 					`Successfully added ${user.name} to Yorkle #${day} `
 					+ `post-game discussion thread ${threadId} in guild `
