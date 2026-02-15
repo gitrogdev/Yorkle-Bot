@@ -1,0 +1,16 @@
+{
+	"errors.commandgeneric": "Bu komut çalıştırılırken bir hata oluştu. Yardım almak veya bu sorunu bildirmek için `/destek` komutunu kullanın.",
+	"errors.commandoutsideguild": "Bu komut yalnızca bir Discord sunucusunda kullanılabilir!",
+	"errors.hasntplayed": "Henüz Yorkle #{day} oynamadınız! Sonuçlarınızı paylaşmak için bugünkü bulmacayı `/yorkle` ile çözün!",
+	"errors.invalidguess": "Bilinmeyen şarkı \"{guess}\"\nYazım hatalarını kontrol edin ya da başka bir şarkı deneyin. Cevaplar büyük/küçük harf ve noktalama işaretlerine duyarlı değildir.",
+	"errors.lastclip": "{clip} numaralı klip atlanamıyor, bu benim son klibim! `/tahmin` komutunu kullanarak bir tahminde bulunun!",
+	"errors.nocontent": "İçerik bulunamadı.",
+	"errors.noguess": "`/tahmin` komutunda bir şarkı tahmini belirtmelisiniz! Takıldıysanız `/gec` komutunu deneyin!",
+	"errors.noguild": "Bu sunucu henüz Yorkle’a bağlı değil! `/yorkle` ile bir oyun oynayın ve sonuçları `/paylas` komutuyla bu sunucuda paylaşarak bağlantıyı kurun!",
+	"errors.nosession": "Bu komutu kullanmak için açık bir Yorkle oturumunuz olmalı! Oynamaya başlamak için `/yorkle` komutunu kullanın!",
+	"errors.playedtoday": "Bugünkü bulmacayı zaten oynadınız! Tekrar oynamak için yarın geri gelin!",
+	"errors.repeatguess": "\"{guess}\" şarkısını zaten tahmin ettiniz. Başka bir şarkı tahmin edin.",
+	"errors.sessioncollision": "Zaten açık bir Yorkle oturumunuz var.",
+	"errors.sessionfailed": "Oturumunuz açılırken bir sorun oluştu. Lütfen daha sonra tekrar deneyin.",
+	"errors.setnontextchannel": "Bu komut yalnızca bir sunucudaki metin tabanlı kanalda kullanılabilir."
+}

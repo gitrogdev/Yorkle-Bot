@@ -1,0 +1,13 @@
+{
+	"game.contents": "Yorkle şu anda Radiohead ve Thom Yorke’un ilgili projelerindeki stüdyo albümleri, B-side’lar, single’lar ve diğer resmi yayımlardan toplam {songs} şarkıyı tanımaktadır.\n\nGenel olarak canlı performanslar, akustik versiyonlar, remaster’lar, remix’ler veya yeniden basımlar gibi alternatif sürümler **ayrı şarkılar olarak sayılmaz**.\n\n**İstisnalar:**\nResmî olarak yayımlanmış bazı alternatif stüdyo versiyonları *ayrı şarkılar* olarak kabul edilir. Bunlar şunlardır:\n- **Morning Bell** ve **Morning Bell/Amnesiac**\n- **KID A MNESIA** kapsamında yayımlanan seçili parçalar\n\n*Örneğin, oyuncuların* **True Love Waits** *ile* **True Love Waits (Live in Oslo)** *arasında ayrım yapması gerekmez; ancak yukarıda listelenen istisnalar ayrı şarkılar olarak kabul edilir.*",
+	"game.correctguess": "✅ **DOĞRU** ✅\n\nYorkle’ı {numGuesses} tahminde bildiniz! Yarın tekrar oynayın ya da sonuçlarınızı `/paylas` komutuyla arkadaşlarınızla paylaşın!",
+	"game.incorrectguess": "❌ **YANLIŞ** ❌\n\n\"{guess}\" doğru değil.",
+	"game.loss": "Bir dahaki sefere daha iyi şanslar!",
+	"game.nospoilies": "-# Yorkle, her gün herkesin aynı şarkıyı tahmin ettiği günlük bir tahmin oyunudur. Bugünkü cevabı tartışırken, henüz bulmacayı bitirmemiş olabilecek diğer oyuncular için lütfen spoiler vermekten kaçının.",
+	"game.presentclip": "**Klip {clip}**:\n*Şarkıyı tahmin etmek için* `/tahmin` *kullanın ya da tahmin etmeden önce daha uzun bir klip denemek için* `/gec` *yazın.*",
+	"game.sessionopened": "Yorkle oturumu başlatıldı. Oynamak için lütfen özel mesajlarınıza bakın.",
+	"game.skipped": "{clip}. klip atlanıyor ve bir sonraki klibe geçiliyor.",
+	"game.recap": "**Grubunuz {streak} gündür seri yapıyor!** {streakEmojis} İşte dünkü sonuçlar:{results}\n\n**Sunucu ortalaması**: `{avg}`\n-# Ortalama hesaplanırken kayıplar {loss} olarak değerlendirilir.",
+	"game.results": "Yorkle #{day}\n{sequence}\n\n-# Yorkle, ultimate Yorkiverse tahmin oyunudur. Her gün oyunculara bir şarkıdan rastgele klipler sunulur ve mümkün olan en az tahminle şarkıyı bulmaları gerekir. Bugünkü bulmacayı başlatmak için `/yorkle` komutunu kullanın.",
+	"game.tryagain": "Tekrar deneyin."
+}

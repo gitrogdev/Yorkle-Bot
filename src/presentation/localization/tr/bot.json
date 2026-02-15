@@ -1,0 +1,4 @@
+{
+	"bot.localeinfo": "## :flag_tr: Türkçe\n**Dil**: `{locale}`\n**Katkıda Bulunanlar**:\n**İlerleme**: {translations}\n> :information_source: Bu çeviri, büyük dil modellerinin desteğiyle oluşturulmuştur.\n> Ana dili Türkçe olan biri misiniz? `/destek` komutuyla geliştirmemize yardımcı olun.",
+	"bot.supportinfo": "## Yardıma mı ihtiyacınız var?\nYorkle ile ilgili bir hatayla karşılaşırsanız, beklenmeyen bir davranış görürseniz ya da sorularınız ve önerileriniz varsa:\n* {dev} ile iletişime geçin\n* Güncellemeler ve duyurular için proje sunucusuna katılın: {server}"
+}
