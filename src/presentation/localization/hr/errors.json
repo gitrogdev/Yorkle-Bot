@@ -1,4 +1,5 @@
 {
+	"errors.commandgeneric": "Došlo je do greške prilikom izvršavanja ove naredbe. Upotrijebi `/podrška` za pomoć ili prijavu problema.",
 	"errors.commandoutsideguild": "Ova naredba se može koristiti samo unutar Discord servera!",
 	"errors.hasntplayed": "Još nisi odigrao/la Yorkle #{day}! Upotrijebi `/yorkle` da riješiš današnji zadatak i podijeliš rezultate!",
 	"errors.invalidguess": "Nepoznata pjesma \"{guess}\"\nProvjeri imaš li tipfeler ili pokušaj s drugom pjesmom. Odgovori ne ovise o velikim slovima ni interpunkciji.",
@@ -9,5 +10,7 @@
 	"errors.nosession": "Moraš imati aktivnu Yorkle sesiju da bi koristio/la ovu naredbu! Pokreni igru s `/yorkle`.",
 	"errors.playedtoday": "Već si odigrao/la današnji zadatak! Vrati se sutra po novu rundu!",
 	"errors.repeatguess": "Već si pokušao/la s \"{guess}\". Probaj pogoditi neku drugu pjesmu.",
-	"errors.sessioncollision": "Već imaš aktivnu Yorkle sesiju."
+	"errors.sessioncollision": "Već imaš aktivnu Yorkle sesiju.",
+	"errors.sessionfailed": "Došlo je do greške pri pokretanju tvoje sesije. Pokušaj ponovno kasnije.",
+	"errors.setnontextchannel": "Ova naredba se može koristiti samo u tekstualnom kanalu unutar servera."
 }
