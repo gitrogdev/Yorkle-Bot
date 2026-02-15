@@ -18,6 +18,8 @@
 	"commands.share.description": "Поділіться своїм результатом за сьогоднішній Йоркль",
 	"commands.skip": "пропустити",
 	"commands.skip.description": "Пропустити поточний уривок, щоб вгадувати за довшим",
+	"commands.support": "підтримка",
+	"commands.support.description": "Надає контактну інформацію та посилання на сервер проєкту для допомоги й оновлень.",
 	"commands.version": "версія",
 	"commands.version.description": "Показує версію Йоркля, на якій працює бот",
 	"commands.version.response": "Йоркль v{version}",
