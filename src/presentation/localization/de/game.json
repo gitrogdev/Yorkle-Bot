@@ -1,0 +1,13 @@
+{
+	"game.contents": "Yorkle erkennt derzeit {songs} Songs aus Studioalben, B-Seiten, Singles und weiteren Veröffentlichungen von Radiohead sowie Thom Yorkes zugehörigen Projekten.\n\nAlternative Versionen wie Live-Aufnahmen, Akustikversionen, Remaster, Remixe oder Neuveröffentlichungen gelten in der Regel **nicht** als eigenständige Songs.\n\n**Ausnahmen:**\nBestimmte offiziell veröffentlichte alternative Studio-Versionen werden *als eigene Songs* gewertet. Dazu gehören:\n- **Morning Bell** und **Morning Bell/Amnesiac**\n- Ausgewählte Titel aus **KID A MNESIA**\n\n*Beispielsweise müssen Spielerinnen und Spieler nicht zwischen* **True Love Waits** *und* **True Love Waits (Live in Oslo)** *unterscheiden, wohl aber die oben genannten Ausnahmen als separate Songs erkennen.*",
+	"game.correctguess": "✅ **RICHTIG** ✅\n\nDu hast das Yorkle in {numGuesses} Versuchen gelöst! Spiele morgen wieder oder teile dein Ergebnis mit `/teilen`!",
+	"game.incorrectguess": "❌ **FALSCH** ❌\n\n„{guess}“ war leider nicht korrekt.",
+	"game.loss": "Viel Glück beim nächsten Mal!",
+	"game.nospoilies": "-# Yorkle ist ein tägliches Ratespiel, bei dem alle jeden Tag denselben Song erraten. Bitte vermeide Spoiler, wenn du die heutige Lösung mit anderen besprichst, die das Rätsel noch nicht abgeschlossen haben.",
+	"game.presentclip": "**Clip {clip}**:\n*Verwende* `/raten`, *um den Song zu erraten, oder* `/überspringen`, *um zuerst einen längeren Clip zu hören.*",
+	"game.sessionopened": "Eine Yorkle-Sitzung wurde gestartet. Bitte sieh in deinen Direktnachrichten nach, um zu spielen.",
+	"game.skipped": "Clip {clip} wird übersprungen. Nächster Clip wird abgespielt.",
+	"game.recap": "**Eure Gruppe hat eine Serie von {streak} Tagen!** {streakEmojis} Hier sind die gestrigen Ergebnisse:{results}\n\n**Server-Durchschnitt**: `{avg}`\n-# Niederlagen werden für die Durchschnittsberechnung als {loss} gewertet.",
+	"game.results": "Yorkle #{day}\n{sequence}\n\n-# Yorkle ist das ultimative Yorkiverse-Ratespiel. Jeden Tag erhalten Spielerinnen und Spieler zufällige Clips eines Songs und müssen ihn mit möglichst wenigen Versuchen erkennen. Starte das heutige Rätsel mit `/yorkle`.",
+	"game.tryagain": "Versuche es erneut."
+}

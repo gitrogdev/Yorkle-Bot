@@ -1,0 +1,16 @@
+{
+	"errors.commandgeneric": "Beim Ausführen dieses Befehls ist ein Fehler aufgetreten. Verwende `/hilfe`, um Unterstützung zu erhalten oder dieses Problem zu melden.",
+	"errors.commandoutsideguild": "Dieser Befehl kann nur in einem Discord-Server verwendet werden!",
+	"errors.hasntplayed": "Du hast Yorkle #{day} heute noch nicht gespielt! Verwende `/yorkle`, um das heutige Rätsel zu lösen und dein Ergebnis zu teilen!",
+	"errors.invalidguess": "Unbekannter Song „{guess}“\nÜberprüfe die Schreibweise oder versuche einen anderen Song. Groß- und Kleinschreibung sowie Satzzeichen werden nicht berücksichtigt.",
+	"errors.lastclip": "Clip {clip} kann nicht übersprungen werden – das ist mein letzter Clip! Gib deinen Tipp mit dem Befehl `/raten` ab!",
+	"errors.nocontent": "Keine Inhalte gefunden.",
+	"errors.noguess": "Der Befehl `/raten` benötigt einen Songtitel! Wenn du nicht weiterkommst, versuche `/überspringen`.",
+	"errors.noguild": "Dieser Server ist noch nicht mit Yorkle verbunden! Spiele eine Runde mit `/yorkle` und teile das Ergebnis hier mit `/teilen`, um ihn zu verbinden!",
+	"errors.nosession": "Du brauchst eine aktive Yorkle-Sitzung, um diesen Befehl zu verwenden! Starte mit `/yorkle` eine neue Runde!",
+	"errors.playedtoday": "Du hast das heutige Rätsel bereits gespielt! Komm morgen wieder, um erneut zu spielen!",
+	"errors.repeatguess": "Du hast „{guess}“ bereits geraten. Versuche einen anderen Song.",
+	"errors.sessioncollision": "Du hast bereits eine aktive Yorkle-Sitzung.",
+	"errors.sessionfailed": "Beim Starten deiner Sitzung ist ein Fehler aufgetreten. Bitte versuche es später erneut.",
+	"errors.setnontextchannel": "Dieser Befehl kann nur in einem textbasierten Kanal eines Servers verwendet werden."
+}
