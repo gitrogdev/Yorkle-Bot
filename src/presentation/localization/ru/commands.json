@@ -24,7 +24,6 @@
 	"commands.support.description": "Показывает контактную информацию и сервер проекта для помощи и обновлений.",
 	"commands.version": "версия",
 	"commands.version.description": "Показывает версию Йоркля, на которой работает бот",
-	"commands.version.response": "Йоркль v{version}",
 	"commands.whennext": "следующаяигра",
 	"commands.whennext.description": "Показывает, сколько времени осталось до следующей головоломки",
 	"commands.whennext.response": "Следующая игра Йоркль будет доступна {timestamp}."

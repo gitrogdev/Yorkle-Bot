@@ -1,4 +1,5 @@
 {
 	"bot.localeinfo": "## :flag_pl: Polski\n**Lokalizacja**: `{locale}`\n**Autorzy tłumaczenia**:\n**Postęp tłumaczenia**: {translations}\n> :information_source: To tłumaczenie zostało stworzone przy wsparciu modeli językowych AI.\n> Jesteś native speakerem? Pomóż nam je ulepszyć, używając komendy `/wsparcie`.",
-	"bot.supportinfo": "## Potrzebujesz pomocy?\nJeśli napotkasz błąd, zauważysz nieoczekiwane działanie lub masz pytania bądź sugestie dotyczące Yorkle:\n* Skontaktuj się z {dev}\n* Dołącz do serwera projektu, aby otrzymywać aktualizacje i ogłoszenia: {server}"
+	"bot.supportinfo": "## Potrzebujesz pomocy?\nJeśli napotkasz błąd, zauważysz nieoczekiwane działanie lub masz pytania bądź sugestie dotyczące Yorkle:\n* Skontaktuj się z {dev}\n* Dołącz do serwera projektu, aby otrzymywać aktualizacje i ogłoszenia: {server}",
+	"bot.version": "Yorkle v{version}"
 }

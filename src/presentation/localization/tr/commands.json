@@ -24,7 +24,6 @@
 	"commands.support.description": "Yardım ve güncellemeler için iletişim ve proje sunucusu bilgilerini verir.",
 	"commands.version": "surum",
 	"commands.version.description": "Botun çalıştığı Yorkle sürümünü gösterir",
-	"commands.version.response": "Yorkle v{version}",
 	"commands.whennext": "sonrakioyun",
 	"commands.whennext.description": "Bir sonraki bulmacaya kalan süreyi hesaplar",
 	"commands.whennext.response": "Bir sonraki Yorkle {timestamp} tarihinde hazır olacak."

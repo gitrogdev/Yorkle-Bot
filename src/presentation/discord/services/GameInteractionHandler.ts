@@ -122,7 +122,7 @@ export default class GameInteractionHandler {
 	 */
 	public async getVersion(interaction: ChatInputCommandInteraction) {
 		return await this.messenger.reply(interaction, localize(
-			'commands.version.response',
+			'bot.version',
 			interaction.locale,
 			{ version: this.version }
 		));

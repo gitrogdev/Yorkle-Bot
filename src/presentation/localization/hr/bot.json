@@ -1,4 +1,5 @@
 {
 	"bot.localeinfo": "## :flag_hr: Hrvatski\n**Jezik**: `{locale}`\n**Prevoditelji**:\n**Napredak prijevoda**: {translations}\n> :information_source: Ovaj prijevod izrađen je uz pomoć velikih jezičnih modela.\n> Govoriš hrvatski kao materinski? Pomozi nam ga poboljšati putem `/podrška`.",
-	"bot.supportinfo": "## Trebate pomoć?\nAko naiđete na bug, primijetite neočekivano ponašanje ili imate pitanja ili prijedloge vezane uz Yorkle:\n* Kontaktirajte {dev}\n* Pridružite se projektnom serveru za novosti i obavijesti: {server}"
+	"bot.supportinfo": "## Trebate pomoć?\nAko naiđete na bug, primijetite neočekivano ponašanje ili imate pitanja ili prijedloge vezane uz Yorkle:\n* Kontaktirajte {dev}\n* Pridružite se projektnom serveru za novosti i obavijesti: {server}",
+	"bot.version": "Yorkle v{version}"
 }

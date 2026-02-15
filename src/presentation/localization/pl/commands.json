@@ -24,7 +24,6 @@
 	"commands.support.description": "Wyświetla informacje kontaktowe i serwer projektu (pomoc oraz aktualizacje).",
 	"commands.version": "wersja",
 	"commands.version.description": "Wyświetla wersję Yorkle, na której działa bot",
-	"commands.version.response": "Yorkle v{version}",
 	"commands.whennext": "następnagra",
 	"commands.whennext.description": "Oblicza czas pozostały do następnej zagadki",
 	"commands.whennext.response": "Następne Yorkle będzie dostępne {timestamp}."
