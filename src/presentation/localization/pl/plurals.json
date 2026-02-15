@@ -1,0 +1,11 @@
+{
+	"plurals.guess": "próba",
+	"plurals.guess.nomplural": "próby",
+	"plurals.guess.genplural": "prób",
+	"plurals.translationcomplete": "ukończone tłumaczenie",
+	"plurals.translationcomplete.nomplural": "ukończone tłumaczenia",
+	"plurals.translationcomplete.genplural": "ukończonych tłumaczeń",
+	"plurals.uniquesong": "unikalna piosenka",
+	"plurals.uniquesong.nomplural": "unikalne piosenki",
+	"plurals.uniquesong.genplural": "unikalnych piosenek"
+}

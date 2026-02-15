@@ -1,0 +1,16 @@
+{
+	"errors.commandgeneric": "Wystąpił błąd podczas wykonywania tej komendy. Użyj `/wsparcie`, aby uzyskać pomoc lub zgłosić problem.",
+	"errors.commandoutsideguild": "Ta komenda może być używana tylko na serwerze Discord!",
+	"errors.hasntplayed": "Nie zagrałeś jeszcze w Yorkle #{day}! Użyj `/yorkle`, aby rozwiązać dzisiejszą zagadkę i udostępnić swoje wyniki!",
+	"errors.invalidguess": "Nieznana piosenka \"{guess}\"\nSprawdź, czy nie ma literówek, lub spróbuj innego tytułu. Wielkość liter i znaki interpunkcyjne nie mają znaczenia.",
+	"errors.lastclip": "Nie można pominąć fragmentu {clip} — to już ostatni! Zgadnij, używając komendy `/zgadnij`!",
+	"errors.nocontent": "Nie znaleziono żadnej zawartości.",
+	"errors.noguess": "Komenda `/zgadnij` musi zawierać tytuł zgadywanej piosenki! Jeśli utknąłeś, spróbuj użyć `/pomiń`!",
+	"errors.noguild": "Ten serwer nie jest jeszcze połączony z Yorkle! Zagraj w `/yorkle` i udostępnij wyniki na tym serwerze za pomocą `/udostępnij`, aby go połączyć!",
+	"errors.nosession": "Musisz mieć aktywną sesję Yorkle, aby użyć tej komendy! Użyj `/yorkle`, aby rozpocząć grę!",
+	"errors.playedtoday": "Dzisiejsza zagadka została już przez Ciebie rozwiązana! Wróć jutro, aby zagrać ponownie!",
+	"errors.repeatguess": "Już zgadywałeś \"{guess}\". Spróbuj podać inny tytuł.",
+	"errors.sessioncollision": "Masz już aktywną sesję Yorkle.",
+	"errors.sessionfailed": "Wystąpił błąd podczas otwierania sesji. Spróbuj ponownie później.",
+	"errors.setnontextchannel": "Ta komenda może być używana wyłącznie na tekstowym kanale serwera."
+}

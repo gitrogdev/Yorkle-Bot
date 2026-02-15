@@ -6,6 +6,7 @@ import pluralizeHR from './hr/pluralize.js';
 import pluralizeUK from './uk/pluralize.js';
 import pluralizeDE from './de/pluralize.js';
 import pluralizeRU from './ru/pluralize.js';
+import pluralizePL from './pl/pluralize.js';
 
 type Pluralizer = (
 	key: string,
@@ -22,6 +23,7 @@ const pluralizeFunctions: Record<string, Pluralizer> = {
 	de: pluralizeDE as Pluralizer,
 	en: pluralizeEN as Pluralizer,
 	hr: pluralizeHR as Pluralizer,
+	pl: pluralizePL as Pluralizer,
 	ru: pluralizeRU as Pluralizer,
 	uk: pluralizeUK as Pluralizer
 };
