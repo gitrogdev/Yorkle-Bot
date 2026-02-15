@@ -24,7 +24,6 @@
 	"commands.support.description": "Gets contact and project server information for help and updates.",
 	"commands.version": "version",
 	"commands.version.description": "Gets the version of Yorkle the bot is running on",
-	"commands.version.response": "Yorkle v{version}",
 	"commands.whennext": "nextgame",
 	"commands.whennext.description": "Calculates the time remaining until the next puzzle",
 	"commands.whennext.response": "The next Yorkle will be available {timestamp}."

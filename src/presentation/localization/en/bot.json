@@ -1,4 +1,5 @@
 {
 	"bot.localeinfo": "## :flag_us: English (US)\n**Locale**: `{locale}`\n**Contributors**: [YOU CAN PUT YOUR NAME(S) HERE]\n**Progress**: {translations}\n> :information_source: This translation was created with the assistance of large language models.\n> Native speaker? Help us improve it via `/support`.",
-	"bot.supportinfo": "## Need help?\nIf you encounter a bug, experience unexpected behavior, or have questions or suggestions about Yorkle:\n* Contact {dev}\n* Join the project server for updates and announcements: {server}"
+	"bot.supportinfo": "## Need help?\nIf you encounter a bug, experience unexpected behavior, or have questions or suggestions about Yorkle:\n* Contact {dev}\n* Join the project server for updates and announcements: {server}",
+	"bot.version": "Yorkle v{version}"
 }
