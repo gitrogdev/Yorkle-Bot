@@ -10,6 +10,12 @@ type Pluralizer = (
 	count: number
 ) => string;
 
+const DEFAULT_LOCALE = 'en-US';
+const DEFAULT_LOCALE_MESSAGE = 'You\'re currently using the default language '
+	+ `(${DEFAULT_LOCALE}).\n-# Yorkle follows your Discord interface `
+	+ 'language. The language must be supported by both Discord and Yorkle. '
+	+ 'If yours isn\'t available yet, you can contribute via `/support`.';
+
 const pluralizeFunctions: Record<string, Pluralizer> = {
 	en: pluralizeEN as Pluralizer,
 	hr: pluralizeHR as Pluralizer,
@@ -33,6 +39,41 @@ for (const locale of fs.readdirSync(LOCALIZATION_PATH)) {
 		};
 		console.log(`Successfully loaded dictionary /${locale}/${file}.`);
 	}
+}
+
+/**
+ * Gets the information about the locale in use.
+ *
+ * @author gitrog
+ *
+ * @param {string} locale the locale to get the information for
+ *
+ * @returns {string} a user-facing response containing information about the
+ * locale, its contributors, and its completion status
+ */
+export function getLocaleInfo(locale: string = DEFAULT_LOCALE): string {
+	const lang = locale.split('-')[0];
+	if (!Object.hasOwn(dictionaries, lang)) {
+		console.log(
+			'Attempted to get locale info for the unimplemented locale '
+			+ ` ${locale}! (${lang})`
+		);
+		return DEFAULT_LOCALE_MESSAGE;
+	}
+
+	return locale === DEFAULT_LOCALE ? DEFAULT_LOCALE_MESSAGE : localize(
+		'bot.localeinfo', locale, {
+			locale: locale,
+			translations: `${Object.keys(dictionaries[locale]).length}/`
+				+ localePluralize(
+					locale,
+					'plurals.translationcomplete',
+					Object.keys(
+						dictionaries[DEFAULT_LOCALE.split('-')[0]]
+					).length
+				)
+		}
+	);
 }
 
 /**
@@ -67,7 +108,7 @@ export function getLocalizedOptions(key: string): Record<string, string> {
  */
 function localize(
 	key: string,
-	locale: string = 'en-US',
+	locale: string = DEFAULT_LOCALE,
 	params: Record<string, string | number> = {}
 ): string {
 	const lang = locale.split('-')[0];
