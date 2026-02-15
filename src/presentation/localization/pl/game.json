@@ -1,0 +1,13 @@
+{
+	"game.contents": "Yorkle rozpoznaje obecnie {songs} utworów pochodzących z albumów studyjnych, stron B, singli oraz innych wydawnictw zespołu Radiohead i projektów powiązanych z Thomem Yorke’em.\n\nZasadniczo alternatywne wersje, takie jak wykonania na żywo, wersje akustyczne, remastery, remiksy czy reedycje, **nie** są liczone jako osobne utwory.\n\n**Wyjątki:**\nNiektóre oficjalnie wydane alternatywne wersje studyjne *są* traktowane jako odrębne utwory. Dotyczy to:\n- **Morning Bell** oraz **Morning Bell/Amnesiac**\n- Wybranych utworów wydanych w ramach **KID A MNESIA**\n\n*Na przykład gracze nie muszą rozróżniać między* **True Love Waits** *a* **True Love Waits (Live in Oslo)**, *ale muszą rozpoznawać powyższe wyjątki jako osobne utwory.*",
+	"game.correctguess": "✅ **POPRAWNIE** ✅\n\nOdgadłeś Yorkle w {numGuesses} próbach! Zagraj ponownie jutro lub udostępnij swoje wyniki znajomym za pomocą komendy `/udostępnij`!",
+	"game.incorrectguess": "❌ **NIEPOPRAWNIE** ❌\n\n„{guess}” to błędna odpowiedź.",
+	"game.loss": "Powodzenia następnym razem!",
+	"game.nospoilies": "-# Yorkle to codzienna gra zgadywanka, w której wszyscy odgadują tego samego dnia ten sam utwór. Unikaj spoilerów podczas omawiania dzisiejszej odpowiedzi z innymi graczami, którzy mogli jeszcze nie ukończyć zagadki.",
+	"game.presentclip": "**Fragment {clip}**:\n*Użyj* `/zgadnij`, *aby podać tytuł utworu, lub wpisz* `/pomiń`, *aby odsłuchać dłuższy fragment przed zgadywaniem.*",
+	"game.sessionopened": "Rozpoczęto sesję Yorkle. Sprawdź swoje Wiadomości Prywatne, aby zagrać.",
+	"game.skipped": "Pomijanie fragmentu {clip} i przechodzenie do następnego.",
+	"game.recap": "**Twoja grupa ma serię {streak} dni!** {streakEmojis} Oto wczorajsze wyniki:{results}\n\n**Średnia serwera**: `{avg}`\n-# Porażki są liczone jako {loss} na potrzeby obliczania średniej.",
+	"game.results": "Yorkle #{day}\n{sequence}\n\n-# Yorkle to najlepsza gra zgadywanka z Yorkiverse. Każdego dnia gracze otrzymują losowe fragmenty utworu i muszą rozpoznać go w jak najmniejszej liczbie prób. Użyj komendy `/yorkle`, aby rozpocząć dzisiejszą zagadkę.",
+	"game.tryagain": "Spróbuj ponownie."
+}
