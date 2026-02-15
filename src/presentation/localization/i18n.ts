@@ -12,7 +12,7 @@ type Pluralizer = (
 
 const DEFAULT_LOCALE = 'en-US';
 const DEFAULT_LOCALE_MESSAGE = 'You\'re currently using the default language '
-	+ `(${DEFAULT_LOCALE}).\n-# Yorkle follows your Discord interface `
+	+ `(${DEFAULT_LOCALE}).\n\n-# Yorkle follows your Discord interface `
 	+ 'language. The language must be supported by both Discord and Yorkle. '
 	+ 'If yours isn\'t available yet, you can contribute via `/support`.';
 
