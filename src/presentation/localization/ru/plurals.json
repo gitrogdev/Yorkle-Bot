@@ -1,0 +1,11 @@
+{
+	"plurals.guess": "попытка",
+	"plurals.guess.gensing": "попытки",
+	"plurals.guess.genplural": "попыток",
+	"plurals.translationcomplete": "завершённый перевод",
+	"plurals.translationcomplete.gensing": "завершённых перевода",
+	"plurals.translationcomplete.genplural": "завершённых переводов",
+	"plurals.uniquesong": "уникальная песня",
+	"plurals.uniquesong.gensing": "уникальной песни",
+	"plurals.uniquesong.genplural": "уникальных песен"
+}
