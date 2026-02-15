@@ -2,6 +2,9 @@
 	"plurals.guess": "pokušaj",
 	"plurals.guess.gensing": "pokušaja",
 	"plurals.guess.genplural": "pokušaja",
+	"plurals.translationcomplete": "dovršen prijevod",
+	"plurals.translationcomplete.gensing": "dovršena prijevoda",
+	"plurals.translationcomplete.genplural": "dovršenih prijevoda",
 	"plurals.uniquesong": "jedinstvena pjesma",
 	"plurals.uniquesong.gensing": "jedinstvene pjesme",
 	"plurals.uniquesong.genplural": "jedinstvenih pjesama"
