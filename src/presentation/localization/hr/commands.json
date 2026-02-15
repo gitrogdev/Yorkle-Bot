@@ -7,6 +7,8 @@
 	"commands.guess.song": "Naziv pjesme koju pogađaš",
 	"commands.judgement": "sudporotakrvnik",
 	"commands.judgement.description": "Zatraži presudu od Suca, Porote i Krvnika.",
+	"commands.localeinfo": "jezikinfo",
+	"commands.localeinfo.description": "Prikazuje informacije o trenutno aktivnom jeziku.",
 	"commands.newgame": "yorkle",
 	"commands.newgame.description": "Zaigraj Yorkle — ultimativnu igru pogađanja iz Yorkiversea",
 	"commands.randomlyric": "stih",
