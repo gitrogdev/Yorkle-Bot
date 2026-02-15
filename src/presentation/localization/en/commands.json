@@ -7,6 +7,8 @@
 	"commands.guess.song": "The song title to guess",
 	"commands.judgement": "judgejuryexecutioner",
 	"commands.judgement.description": "Seek judgement from the Judge, Jury, and Executioner.",
+	"commands.localeinfo": "localeinfo",
+	"commands.localeinfo.description": "Gets information about the active locale.",
 	"commands.newgame": "yorkle",
 	"commands.newgame.description": "Play a game of Yorkle - the ultimate Yorkiverse guessing game",
 	"commands.randomlyric": "lyric",

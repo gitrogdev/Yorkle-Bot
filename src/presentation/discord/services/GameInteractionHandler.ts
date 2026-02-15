@@ -5,7 +5,11 @@ import {
 
 import type Yorkle from '../../../game/Yorkle.js';
 import toUserIdentity from '../mappers/to-user-identity.js';
-import { localePluralize, localize } from '../../localization/i18n.js';
+import {
+	getLocaleInfo,
+	localePluralize,
+	localize
+} from '../../localization/i18n.js';
 import type Messenger from './Messenger.js';
 import ClipPresenter from './ClipPresenter.js';
 import GuessResponseBuilder from '../builders/GuessResponseBuilder.js';
@@ -72,6 +76,21 @@ export default class GameInteractionHandler {
 				)
 			}
 		));
+	}
+
+	/**
+	 * Responds with the information about the user's active locale.
+	 *
+	 * @author gitrog
+	 *
+	 * @param {ChatInputCommandInteraction} interaction the chat input
+	 * interaction with the user requesting locale info
+	 */
+	public async getLocaleInfo(interaction: ChatInputCommandInteraction) {
+		return await this.messenger.reply(
+			interaction,
+			getLocaleInfo(interaction.locale)
+		);
 	}
 
 	/**
