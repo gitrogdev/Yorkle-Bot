@@ -18,6 +18,8 @@
 	"commands.share.description": "Podijeli svoje današnje Yorkle rezultate",
 	"commands.skip": "preskoči",
 	"commands.skip.description": "Preskoči trenutni isječak i pokušaj s duljim",
+	"commands.support": "podrška",
+	"commands.support.description": "Prikazuje kontakt informacije i projektni server za pomoć i novosti.",
 	"commands.version": "verzija",
 	"commands.version.description": "Prikazuje verziju Yorklea koju bot trenutno pokreće",
 	"commands.version.response": "Yorkle v{version}",
