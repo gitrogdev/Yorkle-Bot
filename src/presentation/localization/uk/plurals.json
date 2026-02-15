@@ -2,6 +2,9 @@
 	"plurals.guess": "спроба",
 	"plurals.guess.nomplural": "спроби",
 	"plurals.guess.genplural": "спроб",
+	"plurals.translationcomplete": "завершений переклад",
+	"plurals.translationcomplete.nomplural": "завершені переклади",
+	"plurals.translationcomplete.genplural": "завершених перекладів",
 	"plurals.uniquesong": "унікальна пісня",
 	"plurals.uniquesong.nomplural": "унікальні пісні",
 	"plurals.uniquesong.genplural": "унікальних пісень"
