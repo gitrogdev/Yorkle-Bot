@@ -4,6 +4,7 @@ import path from 'node:path';
 import pluralizeEN from './en/pluralize.js';
 import pluralizeHR from './hr/pluralize.js';
 import pluralizeUK from './uk/pluralize.js';
+import pluralizeDE from './de/pluralize.js';
 
 type Pluralizer = (
 	key: string,
@@ -17,6 +18,7 @@ const DEFAULT_LOCALE_MESSAGE = 'You\'re currently using the default language '
 	+ 'If yours isn\'t available yet, you can contribute via `/support`.';
 
 const pluralizeFunctions: Record<string, Pluralizer> = {
+	de: pluralizeDE as Pluralizer,
 	en: pluralizeEN as Pluralizer,
 	hr: pluralizeHR as Pluralizer,
 	uk: pluralizeUK as Pluralizer
