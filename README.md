@@ -116,9 +116,12 @@ To play Yorkle, ensure your Privacy Settings allow DMs from the Yorkle bot. Then
 `/skip` - Skips the current clip. (*Only works in DMs*)
 `/share` - Shares a **spoiler-free** recap of your game.
 `/nextgame` - Returns the timestamp of the next puzzle reset.
-`/contents` - Returns information about the possible contents of the game.
+`/content` - Returns information about the possible contents of the game.
 `/lyric` - Returns a random lyric from a song known by the bot.
 `/judgement` - Seeks 8-ball style judgement from the bot, using song lyrics.
+`/version` - Gets the version of Yorkle the bot is running on
+`/support` - Gets contact and project server information for help and updates.
+`/localeinfo` - Gets information about the active locale.
 
 :warning::bangbang:  **IF THE BOT IS OFFLINE, RETURNS AN ERROR, OR OTHERWISE BEHAVES UNEXPECTEDLY, PLEASE REPORT THIS TO <@966923213214990366>**
 ```
