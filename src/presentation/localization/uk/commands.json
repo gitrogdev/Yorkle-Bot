@@ -7,6 +7,8 @@
 	"commands.guess.song": "Назва пісні для вгадування",
 	"commands.judgement": "суддяприсяжнікат",
 	"commands.judgement.description": "Отримайте вирок від Судді, Присяжних і Ката.",
+	"commands.localeinfo": "інфомова",
+	"commands.localeinfo.description": "Показує інформацію про активну локаль.",
 	"commands.newgame": "йоркль",
 	"commands.newgame.description": "Зіграйте в Йоркль — головну гру на вгадування у Йорківсесвіті",
 	"commands.randomlyric": "рядок",
