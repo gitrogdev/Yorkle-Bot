@@ -64,13 +64,16 @@ export function getLocaleInfo(locale: string = DEFAULT_LOCALE): string {
 	return locale === DEFAULT_LOCALE ? DEFAULT_LOCALE_MESSAGE : localize(
 		'bot.localeinfo', locale, {
 			locale: locale,
-			translations: `${Object.keys(dictionaries[locale]).length}/`
+			translations: `${
+				Object.keys(dictionaries[locale]).filter(
+					key => !key.startsWith('plurals.')
+				).length}/`
 				+ localePluralize(
 					locale,
 					'plurals.translationcomplete',
 					Object.keys(
 						dictionaries[DEFAULT_LOCALE.split('-')[0]]
-					).length
+					).filter(key => !key.startsWith('plurals.')).length
 				)
 		}
 	);
