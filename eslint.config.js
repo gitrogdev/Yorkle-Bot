@@ -1,18 +1,14 @@
 import js from '@eslint/js';
-import tselint from 'typescript-eslint';
+import tsParser from '@typescript-eslint/parser';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
 
-export default tselint.config(
-	js.configs.recommended,
-	...tselint.configs.recommended,
-
+export default [
 	{
 		files: ['**/*.ts'],
+		plugins: { '@typescript-eslint': tsPlugin },
 		languageOptions: {
-			parser: tselint.parser,
-			parserOptions: {
-				ecmaVersion: 'latest',
-				sourceType: 'module'
-			}
+			parser: tsParser,
+			parserOptions: { ecmaVersion: 'latest', sourceType: 'module' }
 		},
 		rules: {
 			'arrow-spacing': ['warn', { before: true, after: true }],
@@ -56,4 +52,4 @@ export default tselint.config(
 			yoda: 'error'
 		}
 	}
-);
+];
