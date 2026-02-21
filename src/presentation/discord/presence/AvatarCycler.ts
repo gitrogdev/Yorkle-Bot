@@ -53,9 +53,12 @@ export default class AvatarCycler {
 			'Attempted to set random avatar before AvatarCycler was started!'
 		);
 
-		this.user.setAvatar(this.avatarArray[
+		const avatar = this.avatarArray[
 			Math.floor(Math.random() * this.avatarArray.length)
-		]);
+		];
+		this.user.setAvatar(avatar).then(() => console.log(
+			`Successfully set avatar to ${avatar}.`
+		));
 	}
 
 	/**
