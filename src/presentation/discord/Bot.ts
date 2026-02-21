@@ -12,6 +12,8 @@ import GameInteractionHandler from './services/GameInteractionHandler.js';
 import Messenger from './services/Messenger.js';
 import DiscordBroadcaster from './services/DiscordBroadcaster.js';
 import PostgameThreadHandler from './services/PostgameThreadHandler.js';
+import AvatarCycler from './presence/AvatarCycler.js';
+import { AVATARS_PATH } from '../../config/paths.js';
 
 export default class Bot {
 	private game!: Yorkle;
@@ -58,9 +60,11 @@ export default class Bot {
 				this.messenger
 			))
 		);
-		const statusCycler = new StatusCycler(statuses, 300_000);
 
 		new InteractionCreateEvent(commandRouter).register(this.client);
-		new ClientReadyEvent(statusCycler).register(this.client);
+		new ClientReadyEvent(
+			new AvatarCycler(AVATARS_PATH, 6_000),
+			new StatusCycler(statuses, 300_000)
+		).register(this.client);
 	}
 }
