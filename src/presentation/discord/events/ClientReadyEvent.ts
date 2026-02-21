@@ -3,6 +3,7 @@ import { Events, type Client } from 'discord.js';
 import DiscordEvent from '../models/DiscordEvent.js';
 import StatusCycler from '../presence/StatusCycler.js';
 import type AvatarCycler from '../presence/AvatarCycler.js';
+import type PresenceCycler from '../models/PresenceCycler.js';
 
 export default class ClientReadyEvent extends DiscordEvent {
 	/**
@@ -10,14 +11,11 @@ export default class ClientReadyEvent extends DiscordEvent {
 	 *
 	 * @author gitrog
 	 *
-	 * @param {AvatarCycler} avatars the AvatarCycler to use to loop through
-	 * avatars
-	 * @param {StatusCycler} statuses the StatusCycler to use to loop through
-	 * statuses
+	 * @param {PresenceCycler[]} cyclers an array of presence cyclers to be
+	 * started when the client is ready
 	 */
 	constructor(
-		private avatars: AvatarCycler,
-		private statuses: StatusCycler
+		private cyclers: PresenceCycler[]
 	) { super(); };
 
 	/**
@@ -35,8 +33,9 @@ export default class ClientReadyEvent extends DiscordEvent {
 			`Successfully initialized client as @${readyClient.user.tag}.`
 		);
 
-		this.avatars.start(readyClient.user);
-		this.statuses.start(readyClient.user);
+		for (const presenceCycler of this.cyclers) presenceCycler.start(
+			readyClient.user
+		);
 	}
 
 	/**
