@@ -59,9 +59,11 @@ Must include:
 
 `/media/albumart`
 * Album artwork (.jpg)
+
 `/media/lyrics`
 * `lyrics.txt` - used by the `/lyric` command
 * `judgements.txt` - used by the `/judgejuryexecutioner` command
+
 `media/songs`
 * All .mp3 files used by the bot
 * Each file must include metadata for artist, title, and album.
