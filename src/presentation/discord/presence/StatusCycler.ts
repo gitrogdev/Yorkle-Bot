@@ -1,18 +1,7 @@
 import type { ClientUser } from 'discord.js';
+import PresenceCycler from '../models/PresenceCycler.js';
 
-export default class StatusCycler {
-	/** Handle for the active timeout, or null if no timer is running. */
-	private timer: NodeJS.Timeout | null = null;
-
-	/** The Discord client's user to update the status of. */
-	private user: ClientUser | null = null;
-
-	/** The statuses to cycle through. */
-	private statusArray: string[];
-
-	/** A set of the statuses to cycle through, ensuring uniqueness. */
-	private statusSet: Set<string>;
-
+export default class StatusCycler extends PresenceCycler {
 	/**
 	 * Creates a new cycler to loop through different Discord status presences
 	 * for the bot user.
@@ -25,120 +14,44 @@ export default class StatusCycler {
 	 */
 	constructor(
 		statuses: string[],
-		private interval: number
+		interval: number
 	) {
-		this.statusSet = new Set<string>();
+		super(interval);
+		this.presenceSet = new Set<string>();
 
-		for (const status of statuses) if (this.statusSet.has(status))
+		for (const status of statuses) if (this.presenceSet.has(status))
 			console.warn(
 				`The status "${status}" appears multiple times in the statuses `
 				+ 'provided to the StatusCycler!'
 			);
-		else this.statusSet.add(status);
+		else this.presenceSet.add(status);
 
-		this.statusArray = Array.from(this.statusSet);
+		this.presenceArray = Array.from(this.presenceSet);
 	};
 
 	/**
-	 * Picks a random status from `this.statuses` and updates the bot user's
-	 * status presence.
+	 * Randomly updates the bot's status.
 	 *
 	 * @author gitrog
 	 */
-	private setRandomStatus(): void {
-		if (!this.user) throw new Error(
-			'Attempted to set random status before StatusCycler was started!'
-		);
-
-		this.user.setActivity(this.statusArray[
-			Math.floor(Math.random() * this.statusArray.length)
+	protected selectPresence(): void {
+		this.setPresence(this.presenceArray[
+			Math.floor(Math.random() * this.presenceArray.length)
 		]);
 	}
 
 	/**
-	 * Starts cycling through bot statuses every `this.interval` seconds.
+	 * Updates the bot's status.
 	 *
 	 * @author gitrog
 	 *
-	 * @param {boolean} autoSet whether to immediately set the first status
+	 * @param {string} presence the string to set the bot's status to
 	 */
-	private cycle(autoSet: boolean): void {
-		if (this.timer) clearInterval(this.timer);
-		this.timer = setInterval(() => this.setRandomStatus(), this.interval);
-		if (autoSet) this.setRandomStatus();
-	}
-
-	/**
-	 * Adds a new status to the cycle.
-	 *
-	 * @author gitrog
-	 *
-	 * @param {string} status the status to add to the cycle
-	 * @param {boolean} autoSet whether to automatically set the status
-	 */
-	public add(status: string, autoSet: boolean = false) {
-		if (this.statusSet.has(status)) {
-			console.warn(
-				`The status "${status}" already exists in the StatusCycler!`
-			);
-			return;
-		}
-
-		this.statusSet.add(status);
-		this.statusArray.push(status);
-
-		if (autoSet) this.set(status);
-	}
-
-	/**
-	 * Manually set the status for the next `this.interval` seconds.
-	 *
-	 * @author gitrog
-	 *
-	 * @param {string} status the status to use
-	 */
-	public set(status: string): void {
+	protected setPresence(presence: string): void {
 		if (!this.user) throw new Error(
-			'Attempted to set status before StatusCycler was started!'
+			'Attempted to set random status before StatusCycler was started!'
 		);
 
-		this.stop();
-		this.user.setActivity(status);
-		this.cycle(false);
-	}
-
-	/**
-	 * Starts cycling through bot statuses every `this.interval` seconds.
-	 *
-	 * @author gitrog
-	 */
-	public start(user: ClientUser): void {
-		this.user = user;
-
-		if (this.statusArray.length === 0) {
-			console.warn(
-				'Attempted to start a StatusCycler with no loaded statuses!'
-			);
-			return;
-		};
-
-		this.cycle(true);
-
-		console.log(
-			`Successfully started cycling statuses for @${user.tag}.`
-		);
-	}
-
-	/**
-	 * Stops cycling through bot statuses.
-	 *
-	 * @author gitrog
-	 */
-	public stop(): void {
-		if (this.timer) clearInterval(this.timer);
-		else console.warn(
-			'Attempted to stop a StatusCycler that was not running!'
-		);
-		this.timer = null;
+		this.user.setActivity(presence);
 	}
 }
