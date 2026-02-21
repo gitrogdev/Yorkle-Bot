@@ -27,10 +27,11 @@
 		"typescript-eslint": "^8.36.0"
 	},
 	"dependencies": {
-		"discord.js": "^13.17.1",
+		"discord.js": "^14",
 		"music-metadata": "^11.11.0"
 	},
 	"overrides": {
-		"minimatch": "^10.2.1"
+		"minimatch": "^10.2.1",
+    	"undici": "^6.23.0"
 	}
 }
