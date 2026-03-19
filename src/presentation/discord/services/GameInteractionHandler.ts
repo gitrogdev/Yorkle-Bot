@@ -19,6 +19,7 @@ import { GuessResult } from '../../../game/model/GuessResult.js';
 import { SkipResult } from '../../../game/model/SkipResult.js';
 import { OpenSessionResult } from '../../../game/model/OpenSessionResult.js';
 import { env } from '../../../config/env.js';
+import { HintResult } from '../../../game/model/HintResult.js';
 
 export default class GameInteractionHandler {
 	/** The presenter to use to send clips to a user. */
@@ -282,6 +283,43 @@ export default class GameInteractionHandler {
 					sequence: this.sequencePresenter.build(response.sequence)
 				} : {})
 			}
+		));
+	}
+
+	/**
+	 * Requests a hint based on the previous guesses.
+	 *
+	 * @author gitrog
+	 *
+	 * @param {ChatInputCommandInteraction} interaction the chat input
+	 * interaction with the user requesting the hint
+	 */
+	public async requestHint(interaction: ChatInputCommandInteraction) {
+		const session = this.game.getSession(
+			toUserIdentity(interaction.user)
+		);
+
+		if (!session) return await this.messenger.reply(interaction, localize(
+			'errors.nosession', interaction.locale
+		));
+
+		const response = session.requestHint();
+
+		if (response.result !== HintResult.Hinted)
+			return await this.messenger.reply(interaction, localize(
+				'errors.hint.' + response.result.toLocaleLowerCase(),
+				interaction.locale
+			));
+
+		const hintParams = response.hint!.getLiteralParams() ?? {};
+		for (const [param, [key, count]] of Object.entries(
+			response.hint!.getKeyParams() ?? {}
+		)) hintParams[param] = (count !== undefined) ? localePluralize(
+			interaction.locale, key, count
+		) : localize(key, interaction.locale);
+
+		return await this.messenger.reply(interaction, localize(
+			response.hint!.getKey(), interaction.locale, hintParams
 		));
 	}
 
