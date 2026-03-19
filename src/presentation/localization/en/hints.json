@@ -1,3 +1,11 @@
 {
-	"hints.samealbum": "The answer is on the same album as {compare}."
+	"hints.samealbum": "Today's song is on the same album as {compare}.",
+	"hints.sameartist": "Today's song was released by the same artist as {compare}.",
+	"hints.diffdecade": "Today's song was released {gap} {relation} {compare}.",
+	"hints.difffew": "Today's song was released a few years {relation} {compare}.",
+	"hints.diffone": "Today's song was released one year {relation} {compare}.",
+	"hints.diffsame": "Today's song was released the same year as {compare}.",
+	"hints.diffseveral": "Today's song was released several years {relation} {compare}.",
+	"hints.longerthan": "Today's song is longer than {compare}.",
+	"hints.shorterthan": "Today's song is shorteer than {compare}."
 }
