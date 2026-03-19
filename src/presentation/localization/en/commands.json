@@ -5,6 +5,8 @@
 	"commands.guess": "guess",
 	"commands.guess.description": "Guess the song from the clip provided",
 	"commands.guess.song": "The song title to guess",
+	"commands.hint": "hint",
+	"commands.hint.description": "Requests a hint based on your previous guesses.",
 	"commands.judgement": "judgejuryexecutioner",
 	"commands.judgement.description": "Seek judgement from the Judge, Jury, and Executioner.",
 	"commands.localeinfo": "localeinfo",

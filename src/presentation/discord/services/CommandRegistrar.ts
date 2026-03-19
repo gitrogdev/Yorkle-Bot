@@ -20,6 +20,7 @@ import JudgementCommand from '../commands/JudgementCommand.js';
 import GetVersionCommand from '../commands/GetVersion.js';
 import GetSupportCommand from '../commands/GetSupportCommand.js';
 import GetLocaleInfoCommand from '../commands/GetLocaleInfoCommand.js';
+import HintCommand from '../commands/HintCommand.js';
 
 export default class CommandRegistrar {
 	/** An array of the command classes to be registered. */
@@ -37,7 +38,8 @@ export default class CommandRegistrar {
 			JudgementCommand,
 			GetVersionCommand,
 			GetSupportCommand,
-			GetLocaleInfoCommand
+			GetLocaleInfoCommand,
+			HintCommand
 		];
 
 	/** Discord REST client used to perform API requests. */
