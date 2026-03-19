@@ -7,5 +7,5 @@
 	"hints.diffsame": "Today's song was released the same year as {compare}.",
 	"hints.diffseveral": "Today's song was released several years {relation} {compare}.",
 	"hints.longerthan": "Today's song is longer than {compare}.",
-	"hints.shorterthan": "Today's song is shorteer than {compare}."
+	"hints.shorterthan": "Today's song is shorter than {compare}."
 }

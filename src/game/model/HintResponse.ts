@@ -10,7 +10,6 @@ import type { HintResult } from './HintResult.js';
  * {
  * 	result: HintResult,
  * 	hint: Hint,
- * 	clip: 2
  * }
  */
 export default interface HintResponse {
@@ -26,11 +25,5 @@ export default interface HintResponse {
 	 *
 	 * @see {@link Hint}
 	 */
-	hint?: Hint,
-
-	/**
-	 * The position of the clip which the player attempted to get a hint for in
-	 * the playback order of the game session.
-	 */
-	clip: number
+	hint?: Hint
 }
