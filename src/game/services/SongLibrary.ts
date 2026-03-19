@@ -51,7 +51,8 @@ export default class SongLibrary {
 				metadata.artist,
 				metadata.album!,
 				metadata.song,
-				metadata.duration!
+				metadata.duration!,
+				metadata.year!
 			);
 			this.size++;
 		}

@@ -4,6 +4,9 @@ import albums from '../../config/albums.json' with { type: 'json' };
 import aliases from '../../config/aliases.json' with { type: 'json' };
 
 export default class Song {
+	/** The default artist to be set if none is included. */
+	public static readonly DEFAULT_ARTIST = 'Radiohead';
+
 	/** A set of the recognized aliases for guessing the song. */
 	private readonly aliases: Set<string>;
 
@@ -23,13 +26,15 @@ export default class Song {
 	 * @param {string} album the album the song is on
 	 * @param {string} filename the file name of the song
 	 * @param {number} length the length of the song (in seconds)
+	 * @param {number} year the year the song was released in
 	 */
 	constructor(
 		public readonly title : string,
-		public readonly artist : string = 'Radiohead',
+		public readonly artist : string = Song.DEFAULT_ARTIST,
 		public readonly album: string,
 		public readonly filename: string,
-		public readonly length: number
+		public readonly length: number,
+		public readonly year: number
 	) {
 		if (!(album in albums)) throw new Error(`Unknown album "${album}"!`);
 		this.thumbnail = albums[album as keyof typeof albums] + '.jpg';

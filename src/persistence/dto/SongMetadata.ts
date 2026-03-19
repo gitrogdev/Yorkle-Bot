@@ -10,6 +10,7 @@
  * 	album: 'Hail to the Thief',
  * 	song: 'whereiend.mp3',
  * 	duration: 269.1657142857143
+ * 	year: 2003
  * }
  */
 export default interface SongMetadata {
@@ -26,5 +27,8 @@ export default interface SongMetadata {
 	song: string,
 
 	/** The duration of the song, in seconds. */
-	duration: number | undefined
+	duration: number | undefined,
+
+	/** The year the song was released. */
+	year: number | undefined
 }
