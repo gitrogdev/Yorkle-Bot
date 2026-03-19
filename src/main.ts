@@ -1,4 +1,4 @@
-import DiscordClient from './app/DiscordClient.js';
+import DiscordClient from './presentation/discord/DiscordClient.js';
 import pkg from '../package.json' with { type: 'json' };
 import { env } from './config/env.js';
 
