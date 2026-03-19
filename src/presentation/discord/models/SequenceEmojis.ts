@@ -14,6 +14,9 @@ export const SEQUENCE_EMOJIS: Record<SequenceCharacter, string> = {
 	/** A skipped clip. */
 	'-': '🟨',
 
+	/** A hint was given. */
+	'?': '🟧',
+
 	/** An incorrect guess. */
 	X: '🟥',
 
