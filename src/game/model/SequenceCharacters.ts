@@ -1,4 +1,5 @@
 import { GuessResult } from './GuessResult.js';
+import { HintResult } from './HintResult.js';
 import { SkipResult } from './SkipResult.js';
 
 /**
@@ -7,7 +8,10 @@ import { SkipResult } from './SkipResult.js';
  *
  * @author gitrog
  */
-export const SEQUENCE_CHARACTERS: Record<GuessResult | SkipResult, string> = {
+export const SEQUENCE_CHARACTERS: Record<
+	GuessResult | SkipResult | HintResult,
+	string
+> = {
 	/** The guess matches the correct answer. */
 	[GuessResult.Correct]: 'O',
 
@@ -23,6 +27,9 @@ export const SEQUENCE_CHARACTERS: Record<GuessResult | SkipResult, string> = {
 	 * */
 	[GuessResult.OutOfGuesses]: 'X',
 
+	/** The player was given a hint. */
+	[HintResult.Hinted]: '?',
+
 	/**
 	 * The guess is not recognized by the game.
 	 */
@@ -36,7 +43,16 @@ export const SEQUENCE_CHARACTERS: Record<GuessResult | SkipResult, string> = {
 	/**
 	 * The player attempted to skip the last clip in the puzzle.
 	 */
-	[SkipResult.Last]: ''
+	[SkipResult.Last]: '',
+
+	/**
+	 * The player was unable to get a hint due to not having guessed in between
+	 * hints.
+	 */
+	[HintResult.Double]: '',
+
+	/** The player was unable to get a hint due to not having guessed. */
+	[HintResult.First]: ''
 } as const;
 
 export type SequenceCharacter = typeof SEQUENCE_CHARACTERS[
