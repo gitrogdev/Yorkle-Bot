@@ -76,10 +76,10 @@ export default class Hint {
 				: absDiff > 1 ? HintOption.DiffFew
 					: HintOption.DiffSame;
 		this.literalParams = { compare: compare!.title };
-		this.keyParams = {
+		if (this.key !== HintOption.DiffSame) this.keyParams = {
 			relation: [diff < 0 ? 'options.before' : 'options.after']
 		}
-		if (this.key === HintOption.DiffDecade) this.keyParams.gap = [
+		if (this.key === HintOption.DiffDecade) this.keyParams!.gap = [
 			'plurals.decade',
 			Math.floor(absDiff / 10)
 		];
