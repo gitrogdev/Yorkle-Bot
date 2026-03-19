@@ -1,4 +1,6 @@
 {
+	"options.after": "after",
+	"options.before": "before",
 	"options.channel": "channel",
 	"options.song": "song"
 }
