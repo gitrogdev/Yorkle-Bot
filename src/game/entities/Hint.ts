@@ -1,6 +1,12 @@
 import { HintOption } from '../model/HintOption.js';
 import Song from './Song.js';
 
+/**
+ * Contains the information about a hint given to a player based on their
+ * previous guesses.
+ *
+ * @author gitrog
+ */
 export default class Hint {
 	/** The localization key for the body of the hint. */
 	private key: HintOption;
