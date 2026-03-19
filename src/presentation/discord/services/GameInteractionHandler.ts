@@ -318,9 +318,10 @@ export default class GameInteractionHandler {
 			interaction.locale, key, count
 		) : localize(key, interaction.locale);
 
-		return await this.messenger.reply(interaction, localize(
+		await this.messenger.reply(interaction, localize(
 			response.hint!.getKey(), interaction.locale, hintParams
 		));
+		return await this.clips.sendNext(interaction, session);
 	}
 
 	/**
