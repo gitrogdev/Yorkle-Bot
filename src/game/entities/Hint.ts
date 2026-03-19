@@ -57,7 +57,7 @@ export default class Hint {
 		let diff = Number.MAX_SAFE_INTEGER;
 		let checkDiff, compare;
 		for (const song of guesses) {
-			checkDiff = song.year
+			checkDiff = correct.year - song.year;
 			if (Math.abs(checkDiff) < Math.abs(diff)) {
 				compare = song;
 				diff = checkDiff;
