@@ -24,14 +24,15 @@ export default class SongDataStore {
 			const metadata = await parseFile(
 				path.join(SONGS_PATH, song)
 			);
-			const { title, artist, album } = metadata.common;
+			const { title, artist, album, year } = metadata.common;
 			const duration = metadata.format.duration;
 			songs.push({
 				title: title,
 				artist: artist,
 				album: album,
 				song: song,
-				duration: duration
+				duration: duration,
+				year: year
 			});
 		}
 
