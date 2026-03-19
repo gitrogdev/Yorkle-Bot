@@ -68,7 +68,7 @@ export default class Session {
 			return HintResult.Last;
 		else {
 			for (const char of [...this.guessSequence].reverse())
-				if (char === SEQUENCE_CHARACTERS.CORRECT)
+				if (char === SEQUENCE_CHARACTERS.INCORRECT)
 					return HintResult.Hinted;
 				else if (char === SEQUENCE_CHARACTERS.HINT)
 					return HintResult.Double;
