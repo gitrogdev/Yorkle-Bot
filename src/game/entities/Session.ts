@@ -14,10 +14,17 @@ import padDay from '../../util/pad-day.js';
 import { SkipResult } from '../model/SkipResult.js';
 import type SkipResponse from '../model/SkipResponse.js';
 import { env } from '../../config/env.js';
+import { HintResult } from '../model/HintResult.js';
+import type HintResponse from '../model/HintResponse.js';
+import Hint from './Hint.js';
+import type { HintOption } from '../model/HintOption.js';
 
 export default class Session {
 	/** A set of the recognized songs the player has guessed. */
 	private guesses: Set<Song> = new Set();
+
+	/** A set of the hints the player has been given. */
+	private hints: Set<HintOption> = new Set();
 
 	/**
 	 * A sequence of characters representing the player's guesses.
@@ -44,6 +51,29 @@ export default class Session {
 			`Successfully opened a new session of Yorkle #${game.day} for `
 			+ `user ${user.name} with ID ${user.id}.`
 		);
+	}
+
+	/**
+	 * Gets a HintResult judging the player's ability to get a hint based on the
+	 * player's previous guesses.
+	 *
+	 * @author gitrog
+	 *
+	 * @returns {HintResult} a HintResult judging the player's ability to get a
+	 * hint based on the player's previous guesses.
+	 */
+	private getHintResult(): HintResult {
+		if (this.guessSequence.length === 0) return HintResult.First;
+		else if (this.guessSequence.length + 1 >= this.maxGuesses)
+			return HintResult.Last;
+		else {
+			for (const char of [...this.guessSequence].reverse())
+				if (char === SEQUENCE_CHARACTERS.CORRECT)
+					return HintResult.Hinted;
+				else if (char === SEQUENCE_CHARACTERS.HINT)
+					return HintResult.Double;
+			return HintResult.First;
+		}
 	}
 
 	/**
@@ -126,6 +156,28 @@ export default class Session {
 	 */
 	public kill() {
 		this.close(this.user, false);
+	}
+
+	/**
+	 * Requests a hint for the puzzle's song based on the player's previous
+	 * guesses.
+	 *
+	 * @author gitrog
+	 *
+	 * @returns {HintResponse} the response to the user based on whether they
+	 * were eligible to receive a hint
+	 */
+	public requestHint(): HintResponse {
+		const result = this.getHintResult();
+		const response: HintResponse = { result: result };
+		if (result === HintResult.Hinted) {
+			const hint = new Hint(this.guesses, this.hints, this.game.song);
+			this.hints.add(hint.getKey());
+			response.hint = hint;
+		}
+
+		this.guessSequence += SEQUENCE_CHARACTERS[result];
+		return response;
 	}
 
 	/**
