@@ -1202,5 +1202,13 @@
 		"disappearstrings",
 		"disappearinstrings",
 		"disappearintostrings"
+	],
+	"feelingpulled": [
+		"fpabh",
+		"pulledapart",
+		"pulledapartbyhorses",
+		"feelingpulledapartbyhorses",
+		"feelingpulledapart",
+		"feelingpulled"
 	]
 }
