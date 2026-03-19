@@ -1,5 +1,5 @@
 import type { User } from 'discord.js';
-import type UserIdentity from '../../../game/model/UserIdentity.js';
+import type UserIdentity from '../../../../game/model/UserIdentity.js';
 
 /**
  * Maps a Discord User object to a UserIdentity interface usable by the game
