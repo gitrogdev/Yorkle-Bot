@@ -63,18 +63,18 @@ export default class GameInteractionHandler {
 	 * @param {ChatInputCommandInteraction} interaction the chat input
 	 * interaction with the user requesting the session
 	 *
-	 * @returns {Promise<Session | null>} a promise of a game session for the
-	 * user, or of null if none exists
+	 * @returns {Session | null} the open game session for the user, or null if
+	 * none exists
 	 */
-	private async getSession(
+	private getSession(
 		interaction: ChatInputCommandInteraction
-	): Promise<Session | null> {
+	): Session | null {
 		const session = this.game.getSession(
 			toUserIdentity(interaction.user)
 		);
 
 		if (!session) {
-			await this.messenger.localizedReply(
+			this.messenger.localizedReply(
 				interaction, 'errors.nosession'
 			);
 			return null;
@@ -172,7 +172,7 @@ export default class GameInteractionHandler {
 			interaction, 'errors.noguess'
 		);
 
-		const session = await this.getSession(interaction);
+		const session = this.getSession(interaction);
 		if (!session) return;
 
 		const response = await session.guess(guess);
@@ -310,7 +310,7 @@ export default class GameInteractionHandler {
 	 * interaction with the user requesting the hint
 	 */
 	public async requestHint(interaction: ChatInputCommandInteraction) {
-		const session = await this.getSession(interaction);
+		const session = this.getSession(interaction);
 		if (!session) return;
 
 		const response = session.requestHint();
@@ -343,7 +343,7 @@ export default class GameInteractionHandler {
 	 * interaction with the user skipping the clip
 	 */
 	public async skipGuess(interaction: ChatInputCommandInteraction) {
-		const session = await this.getSession(interaction);
+		const session = this.getSession(interaction);
 		if (!session) return;
 
 		const response = session.skip();
