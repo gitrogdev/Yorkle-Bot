@@ -22,10 +22,14 @@ import { env } from '../../../config/env.js';
 import { HintResult } from '../../../game/model/HintResult.js';
 import type Session from '../../../game/entities/Session.js';
 import { OpenSessionKeys } from '../models/OpenSessionKeys.js';
+import HintParamsBuilder from '../builders/HintParamsBuilder.js';
 
 export default class GameInteractionHandler {
 	/** The presenter to use to send clips to a user. */
 	private clips: ClipPresenter;
+
+	/** The builder used to build localization parameters for hints. */
+	private hintParamsBuilder: HintParamsBuilder = new HintParamsBuilder();
 
 	/** The builder used to build responses to users' guesses. */
 	private guessBuilder: GuessResponseBuilder = new GuessResponseBuilder();
@@ -319,15 +323,9 @@ export default class GameInteractionHandler {
 				'errors.hint.' + response.result.toLocaleLowerCase()
 			);
 
-		const hintParams = response.hint!.getLiteralParams() ?? {};
-		for (const [param, [key, count]] of Object.entries(
-			response.hint!.getKeyParams() ?? {}
-		)) hintParams[param] = (count !== undefined) ? localePluralize(
-			interaction.locale, key, count
-		) : localize(key, interaction.locale);
-
 		await this.messenger.localizedReply(
-			interaction, response.hint!.getKey(), hintParams
+			interaction, response.hint!.getKey(),
+			this.hintParamsBuilder.build(response.hint!, interaction.locale)
 		);
 		return await this.clips.sendNext(interaction, session);
 	}
