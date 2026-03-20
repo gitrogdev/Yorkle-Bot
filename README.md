@@ -118,12 +118,13 @@ To play Yorkle, ensure your Privacy Settings allow DMs from the Yorkle bot. Then
 # Commands
 `/yorkle` - Starts a new round of Yorkle.
 `/guess` - Guess the song based on the clip provided. (*Only works in DMs*)
+`/hint` - Gets a hint for the song based on previous guesses. (*Only works in DMs*)
 `/skip` - Skips the current clip. (*Only works in DMs*)
 `/share` - Shares a **spoiler-free** recap of your game.
 `/nextgame` - Returns the timestamp of the next puzzle reset.
 `/content` - Returns information about the possible contents of the game.
 `/lyric` - Returns a random lyric from a song known by the bot.
-`/judgement` - Seeks 8-ball style judgement from the bot, using song lyrics.
+`/judgejuryexecutioner` - Seeks 8-ball style judgement from the bot, using song lyrics.
 `/version` - Gets the version of Yorkle the bot is running on
 `/support` - Gets contact and project server information for help and updates.
 `/localeinfo` - Gets information about the active locale.
