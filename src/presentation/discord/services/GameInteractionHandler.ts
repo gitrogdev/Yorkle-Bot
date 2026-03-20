@@ -20,6 +20,7 @@ import { SkipResult } from '../../../game/model/SkipResult.js';
 import { OpenSessionResult } from '../../../game/model/OpenSessionResult.js';
 import { env } from '../../../config/env.js';
 import { HintResult } from '../../../game/model/HintResult.js';
+import type Session from '../../../game/entities/Session.js';
 
 export default class GameInteractionHandler {
 	/** The presenter to use to send clips to a user. */
@@ -52,6 +53,34 @@ export default class GameInteractionHandler {
 		private messenger: Messenger
 	) {
 		this.clips = new ClipPresenter(this.messenger);
+	}
+
+	/**
+	 * Gets the open session for the user, if it exists.
+	 *
+	 * @author gitrog
+	 *
+	 * @param {ChatInputCommandInteraction} interaction the chat input
+	 * interaction with the user requesting the session
+	 *
+	 * @returns {Promise<Session | null>} a promise of a game session for the
+	 * user, or of null if none exists
+	 */
+	private async getSession(
+		interaction: ChatInputCommandInteraction
+	): Promise<Session | null> {
+		const session = this.game.getSession(
+			toUserIdentity(interaction.user)
+		);
+
+		if (!session) {
+			await this.messenger.localizedReply(
+				interaction, 'errors.nosession'
+			);
+			return null;
+		}
+
+		return session;
 	}
 
 	/**
@@ -139,17 +168,12 @@ export default class GameInteractionHandler {
 	 */
 	public async makeGuess(interaction: ChatInputCommandInteraction) {
 		const guess = interaction.options.getString('song');
-		const session = this.game.getSession(
-			toUserIdentity(interaction.user)
-		);
-
 		if (!guess) return await this.messenger.localizedReply(
 			interaction, 'errors.noguess'
 		);
 
-		if (!session) return await this.messenger.localizedReply(
-			interaction, 'errors.nosession'
-		);
+		const session = await this.getSession(interaction);
+		if (!session) return;
 
 		const response = await session.guess(guess);
 
@@ -286,13 +310,8 @@ export default class GameInteractionHandler {
 	 * interaction with the user requesting the hint
 	 */
 	public async requestHint(interaction: ChatInputCommandInteraction) {
-		const session = this.game.getSession(
-			toUserIdentity(interaction.user)
-		);
-
-		if (!session) return await this.messenger.localizedReply(
-			interaction, 'errors.nosession'
-		);
+		const session = await this.getSession(interaction);
+		if (!session) return;
 
 		const response = session.requestHint();
 
@@ -324,13 +343,8 @@ export default class GameInteractionHandler {
 	 * interaction with the user skipping the clip
 	 */
 	public async skipGuess(interaction: ChatInputCommandInteraction) {
-		const session = this.game.getSession(
-			toUserIdentity(interaction.user)
-		);
-
-		if (!session) return await this.messenger.localizedReply(
-			interaction, 'errors.nosession'
-		);
+		const session = await this.getSession(interaction);
+		if (!session) return;
 
 		const response = session.skip();
 
