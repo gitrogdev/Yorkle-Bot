@@ -21,6 +21,7 @@ import { OpenSessionResult } from '../../../game/model/OpenSessionResult.js';
 import { env } from '../../../config/env.js';
 import { HintResult } from '../../../game/model/HintResult.js';
 import type Session from '../../../game/entities/Session.js';
+import { OpenSessionKeys } from '../models/OpenSessionKeys.js';
 
 export default class GameInteractionHandler {
 	/** The presenter to use to send clips to a user. */
@@ -209,10 +210,7 @@ export default class GameInteractionHandler {
 				);
 			}
 		return await this.messenger.localizedReply(
-			interaction,
-			response.result === OpenSessionResult.Open ? 'game.sessionopened' :
-				response.result === OpenSessionResult.Collision
-					? 'errors.sessioncollision' : 'errors.playedtoday'
+			interaction, OpenSessionKeys[response.result]
 		);
 	}
 
