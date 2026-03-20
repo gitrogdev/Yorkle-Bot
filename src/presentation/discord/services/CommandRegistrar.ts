@@ -8,7 +8,8 @@ import type Command from '../models/Command.js';
 import type CommandRegistry from '../models/CommandRegistry.js';
 import pluralize from '../../../util/pluralize.js';
 import NewGameCommand from '../commands/NewGameCommand.js';
-import type GameInteractionHandler from './GameInteractionHandler.js';
+import type GameInteractionHandler from
+	'./interactions/MetaInteractionHandler.js';
 import GuessCommand from '../commands/GuessCommand.js';
 import SkipCommand from '../commands/SkipCommand.js';
 import ShareCommand from '../commands/ShareCommand.js';
