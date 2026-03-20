@@ -66,9 +66,9 @@ export default class GameInteractionHandler {
 	public async getContent(interaction: ChatInputCommandInteraction) {
 		const songCount = this.game.countSongs();
 
-		return await this.messenger.reply(interaction, localize(
+		return await this.messenger.localizedReply(
+			interaction,
 			'game.contents',
-			interaction.locale,
 			{
 				songs: localePluralize(
 					interaction.locale,
@@ -76,7 +76,7 @@ export default class GameInteractionHandler {
 					songCount
 				)
 			}
-		));
+		);
 	}
 
 	/**
@@ -89,8 +89,7 @@ export default class GameInteractionHandler {
 	 */
 	public async getLocaleInfo(interaction: ChatInputCommandInteraction) {
 		return await this.messenger.reply(
-			interaction,
-			getLocaleInfo(interaction.locale)
+			interaction, getLocaleInfo(interaction.locale)
 		);
 	}
 
@@ -103,14 +102,17 @@ export default class GameInteractionHandler {
 	 * interaction with the user requesting support info
 	 */
 	public async getSupportInfo(interaction: ChatInputCommandInteraction) {
-		return await this.messenger.reply(interaction, {
-			content: localize('bot.supportinfo', interaction.locale, {
+		return await this.messenger.localizedReply(
+			interaction,
+			'bot.supportinfo',
+			{
 				dev: `<@${env.DEVELOPER_ID}>`,
 				server:
 					`https://discord.gg/${env.DEVELOPER_SERVER_INVITE!}`
-			}),
-			allowedMentions: { users: [] }
-		});
+			}, {
+				allowedMentions: { users: [] }
+			}
+		);
 	}
 
 	/**
@@ -122,11 +124,9 @@ export default class GameInteractionHandler {
 	 * interaction with the user requesting the version
 	 */
 	public async getVersion(interaction: ChatInputCommandInteraction) {
-		return await this.messenger.reply(interaction, localize(
-			'bot.version',
-			interaction.locale,
-			{ version: this.version }
-		));
+		return await this.messenger.localizedReply(
+			interaction, 'bot.version', { version: this.version }
+		);
 	}
 
 	/**
@@ -143,13 +143,13 @@ export default class GameInteractionHandler {
 			toUserIdentity(interaction.user)
 		);
 
-		if (!guess) return await this.messenger.reply(interaction, localize(
-			'errors.noguess', interaction.locale
-		));
+		if (!guess) return await this.messenger.localizedReply(
+			interaction, 'errors.noguess'
+		);
 
-		if (!session) return await this.messenger.reply(interaction, localize(
-			'errors.nosession', interaction.locale
-		));
+		if (!session) return await this.messenger.localizedReply(
+			interaction, 'errors.nosession'
+		);
 
 		const response = await session.guess(guess);
 
@@ -180,17 +180,16 @@ export default class GameInteractionHandler {
 				response.session!
 			) === null) {
 				response.session!.kill();
-				return await this.messenger.reply(interaction, localize(
-					'errors.sessionfailed',
-					interaction.locale
-				));
+				return await this.messenger.localizedReply(
+					interaction, 'errors.sessionfailed'
+				);
 			}
-		return await this.messenger.reply(interaction, localize(
+		return await this.messenger.localizedReply(
+			interaction,
 			response.result === OpenSessionResult.Open ? 'game.sessionopened' :
 				response.result === OpenSessionResult.Collision
-					? 'errors.sessioncollision' : 'errors.playedtoday',
-			interaction.locale
-		));
+					? 'errors.sessioncollision' : 'errors.playedtoday'
+		);
 	}
 
 	/**
@@ -221,11 +220,8 @@ export default class GameInteractionHandler {
 	 * interaction with the user setting the channel
 	 */
 	public async setChannel(interaction: ChatInputCommandInteraction) {
-		if (!interaction.guild) return await this.messenger.reply(interaction,
-			localize(
-				'errors.commandoutsideguild',
-				interaction.locale
-			)
+		if (!interaction.guild) return await this.messenger.localizedReply(
+			interaction, 'errors.commandoutsideguild'
 		);
 
 		const channel = interaction.options.getChannel('channel') ??
@@ -233,11 +229,8 @@ export default class GameInteractionHandler {
 
 		if (
 			(!channel || channel.type !== ChannelType.GuildText)
-		) return await this.messenger.reply(interaction,
-			localize(
-				'errors.setnontextchannel',
-				interaction.locale
-			)
+		) return await this.messenger.localizedReply(
+			interaction, 'errors.setnontextchannel'
 		);
 
 		const channelId = channel!.id;
@@ -248,13 +241,11 @@ export default class GameInteractionHandler {
 		guild.channelId = channelId;
 		await this.game.saveGuild(interaction.guild.id);
 
-		return await this.messenger.reply(interaction, localize(
-			'commands.channelbound',
-			interaction.locale,
-			{
+		return await this.messenger.localizedReply(
+			interaction, 'commands.channelbound', {
 				channel: `<#${channelId}>`
 			}
-		));
+		);
 	}
 
 	/**
@@ -274,16 +265,16 @@ export default class GameInteractionHandler {
 			interaction.user.id
 		);
 
-		return await this.messenger.reply(interaction, localize(
+		return await this.messenger.localizedReply(
+			interaction,
 			response.sequence ? 'game.results' : 'errors.hasntplayed',
-			interaction.locale,
 			{
 				day: response.day,
 				...(response.sequence ? {
 					sequence: this.sequencePresenter.build(response.sequence)
 				} : {})
 			}
-		));
+		);
 	}
 
 	/**
@@ -299,17 +290,17 @@ export default class GameInteractionHandler {
 			toUserIdentity(interaction.user)
 		);
 
-		if (!session) return await this.messenger.reply(interaction, localize(
-			'errors.nosession', interaction.locale
-		));
+		if (!session) return await this.messenger.localizedReply(
+			interaction, 'errors.nosession'
+		);
 
 		const response = session.requestHint();
 
 		if (response.result !== HintResult.Hinted)
-			return await this.messenger.reply(interaction, localize(
-				'errors.hint.' + response.result.toLocaleLowerCase(),
-				interaction.locale
-			));
+			return await this.messenger.localizedReply(
+				interaction,
+				'errors.hint.' + response.result.toLocaleLowerCase()
+			);
 
 		const hintParams = response.hint!.getLiteralParams() ?? {};
 		for (const [param, [key, count]] of Object.entries(
@@ -318,9 +309,9 @@ export default class GameInteractionHandler {
 			interaction.locale, key, count
 		) : localize(key, interaction.locale);
 
-		await this.messenger.reply(interaction, localize(
-			response.hint!.getKey(), interaction.locale, hintParams
-		));
+		await this.messenger.localizedReply(
+			interaction, response.hint!.getKey(), hintParams
+		);
 		return await this.clips.sendNext(interaction, session);
 	}
 
@@ -337,20 +328,20 @@ export default class GameInteractionHandler {
 			toUserIdentity(interaction.user)
 		);
 
-		if (!session) return await this.messenger.reply(interaction, localize(
-			'errors.nosession', interaction.locale
-		));
+		if (!session) return await this.messenger.localizedReply(
+			interaction, 'errors.nosession'
+		);
 
 		const response = session.skip();
 
-		await this.messenger.reply(interaction, localize(
+		await this.messenger.localizedReply(
+			interaction,
 			response.result === SkipResult.Skip ? 'game.skipped'
 				: 'errors.lastclip',
-			interaction.locale,
 			{
 				clip: response.clip
 			}
-		));
+		);
 		if (response.result === SkipResult.Skip)
 			return await this.clips.sendNext(interaction, session);
 	}
@@ -365,12 +356,10 @@ export default class GameInteractionHandler {
 	 */
 	public async whenNext(interaction: ChatInputCommandInteraction) {
 		const now = Math.floor(new Date().getTime() / 1000);
-		return await this.messenger.reply(interaction, localize(
-			'commands.whennext.response',
-			interaction.locale,
-			{
+		return await this.messenger.localizedReply(
+			interaction, 'commands.whennext.response', {
 				timestamp: `<t:${now - (now % 86_400) + 86_400}:R>`
 			}
-		));
+		);
 	}
 }
