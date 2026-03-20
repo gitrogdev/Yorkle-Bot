@@ -1,6 +1,7 @@
 import type {
 	ChatInputCommandInteraction,
 	Client,
+	InteractionReplyOptions,
 	InteractionResponse,
 	Message,
 	TextBasedChannel,
@@ -11,6 +12,7 @@ import type { MessageOptions } from '../models/MessageOptions.js';
 import type { SafeReplyOptions } from '../models/SafeReplyOptions.js';
 import type { EditOptions } from '../models/EditOptions.js';
 import type { ReplyOptions } from '../models/ReplyOptions.js';
+import { localize } from '../../localization/i18n.js';
 
 export default class Messenger {
 	/**
@@ -74,6 +76,34 @@ export default class Messenger {
 			console.warn('Failed to reply to interaction: ', exception);
 			return null;
 		}
+	}
+
+	/**
+	 * Safely reply to an interaction, while localizing the contents of the
+	 * reply to the interaction's locale.
+	 *
+	 * @author gitrog
+	 *
+	 * @param {ChatInputCommandInteraction} interaction the interaction to
+	 * reply to
+	 * @param {string} key the translation key
+	 * @param localizationParams the parameters to replace within the string
+	 * @param messageParams the options for the payload containing the reply's
+	 * contents to send to Discord
+	 *
+	 * @returns {Message | InteractionResponse | null} a promise of the message
+	 * sent, or null if the message was unable to be sent
+	 */
+	public async localizedReply(
+		interaction: ChatInputCommandInteraction,
+		key: string,
+		localizationParams: Record<string, string | number> = {},
+		messageParams: InteractionReplyOptions = {}
+	): Promise<Message | InteractionResponse | null> {
+		return this.reply(interaction, {
+			content: localize(key, interaction.locale, localizationParams),
+			...messageParams
+		});
 	}
 
 	/**
