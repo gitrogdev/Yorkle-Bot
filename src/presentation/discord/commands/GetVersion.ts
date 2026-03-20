@@ -30,6 +30,6 @@ export default class GetVersionCommand extends Command {
 	 * interaction with the command
 	 */
 	public async run(interaction: ChatInputCommandInteraction) {
-		return await this.handler.getVersion(interaction);
+		return await this.ctx.meta.getVersion(interaction);
 	}
 }

@@ -1,17 +1,17 @@
 import type { ChatInputCommandInteraction } from 'discord.js';
 
-import type Session from '../../../game/entities/Session.js';
-import toUserIdentity from '../mappers/to-user-identity.js';
-import { HintResult } from '../../../game/model/HintResult.js';
-import { SkipResult } from '../../../game/model/SkipResult.js';
-import HintParamsBuilder from '../builders/HintParamsBuilder.js';
-import GuessResponseBuilder from '../builders/GuessResponseBuilder.js';
-import ClipPresenter from './ClipPresenter.js';
-import { OpenSessionResult } from '../../../game/model/OpenSessionResult.js';
-import { OpenSessionKeys } from '../models/OpenSessionKeys.js';
-import type Yorkle from '../../../game/Yorkle.js';
-import type Messenger from './Messenger.js';
-import { GuessResult } from '../../../game/model/GuessResult.js';
+import type Session from '../../../../game/entities/Session.js';
+import toUserIdentity from '../../mappers/to-user-identity.js';
+import ClipPresenter from '../ClipPresenter.js';
+import HintParamsBuilder from '../../builders/HintParamsBuilder.js';
+import GuessResponseBuilder from '../../builders/GuessResponseBuilder.js';
+import type Yorkle from '../../../../game/Yorkle.js';
+import type Messenger from '../Messenger.js';
+import { GuessResult } from '../../../../game/model/GuessResult.js';
+import { OpenSessionResult } from '../../../../game/model/OpenSessionResult.js';
+import { OpenSessionKeys } from '../../models/OpenSessionKeys.js';
+import { HintResult } from '../../../../game/model/HintResult.js';
+import { SkipResult } from '../../../../game/model/SkipResult.js';
 
 export default class SessionInteractionHandler {
 	/** The presenter to use to send clips to a user. */

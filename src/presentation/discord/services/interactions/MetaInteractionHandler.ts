@@ -12,8 +12,6 @@ export default class MetaInteractionHandler {
 	 * @author gitrog
 	 *
 	 * @param {string} version the version number for the application
-	 * @param {Yorkle} game the Yorkle game for the Discord client to interact
-	 * with
 	 * @param {Messenger} messenger the messenger interface to send messages to
 	 * Discord
 	 */

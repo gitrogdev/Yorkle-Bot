@@ -30,6 +30,6 @@ export default class NewGameCommand extends Command {
 	 * interaction with the command
 	 */
 	public async run(interaction: ChatInputCommandInteraction) {
-		return await this.handler.newGame(interaction);
+		return await this.ctx.session.newGame(interaction);
 	}
 }

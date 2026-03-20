@@ -29,6 +29,6 @@ export default class HintCommand extends Command {
 	 * interaction with the command
 	 */
 	public async run(interaction: ChatInputCommandInteraction) {
-		return await this.handler.requestHint(interaction);
+		return await this.ctx.session.requestHint(interaction);
 	}
 }

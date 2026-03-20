@@ -30,6 +30,6 @@ export default class WhenNextCommand extends Command {
 	 * interaction with the command
 	 */
 	public async run(interaction: ChatInputCommandInteraction) {
-		return await this.handler.whenNext(interaction);
+		return await this.ctx.meta.getNextGameTime(interaction);
 	}
 }

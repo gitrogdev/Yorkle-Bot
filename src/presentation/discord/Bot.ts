@@ -8,12 +8,21 @@ import StatusCycler from './presence/StatusCycler.js';
 
 import statuses from '../../config/statuses.json' with { type: 'json' };
 import Yorkle from '../../game/Yorkle.js';
-import GameInteractionHandler from './services/interactions/MetaInteractionHandler.js';
 import Messenger from './services/Messenger.js';
 import DiscordBroadcaster from './services/DiscordBroadcaster.js';
 import PostgameThreadHandler from './services/PostgameThreadHandler.js';
 import AvatarCycler from './presence/AvatarCycler.js';
 import { AVATARS_PATH } from '../../config/paths.js';
+import ContentInteractionHandler from
+	'./services/interactions/ContentInteractionHandler.js';
+import GuildInteractionHandler from
+	'./services/interactions/GuildInteractionHandler.js';
+import MetaInteractionHandler from
+	'./services/interactions/MetaInteractionHandler.js';
+import SessionInteractionHandler from
+	'./services/interactions/SessionInteractionHandler.js';
+import UserInteractionHandler from
+	'./services/interactions/UserInteractionHandler.js';
 
 export default class Bot {
 	private game!: Yorkle;
@@ -54,11 +63,17 @@ export default class Bot {
 		await this.game.ready;
 
 		const commandRouter = new CommandRouter(
-			this.registrar.register(new GameInteractionHandler(
-				this.version,
-				this.game,
-				this.messenger
-			))
+			this.registrar.register({
+				content: new ContentInteractionHandler(
+					this.game, this.messenger
+				),
+				guild: new GuildInteractionHandler(this.game, this.messenger),
+				meta: new MetaInteractionHandler(this.version, this.messenger),
+				session: new SessionInteractionHandler(
+					this.game, this.messenger
+				),
+				user: new UserInteractionHandler(this.game, this.messenger)
+			})
 		);
 
 		new InteractionCreateEvent(commandRouter).register(this.client);

@@ -43,6 +43,6 @@ export default class SetGameChannelCommand extends Command {
 	 * interaction with the command
 	 */
 	public async run(interaction: ChatInputCommandInteraction) {
-		return await this.handler.setChannel(interaction);
+		return await this.ctx.guild.setChannel(interaction);
 	}
 }

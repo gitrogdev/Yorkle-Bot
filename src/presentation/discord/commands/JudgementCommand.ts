@@ -31,7 +31,7 @@ export default class JudgementCommand extends Command {
 	 * interaction with the command
 	 */
 	public async run(interaction: ChatInputCommandInteraction) {
-		return await this.handler.randomLyric(
+		return await this.ctx.content.randomLyric(
 			interaction,
 			LyricOption.Judgement
 		);
