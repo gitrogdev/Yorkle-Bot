@@ -8,7 +8,7 @@ import StatusCycler from './presence/StatusCycler.js';
 
 import statuses from '../../config/statuses.json' with { type: 'json' };
 import Yorkle from '../../game/Yorkle.js';
-import GameInteractionHandler from './services/GameInteractionHandler.js';
+import GameInteractionHandler from './services/interactions/MetaInteractionHandler.js';
 import Messenger from './services/Messenger.js';
 import DiscordBroadcaster from './services/DiscordBroadcaster.js';
 import PostgameThreadHandler from './services/PostgameThreadHandler.js';

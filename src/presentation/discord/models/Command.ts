@@ -2,7 +2,7 @@ import type {
 	ChatInputCommandInteraction,
 	RESTPostAPIChatInputApplicationCommandsJSONBody
 } from 'discord.js';
-import type GameInteractionHandler from '../services/GameInteractionHandler.js';
+import type GameInteractionHandler from '../services/interactions/MetaInteractionHandler.js';
 
 export default abstract class Command {
 	/** The JSON payload used to register the command with the Discord API. */
