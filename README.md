@@ -57,7 +57,10 @@ Must include:
 * `/data/days/`
 * `/data/guilds/`
 
-`/media/albumart`
+`/media/avatars`
+* Discord avatars (.jpg or .png)
+
+`/media/coverart`
 * Album artwork (.jpg)
 
 `/media/lyrics`
