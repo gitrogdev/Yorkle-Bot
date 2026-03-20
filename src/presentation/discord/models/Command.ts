@@ -2,7 +2,7 @@ import type {
 	ChatInputCommandInteraction,
 	RESTPostAPIChatInputApplicationCommandsJSONBody
 } from 'discord.js';
-import type GameInteractionHandler from '../services/interactions/MetaInteractionHandler.js';
+import type { CommandContext } from './CommandContext.js';
 
 export default abstract class Command {
 	/** The JSON payload used to register the command with the Discord API. */
@@ -16,10 +16,10 @@ export default abstract class Command {
 	 *
 	 * @author gitrog
 	 *
-	 * @param {GameInteractionHandler} handler the handler class for
-	 * interactions with the game through commands
+	 * @param {CommandContext} ctx the command context providing access to the
+	 * interaction handlers
 	 */
-	constructor(protected handler: GameInteractionHandler) {};
+	constructor(protected ctx: CommandContext) {};
 
 	public async execute(interaction: ChatInputCommandInteraction) {
 		if (this.deferReply) await interaction.deferReply();

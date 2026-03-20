@@ -4,7 +4,7 @@ import type Yorkle from '../../../../game/Yorkle.js';
 import type Messenger from '../Messenger.js';
 import SequencePresenter from '../SequencePresenter.js';
 
-export default class UseInteractionHandler {
+export default class UserInteractionHandler {
 	/**
 	 * A presenter to convert sequences saved to file to a human-readable
 	 * format.

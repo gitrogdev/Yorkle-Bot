@@ -30,6 +30,6 @@ export default class ShareCommand extends Command {
 	 * interaction with the command
 	 */
 	public async run(interaction: ChatInputCommandInteraction) {
-		return await this.handler.shareResults(interaction);
+		return await this.ctx.user.shareResults(interaction);
 	}
 }

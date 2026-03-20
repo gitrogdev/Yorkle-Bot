@@ -29,6 +29,6 @@ export default class SkipCommand extends Command {
 	 * interaction with the command
 	 */
 	public async run(interaction: ChatInputCommandInteraction) {
-		return await this.handler.skipGuess(interaction);
+		return await this.ctx.session.skipGuess(interaction);
 	}
 }

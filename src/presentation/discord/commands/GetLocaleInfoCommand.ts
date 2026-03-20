@@ -30,6 +30,6 @@ export default class GetLocaleInfoCommand extends Command {
 	 * interaction with the command
 	 */
 	public async run(interaction: ChatInputCommandInteraction) {
-		return await this.handler.getLocaleInfo(interaction);
+		return await this.ctx.meta.getLocaleInfo(interaction);
 	}
 }

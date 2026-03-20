@@ -30,6 +30,6 @@ export default class GetSupportCommand extends Command {
 	 * interaction with the command
 	 */
 	public async run(interaction: ChatInputCommandInteraction) {
-		return await this.handler.getSupportInfo(interaction);
+		return await this.ctx.meta.getSupportInfo(interaction);
 	}
 }

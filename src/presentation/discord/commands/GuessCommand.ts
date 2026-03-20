@@ -38,6 +38,6 @@ export default class GuessCommand extends Command {
 	 * interaction with the command
 	 */
 	public async run(interaction: ChatInputCommandInteraction) {
-		return await this.handler.makeGuess(interaction);
+		return await this.ctx.session.makeGuess(interaction);
 	}
 }

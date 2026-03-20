@@ -30,6 +30,6 @@ export default class GameContentCommand extends Command {
 	 * interaction with the command
 	 */
 	public async run(interaction: ChatInputCommandInteraction) {
-		return await this.handler.getContent(interaction);
+		return await this.ctx.content.getContent(interaction);
 	}
 }
