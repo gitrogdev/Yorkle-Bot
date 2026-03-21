@@ -37,5 +37,8 @@ export const LYRICS_PATH = path.join(MEDIA_ROOT, 'lyrics');
 /** Path to the file containing queue data. */
 export const QUEUE_PATH = path.join(DATA_ROOT, 'game-queue.json');
 
+/** Path to the file containing bot statuses for the Discord presence. */
+export const STATUSES_PATH = path.join(DATA_ROOT, 'statuses.json');
+
 /** Path to the directory where all song .mp3 files are stored. */
 export const SONGS_PATH = path.join(MEDIA_ROOT, 'songs');
