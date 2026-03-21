@@ -78,7 +78,7 @@ export default class Bot {
 		new InteractionCreateEvent(commandRouter).register(this.client);
 		new ClientReadyEvent([
 			new AvatarCycler(AVATARS_PATH, 900_000),
-			new StatusCycler(statuses, 300_000)
+			new StatusCycler(this.game.getStatuses(), 300_000)
 		]).register(this.client);
 	}
 }
