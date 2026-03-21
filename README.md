@@ -42,8 +42,6 @@ All answers should:
 * `guesslengths.json`
 An array of increasing numeric values that define the length (in seconds) of each audio clip per guess.
 	* The number of guesses available to players is determined by the length of this array.
-* `statuses.json`
-An array of strings from which the bot randomly selects a Discord status every five minutes.
 
 ## Directory Structure
 You must provide the following directories and files:
@@ -56,6 +54,8 @@ Stores all runtime-generated data:
 Must include:
 * `/data/days/`
 * `/data/guilds/`
+* `/data/statuses.json`
+An array of strings from which the bot randomly selects a Discord status every five minutes.
 
 `/media/avatars`
 * Discord avatars (.jpg or .png)
