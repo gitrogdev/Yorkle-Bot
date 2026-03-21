@@ -6,7 +6,6 @@ import InteractionCreateEvent from './events/InteractionCreateEvent.js';
 import ClientReadyEvent from './events/ClientReadyEvent.js';
 import StatusCycler from './presence/StatusCycler.js';
 
-import statuses from '../../config/statuses.json' with { type: 'json' };
 import Yorkle from '../../game/Yorkle.js';
 import Messenger from './services/Messenger.js';
 import DiscordBroadcaster from './services/DiscordBroadcaster.js';
