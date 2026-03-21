@@ -20,6 +20,8 @@ import type Session from './entities/Session.js';
 import type OpenSessionResponse from './model/OpenSessionResponse.js';
 import type Game from './entities/Game.js';
 import Guild from './entities/Guild.js';
+import StatusRoster from './services/StatusRoster.js';
+import StatusDataStore from '../persistence/datastores/StatusDataStore.js';
 
 export default class Yorkle {
 	/** The list of all guilds the game is running in. */
@@ -39,6 +41,11 @@ export default class Yorkle {
 
 	/** Manager used to handle game sessions for players. */
 	private readonly sessions: SessionManager;
+
+	/** The roster of Discord presence statuses. */
+	private readonly statuses: StatusRoster = new StatusRoster(
+		new StatusDataStore()
+	);
 
 	/** Map of lyric file options to their associated archives. */
 	private readonly lyrics: Record<LyricOption, LyricArchive> = {
@@ -60,6 +67,8 @@ export default class Yorkle {
 	public openSession: (user: UserIdentity) => Promise<OpenSessionResponse>;
 
 	public countSongs = this.songs.getSize.bind(this.songs);
+
+	public getStatuses: () => string[];
 
 	/**
 	 * Creates a new interface to handle all game logic for Yorkle.
@@ -103,6 +112,8 @@ export default class Yorkle {
 		);
 		this.getSession = this.sessions.getSession.bind(this.sessions);
 		this.openSession = this.sessions.open.bind(this.sessions);
+
+		this.getStatuses = this.statuses.getStatuses.bind(this.statuses);
 	}
 
 	private async init() {
