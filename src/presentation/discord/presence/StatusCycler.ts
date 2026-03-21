@@ -1,4 +1,3 @@
-import type { ClientUser } from 'discord.js';
 import PresenceCycler from '../models/PresenceCycler.js';
 
 export default class StatusCycler extends PresenceCycler {
