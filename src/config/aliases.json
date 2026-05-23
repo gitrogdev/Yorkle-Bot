@@ -1300,5 +1300,11 @@
 	"nosegrows": [
 		"nosegrowssome",
 		"nosegrows"
+	],
+	"hearingdamage": [
+		"hearingdmg",
+		"hearindmg",
+		"hearindamage",
+		"hearingdamage"
 	]
 }
