@@ -1296,5 +1296,9 @@
 	],
 	"pinksection": [
 		"pinksection"
+	],
+	"nosegrows": [
+		"nosegrowssome",
+		"nosegrows"
 	]
 }
