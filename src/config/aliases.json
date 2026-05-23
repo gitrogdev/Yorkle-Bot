@@ -238,7 +238,7 @@
 	],
 	"youandwhosearmy": [
 		"yawa",
-		"you&whosearmy",
+		"youwhosearmy",
 		"younwhosearmy",
 		"youandwhosearmy"
 	],
@@ -259,7 +259,6 @@
 	],
 	"dollarscents": [
 		"dollarsncents",
-		"dollars&cents",
 		"dollarsandcents",
 		"dollarscents"
 	],
@@ -279,7 +278,7 @@
 	"twotwofive": [
 		"thelukewarm",
 		"lukewarm",
-		"2+2=5",
+		"225",
 		"2plus2is5",
 		"2plus2isfive",
 		"twoplustwoisfive",
@@ -287,7 +286,7 @@
 	],
 	"sitdown": [
 		"sdsu",
-		"snakes&ladders",
+		"snakesladders",
 		"snakesnladders",
 		"snakesandladders",
 		"sitdownstandup",
@@ -319,10 +318,10 @@
 		"skyisfallingin",
 		"skysfallingin",
 		"wieayb",
-		"whereiend&ubegin",
+		"whereiendubegin",
 		"whereiendnubegin",
 		"whereiendandubegin",
-		"whereiend&youbegin",
+		"whereiendyoubegin",
 		"whereiendnyoubegin",
 		"whereiendandyoubegin",
 		"whereiend"
@@ -593,8 +592,6 @@
 	"bangersmash": [
 		"thebangersandthemash",
 		"bangersandthemash",
-		"bangers+mash",
-		"bangers&mash",
 		"bangersnmash",
 		"bangersandmash",
 		"bangersmash"
@@ -614,10 +611,10 @@
 		"mdq",
 		"milliondollarquestion",
 		"onemilliondollarquestion",
-		"million$question",
-		"onemillion$question",
+		"millionquestion",
+		"onemillionquestion",
 		"1000000dollarquestion",
-		"$1000000question",
+		"1000000question",
 		"mdollarq"
 	],
 	"yesiam": [
@@ -727,15 +724,13 @@
 	"polyethylene": [
 		"pe",
 		"c2h4n",
-		"c₂h₄ₙ",
+		"ch",
 		"polythene",
 		"polyethene",
 		"polymethylene",
-		"polyethyleneparts1&2",
 		"polyethyleneparts1and2",
 		"polyethyleneparts1n2",
 		"polyethyleneparts12",
-		"polyethylenepart1&2",
 		"polyethylenepart1and2",
 		"polyethylenepart1n2",
 		"polyethylenepart12",
@@ -799,11 +794,11 @@
 	],
 	"edscary": [
 		"theorchestraattheball",
-		"theorchestra@theball",
+		"theorchestratheball",
 		"orchestraattheball",
-		"orchestra@theball",
+		"orchestratheball",
 		"orchestraatball",
-		"orchestra@ball",
+		"orchestraball",
 		"edsscarysong",
 		"edscarysong",
 		"edwardsscarysong",
@@ -839,14 +834,11 @@
 	],
 	"judgejury": [
 		"judgejuryandexecutioner",
-		"judgejury&executioner",
 		"judgejurynexecutioner",
 		"judgeandjuryexecutioner",
-		"judge&juryexecutioner",
 		"judgenjuryexecutioner",
 		"judgejuryexecutioner",
 		"judgeandjury",
-		"judge&jury",
 		"judgenjury",
 		"judgejury"
 	],
@@ -1137,7 +1129,6 @@
 	"eyesandmouth": [
 		"eyesmouth",
 		"eyesnmouth",
-		"eyes&mouth",
 		"eyesandmouth"
 	],
 	"dontgetmestarted": [
