@@ -91,7 +91,12 @@ export default class PostgameThreadHandler implements PostgameDiscussionPort {
 					+ `post-game discussion thread ${threadId} in guild `
 					+ `${guildId}.`
 				)
-			);
+			).catch(err => {
+				console.error(
+					`Failed to add ${user.name} to Yorkle #${day} post-game `
+					+ ` discussion thread in ${discordGuild.name}: ${err}`
+				);
+			});
 		}
 	}
 
