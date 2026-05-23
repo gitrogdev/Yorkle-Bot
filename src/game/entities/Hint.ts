@@ -74,7 +74,8 @@ export default class Hint {
 		this.key = absDiff > 9 ? HintOption.DiffDecade
 			: absDiff > 4 ? HintOption.DiffSeveral
 				: absDiff > 1 ? HintOption.DiffFew
-					: HintOption.DiffSame;
+					: absDiff === 1 ? HintOption.DiffOne
+						: HintOption.DiffSame;
 		this.literalParams = { compare: compare!.title };
 		if (this.key !== HintOption.DiffSame) this.keyParams = {
 			relation: [diff < 0 ? 'options.before' : 'options.after']
