@@ -46,8 +46,12 @@ export default class CommandRouter {
 			}
 
 			if (interaction.replied || interaction.deferred)
-				await interaction.followUp(errorMessage);
-			else await interaction.reply(errorMessage);
+				await interaction.followUp(errorMessage).catch(err =>
+					console.error(err)
+				);
+			else await interaction.reply(errorMessage).catch(err =>
+				console.error(err)
+			);
 		}
 	}
 }
