@@ -1270,5 +1270,11 @@
 	],
 	"interference": [
 		"interference"
+	],
+	"motherlode": [
+		"themotherlode",
+		"themotherload",
+		"motherload",
+		"motherlode"
 	]
 }
