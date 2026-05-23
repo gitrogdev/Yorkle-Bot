@@ -1306,5 +1306,11 @@
 		"hearindmg",
 		"hearindamage",
 		"hearingdamage"
+	],
+	"ratsnest": [
+		"aratsnest",
+		"aratnest",
+		"ratnest",
+		"ratsnest"
 	]
 }
