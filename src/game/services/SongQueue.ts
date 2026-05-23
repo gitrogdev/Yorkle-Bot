@@ -74,7 +74,7 @@ export default class SongQueue {
 
 		if (data.queue.length > 0) for (
 			let i = 0; i < data.queue.length; i++
-		) (i < data.index ? this.played : this.queue).push(
+		) (i <= data.index ? this.played : this.queue).push(
 			this.lib.getSong(dehexify(data.queue[i]))
 		); else this.queue = this.lib.shuffle();
 
@@ -169,6 +169,8 @@ export default class SongQueue {
 					'Successfully reached end of queue and reshuffled all '
 					+ 'songs.'
 				);
+
+				this.index = -1;
 			}
 
 			this.generator.generate(this.queue[0], this.day);
